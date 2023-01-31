@@ -1,12 +1,10 @@
-name: Tests
+name: "Ruby on Rails CI"
 
 on:
-  pull_request:
-    branches:
-      - '*'
   push:
-    branches:
-      - master
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   test:
@@ -24,12 +22,12 @@ jobs:
         # options: --entrypoint redis-server
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
         with:
-          bundler: default
           bundler-cache: true
 
       - name: Setup Node
