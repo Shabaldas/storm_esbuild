@@ -32,7 +32,7 @@ group :development, :test do
   gem 'faker', require: false
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-  gem 'rubocop', '~> 1.22.3', require: false
+  gem 'rubocop', '~> 1.44.1', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
