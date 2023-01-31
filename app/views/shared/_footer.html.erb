@@ -1,0 +1,49 @@
+<footer class="w-full bg-gray-800 pb-8">
+	<div class="w-full max-w-screen-2xl mx-auto px-7 xl:px-24">
+		<div class="block mx-auto text-center xl:text-left xl:flex xl:justify-between xl:items-center py-16">
+			<div class="w-40 mx-auto xl:mx-0">
+        <%= link_to home_path do %>
+				  <%= image_tag("partials_img/logo_footer.png") %>
+        <% end %>
+			</div>
+			<div class="w-full mt-3 xl:mt-0 xl:w-1/6 xl:ml-32 text-zinc-400 leading-8 uppercase pt-1">
+				<ul>
+					<li class="mt-4 md:mt-0">
+						<%= link_to t('global.footer.calculator'), home_path %>
+					</li>
+					<li class="mt-4 md:mt-0">
+						<%= link_to t('global.footer.my_office'), home_path %>
+					</li>
+				</ul>
+			</div>
+			<div class="w-full mt-8 xl:mt-0 xl:w-1/6 text-white leading-8">
+				<h4 class="text-zinc-400 uppercase"><%= t('global.footer.contacts') %></h4>
+				<%#TODO MOVE TO LOCALES%>
+				<p>+380-067-364-6509</p>
+				<p>3d.storm.des@gmail.com</p>
+			</div>
+			<div class="w-full mt-8 xl:mt-0 xl:w-1/6 text-white leading-8">
+				<h4 class="text-zinc-400 uppercase"><%= t('global.footer.address') %></h4>
+				<p><%= t('global.footer.street') %></p>
+				<p><%= t('global.footer.city') %></p>
+			</div>
+		</div>
+		<div class="flex justify-between items-center text-zinc-400 border-t border-gray-500 pt-6">
+			<%#TODO MOVE TO PRESENTORS%>
+      <%= "© #{Time.zone.now.year}" + t('global.footer.law') %>
+			<div class="w-12 flex justify-between">
+				<%#CHANGE link a to link_to %>
+				<a href="https://www.facebook.com/3D.Storm.des">
+					<div class="w-2.5 h-5">
+						<%= image_tag("partials_img/facebook.png") %>
+					</div>
+				</a>
+				<a href="https://www.instagram.com/3d.storm.des/">
+					<div class="w-5 h-5">
+						<%= image_tag("partials_img/instagram.png") %>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>

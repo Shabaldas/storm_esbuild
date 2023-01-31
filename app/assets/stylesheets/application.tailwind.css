@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter&display=swap');
+html, body{
+	width:100%;
+	height: 100%;
+}
+body{
+	font-family: 'Inter', sans-serif;
+}

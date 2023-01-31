@@ -1,0 +1,134 @@
+<div class="w-full h-full max-w-screen-2xl mx-auto px-7 md:px-24 relative -top-16 z-20">
+	<div class="min-h-screen relative flex justify-center items-center">
+		<div class="w-full flex flex-col justify-center items-center lg:flex-row lg:justify-between">
+			<div class="lg:w-6/12 text-center lg:text-left order-2 lg:order-1 relative">
+				<div class="lg:absolute lg:-top-56 z-20">
+					<p class="text-xs text-slate-500 uppercase font-medium">
+						<%= t('static_page.home.3d_print') %>
+					</p>
+					<h1 class="text-3xl lg:text-6xl text-gray-800 pt-2 font-medium">
+						<%= t('static_page.home.title_part1') %>
+						<br />
+						<%= t('static_page.home.title_part2') %>
+					</h1>
+				</div>
+			</div>
+			<div class="w-full lg:w-4/12 order-1 lg:order-2">
+				<div class="w-full lg:w-4/5 lg:absolute top-6 -right-7 z-10">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="relative flex flex-col justify-center items-center">
+		<h4 class="absolute bottom-14 text-center text-zinc-500 uppercase font-medium pb-2 bg-stone-200 z-20">
+			<%= t('static_page.home.scroll_text') %>
+		</h4>
+		<div class="absolute bottom-4 z-10">
+		</div>
+	</div>
+	<div class="w-full px-4 lg:px-0 lg:w-2/4 mx-auto py-20 text-zinc-500 text-center">
+		<p>
+			<%= t('static_page.home.print_desc') %>
+		</p>
+	</div>
+	<div class="flex flex-col justify-between items-center lg:flex-row relative z-10">
+		<div class="w-full lg:w-1/3 h-32 lg:h-64 rounded-3xl bg-slate-50 relative shadow-gray-300 mt-6">
+			<div class="w-16 h-16 lg:w-24 lg:h-24 absolute top-4 right-5 lg:right-1 ">
+			</div>
+			<div class="absolute bottom-4 left-6">
+				<p class="text-xs text-zinc-500 uppercase">
+				</p>
+				<h4 class="text-xl text-gray-800">
+					<%= t('static_page.home.modeling') %>
+				</h4>
+			</div>
+		</div>
+		<div class="w-full lg:w-1/3 h-32 lg:h-64 rounded-3xl bg-slate-50 relative shadow-gray-300 mt-6 lg:ml-6">
+			<div class="w-16 h-16 lg:w-24 lg:h-24 absolute top-8 right-5 lg:right-1 ">
+			</div>
+			<div class="absolute bottom-4 left-6">
+				<p class="text-xs text-zinc-500 uppercase">
+					<%= t('static_page.home.tabs_title_2') %>
+				</p>
+				<h4 class="text-xl text-gray-800">
+					<%= t('static_page.home.render') %>
+				</h4>
+			</div>
+		</div>
+		<div class="w-full lg:w-1/3 h-32 lg:h-64 rounded-3xl bg-slate-50 relative shadow-gray-300 mt-6 lg:ml-6">
+			<div class="w-16 h-16 lg:w-24 lg:h-24 absolute top-8 right-1 lg:-right-7 ">
+			</div>
+			<div class="absolute bottom-4 left-6">
+				<p class="text-xs text-zinc-500 uppercase">
+					<%= t('static_page.home.tabs_title_3') %>
+				</p>
+				<h4 class="text-xl text-gray-800">
+					<%= t('static_page.home.print') %>
+				</h4>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="w-full min-h-max relative top-0 lg:-top-48 z-10 bg-gray-800 pb-16 lg:pb-0">
+	<div class="max-w-screen-2xl mx-auto px-7 md:px-24 py-0 lg:py-44">
+		<div class="pt-10 lg:pt-32 px-4 lg:px-0 text-slate-50 text-center lg:text-left">
+			<p class="text-base text-zinc-500 uppercase">
+				<%= t('static_page.home.quality_subtitle') %>
+			</p>
+			<h4 class="text-3xl lg:text-5xl font-medium">
+				<%= t('static_page.home.quality_title1') %>
+				<br />
+				<%= t('static_page.home.quality_title2') %>
+			</h4>
+			<p class="w-full lg:w-2/5 text-base lg:text-lg pt-10 pb-16">
+				<%= t('static_page.home.quality_desc') %>
+			</p>
+		</div>
+		<div class="flex flex-col justify-center items-center lg:items-start lg:justify-start">
+			<div class="w-1/6 flex flex-col justify-center items-center lg:items-start lg:flex-row lg:justify-start text-2xl text-zinc-500 mt-3">
+				<h4 class="ml-0 lg:ml-4">
+					<%= t('static_page.home.low') %>
+				</h4>
+			</div>
+			<div class="w-1/6 flex-col justify-center items-center flex lg:flex-row lg:justify-start text-2xl text-slate-50 mt-8">
+				<h4 class="ml-0 lg:ml-4">
+					<%= t('static_page.home.middle') %>
+				</h4>
+			</div>
+			<div class="w-1/6 flex-col justify-center items-center flex lg:flex-row lg:justify-start text-2xl text-zinc-500 mt-8">
+				<h4 class="ml-0 lg:ml-4">
+					<%= t('static_page.home.high') %>
+				</h4>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="w-full relative top-18 lg:-top-48">
+	<div class="relative">
+		<div class="w-full h-full absolute top-0 left-0 bg-zinc-800 opacity-70"></div>
+		<div class="w-full h-98 bg-cover bg-center" style="background-image: url(/assets/home_img/printer_bg.png)"></div>
+		<div class="w-full h-full absolute top-0 left-0 flex flex-col justify-center items-center text-slate-50">
+			<div class="text-center px-4">
+				<p class="text-base text-zinc-400 uppercase">
+					<%= t('static_page.home.component_subtitle') %>
+				</p>
+				<h4 class="text-3xl lg:text-5xl font-medium">
+					<%= t('static_page.home.component_title_1') %>
+					<br />
+					<%= t('static_page.home.component_title_2') %>
+				</h4>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="w-full max-w-screen-2xl mx-auto px-7 md:px-24 relative lg:-top-32">
+	<div class="h-96 text-center flex flex-col justify-center items-center">
+		<h4 class="text-3xl lg:text-5xl font-medium">
+			<%= t('static_page.home.question_title') %>
+		</h4>
+		<p class="text-base text-zinc-500 py-3">
+			<%= t('static_page.home.question_suptitle') %>
+		</p>
+    </div>
+	</div>
+</div>
