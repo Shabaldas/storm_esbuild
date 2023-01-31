@@ -1,10 +1,27 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require "spec_helper"
 ENV["RAILS_ENV"] ||= "test"
+require "simplecov"
+SimpleCov.start :rails do
+  add_group "Models", "app/models"
+  add_group "Controllers", "app/controllers"
+  add_group "Helpers", "app/helpers"
+  add_group "Jobs", "app/jobs"
+  add_group "Services", "app/services"
+end
+
+# DON'T FORGET TO UPDATE THE MINIMUM COVERAGE
+# DON'T You dare reducing the minimum coverage without a good reason
+# SimpleCov.minimum_coverage 99
+
 require_relative "../config/environment"
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
+require "webmock/rspec"
+require "database_cleaner/active_record"
+# Sidekiq::Testing.fake!
+ActiveJob::Base.queue_adapter = :test
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -30,13 +47,27 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  # config.include Warden::Test::Helpers, type: :request
+  # config.include Warden::Test::Helpers, type: :feature
+  config.include FactoryBot::Syntax::Methods
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.before :suite do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with :truncation
+    FactoryBot.lint
+  end
+
+  config.around do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
