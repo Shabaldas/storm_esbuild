@@ -27,16 +27,19 @@ gem "bootsnap", require: false
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "bullet"
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
-  gem 'rubocop', '~> 1.22.3', require: false
+  gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem "rubocop-faker"
   gem 'shoulda-matchers'
-  gem 'faker', require: false
+  gem 'faker'
   gem 'factory_bot_rails'
+  gem "webmock"
 end
 
 group :development do
@@ -45,7 +48,10 @@ group :development do
 end
 
 group :test do
+  gem "database_cleaner-active_record"
+  gem "timecop", "~> 0.9.6"
   gem "capybara"
+  gem "simplecov", require: false
   gem "selenium-webdriver"
   gem "webdrivers"
 end
