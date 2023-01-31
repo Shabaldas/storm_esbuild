@@ -1,24 +1,29 @@
-# README
+# 3D STORM TEAM RAILS PROJECT
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Requirements
 
-Things you may want to cover:
+FOR MACOS USER
 
-* Ruby version
+  better to use rbenv
 
-* System dependencies
+  - Ruby 3.2.0
+  - Bundler - `gem install bundler`
+  - Node.js 16.15.1 or higher - `brew install node@16`
+  - Yarn 1.22.19 or higher - `brew install yarn` or [Install Yarn](https://yarnpkg.com/en/docs/install)
+  - PostgreSQL - `brew install postgresql`
+  - Libvips or Imagemagick - `brew install vips imagemagick`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  ### Setup
+  ```bash
+  git@github.com:Shabaldas/storm_esbuild.git
+  cd storm_esbuild
+  ```
+  ### Run the servers locally
+  ```bash
+  foreman start -f Procfile.dev
+  # OR
+  bin/rails server -p 3000
+  yarn build:css --watch
+  yarn build --reload
+  ```
+FOR LINUX USER
