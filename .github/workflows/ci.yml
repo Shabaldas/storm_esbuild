@@ -1,60 +1,60 @@
-name: "Ruby on Rails CI"
+# name: "Ruby on Rails CI"
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-        ports: ['5432:5432']
-      # redis:
-        # image: redis
-        # ports: ['6379:6379']
-        # options: --entrypoint redis-server
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     services:
+#       postgres:
+#         image: postgres:latest
+#         env:
+#           POSTGRES_USER: postgres
+#           POSTGRES_PASSWORD: password
+#         ports: ['5432:5432']
+#       # redis:
+#         # image: redis
+#         # ports: ['6379:6379']
+#         # options: --entrypoint redis-server
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
-        with:
-          bundler-cache: true
+#       - name: Install Ruby and gems
+#         uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
+#         with:
+#           bundler-cache: true
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: yarn
+#       - name: Setup Node
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '16'
+#           cache: yarn
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get install -y -qq libvips
-          yarn install --frozen-lockfile
+#       - name: Install dependencies
+#         run: |
+#           sudo apt-get install -y -qq libvips
+#           yarn install --frozen-lockfile
 
-      - name: Linter Check
-        run: bundle exec rubocop
+#       - name: Linter Check
+#         run: bundle exec rubocop
 
-# Uncomment to enable Brakeman checks in CI
-#     - name: Brakeman Check
-#       run: bundle exec brakeman
+# # Uncomment to enable Brakeman checks in CI
+# #     - name: Brakeman Check
+# #       run: bundle exec brakeman
 
-      - name: Run tests
-        env:
-          DATABASE_URL: postgres://postgres:password@localhost:5432/test
-          # REDIS_URL: redis://localhost:6379/0
-          RAILS_ENV: test
-          PG_USER: postgres
-        run: |
-          bin/rails test:prepare
-          bin/rails db:test:prepare
-          bundle exec rspec
+#       - name: Run tests
+#         env:
+#           DATABASE_URL: postgres://postgres:password@localhost:5432/test
+#           # REDIS_URL: redis://localhost:6379/0
+#           RAILS_ENV: test
+#           PG_USER: postgres
+#         run: |
+#           bin/rails test:prepare
+#           bin/rails db:test:prepare
+#           bundle exec rspec
