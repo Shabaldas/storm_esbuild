@@ -1,0 +1,160 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'config/environments/*'
+    - 'Gemfile'
+  NewCops: enable
+  DisplayStyleGuide:
+    Enabled: true
+
+Layout/IndentationWidth:
+  Width: 2
+
+Layout/LineEndStringConcatenationIndentation:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+  Exclude:
+    - "spec/**/*"
+
+Layout/TrailingEmptyLines:
+  EnforcedStyle: final_newline
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+Lint/CircularArgumentReference:
+  Enabled: true
+
+Lint/UnusedBlockArgument:
+  Enabled: true
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 160
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - production
+    - qa
+    - staging
+    - test
+
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - 'spec/factories/*.rb'
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 4
+
+RSpec/MissingExampleGroupArgument:
+  Exclude:
+    - 'spec/factories/*.rb'
+# Our way of writting test push towards multiple expectations per test
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/VariableName:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+# This cop is disabled on ruby style guide due to some discussions
+# https://github.com/rubocop-hq/rubocop/issues/3344
+Style/DoubleNegation:
+  Enabled: false
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+# This cop is designed to help upgrade to Ruby 3.0.
+# It will add the comment `# frozen_string_literal: true` to the top of files to enable frozen string literals.
+# Frozen string literals will be default in Ruby 3.0. The comment will be added below a shebang and encoding comment.
+# The frozen string literal comment is only valid in Ruby 2.3+.
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  Exclude:
+    - 'config/**/*'
+    - 'spec/**/*'
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+
+Style/WordArray:
+  EnforcedStyle: brackets
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+
+RSpec/MultipleMemoizedHelpers:
+  AllowSubject: false
+  Max: 12
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context', 'it', 'permissions', 'define', 'factory', 'shared_examples_for', 'let']
