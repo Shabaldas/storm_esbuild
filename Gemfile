@@ -6,6 +6,8 @@ ruby '3.1.3'
 gem 'active_link_to'
 gem 'cssbundling-rails'
 gem 'dotenv-rails', '~> 2.7'
+gem 'devise'
+gem 'devise-i18n'
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder'
 gem 'jsbundling-rails'
@@ -28,7 +30,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem "bullet"
+  gem 'bullet'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
@@ -40,7 +42,7 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'shoulda-matchers'
-  gem "webmock"
+  gem 'webmock'
 end
 
 group :development do
@@ -49,9 +51,9 @@ group :development do
 end
 
 group :test do
-  gem "database_cleaner-active_record"
-  gem "timecop", "~> 0.9.6"
-  gem "simplecov", require: false
+  gem 'database_cleaner-active_record'
+  gem 'timecop', '~> 0.9.6'
+  gem 'simplecov', require: false
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
