@@ -1,5 +1,7 @@
 # 3D STORM TEAM RAILS PROJECT
+[![Maintainability](https://api.codeclimate.com/v1/badges/a28a0898c2e289240560/maintainability)](https://codeclimate.com/github/Shabaldas/storm_esbuild/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a28a0898c2e289240560/test_coverage)](https://codeclimate.com/github/Shabaldas/storm_esbuild/test_coverage)
 ### Requirements
 
 FOR MACOS USER
