@@ -52,6 +52,10 @@ jobs:
 
       - name: Linter Check
         run: bundle exec rubocop
+        # Code Climate
+      - name: Setup Code Climate
+        uses: amancevice/setup-code-climate@v1.1
+
 
   # lint:
   #   runs-on: ubuntu-latest
