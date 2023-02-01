@@ -1,25 +1,25 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require "spec_helper"
-ENV["RAILS_ENV"] ||= "test"
-require "simplecov"
+require 'spec_helper'
+ENV['RAILS_ENV'] ||= 'test'
+require 'simplecov'
 SimpleCov.start :rails do
-  add_group "Models", "app/models"
-  add_group "Controllers", "app/controllers"
-  add_group "Helpers", "app/helpers"
-  add_group "Jobs", "app/jobs"
-  add_group "Services", "app/services"
+  add_group 'Models', 'app/models'
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Helpers', 'app/helpers'
+  add_group 'Jobs', 'app/jobs'
+  add_group 'Services', 'app/services'
 end
 
 # DON'T FORGET TO UPDATE THE MINIMUM COVERAGE
 # DON'T You dare reducing the minimum coverage without a good reason
 # SimpleCov.minimum_coverage 99
 
-require_relative "../config/environment"
+require_relative '../config/environment'
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
-require "rspec/rails"
-require "webmock/rspec"
-require "database_cleaner/active_record"
+abort('The Rails environment is running in production mode!') if Rails.env.production?
+require 'rspec/rails'
+require 'webmock/rspec'
+require 'database_cleaner/active_record'
 # Sidekiq::Testing.fake!
 ActiveJob::Base.queue_adapter = :test
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -61,6 +61,13 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with :truncation
     FactoryBot.lint
+  end
+
+  Shoulda::Matchers.configure do |conf|
+    conf.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
   end
 
   config.around do |example|
