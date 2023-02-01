@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.3'
 
 gem 'active_link_to'
+gem 'ancestry'
 gem 'cssbundling-rails'
 gem 'dotenv-rails', '~> 2.7'
 gem 'devise'
