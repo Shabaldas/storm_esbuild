@@ -29,3 +29,10 @@ FOR MACOS USER
   yarn build --reload
   ```
 FOR LINUX USER
+
+### RUN SEED LOCAL
+  ```
+  bundle exec rails c
+
+  DatabaseSeeds::Main.new.execute
+  ```

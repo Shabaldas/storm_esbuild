@@ -71,6 +71,8 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    ancestry (4.2.0)
+      activerecord (>= 5.2.6)
     ast (2.4.2)
     awesome_print (1.9.2)
     bcrypt (3.1.18)
@@ -330,6 +332,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to
+  ancestry
   awesome_print
   bootsnap
   bullet
