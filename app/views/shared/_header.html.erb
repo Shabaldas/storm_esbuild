@@ -28,8 +28,28 @@
                   <%= image_tag("partials_img/user.png") %>
                 </span>
               </div>
-              <div id='activeTarget' data-toggle-target="content" class="absolute -right-12 mt-2 hidden">
+              <div id="activeTarget" data-toggle-target="content" class="absolute -right-12 mt-2 hidden">
                 <div class="w-38 shadow rounded border overflow-hidden block text-base text-gray-900 bg-white">
+                  <%- if user_signed_in? %>
+                    <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
+                      <%= link_to t('global.header.edit_profile'), edit_user_registration_path %>
+                    </p>
+                    <hr />
+                    <p class="text-center cursor-pointer">
+                      <%= button_to t('global.header.log_out'), destroy_user_session_path, method: :delete, data: { trubo: false } %>
+                    </p>
+                  <% else %>
+                    <p class="text-center cursor-pointer">
+                      <%= link_to t('global.header.registration'), new_user_registration_path %>
+                    </p>
+                    <hr />
+                    <div class="text-center px-5 pt-2 pb-1 cursor-pointer">
+                      <p class="text-center cursor-pointer" data-controller="renderer">
+                        <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' } %>
+                        <span data-target="renderer.display"></span>
+                      </p>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
