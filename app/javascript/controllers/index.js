@@ -19,3 +19,6 @@ application.register("hello", HelloController)
 import CheckboxFamilyController from "./checkbox_family_controller"
 application.register("checkbox-family", CheckboxFamilyController)
 
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)
+
