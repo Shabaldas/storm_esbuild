@@ -12,6 +12,9 @@
             <%= active_link_to t('global.header.head'), home_path, active: :exact %>
           </li>
           <li class="px-4 cursor-pointer">
+            <%= active_link_to t('global.header.store'), products_path %>
+          </li>
+          <li class="px-4 cursor-pointer">
           </li>
           <li class="px-4 cursor-pointer">
           </li>
@@ -55,50 +58,7 @@
             </div>
           </div>
         </div>
-        <div data-controller="toggle">
-          <div class="w-7 h-7 pt-1 relative flex items-center cursor-pointer" data-action="click->toggle#toggle click@window->toggle#hide" role="button" data-toggle-target="button" tabindex="0">
-            <p>
-              <%= image_tag("partials_img/basket_icon_grey.png") %>
-            </p>
-            <span class="w-5 h-5 absolute -top-2 left-3 flex justify-center items-center bg-yellow-400 rounded-full text-xs">
-            </span>
-          </div>
-        </div>
       </div>
-      <div class="-mt-4 lg:mt-2">
-        <div class="inline-block text-sm leading-none rounded no-underline text-gray mt-4 lg:mt-0">
-          <div class="relative" data-controller="toggle" data-toggle-active-target='#activeTarget'>
-            <div data-action="click->toggle#toggle click@window->toggle#hide" role="button" data-toggle-target="button" tabindex="0" class="inline-block select-none relative right-12 lg:right-0">
-              <span class="appearance-none flex items-center inline-block text-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                </svg>
-              </span>
-            </div>
-           
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div data-controller="sidebar" class="flex justify-end mr-5 -mt-12">
-    <div data-sidebar-target="sidebarContainer" data-expanded="1"
-    class="sidebar bg-gray-800 text-white text-center min-h-screen flex flex-col justify-center items-center w-full space-y-6 py-7 px-2 absolute z-40 inset-y-0 left-0 transform -translate-x-full transition duration-700 ease-in-out">
-      <div class="close-btn absolute top-5 right-4" data-action="click->sidebar#toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </div>
-      <ul>
-        <li class="py-5">
-          <%= active_link_to t('global.header.head'), home_path, active: :exact %>
-        </li>
-      </ul>
-    </div>
-    <div data-action="click->sidebar#toggle" data-sidebar-target="icon" class="w-6 mobile-content-button focus:outline-none focus:bg-gray-700 lg:hidden z-30">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
     </div>
   </div>
 </header>
