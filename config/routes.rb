@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'static_pages#home', as: :home
 
   resources :products, only: :index
+
+  mount ApiV1 => '/'
 end
