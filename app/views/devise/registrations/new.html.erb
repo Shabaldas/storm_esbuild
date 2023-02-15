@@ -1,29 +1,92 @@
-<h2>Sign up</h2>
+<div class="w-full h-full max-w-screen-2xl mx-auto px-7 md:px-24 pb-10">
+  <div class="mt-10 w-full lg:w-4/6 h-full">
+    <div class="text-2xl text-gray-800 font-medium">
+      <h2>Sign up</h2>
+    </div>
+    <div class="flex items-center mt-8">
+      <div class="w-6 h-6">
+        <%= image_tag("partials_img/user.png") %>
+      </div>
+      <div class="ml-2 text-gray-800 text-base font-medium">
+        <%= t('devise.registrations.personal_date') %>
+      </div>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="mt-3 mb-3 w-full h-px bg-gray-400"></div>
+      <div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :first_name, t("devise.registrations.first_name") %>
+            </div>
+            <div class="mt-1">
+              <%= f.text_field :first_name, class: "w-full rounded" %>
+            </div>
+          </div>
+          <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
+            <div>
+              <%= f.label :last_name, t("devise.registrations.last_name") %>
+            </div>
+            <div class="mt-1">
+              <%= f.text_field :last_name, class: "w-full rounded" %>
+            </div>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center mt-5">
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :phone, t("devise.registrations.phone") %>
+            </div>
+            <div class="mt-1">
+              <%= f.phone_field :phone, class: "w-full rounded" %>
+            </div>
+          </div>
+          <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
+            <div>
+              <%= f.label :email, t("devise.registrations.email") %>
+            </div>
+            <div class="mt-1">
+              <%= f.email_field :email, autofocus: true, class: "w-full rounded", autocomplete: "email" %>
+            </div>
+          </div>
+        </div>
+
+         <div class="flex items-center mt-8">
+            <div class="w-6 h-6">
+              <%= image_tag("partials_img/lock.png") %>
+            </div>
+            <div class="ml-2 text-gray-800 text-base font-medium">
+              Password
+            </div>
+          </div>
+          <div class="mt-3 mb-3 w-full h-px bg-gray-400"></div>
+          <div class="flex flex-col lg:flex-row lg:justify-between items-center">
+            <div class="w-full lg:w-3/5">
+              <div class="mt-1">
+                <%= f.label :password %>
+              </div>
+              <div class="mt-1 relative">
+                <%= f.password_field :password, autocomplete: "new-password", class: "w-full rounded form-control" %>
+              </div>
+            </div>
+            <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
+              <div class="mt-1">
+                <%= f.label :password_confirmation %>
+              </div>
+              <div class="mt-1 relative">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full rounded form-control" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-5 pb-3 cursor-pointer text-gray-800">
+            <%= f.submit "Sign up", class: "w-full md:w-56 flex justify-center items-center text-base text-gray-800 bg-yellow-400 font-medium px-4 py-3 mt-2 rounded-lg uppercase hover:bg-yellow-500 cursor-pointer transition ease-in duration-400", data: { turbo: false } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up", data: { turbo: false } %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
