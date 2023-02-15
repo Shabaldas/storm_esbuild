@@ -1,26 +1,54 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="w-full h-full max-w-screen-2xl mx-auto px-7 md:px-24 pb-10">
+  <div class="mt-10 w-full lg:w-4/6 h-full">
+    <div class="text-2xl text-gray-800 font-medium">
+      <h2>Log in</h2>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="flex items-center mt-8">
+      <div class="w-6 h-6">
+        <%= image_tag("partials_img/user.png") %>
+      </div>
+      <div class="ml-2 text-gray-800 text-base font-medium">
+        <%= t('devise.registrations.personal_date') %>
+      </div>
+    </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+       <div class="mt-3 mb-3 w-full h-px bg-gray-400"></div>
+      <div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :email, t("devise.registrations.email") %>
+            </div>
+            <div class="mt-1">
+              <%= f.email_field :email, autofocus: true,  class: "w-full rounded", autocomplete: "email" %>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :password %>
+            </div>
+            <div class="mt-1">
+              <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded" %>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :remember_me %>
+            </div>
+            <div class="mt-1">
+              <%= f.check_box :remember_me %>
+            </div>
+          </div>
+          <div class="pt-5 pb-3 cursor-pointer text-gray-800">
+            <%= f.submit "Log in", class: "w-full md:w-56 flex justify-center items-center text-base text-gray-800 bg-yellow-400 font-medium px-4 py-3 mt-2 rounded-lg uppercase hover:bg-yellow-500 cursor-pointer transition ease-in duration-400", data: { turbo: false } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
