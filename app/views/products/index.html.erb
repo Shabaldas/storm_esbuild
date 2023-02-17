@@ -1,5 +1,67 @@
 <div class="w-full max-w-screen-2xl mx-auto flex justify-between px-7 md:px-24 mt-8">
-	<div  class="w-80 hidden h-full max-h-min bg-white lg:rounded-lg py-4 px-7 text-zinc-500 lg:block">
+	<div class="w-80 hidden h-full max-h-min bg-white lg:rounded-lg py-4 px-7 text-zinc-500 lg:block">
 		<%= render "products/store_filter" %>
+	</div>
+	<div class="w-full lg:w-9/12 mt-16 lg:mt-0">
+		<div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:ml-10 pb-16">
+				<div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+					<div class="px-5 py-5">
+						<p class="text-zinc-400 text-base">
+							<%= t('stores.index.category_type1') %>
+						</p>
+						<h4 class="text-white text-2xl font-medium">
+							<%= t('stores.index.goods_title1') %>
+						</h4>
+						<p class="text-3xl text-white pt-5">₴ 329</p>
+					</div>
+					<div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
+						<%= image_tag("shop_img/model1.png") %>
+					</div>
+				</div>
+				<div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+					<div class="px-5 py-5">
+						<p class="text-zinc-400 text-base">
+							<%= t('stores.index.category_type1') %>
+						</p>
+						<h4 class="text-white text-2xl font-medium">
+							<%= t('stores.index.goods_title2') %>
+						</h4>
+						<p class="text-3xl text-white pt-5">₴ 329</p>
+					</div>
+					<div class="w-7/12 lg:w-9/12 absolute bottom-0 right-0">
+						<%= image_tag("shop_img/model2.png") %>
+					</div>
+				</div>
+				<div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+					<div class="px-5 py-5">
+						<p class="text-zinc-400 text-base">
+							<%= t('stores.index.categories_title2') %>
+						</p>
+						<h4 class="text-white text-2xl font-medium">
+							<%= t('stores.index.goods_title1') %>
+						</h4>
+						<p class="text-3xl text-white pt-5">₴ 329</p>
+					</div>
+					<div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
+						<%= image_tag("shop_img/model3.png") %>
+					</div>
+				</div>
+				<div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+					<div class="px-5 py-5">
+						<p class="text-zinc-400 text-base">
+							<%= t('stores.index.categories_title2') %>
+						</p>
+						<h4 class="text-white text-2xl font-medium">
+							<%= t('stores.index.goods_title1') %>
+						</h4>
+						<p class="text-3xl text-white pt-5">₴ 329</p>
+					</div>
+					<div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
+						<%= image_tag("shop_img/model3.png") %>
+					</div>
+				</div>
+      </div>
+		</div>
 	</div>
 </div>
