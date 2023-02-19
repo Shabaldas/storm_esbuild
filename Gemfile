@@ -40,6 +40,7 @@ group :development, :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'rspec_api_documentation'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem "rubocop-faker"
@@ -47,6 +48,7 @@ group :development, :test do
   gem 'rubocop-rspec'
   gem 'shoulda-matchers'
   gem 'webmock'
+  gem 'bullet'
 end
 
 group :development do
