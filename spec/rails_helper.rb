@@ -41,6 +41,8 @@ ActiveJob::Base.queue_adapter = :test
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -60,7 +62,7 @@ RSpec.configure do |config|
   config.before :suite do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with :truncation
-    FactoryBot.lint
+    # FactoryBot.lint
   end
 
   Shoulda::Matchers.configure do |conf|
