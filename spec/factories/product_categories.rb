@@ -13,5 +13,15 @@ FactoryBot.define do
         create_list(:product_category, 3, parent: category)
       end
     end
+
+    trait :with_products do
+      transient do
+        product_count { 3 } # number of products to create for this category
+      end
+
+      after(:create) do |category, evaluator|
+        create_list(:product, evaluator.product_count, product_category: category)
+      end
+    end
   end
 end

@@ -11,16 +11,11 @@ module DatabaseSeeds
             id: id,
             name: Faker::Company.name,
             description: Faker::Company.catch_phrase
+          ).children.create!(
+            id: id + 5,
+            name: Faker::Company.name,
+            description: Faker::Company.catch_phrase
           )
-        end
-
-        ProductCategory.limit(5).each do |category|
-          (1..(2..6).to_a.sample).each do
-            category.children.create(
-              name: Faker::Company.name,
-              description: Faker::Company.catch_phrase
-            )
-          end
         end
       end
 
