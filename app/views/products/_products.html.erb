@@ -1,0 +1,17 @@
+<%- @products.each do |product| %>
+  <%= link_to product_path(product.id) do %>
+    <div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+      <div class="px-5 py-5">
+        <p class="text-zinc-400 text-base">
+          <%= product.product_category.name%>
+        </p>
+        <h4 class="text-white text-2xl font-medium">
+          <%= product.name %>
+        </h4>
+        <p class="text-3xl text-white pt-5">
+          from ₴ <%= product.price.to_i %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
