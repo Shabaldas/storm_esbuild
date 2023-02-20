@@ -4,4 +4,6 @@ class Product < ApplicationRecord
   belongs_to :product_category
 
   enum status: { inactive: 0, active: 1 }
+
+  validates :name, :description, presence: true
 end
