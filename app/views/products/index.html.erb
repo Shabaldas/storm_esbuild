@@ -47,20 +47,7 @@
 						<%= image_tag("shop_img/model3.png") %>
 					</div>
 				</div>
-				<div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
-					<div class="px-5 py-5">
-						<p class="text-zinc-400 text-base">
-							<%= t('stores.index.categories_title2') %>
-						</p>
-						<h4 class="text-white text-2xl font-medium">
-							<%= t('stores.index.goods_title1') %>
-						</h4>
-						<p class="text-3xl text-white pt-5">₴ 329</p>
-					</div>
-					<div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
-						<%= image_tag("shop_img/model3.png") %>
-					</div>
-				</div>
+				<%= render "products" %>
       </div>
 		</div>
 	</div>

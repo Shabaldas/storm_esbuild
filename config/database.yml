@@ -17,6 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: <%= Rails.application.credentials&.dig(:database, :host) %>
   username: <%= Rails.application.credentials&.dig(:database, :username) %>
   password: <%= Rails.application.credentials&.dig(:database, :password) %>
   # For details on connection pooling, see Rails configuration guide
