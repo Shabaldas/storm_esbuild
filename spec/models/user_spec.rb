@@ -1,4 +1,4 @@
-RSpec.describe User, type: :model do
+RSpec.describe User do
   it { is_expected.to define_enum_for(:role) }
 
   describe '.customer' do

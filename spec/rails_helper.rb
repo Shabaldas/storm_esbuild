@@ -59,7 +59,7 @@ RSpec.configure do |config|
   # config.include Warden::Test::Helpers, type: :request
   # config.include Warden::Test::Helpers, type: :feature
   config.include FactoryBot::Syntax::Methods
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = "#{Rails.root}/spec/fixtures" # rubocop:disable Rails/FilePath
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
