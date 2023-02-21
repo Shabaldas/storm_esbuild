@@ -8,7 +8,7 @@ module DatabaseSeeds
           next if does_exist?(id)
 
           ProductCategory.create(
-            id: id,
+            id:,
             name: Faker::Company.name,
             description: Faker::Company.catch_phrase
           ).children.create!(
@@ -22,7 +22,7 @@ module DatabaseSeeds
       private
 
       def does_exist?(id)
-        ProductCategory.exists?(id: id)
+        ProductCategory.exists?(id:)
       end
     end
   end

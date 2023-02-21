@@ -1,4 +1,4 @@
-RSpec.describe ProductCategory, type: :model do
+RSpec.describe ProductCategory do
   describe '.associations' do
     it { is_expected.to have_many(:products).dependent(:destroy) }
   end

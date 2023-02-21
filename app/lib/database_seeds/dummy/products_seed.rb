@@ -24,7 +24,7 @@ module DatabaseSeeds
       private
 
       def does_exist?(id)
-        Product.exists?(id: id)
+        Product.exists?(id:)
       end
     end
   end
