@@ -3,6 +3,13 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 SimpleCov.start :rails do
+  add_filter '/app/controllers/admin'
+  add_filter '/app/controllers/users'
+  add_filter '/app/dashboards'
+  add_filter 'app/channels/application_cable'
+  add_filter 'app/jobs/application_job.rb'
+  add_filter 'app/mailers/application_mailer.rb'
+
   add_group 'Models', 'app/models'
   add_group 'Controllers', 'app/controllers'
   add_group 'Helpers', 'app/helpers'
