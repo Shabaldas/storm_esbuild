@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.3'
 
+gem 'administrate'
 gem 'active_link_to'
 gem 'ancestry'
 gem 'anyway_config', '~> 2.0'
