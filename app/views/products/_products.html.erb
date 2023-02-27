@@ -1,17 +1,5 @@
-<%- @products.each do |product| %>
-  <%= link_to product_path(product.id) do %>
-    <div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
-      <div class="px-5 py-5">
-        <p class="text-zinc-400 text-base">
-          <%= product.product_category.name%>
-        </p>
-        <h4 class="text-white text-2xl font-medium">
-          <%= product.name %>
-        </h4>
-        <p class="text-3xl text-white pt-5">
-          from ₴ <%= product.price.to_i %>
-        </p>
-      </div>
-    </div>
-  <% end %>
+<%= turbo_frame_tag :results, data: { turbo_action: 'advance' } do %>
+  <div id="products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:ml-10 pb-16"></div>
+  <%= turbo_frame_tag :pagination, loading: :lazy,
+                      src: products_path(format: :turbo_stream, q: params[:q]&.to_unsafe_h) %>
 <% end %>

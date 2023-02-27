@@ -3,7 +3,37 @@
     Categories
   </h4>
 	<div class="mt-3 ">
-		<%= form_for(@one_category, url: products_path) do |f| %>
+		<%= search_form_for @q, data: { turbo_frame: :results } do |f| %>
+			<%= f.search_field :name_cont,
+												 oninput: "this.form.requestSumbit()",
+												 autofocus: true,
+												 class: "bg-stone-200 py-2 rounded" %>
+			<%#= raw ap @q %>
+
+			<% @parents_product_categories.each do |category| %>
+				<div class="mt-3 cursor-pointer">
+					<div class="flex justify-between">
+						<div class="flex items-center">
+							<%#= f.collection_select :product_category_id_eq, ProductCategory.all, :id, :name %>
+							<%= f.check_box :product_category_id_eq_any, { multiple: true }, category.id %>
+							<%#= f.check_box :product_category_id_eq, category, nil %>
+							<%#= f.check_box :f_product_categories_id, {multiple: true}, category.id, nil %>
+							<%#= check_box_tag('q[product_categories_id_eq_any_cont][]', category.id ) %>
+							<%= category.name %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		
+			<div class="pt-5 pb-3 text-gray-800">
+				<%= f.submit 'Search', class: "w-full py-2 bg-yellow-400 flex flex-center justify-center rounded hover:bg-yellow-500" %>
+			</div>
+		<% end %>
+		
+		
+		<%
+=begin%>
+ <%= form_for(@one_category, url: products_path) do |f| %>
 			<% @parents_product_categories.each do |category| %>
 				<div class="mt-3 cursor-pointer">
 					<div class="flex justify-between">
@@ -15,12 +45,8 @@
 					</div>
 				</div>
 			<% end %>
-		<% end %>
+		<% end %> 
+<%
+=end%>
 	</div>
-</div>
-<hr />
-<div class="pt-5 pb-3 text-gray-800">
-	<a href="#">
-		<button class="w-full py-2 bg-yellow-400 flex flex-center justify-center rounded hover:bg-yellow-500">Search</button>
-	</a>
 </div>
