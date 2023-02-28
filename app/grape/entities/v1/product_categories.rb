@@ -7,6 +7,19 @@ module Entities
 
       expose :object, proc: proc { 'list' }
       expose :items, as: :data
+
+      expose :url
+      expose :has_more
+
+      private
+
+      def url
+        '/product_categories'
+      end
+
+      def has_more # rubocop:disable Naming/PredicateName
+        options[:has_more]
+      end
     end
   end
 end
