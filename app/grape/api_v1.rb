@@ -5,4 +5,5 @@ class ApiV1 < Grape::API
   format :json
 
   mount Api::V1::Resources::ProductCategories
+  mount Api::V1::Resources::Products
 end
