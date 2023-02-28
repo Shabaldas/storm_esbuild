@@ -10,4 +10,8 @@ class Product < ApplicationRecord
   enum status: { inactive: 0, active: 1 }
 
   validates :name, :description, presence: true
+
+  # API scopes
+  scope :before, ->(id) { where('products.id < ?', id).order(id: :desc) if id.present? }
+  scope :after, ->(id) { where('products.id > ?', id).order(id: :asc) if id.present? }
 end
