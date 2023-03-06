@@ -8,11 +8,9 @@ module DatabaseSeeds
           next if does_exist?(id)
 
           ProductCategory.create(
-            id:,
             name: Faker::Company.name,
             description: Faker::Company.catch_phrase
           ).children.create!(
-            id: id + 5,
             name: Faker::Company.name,
             description: Faker::Company.catch_phrase
           )
