@@ -8,7 +8,7 @@ FOR MACOS USER
 
   better to use rbenv
 
-  - Ruby 3.2.0
+  - Ruby 3.1.3
   - Bundler - `gem install bundler`
   - Node.js 16.15.1 or higher - `brew install node@16`
   - Yarn 1.22.19 or higher - `brew install yarn` or [Install Yarn](https://yarnpkg.com/en/docs/install)
@@ -17,13 +17,13 @@ FOR MACOS USER
 
   ### Setup
   ```bash
-  git@github.com:Shabaldas/storm_esbuild.git
+  git clone git@github.com:Shabaldas/storm_esbuild.git
   cd storm_esbuild
   ```
   ### Run the servers locally
+  change your username and password for postgresuser in ```.env``` file
+  push 
   ```bash
-  foreman start -f Procfile.dev
-  # OR
   bin/rails server -p 3000
   yarn build:css --watch
   yarn build --reload
