@@ -9,6 +9,7 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_admin
+    helper all_helpers_from_path 'app/helpers'
 
     def authenticate_admin
       # TODO: Add authentication logic here.

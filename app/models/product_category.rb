@@ -4,5 +4,7 @@ class ProductCategory < ApplicationRecord
   has_many :products, dependent: :destroy
   has_ancestry
 
+  scope :select_tree, ->(id) { where.not(id:).arrange }
+
   validates :name, presence: true
 end
