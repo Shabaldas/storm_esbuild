@@ -24,11 +24,14 @@ FOR MACOS USER
   change your username and password for postgresuser in ```.env``` file
   push 
   ```bash
-  bin/rails server -p 3000
+  bin/rails server -p 3005
   yarn build:css --watch
   yarn build --reload
   ```
-FOR LINUX USER
+  or
+  ```foreman start```
+  default port 3005
+### FOR LINUX USER
 
 ### RUN SEED LOCAL
   ```

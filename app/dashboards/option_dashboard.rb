@@ -27,7 +27,7 @@ class OptionDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :measurement,
-    :option_values,
+    :option_values
     # :product_options
   ].freeze
 
