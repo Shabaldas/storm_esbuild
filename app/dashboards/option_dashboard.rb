@@ -28,7 +28,7 @@ class OptionDashboard < Administrate::BaseDashboard
     :id,
     :measurement,
     :option_values,
-    :product_options
+    # :product_options
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,7 +37,7 @@ class OptionDashboard < Administrate::BaseDashboard
     :id,
     :measurement,
     :option_values,
-    :product_options,
+    # :product_options,
     :title,
     :created_at,
     :updated_at
@@ -68,7 +68,7 @@ class OptionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how options are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(option)
-  #   "Option ##{option.id}"
-  # end
+  def display_resource(option)
+    option.measurement
+  end
 end

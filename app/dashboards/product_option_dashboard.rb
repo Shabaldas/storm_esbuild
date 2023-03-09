@@ -68,7 +68,7 @@ class ProductOptionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how product options are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(product_option)
-  #   "ProductOption ##{product_option.id}"
-  # end
+  def display_resource(product_option)
+    product_option.option.title
+  end
 end

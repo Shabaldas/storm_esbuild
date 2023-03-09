@@ -65,7 +65,7 @@ class ProductOptionValueDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how product option values are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(product_option_value)
-  #   "ProductOptionValue ##{product_option_value.id}"
-  # end
+  def display_resource(product_option_value)
+    "#{product_option_value.option_value.value}---#{product_option_value.price}$"
+  end
 end
