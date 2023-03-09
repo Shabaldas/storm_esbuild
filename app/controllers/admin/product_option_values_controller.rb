@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
-  class ProductsController < Admin::ApplicationController
+  class ProductOptionValuesController < Admin::ApplicationController
     # Overwrite any of the RESTful controller actions to implement custom behavior
     # For example, you may want to send an email after a foo is updated.
     #
@@ -41,14 +41,6 @@ module Admin
     #     permit(dashboard.permitted_attributes).
     #     transform_values { |value| value == "" ? nil : value }
     # end
-
-    private
-
-    def resource_params
-      params.require(:product).permit(:name, :description, :status, :product_category_id,
-                                      product_options_attributes:
-                                      [:id, :option_id, { product_option_values_attributes: [:id, :price, :option_value_id, :_destroy] }])
-    end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
