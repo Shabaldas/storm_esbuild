@@ -2,7 +2,7 @@
 
 require 'administrate/base_dashboard'
 
-class ProductDashboard < Administrate::BaseDashboard
+class OptionValueDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,15 +11,9 @@ class ProductDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    description: Field::String,
-    name: Field::String,
-    option_values: Field::HasMany,
-    options: Field::HasMany,
-    price: Field::String.with_options(searchable: false),
-    product_category: Field::BelongsTo,
+    option: Field::BelongsTo,
     product_option_values: Field::HasMany,
-    product_options: Field::HasMany,
-    status: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
+    value: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -31,24 +25,18 @@ class ProductDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :description,
-    :name,
-    :option_values
+    :option,
+    :product_option_values,
+    :value
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :description,
-    :name,
-    :option_values,
-    :options,
-    :price,
-    :product_category,
+    :option,
     :product_option_values,
-    :product_options,
-    :status,
+    :value,
     :created_at,
     :updated_at
   ].freeze
@@ -57,15 +45,9 @@ class ProductDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :description,
-    :name,
-    :option_values,
-    :options,
-    :price,
-    :product_category,
+    :option,
     :product_option_values,
-    :product_options,
-    :status
+    :value
   ].freeze
 
   # COLLECTION_FILTERS
@@ -80,10 +62,10 @@ class ProductDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how products are displayed
+  # Overwrite this method to customize how option values are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(product)
-  #   "Product ##{product.id}"
+  # def display_resource(option_value)
+  #   "OptionValue ##{option_value.id}"
   # end
 end
