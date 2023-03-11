@@ -31,7 +31,7 @@ FOR MACOS USER
   or
   ```foreman start```
   default port 3005
-FOR LINUX USER
+### FOR LINUX USER
 
 ### RUN SEED LOCAL
   ```

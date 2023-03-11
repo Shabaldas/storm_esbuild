@@ -65,7 +65,7 @@ class OptionValueDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how option values are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(option_value)
-  #   "OptionValue ##{option_value.id}"
-  # end
+  def display_resource(option_value)
+    option_value.value
+  end
 end

@@ -42,12 +42,12 @@ class ProductDashboard < Administrate::BaseDashboard
     :id,
     :description,
     :name,
-    :option_values,
-    :options,
+    # :option_values,
+    # :options,
     :price,
     :product_category,
     :product_option_values,
-    :product_options,
+    # :product_options,
     :status,
     :created_at,
     :updated_at
@@ -83,7 +83,7 @@ class ProductDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how products are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(product)
-  #   "Product ##{product.id}"
-  # end
+  def display_resource(product)
+    product.name
+  end
 end
