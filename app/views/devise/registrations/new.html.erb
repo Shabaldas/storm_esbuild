@@ -1,92 +1,91 @@
-<div class="w-full h-full max-w-screen-2xl mx-auto px-7 md:px-24 pb-10">
-  <div class="mt-10 w-full lg:w-4/6 h-full">
-    <div class="text-2xl text-gray-800 font-medium">
+<div class="mt-9 mb-10 text-dark-grey">
+  <div class="w-full lg:w-4/6 mt-9">
+    <div class="text-2xl font-medium">
       <h2>Sign up</h2>
     </div>
     <div class="flex items-center mt-8">
-      <div class="w-6 h-6">
-        <%= image_tag("partials_img/user.png") %>
+      <div class="w-6 h-6 -mt-0.5">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
       </div>
-      <div class="ml-2 text-gray-800 text-base font-medium">
+      <div class="ml-2 text-base font-medium">
         <%= t('devise.registrations.personal_date') %>
       </div>
     </div>
-
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-      <div class="mt-3 mb-3 w-full h-px bg-gray-400"></div>
+      <div class="title-divider"></div>
       <div>
-        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
+        <div class="flex flex-col md:flex-row lg:justify-between items-center">
           <div class="w-full lg:w-3/5">
-            <div>
-              <%= f.label :first_name, t("devise.registrations.first_name") %>
+            <div class="mt-1">
+              <%= f.label :first_name, t("devise.registrations.first_name"), class:"text-sm" %>
             </div>
             <div class="mt-1">
-              <%= f.text_field :first_name, class: "w-full rounded" %>
+              <%= f.text_field :first_name, placeholder:"Marko" %>
             </div>
           </div>
-          <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
+          <div class="w-full lg:w-3/5 ml-0 md:ml-6 mt-1">
             <div>
-              <%= f.label :last_name, t("devise.registrations.last_name") %>
+              <%= f.label :last_name, t("devise.registrations.last_name"), class:"text-sm" %>
             </div>
             <div class="mt-1">
-              <%= f.text_field :last_name, class: "w-full rounded" %>
+              <%= f.text_field :last_name, placeholder:"Pazuniak" %>
             </div>
           </div>
         </div>
-
-        <div class="flex flex-col lg:flex-row lg:justify-between items-center mt-5">
+        <div class="flex flex-col md:flex-row lg:justify-between items-center mt-1 md:mt-5">
           <div class="w-full lg:w-3/5">
-            <div>
-              <%= f.label :phone, t("devise.registrations.phone") %>
+            <div class="mt-1">
+              <%= f.label :phone, t("devise.registrations.phone"), class:"text-sm" %>
             </div>
             <div class="mt-1">
-              <%= f.phone_field :phone, class: "w-full rounded" %>
+              <%= f.phone_field :phone, placeholder:"380 (067) 555 0134" %>
             </div>
           </div>
-          <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
-            <div>
-              <%= f.label :email, t("devise.registrations.email") %>
+          <div class="w-full lg:w-3/5 ml-0 md:ml-6">
+            <div class="mt-1">
+              <%= f.label :email, t("devise.registrations.email"), class:"text-sm" %>
             </div>
             <div class="mt-1">
-              <%= f.email_field :email, autofocus: true, class: "w-full rounded", autocomplete: "email" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email",  placeholder:"marko_pazuniak@gmail.com" %>
             </div>
           </div>
         </div>
-
-         <div class="flex items-center mt-8">
-            <div class="w-6 h-6">
-              <%= image_tag("partials_img/lock.png") %>
+        <div class="flex items-center mt-12">
+          <div class="w-6 h-6 -mt-1">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
+            </svg>
+          </div>
+          <div class="ml-2 text-base font-medium">
+            Password
+          </div>
+        </div>
+        <div class="title-divider"></div>
+        <div class="flex flex-col md:flex-row lg:justify-between items-center">
+          <div class="w-full lg:w-3/5">
+            <div class="mt-1">
+              <%= f.label :password ,class:"text-sm"%>
             </div>
-            <div class="ml-2 text-gray-800 text-base font-medium">
-              Password
+            <div class="mt-1 relative">
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder:"Enter password" %>
             </div>
           </div>
-          <div class="mt-3 mb-3 w-full h-px bg-gray-400"></div>
-          <div class="flex flex-col lg:flex-row lg:justify-between items-center">
-            <div class="w-full lg:w-3/5">
-              <div class="mt-1">
-                <%= f.label :password %>
-              </div>
-              <div class="mt-1 relative">
-                <%= f.password_field :password, autocomplete: "new-password", class: "w-full rounded form-control" %>
-              </div>
+          <div class="w-full lg:w-3/5 ml-0 md:ml-6">
+            <div class="mt-1">
+              <%= f.label :password_confirmation , class:"text-sm"%>
             </div>
-            <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
-              <div class="mt-1">
-                <%= f.label :password_confirmation %>
-              </div>
-              <div class="mt-1 relative">
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full rounded form-control" %>
-              </div>
+            <div class="mt-1 relative">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control",  placeholder:"Confirm password" %>
             </div>
           </div>
-
-          <div class="pt-5 pb-3 cursor-pointer text-gray-800">
-            <%= f.submit "Sign up", class: "w-full md:w-56 flex justify-center items-center text-base text-gray-800 bg-yellow-400 font-medium px-4 py-3 mt-2 rounded-lg uppercase hover:bg-yellow-500 cursor-pointer transition ease-in duration-400", data: { turbo: false } %>
-          </div>
+        </div>
+        <div class="mt-[32px]">
+          <%= f.submit "Sign up", class: "button w-full md:w-56", data: { turbo: false } %>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
