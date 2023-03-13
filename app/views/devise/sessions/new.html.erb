@@ -1,54 +1,44 @@
-<div class="w-full h-full max-w-screen-2xl mx-auto px-7 md:px-24 pb-10">
-  <div class="mt-10 w-full lg:w-4/6 h-full">
-    <div class="text-2xl text-gray-800 font-medium">
+<div class="mt-9 mb-10 text-dark-grey">
+  <div class="mt-9">
+    <div class="text-2xl font-medium">
       <h2>Log in</h2>
     </div>
-    <div class="flex items-center mt-8">
-      <div class="w-6 h-6">
-        <%= image_tag("partials_img/user.png") %>
-      </div>
-      <div class="ml-2 text-gray-800 text-base font-medium">
-        <%= t('devise.registrations.personal_date') %>
-      </div>
-    </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-       <div class="mt-3 mb-3 w-full h-px bg-gray-400"></div>
-      <div>
-        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
-          <div class="w-full lg:w-3/5">
-            <div>
-              <%= f.label :email, t("devise.registrations.email") %>
-            </div>
+      <div class="w-full md:max-w-[436px] mt-8">
+        <div class="w-full">
+          <div class="mt-1">
+            <%= f.label :email, t("devise.registrations.email") , class:"text-sm" %>
+          </div>
+          <div class="mt-1">
+            <%= f.email_field :email, autofocus: true,  class: "w-full rounded", autocomplete: "email" , placeholder:"marko_pazuniak@gmail.com" %>
+          </div>
+        </div>
+        <div class="w-full mt-0 md:mt-5">
+          <div class="mt-1">
+            <%= f.label :password , class:"text-sm" %>
+          </div>
+          <div class="mt-1">
+            <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded", placeholder:"Enter password" %>
+          </div>
+        </div>
+        <div class="w-full">
+          <div class="flex items-center mr-4 mt-4">
             <div class="mt-1">
-              <%= f.email_field :email, autofocus: true,  class: "w-full rounded", autocomplete: "email" %>
+              <%= f.check_box :remember_me, class:"w-[14px] h-[14px] accent-yellow rounded" %>
+            </div>
+            <div class="ml-2 text-sm font-medium">
+              <%= f.label :remember_me , class:"text-sm"%>
             </div>
           </div>
         </div>
-        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
-          <div class="w-full lg:w-3/5">
-            <div>
-              <%= f.label :password %>
-            </div>
-            <div class="mt-1">
-              <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded" %>
-            </div>
-          </div>
+        <div class="mt-[20px] mb-4">
+          <%= f.submit "Log in", class:"button w-full md:max-w-[212px]", data: { turbo: false } %>
         </div>
-        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
-          <div class="w-full lg:w-3/5">
-            <div>
-              <%= f.label :remember_me %>
-            </div>
-            <div class="mt-1">
-              <%= f.check_box :remember_me %>
-            </div>
-          </div>
-          <div class="pt-5 pb-3 cursor-pointer text-gray-800">
-            <%= f.submit "Log in", class: "w-full md:w-56 flex justify-center items-center text-base text-gray-800 bg-yellow-400 font-medium px-4 py-3 mt-2 rounded-lg uppercase hover:bg-yellow-500 cursor-pointer transition ease-in duration-400", data: { turbo: false } %>
-          </div>
-        </div>
+        <div class="content-divider"></div>
       </div>
     <% end %>
-    <%= render "devise/shared/links" %>
+    <div class="flex items-center [&>*:nth-child(odd)]:mr-8">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 </div>
