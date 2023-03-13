@@ -5,8 +5,8 @@ module DatabaseSeeds
     class ProductOptionsSeed
       def execute
         # Existing Options
-        size_option = Option.find_by(id: 1, title: 'Size', measurement: :mm)
-        color_option = Option.find_by(id: 2, title: 'Color', measurement: :color)
+        size_option = Option.find_by(title: 'Size', measurement: :mm)
+        color_option = Option.find_by(title: 'Color', measurement: :color)
 
         # Product_for_parent_category
         Product.first(8).each do |product|
@@ -14,19 +14,19 @@ module DatabaseSeeds
           seed_color_product_options(color_option, product)
         end
 
-        Product.where(id: 23..40).each do |product|
+        Product.limit(17).offset(8).each do |product|
           # seed only size option
           seed_size_product_options(size_option, product)
         end
 
-        Product.where(id: 41..54).each do |product|
+        Product.limit(13).offset(25).each do |product|
           # seed colors&size options
           seed_color_product_options(color_option, product)
           seed_size_product_options(size_option, product)
         end
 
         # Product_for_child_category
-        Product.last(50).each do |product|
+        Product.offset(38).each do |product|
           # seed colors&size options
           seed_color_product_options(color_option, product)
           seed_size_product_options(size_option, product)
