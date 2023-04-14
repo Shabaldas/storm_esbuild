@@ -40,7 +40,7 @@ jobs:
           cache: yarn
       - name: Install packages
         run: |
-          yarn install --pure-lockfile
+          yarn install
       # Add or replace database setup steps here
 
       # - name: Set up database schema
@@ -53,7 +53,7 @@ jobs:
           cache: yarn
       - name: Install packages
         run: |
-          yarn install --pure-lockfile
+          yarn install
           rails assets:precompile
 
       - name: Run tests
