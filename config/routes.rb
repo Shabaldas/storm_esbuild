@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'static_pages#home'
+
   namespace :admin do
     resources :product_categories
     resources :products
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
     root to: 'product_categories#index'
   end
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  root 'static_pages#home', as: :home
 
   resources :products, only: [:index, :show]
 
