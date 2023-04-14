@@ -33,11 +33,28 @@ jobs:
         uses: ruby/setup-ruby@d3c9825d67b0d8720afdfdde5af56c79fdb38d16 # v1.138.0
         with:
           bundler-cache: true
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: yarn
+      - name: Install packages
+        run: |
+          yarn install --pure-lockfile
       # Add or replace database setup steps here
 
       # - name: Set up database schema
         # run: bin/rails db:schema:load
       # Add or replace test runners here
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: yarn
+      - name: Install packages
+        run: |
+          yarn install --pure-lockfile
+          rails assets:precompile
 
       - name: Run tests
         env:
@@ -46,7 +63,6 @@ jobs:
           RAILS_ENV: test
           PG_USER: postgres
         run: |
-          rake assets:precompile
           bin/rails test:prepare
           bin/rails db:test:prepare
           bundle exec rspec
