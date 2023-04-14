@@ -35,7 +35,7 @@ gem 'turbo-rails'
 gem 'bootsnap', require: false
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
 group :development, :test do
   gem 'awesome_print'
