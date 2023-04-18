@@ -9,6 +9,7 @@ AllCops:
     - 'bin/**/*'
     - 'node_modules/**/*'
     - 'vendor/**/*'
+    - 'path/**/*'
     - 'config/environments/*'
     - 'Gemfile'
   NewCops: enable

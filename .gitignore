@@ -28,6 +28,7 @@
 
 /public/assets
 /coverage
+/path
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
