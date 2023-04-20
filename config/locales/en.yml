@@ -31,3 +31,22 @@
 
 en:
   hello: "Hello world"
+  error_message:
+    active_record_not_found: This page do not exist
+    active_record_invalid:
+      remote_path_url: "The remote path URL is invalid"
+    pundit:
+      default: Something went wrong
+      admin_policy:
+        access?: You are not authorized to access this page.
+      document_policy:
+        index?: You are not authorized to access this page.
+        show?: You are not authorized to access this page.
+        create?: You are not authorized to access this page.
+        new?: You are not authorized to access this page.
+      manual_translation_task_policy:
+        show?: Unfortunately, this rask has already been taken by another translator
+        create?: You are not allowed to take this translation
+        new?: You are not allowed to take this translation
+      translation_task_invitation_policy:
+        accept?: Another user has already accepted this invitation
