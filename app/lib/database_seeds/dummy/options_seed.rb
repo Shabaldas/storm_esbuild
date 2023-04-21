@@ -5,8 +5,8 @@ module DatabaseSeeds
     class OptionsSeed
       def execute
         # Seed Options
-        size_option = Option.find_or_create_by(id: 1, title: 'Size', measurement: :mm)
-        color_option = Option.find_or_create_by(id: 2, title: 'Color', measurement: :color)
+        size_option = Option.find_or_create_by(title: 'Size', measurement: :mm)
+        color_option = Option.find_or_create_by(title: 'Color', measurement: :color)
 
         # Seed OptionValues
         ['White', 'Black', 'Green', 'Red', 'Blue', 'Yellow', 'Gray'].each do |color|

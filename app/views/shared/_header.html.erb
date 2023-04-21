@@ -2,14 +2,14 @@
   <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 lg:px-[86px]">
     <div class="flex w-1/2 justify-between">
       <div class="w-24">
-        <%= link_to home_path do %>
+        <%= link_to root_path do %>
           <%= image_tag("partials_img/logo.png") %>
         <% end %>
       </div>
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
         <ul class="h-full flex flex-col lg:flex-row flex-initial justify-between items-center text-center tracking-wide">
           <li class="px-4 cursor-pointer">
-            <%= active_link_to t('global.header.head'), home_path, active: :exact %>
+            <%= active_link_to t('global.header.head'), root_path, active: :exact %>
           </li>
           <li class="px-4 cursor-pointer">
             <%= active_link_to t('global.header.store'), products_path %>

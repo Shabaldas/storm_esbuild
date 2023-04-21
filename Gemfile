@@ -3,10 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.3'
 
-gem 'administrate'
-gem 'administrate-field-enum'
-gem "administrate-field-nested_has_many"
-gem 'administrate-field-active_storage'
 gem 'active_link_to'
 gem 'ancestry'
 gem 'anyway_config', '~> 2.0'
@@ -23,6 +19,7 @@ gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
+gem 'pundit', '~> 2.2'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 gem 'redis', '~> 4.0'
 gem 'sprockets-rails'

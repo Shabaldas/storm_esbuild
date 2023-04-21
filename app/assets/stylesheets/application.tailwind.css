@@ -112,3 +112,10 @@ input {
   font-size: 14px;
   color: #fc0f03;
 }
+
+.clamp{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
