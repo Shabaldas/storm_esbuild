@@ -20,36 +20,36 @@
         <div class="flex flex-col md:flex-row lg:justify-between items-center">
           <div class="w-full lg:w-3/5">
             <div class="mt-1">
-              <%= f.label :first_name, t("devise.registrations.first_name"), class:"text-sm" %>
+              <%= f.label :first_name, t("devise.registrations.first_name"), class: "text-sm" %>
             </div>
             <div class="mt-1">
-              <%= f.text_field :first_name, placeholder:"Marko" %>
+              <%= f.text_field :first_name, placeholder: "Marko" %>
             </div>
           </div>
           <div class="w-full lg:w-3/5 ml-0 md:ml-6 mt-1">
             <div>
-              <%= f.label :last_name, t("devise.registrations.last_name"), class:"text-sm" %>
+              <%= f.label :last_name, t("devise.registrations.last_name"), class: "text-sm" %>
             </div>
             <div class="mt-1">
-              <%= f.text_field :last_name, placeholder:"Pazuniak" %>
+              <%= f.text_field :last_name, placeholder: "Pazuniak" %>
             </div>
           </div>
         </div>
         <div class="flex flex-col md:flex-row lg:justify-between items-center mt-1 md:mt-5">
           <div class="w-full lg:w-3/5">
             <div class="mt-1">
-              <%= f.label :phone, t("devise.registrations.phone"), class:"text-sm" %>
+              <%= f.label :phone, t("devise.registrations.phone"), class: "text-sm" %>
             </div>
             <div class="mt-1">
-              <%= f.phone_field :phone, placeholder:"380 (067) 555 0134" %>
+              <%= f.phone_field :phone, placeholder: "+380 (067) 555 0134" %>
             </div>
           </div>
           <div class="w-full lg:w-3/5 ml-0 md:ml-6">
             <div class="mt-1">
-              <%= f.label :email, t("devise.registrations.email"), class:"text-sm" %>
+              <%= f.label :email, t("devise.registrations.email"), class: "text-sm" %>
             </div>
             <div class="mt-1">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email",  placeholder:"marko_pazuniak@gmail.com" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email",  placeholder: "marko_pazuniak@gmail.com" %>
             </div>
           </div>
         </div>
@@ -67,18 +67,18 @@
         <div class="flex flex-col md:flex-row lg:justify-between items-center">
           <div class="w-full lg:w-3/5">
             <div class="mt-1">
-              <%= f.label :password ,class:"text-sm"%>
+              <%= f.label :password ,class: "text-sm"%>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder:"Enter password" %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Enter password" %>
             </div>
           </div>
           <div class="w-full lg:w-3/5 ml-0 md:ml-6">
             <div class="mt-1">
-              <%= f.label :password_confirmation , class:"text-sm"%>
+              <%= f.label :password_confirmation , class: "text-sm"%>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control",  placeholder:"Confirm password" %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control",  placeholder: "Confirm password" %>
             </div>
           </div>
         </div>

@@ -8,10 +8,10 @@
       <div class="w-full md:max-w-[436px] mt-8">
         <div class="w-full field">
           <div class="mt-1">
-            <%= f.label :email , class:"text-sm" %>
+            <%= f.label :email, class: "text-sm" %>
           </div>
           <div class="mt-1">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"marko_pazuniak@gmail.com" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "marko_pazuniak@gmail.com" %>
           </div>
         </div>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -20,11 +20,11 @@
         <% end %>
         <div class="w-full field mt-0 md:mt-5">
           <div class="mt-1">
-            <%= f.label :password , class:"text-sm" %>
+            <%= f.label :password, class: "text-sm" %>
             <i class="text-xs">(leave blank if you don't want to change it)</i>
           </div>
           <div class="mt-1">
-            <%= f.password_field :password, autocomplete: "new-password", class: "w-full rounded", placeholder:"Enter new password" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "w-full rounded", placeholder: "Enter new password" %>
             <% if @minimum_password_length %>
               <em class="text-xs"><%= @minimum_password_length %>
                 characters minimum</em>
@@ -36,34 +36,34 @@
             <%= f.label :password_confirmation, class:"text-sm" %>
           </div>
           <div class="mt-1">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" , placeholder:"Confirm new password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm new password" %>
           </div>
         </div>
         <div class="w-full field mt-1 md:mt-5">
           <div class="mt-1">
-            <%= f.label :current_password, class:"text-sm" %>
+            <%= f.label :current_password, class: "text-sm" %>
             <i class="text-xs">(we need your current password to confirm your changes)</i>
           </div>
           <div class="mt-1">
-            <%= f.password_field :current_password, autocomplete: "current-password", placeholder:"Enter your current password" %>
+            <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Enter your current password" %>
           </div>
         </div>
         <div class="mt-[20px] mb-4">
-          <%= f.submit "Update", class:"button w-full md:max-w-[212px]", data: { turbo: false } %>
+          <%= f.submit "Update", class: "button w-full md:max-w-[212px]", data: { turbo: false } %>
         </div>
         <div class="content-divider"></div>
       </div>
     <% end %>
     <div class="w-full flex items-center [&>*:nth-child(odd)]:mr-8">
       <%= render "devise/shared/links" %>
-      <%= link_to "Back", :back , class:"link" %>
+      <%= link_to "Back", :back, class: "link" %>
     </div>
     <div class="mt-8">
       <h2 class="text-2xl">Cancel my account</h2>
       <div class="flex items-center mt-4">
         <p class="mr-2">Unhappy?</p>
         <div>
-          <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class:"font-bold text-metalic-grey" %></div>
+          <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class: "font-bold text-metalic-grey" %></div>
       </div>
     </div>
   </div>

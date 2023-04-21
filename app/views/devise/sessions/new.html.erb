@@ -7,27 +7,27 @@
       <div class="w-full md:max-w-[436px] mt-8">
         <div class="w-full">
           <div class="mt-1">
-            <%= f.label :email, t("devise.registrations.email") , class:"text-sm" %>
+            <%= f.label :email, t("devise.registrations.email"), class: "text-sm" %>
           </div>
           <div class="mt-1">
-            <%= f.email_field :email, autofocus: true,  class: "w-full rounded", autocomplete: "email" , placeholder:"marko_pazuniak@gmail.com" %>
+            <%= f.email_field :email, autofocus: true, class: "w-full rounded", autocomplete: "email", placeholder: "marko_pazuniak@gmail.com" %>
           </div>
         </div>
         <div class="w-full mt-0 md:mt-5">
           <div class="mt-1">
-            <%= f.label :password , class:"text-sm" %>
+            <%= f.label :password, class:"text-sm" %>
           </div>
           <div class="mt-1">
-            <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded", placeholder:"Enter password" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded", placeholder: "Enter password" %>
           </div>
         </div>
         <div class="w-full">
           <div class="flex items-center mr-4 mt-4">
             <div class="mt-1">
-              <%= f.check_box :remember_me, class:"w-[14px] h-[14px] accent-yellow rounded" %>
+              <%= f.check_box :remember_me, class: "w-[14px] h-[14px] accent-yellow rounded" %>
             </div>
             <div class="ml-2 text-sm font-medium">
-              <%= f.label :remember_me , class:"text-sm"%>
+              <%= f.label :remember_me, class: "text-sm"%>
             </div>
           </div>
         </div>

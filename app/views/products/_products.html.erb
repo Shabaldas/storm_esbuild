@@ -1,6 +1,6 @@
 <%- @products.each do |product| %>
   <%= link_to product_path(product.id) do %>
-    <div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+    <div class="bg-dark-blue h-56 md:h-72 relative rounded-3xl">
       <div class="px-5 py-5">
         <p class="text-zinc-400 text-base">
           <%= product.product_category.name%>
