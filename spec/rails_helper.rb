@@ -57,8 +57,8 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
-  # config.include Warden::Test::Helpers, type: :request
-  # config.include Warden::Test::Helpers, type: :feature
+  config.include Warden::Test::Helpers, type: :request
+  config.include Warden::Test::Helpers, type: :feature
   config.include FactoryBot::Syntax::Methods
   config.fixture_path = "#{Rails.root}/spec/fixtures" # rubocop:disable Rails/FilePath
 
