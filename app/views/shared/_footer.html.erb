@@ -2,17 +2,17 @@
   <div class="w-full max-w-screen-2xl mx-auto px-7 xl:px-24">
     <div class="block mx-auto text-center xl:text-left xl:flex xl:justify-between xl:items-center py-16">
       <div class="w-40 mx-auto xl:mx-0">
-        <%= link_to home_path do %>
+        <%= link_to root_path do %>
           <%= image_tag("partials_img/logo_footer.png") %>
         <% end %>
       </div>
       <div class="w-full mt-3 xl:mt-0 xl:w-1/6 xl:ml-32 text-zinc-400 leading-8 uppercase pt-1">
         <ul>
           <li class="mt-4 md:mt-0">
-            <%= link_to t('global.footer.calculator'), home_path %>
+            <%= link_to t('global.footer.calculator'), root_path %>
           </li>
           <li class="mt-4 md:mt-0">
-            <%= link_to t('global.footer.my_office'), home_path %>
+            <%= link_to t('global.footer.my_office'), root_path %>
           </li>
         </ul>
       </div>
