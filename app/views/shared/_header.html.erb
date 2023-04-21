@@ -1,5 +1,5 @@
 <header class="w-full h-16 relative z-30">
-  <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 lg:px-24">
+  <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 lg:px-[86px]">
     <div class="flex w-1/2 justify-between">
       <div class="w-24">
         <%= link_to root_path do %>
@@ -14,38 +14,36 @@
           <li class="px-4 cursor-pointer">
             <%= active_link_to t('global.header.store'), products_path %>
           </li>
-          <li class="px-4 cursor-pointer">
-          </li>
-          <li class="px-4 cursor-pointer">
-          </li>
+          <li class="px-4 cursor-pointer"></li>
+          <li class="px-4 cursor-pointer"></li>
         </ul>
       </nav>
     </div>
     <div class="w-10 lg:w-36 flex lg:flex justify-between items-center">
       <div class="w-20 -ml-20 -mt-2 lg:mt-0 lg:ml-0 lg:flex lg:justify-between">
-        <div class="w-7 h-7 pt-1 flex items-center relative hidden lg:block">
+        <div class="w-7 h-7 pt-1 flex items-center relative lg:block">
           <div class="inline-block text-sm leading-none rounded no-underline text-gray hover:text-gray-900  mt-4 lg:mt-0">
             <div class="relative" data-controller="toggle" data-toggle-active-target='#activeTarget'>
               <div data-action="click->toggle#toggle click@window->toggle#hide" role="button" data-toggle-target="button" tabindex="0" class="inline-block select-none -mt-1">
-                <span class="appearance-none flex items-center inline-block text-gray-700">
+                <span class="appearance-none flex items-center text-gray-700">
                   <%= image_tag("partials_img/user.png") %>
                 </span>
               </div>
-              <div id="activeTarget" data-toggle-target="content" class="absolute -right-12 mt-2 hidden">
-                <div class="w-38 shadow rounded border overflow-hidden block text-base text-gray-900 bg-white">
+              <div id="activeTarget" data-toggle-target="content" class="absolute -left-[80px] mt-2 hidden">
+                <div class="w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
                   <%- if user_signed_in? %>
                     <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
                       <%= link_to t('global.header.edit_profile'), edit_user_registration_path %>
                     </p>
-                    <hr />
-                    <p class="text-center cursor-pointer">
+                    <hr/>
+                    <div class="text-center cursor-pointer pt-2 pb-1">
                       <%= button_to t('global.header.log_out'), destroy_user_session_path, method: :delete, data: { trubo: false } %>
-                    </p>
+                    </div>
                   <% else %>
-                    <p class="text-center cursor-pointer">
+                    <p class="text-center cursor-pointer pt-2 pb-1">
                       <%= link_to t('global.header.registration'), new_user_registration_path %>
                     </p>
-                    <hr />
+                    <hr/>
                     <div class="text-center px-5 pt-2 pb-1 cursor-pointer">
                       <p class="text-center cursor-pointer" data-controller="renderer">
                         <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' } %>

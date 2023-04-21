@@ -1,11 +1,8 @@
 <%- @products.each do |product| %>
   <%= link_to product_path(product.id) do %>
-    <div class="w-full md:max-w-[292px] md:h-[344px] bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl overflow-hidden px-6 py-5">
-      <div class="w-full md:h-[196px] mx-auto">
-        <%= image_tag("shop_img/model3.png", class: "w-full h-full bg-cover bg-no-repeat bg-center") %>
-      </div>
-      <div>
-        <p class="text-zinc-400 text-sm mt-[15px]">
+    <div class="bg-dark-blue h-56 md:h-72 relative rounded-3xl">
+      <div class="px-5 py-5">
+        <p class="text-zinc-400 text-base">
           <%= product.product_category.name%>
         </p>
         <h4 class="text-white text-base font-medium clamp">

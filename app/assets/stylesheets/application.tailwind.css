@@ -2,13 +2,115 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter&display=swap');
-html, body{
-	width:100%;
-	height: 100%;
+*,
+::after,
+:before {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
 }
-body{
-	font-family: 'Inter', sans-serif;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* content */
+
+.content {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+/* input */
+
+input {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 16px;
+  border: 1px solid #6e7579;
+}
+
+/* dividers */
+
+.title-divider,
+.content-divider {
+  margin: 20px 0;
+  height: 1px;
+  background-color: #b2bdc5;
+}
+
+.content-divider {
+  margin: 12px 0;
+}
+
+@media (max-width: 768px) {
+  .title-divider {
+    margin: 12px 0;
+  }
+}
+
+/* button */
+
+.button {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1c232;
+  border-radius: 12px;
+  text-transform: uppercase;
+  color: #302232;
+  font-weight: 500;
+  border: 0;
+  cursor: pointer;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -ms-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+.button:hover {
+  background-color: #f0b400;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.151);
+}
+
+/* link */
+
+.link {
+  color: #2e3841;
+  font-weight: 500;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -ms-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+.link:hover {
+  color: #f1c232;
+}
+
+/* errors */
+
+.field-error {
+  border-color: #fc0f03;
+  outline-color: #fc0f03;
+}
+.error-message {
+  font-size: 14px;
+  color: #fc0f03;
 }
 
 .clamp{
