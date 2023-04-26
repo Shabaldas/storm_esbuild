@@ -19,5 +19,7 @@ module.exports = {
       sans: ["Inter", "sans-serif"],
     },
   },
-  plugins: [require("tailwind-accent-color")()],
+  plugins: [
+    require("tailwind-accent-color")()
+  ],
 };

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     get '/', to: 'dashboard#index', as: :dashboard
+    resources :products, only: [:index]
   end
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root 'static_pages#home'

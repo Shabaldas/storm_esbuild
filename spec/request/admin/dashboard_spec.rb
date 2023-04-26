@@ -9,7 +9,8 @@ describe '/admin', type: :request do
     it 'display admin dashboard' do
       get admin_dashboard_path
       expect(response).to be_successful
-      expect(response.body).to include('Dashboard')
+      expect(response.body).to include('Admin Dashboard')
+      expect(response.body).to include('Products')
     end
 
     context 'when user is not admin' do
