@@ -3,7 +3,7 @@
 module Admin
   class ProductCategoriesController < BaseController
     def index
-      @product_categories = ProductCategory.all
+      @pagy, @product_categories = pagy(ProductCategory.all)
     end
   end
 end

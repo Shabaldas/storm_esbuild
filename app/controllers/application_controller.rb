@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
+  include Pagy::Backend
 
   rescue_from Pundit::NotAuthorizedError do |error|
     redirect_to root_path, alert: pundit_error_message(error)
