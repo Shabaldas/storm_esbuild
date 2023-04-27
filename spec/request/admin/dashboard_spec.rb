@@ -11,6 +11,7 @@ describe '/admin', type: :request do
       expect(response).to be_successful
       expect(response.body).to include('Admin Dashboard')
       expect(response.body).to include('Products')
+      expect(response.body).to include('Product Categories')
     end
 
     context 'when user is not admin' do
