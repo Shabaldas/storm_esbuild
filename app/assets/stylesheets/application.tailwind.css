@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+div.field_with_errors > label {
+  @apply border-red;
+}
+
+div.field_with_errors > :is(input, textarea, select) {
+  @apply border-red text-red placeholder-red;
+}
+
 *,
 ::after,
 :before {
@@ -112,6 +120,8 @@ input {
   font-size: 14px;
   color: #fc0f03;
 }
+
+
 
 .clamp{
   display: -webkit-box;

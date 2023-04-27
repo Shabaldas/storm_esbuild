@@ -1,0 +1,40 @@
+<%= render partial: "errors", locals: { product: @product } %>
+<%= form_with model: [:admin, @product], url: admin_products_path do |form| %>
+  <div class="w-full md:max-w-[436px] mt-8">
+    <div class="w-full field">
+      <div class="mt-1">
+        <%= form.label :name, class: "text-sm" %>
+      </div>
+      <div class="mt-1">
+        <%= form.text_field :name, placeholder: "Please input" %>
+      </div>
+    </div>
+    <div class="w-full field">
+      <div class="mt-1">
+        <%= form.label :description, class: "text-sm" %>
+      </div>
+      <div class="mt-1">
+        <%= form.text_area :description, placeholder: "Please input", class: "w-full" %>
+      </div>
+    </div>
+    <div class="w-full field">
+      <div class="mt-1">
+        <%= form.label :product_category, as: "Product Category", class: "text-sm" %>
+      </div>
+      <div class="mt-1">
+        <%= form.select :product_category_id, product_categories_for_select, { prompt: 'Select Category' } %>
+      </div>
+    </div>
+    <div class="w-full field">
+      <div class="mt-1">
+        <%= form.label :status, as: "Status", class: "text-sm" %>
+      </div>
+      <div class="mt-1">
+        <%= form.check_box :status, {}, "active", "inactive" %>
+      </div>
+    </div>
+    <div class="mt-[20px] mb-4">
+      <%= form.submit "Create Product", class: "button w-full md:max-w-[212px]" %>
+    </div>
+  </div>
+<% end %>
