@@ -3,7 +3,6 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 SimpleCov.start :rails do
-  add_filter '/app/controllers/admin'
   add_filter '/app/controllers/users'
   add_filter '/app/dashboards'
   add_filter 'app/channels/application_cable'
