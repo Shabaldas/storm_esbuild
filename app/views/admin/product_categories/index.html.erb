@@ -1,0 +1,15 @@
+<div>
+  <table>
+    <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr class="text-base">
+        <th class="px-6 py-3" scope="col">ID</th>
+        <th class="px-6 py-3" scope="col">NAME</th>
+        <th class="px-6 py-3" scope="col">DESCRIPTION</th>
+        <th class="px-6 py-3" scope="col">CREATED AT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "admin/product_categories/product_category", collection: @product_categories %>
+    </tbody>
+  </table>
+</div>
