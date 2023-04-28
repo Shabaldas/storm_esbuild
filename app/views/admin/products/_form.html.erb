@@ -18,9 +18,12 @@
       %>
     </div>
     
-    <div class="form-group form-check">
-      <%= form.label :status, as: "Status" %>
-      <%= form.check_box(:status, { class: "ml-3" }, "active", "inactive") %>
+    <div class="form-group form-toggle">
+      <%= form.label :status, as: "Status", class: "toggle-switch-label" %>
+      <label class="toggle-switch ml-3">
+        <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "active", "inactive") %>
+        <span class="slider"></span>
+      </label>
     </div>
     <div class="form-group">
       <%= form.submit "Create Product", class: "button w-full md:max-w-[212px]" %>

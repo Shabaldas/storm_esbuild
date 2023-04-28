@@ -29,6 +29,8 @@ module.exports = {
       "zinc": "#B2BDC5",
       "light-grey": "#E9E9E9",
       'disabled': '#CCCCCC',
+      'bordercolor': '#CCCCCC',
+      'hover-light': '#F3EFFE',
 
       gray: {
         100: '#F0F1F3',
@@ -176,6 +178,14 @@ module.exports = {
       gridTemplateRows: {
         'auto-auto': 'auto auto',
       },
+      borderRadius: {
+        DEFAULT: '0.25rem',
+        'default': '0.25rem',
+        'lg': '0.5rem',
+      },
+      boxShadow: {
+        DEFAULT: '0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.05)',
+      }, 
       backgroundImage: theme => ({
         'pattern-disabled-bright': "url('icons_svg/pattern-striped-bright.png')",
         'pattern-disabled-dark': "url('icons_svg/pattern-striped-dark.png')"
