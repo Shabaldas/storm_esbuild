@@ -31,6 +31,7 @@ module.exports = {
       'disabled': '#CCCCCC',
       'bordercolor': '#CCCCCC',
       'hover-light': '#F3EFFE',
+      'labelcolor': '#1a1a1a',
 
       gray: {
         100: '#F0F1F3',
@@ -151,6 +152,27 @@ module.exports = {
         DEFAULT: '0.3rem',
         'default': '0.3rem'
       },
+      fontSize: {
+        'heading-1': ['1.5rem', '2.063rem'],
+        'heading-2': ['1.125rem', '1.55rem'],
+        'heading-3': ['0.875rem', '1.375rem'],
+        'heading-4': ['0.75rem', '0.75rem'],
+        'display-1': ['2.125rem', '1rem'],
+        'label': ['0.75rem', '1rem'],
+        'icon-default': '20px',
+        'icon-lg': '40px',
+        'icon-xl': '60px',
+        'icon-sm': '18px',
+        'icon-xs': '16px',
+        'sm': ['0.75rem', '1rem'],
+        'xs': ['0.625rem', '0.7rem'],
+        'hint': ['0.75rem', '0.875rem'],
+        'title': ['1.125rem', '1.25rem'],
+        'forms': ['0.875rem', '0.875rem'],
+        'base': ['0.875rem', '1.2rem'],
+        'button': ['0.875rem', '1.2rem'],
+        'button-sm': ['0.75rem', '1.125rem'],
+      },
       spacing: {
         'btn-default': '40px',
         'header' : '60px',
@@ -169,6 +191,15 @@ module.exports = {
         '192': '48rem',
         '240': '60rem',
       },
+      maxWidth: {
+        '1/2': '50%',
+        '2/3': '66%',
+        '8': '2rem',
+        '32': '8rem',
+        '48': '12rem',
+        '96': '24rem',
+        '144': '36rem',
+      },
       gridTemplateColumns: {
         '3-1': '3fr 1fr',
         'max-auto': 'max-content auto',
@@ -185,7 +216,10 @@ module.exports = {
       },
       boxShadow: {
         DEFAULT: '0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.05)',
-      }, 
+      },
+      screens: {
+        '3xl': '1900px',
+      },
       backgroundImage: theme => ({
         'pattern-disabled-bright': "url('icons_svg/pattern-striped-bright.png')",
         'pattern-disabled-dark': "url('icons_svg/pattern-striped-dark.png')"

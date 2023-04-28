@@ -1,0 +1,90 @@
+h1 {
+  @apply text-heading-1 font-semibold;
+}
+
+.text-heading-1 {
+  @apply font-semibold;
+}
+
+h2 {
+  @apply text-heading-2 font-semibold;
+}
+
+.text-heading-2 {
+  @apply font-semibold;
+}
+
+h3 {
+  @apply text-heading-3 font-semibold;
+}
+
+.text-heading-3 {
+  @apply font-semibold;
+}
+
+h4 {
+  @apply text-heading-4 font-normal uppercase;
+}
+
+.text-heading-4 {
+  @apply font-normal uppercase;
+}
+
+p {
+  @apply text-base;
+}
+
+a {
+  @apply text-link text-base font-medium hover:text-dark-blue hover:no-underline cursor-pointer;
+}
+
+a.icon, a.icon-xs, a.icon-sm, a.icon-lg, a.icon-xl {
+  @apply hover:no-underline;
+}
+
+code {
+  @apply font-sans not-italic text-sm;
+}
+
+label, .label {
+  @apply text-label text-labelcolor font-medium;
+}
+
+/*//////////// Heading Divider ////////////*/
+
+.heading-divider {
+  @apply relative flex justify-center items-end mb-4;
+
+  & .heading-divider-line {
+    @apply absolute inset-0 flex;
+    margin-bottom: 5px;
+      &:after {
+        content: "";
+        @apply border-b w-full;
+      }
+  }
+  
+  & .heading-divider-text {
+    @apply bg-white relative inline px-3;
+  }
+}
+
+.heading-divider.left {
+  @apply justify-start;
+  & .heading-divider-text {
+    @apply pl-0;
+  }
+} 
+
+.heading-divider.thick .heading-divider-line {
+  @apply m-0;
+}
+
+.heading-divider.thick .heading-divider-line:after {
+  @apply h-full mb-0 bg-bordercolor border-none;
+}
+
+.heading-divider.thick .heading-divider-text {
+  @apply leading-4 capitalize;
+} 
+

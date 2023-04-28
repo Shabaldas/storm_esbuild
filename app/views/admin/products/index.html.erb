@@ -1,4 +1,4 @@
-<div>
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
   <table>
     <thead class="text-gray-700 bg-gray-50">
       <tr class="text-base">
@@ -13,8 +13,9 @@
       <%= render partial: "admin/products/product", collection: @products %>
     </tbody>
   </table>
+  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  <footer class="pt-6">
+    <%= link_to "Create New Product", new_admin_product_path, class: "button w-80" %>
+  </footer>
 </div>
-<%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
-<footer class="pt-6">
-  <%= link_to "Create New Product", new_admin_product_path, class: "button w-80" %>
-</footer>
+

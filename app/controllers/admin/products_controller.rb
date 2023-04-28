@@ -6,6 +6,10 @@ module Admin
       @pagy, @products = pagy(Product.all, items: 10)
     end
 
+    def show
+      @product = Product.find(params[:id])
+    end
+
     def new
       @product = Product.new
     end
