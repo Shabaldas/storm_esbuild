@@ -1,0 +1,103 @@
+
+.form-toggle {
+  @apply flex flex-row items-center;
+}
+
+.toggle-switch {
+  @apply relative inline-block;
+  color: inherit;
+  width: 60px;
+  height: 30px;
+}
+
+.toggle-switch-label {
+  @apply inline-block ml-3.5 mt-0.5 text-base font-normal;
+  color: inherit;
+}
+
+.toggle-switch input, .translation-header-toggle input {
+  @apply invisible w-0 h-0; 
+}
+
+.toggle-switch .slider {
+  @apply absolute top-0 left-0 right-0 bottom-0 cursor-pointer bg-gray-300 hover:outline hover:outline-hover-light transition-transform rounded-full;
+}
+
+.toggle-switch.disabled .slider {
+  @apply bg-pattern-disabled-bright bg-transparent border border-bordercolor hover:outline-none;
+
+  &::before {
+    @apply bg-bordercolor;
+    top: 1px;
+  }
+}
+
+.toggle-switch .slider:before {
+  @apply absolute bg-white transition-transform rounded-full;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 2px;
+  bottom: 2px;
+}
+
+.toggle-switch input:checked + .slider {
+  @apply bg-primary;
+}
+
+.toggle-switch input:focus + .slider {
+  box-shadow: 0 0 1px #21bef4;
+}
+
+.toggle-switch input:checked + .slider:before {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+.form-toggle.inverted .toggle-switch .slider:before {
+  @apply bg-black;
+}
+
+.form-toggle.inverted .toggle-switch .slider {
+  @apply bg-gray-600;
+}
+
+.form-toggle.inverted .toggle-switch input:checked + .slider {
+  @apply bg-white;
+}
+
+.form-toggle.inverted .toggle-switch-label {
+  @apply text-white;
+}
+
+.form-toggle.sm .toggle-switch {
+  width: 20px;
+  height: 12px;
+}
+
+.form-toggle.sm .toggle-switch .slider:before {
+  width: 8px;
+  height: 8px;
+}
+
+.form-toggle.sm .toggle-switch input:checked + .slider:before {
+  -webkit-transform: translateX(8px);
+  -ms-transform: translateX(8px);
+  transform: translateX(8px);
+}
+
+.form-toggle.sm, .form-toggle.vertical {
+  @apply items-center;
+}
+
+.form-toggle.vertical .toggle-switch {
+  width: 12px;
+  height: 20px;
+} 
+
+.form-toggle.vertical .toggle-switch input:checked + .slider:before {
+  -webkit-transform: translateY(-8px);
+  -ms-transform: translateY(-8px);
+  transform: translateY(-8px);
+}

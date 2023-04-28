@@ -8,6 +8,7 @@
 @import "components/form";
 @import "components/select";
 @import "components/checkboxes-radiobuttons";
+@import "components/toggle-switch";
 
 div.field_with_errors > label {
   @apply border-red-500;
