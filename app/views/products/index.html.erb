@@ -6,36 +6,45 @@
 		<div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:ml-10 pb-16">
 				<div class="bg-dark-blue h-56 md:h-72 relative rounded-3xl">
+					<div class="w-full md:h-[196px] mx-auto">
+						<%= image_tag("shop_img/model1.png", class: "w-full h-full bg-cover bg-no-repeat bg-center") %>
+					</div>
 					<div class="px-5 py-5">
-						<p class="text-zinc-400 text-base">
+						<p class="text-gray-500">
 							<%= t('stores.index.category_type1') %>
 						</p>
-						<h4 class="text-white text-base font-medium clamp">
+						<p class="text-white text-base font-medium clamp">
 							<%= t('stores.index.goods_title1') %>
-						</h4>
-						<p class="text-xl text-white mt-[23px]">₴ 329</p>
+						</p>
+						<p class="text-xl text-white pt-1">₴ 329</p>
 					</div>
 				</div>
 				<div class="bg-dark-blue h-56 md:h-72 relative rounded-3xl">
 					<div class="px-5 py-5">
-						<p class="text-zinc-400 text-base">
+						<div class="w-full md:h-[196px] mx-auto">
+							<%= image_tag("shop_img/model2.png", class: "w-full h-full bg-cover bg-no-repeat bg-center") %>
+						</div>
+						<p class="text-gray-500">
 							<%= t('stores.index.category_type1') %>
 						</p>
-						<h4 class="text-white text-base font-medium clamp">
+						<p class="text-white text-base font-medium clamp">
 							<%= t('stores.index.goods_title2') %>
-						</h4>
-						<p class="text-xl text-white mt-[23px]">₴ 329</p>
+						</p>
+						<p class="text-xl text-white pt-1">₴ 329</p>
 					</div>
 				</div>
 				<div class="bg-dark-blue h-56 md:h-72 relative rounded-3xl">
+					<div class="w-full md:h-[196px] mx-auto">
+						<%= image_tag("shop_img/model3.png", class: "w-full h-full bg-cover bg-no-repeat bg-center") %>
+					</div>
 					<div class="px-5 py-5">
-						<p class="text-zinc-400 text-base">
+						<p class="text-gray-500">
 							<%= t('stores.index.categories_title2') %>
 						</p>
-						<h4 class="text-white text-base font-medium clamp">
+						<p class="text-white text-base font-medium clamp">
 							<%= t('stores.index.goods_title1') %>
-						</h4>
-						<p class="text-xl text-white mt-[23px]">₴ 329</p>
+						</p>
+						<p class="text-xl text-white pt-1">₴ 329</p>
 					</div>
 				</div>
 				<%= render "products" %>
