@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-880,0)">
+        <path id="Cross" d="M890,8.58L896.29,2.29C896.48,2.11 896.73,2 897,2C897.27,2 897.52,2.11 897.71,2.29C897.89,2.48 898,2.73 898,3C898,3.27 897.89,3.52 897.71,3.71L891.42,10L897.71,16.29C897.89,16.48 898,16.73 898,17C898,17.27 897.89,17.52 897.71,17.71C897.52,17.89 897.27,18 897,18C896.73,18 896.48,17.89 896.29,17.71L890,11.42L883.71,17.71C883.52,17.89 883.27,18 883,18C882.73,18 882.48,17.89 882.29,17.71C882.11,17.52 882,17.27 882,17C882,16.73 882.11,16.48 882.29,16.29L888.58,10L882.29,3.71C882.11,3.52 882,3.27 882,3C882,2.73 882.11,2.48 882.29,2.29C882.48,2.11 882.73,2 883,2C883.27,2 883.52,2.11 883.71,2.29L890,8.58Z" style="fill:white;"/>
+    </g>
+</svg>

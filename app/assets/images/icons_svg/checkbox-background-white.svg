@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <rect id="checkbox-background-white" x="0" y="0" width="30" height="30" style="fill:none;"/>
+    <path d="M24.112,8.513C23.428,7.829 22.322,7.829 21.638,8.513L12.375,17.776L8.362,13.763C7.678,13.079 6.572,13.079 5.888,13.763C5.204,14.447 5.204,15.553 5.888,16.237L11.138,21.487C11.479,21.829 11.927,22 12.375,22C12.823,22 13.271,21.829 13.612,21.487L24.112,10.988C24.796,10.303 24.796,9.197 24.112,8.513Z" style="fill:white;"/>
+</svg>

@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     "./app/views/**/*.html.erb",
@@ -14,6 +16,11 @@ module.exports = {
       '2xl': '1536px',
     },
     colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+
+      black: '#000',
+      white: '#fff',
       "dark-blue": "#2A343E",
       "dark-grey": "#2E3841",
       "metalic-grey": "#6E7579",
@@ -21,13 +28,42 @@ module.exports = {
       "red": "#FF0000",
       "zinc": "#B2BDC5",
       "light-grey": "#E9E9E9",
-      "yellow": "#F1C232",
-      "white": "#FFFFFF",
+      'disabled': '#CCCCCC',
+
+      gray: {
+        100: '#F0F1F3',
+        200: '#D4D6DC',
+        300: '#B8BAC5',
+        400: '#9C9FAE',
+        500: '#808497',
+        600: '#505362',
+        700: '#2D2F38',
+        800: '#16171C',
+        900: '#000000'
+      },
+      red: {
+        500: '#FD1525'
+      },
+      orange: {
+        500: '#FF9D00'
+      },
+      green: {
+        500: '#B0B42B',
+      },
+      yellow: {
+        500: '#FFCB00'
+      },
+      blue: {
+        200: '#4860E5',
+        500: '#3F50B4'
+      },
+      petrol: {
+        500: '#55609E',
+        600: '#3E4674',
+        700: '#2C3252',
+        800: '#1A1E31'
+      },
     },
-    borderColor: ({ theme }) => ({
-      ...theme('colors'),
-      DEFAULT: theme('colors.gray.200', 'currentColor'),
-    }),
     columns: {
       auto: 'auto',
       1: '1',
@@ -59,8 +95,109 @@ module.exports = {
     fontFamily: {
       sans: ["Inter", "sans-serif"],
     },
+    borderWidth: {
+      DEFAULT: '2px',
+      '0': '0px',
+      '1': '1px',
+      '2': '2px',
+      '4': '4px',
+      '10': '10px',
+    },
+    extend: {
+      minWidth: {
+        'auto': 'auto',
+        'btn-default': '40px',
+        '56': '14rem',
+      },
+      minHeight: {
+        'auto': 'auto',
+        'btn-default': '40px',
+        '8': '2rem',
+        '12': '3rem',
+        '24': '6rem',
+        '32': '8rem',
+        '48': '12rem',
+        '96': '24rem',
+        '144': '36rem',
+      },
+      colors: {
+        'primary': '#f1c232',
+        'link': '#3F50B4',
+        'link-hover': '#4860E5',
+        'disabled': '#B8BAC5',
+        'danger': '#FD1525',
+        'info': '#3F50B4',
+        'card': '#F0F1F3',
+        'actionbar': '#000000',
+        'bordercolor': '#D4D6DC',
+      },
+      fontSize: {
+        'heading-1': ['2rem', '2rem'],
+        'heading-2': ['1.85rem', '1.85rem'],
+        'heading-3': ['1.7rem', '1.7rem'],
+        'heading-4': ['1.25rem', '1.25rem'],
+        'label': ['0.8rem', '0.8rem'],
+        'icon-default': '20px',
+        'icon-lg': '40px',
+        'icon-xl': '60px',
+        'icon-sm': '18px',
+        'icon-xs': '16px',
+        'xs': ['0.75rem', '0.75rem'],
+        'display-1': ['9.375rem', '9.375rem'],
+      },
+      borderRadius: {
+        DEFAULT: '0.3rem',
+        'default': '0.3rem'
+      },
+      spacing: {
+        'btn-default': '40px',
+        'header' : '60px',
+        'icon' : '20px',
+        'icon-lg' : '40px',
+        'icon-xl' : '60px',
+        'icon-sm' : '18px',
+        'icon-spacing' : '8px',
+        'heading' : '1rem',
+        'heading-lg' : '2rem',
+        'actionbar' : '70px',
+        'aside' : '20rem',
+        'sidebar' : '16rem',
+        '13': '3.25rem',
+        '144': '36rem',
+        '192': '48rem',
+        '240': '60rem',
+      },
+      gridTemplateColumns: {
+        '3-1': '3fr 1fr',
+        'max-auto': 'max-content auto',
+        '4-auto': 'auto auto auto auto',
+        '14': 'repeat(14, minmax(0, 1fr))',
+      },
+      gridTemplateRows: {
+        'auto-auto': 'auto auto',
+      },
+      backgroundImage: theme => ({
+        'pattern-disabled-bright': "url('icons_svg/pattern-striped-bright.png')",
+        'pattern-disabled-dark': "url('icons_svg/pattern-striped-dark.png')"
+      }),
+    }
+  },
+  variants: {
+    extend: {
+      margin: ['first', 'last'],
+      padding: ['first', 'last'],
+      borderRadius: ['first', 'last'],
+      borderWidth: ['first', 'last'],
+      backgroundColor: ['active'],
+      backgroundImage: ['hover', 'focus'],
+      textColor: ['group-hover', 'active']
+    }
   },
   plugins: [
-    require("tailwind-accent-color")()
+    require("tailwind-accent-color")(),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms')({ strategy: 'class' }),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography')
   ],
 };

@@ -16,6 +16,9 @@ application.register('slideover', Slideover)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import SelectController from "./select_controller"
+application.register("select", SelectController)
+
 import CheckboxFamilyController from "./checkbox_family_controller"
 application.register("checkbox-family", CheckboxFamilyController)
 
