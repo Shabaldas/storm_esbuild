@@ -1,0 +1,28 @@
+<div class="content flex items-center justify-center mt-16 mx-auto relative space-x-3">
+  <div class="bg-dark-blue h-56 md:h-72 mt-16 rounded-3xl w-80" style="width: 500px; height: 576px;">
+    <div class="px-5 py-5">
+      <p class="text-zinc-400 text-base text-heading-2">
+        <%= @product.product_category.name%>
+      </p>
+      <h4 class="text-white text-base font-medium clamp text-heading-1">
+        <%= @product.name %>
+      </h4>
+      <p class="text-white mt-[23px] text-heading-1">
+        ₴ <%= @product.price.to_i %>
+      </p>
+    </div>
+  </div>
+
+  <% if @product.primary_product_option.present? %>
+    <div class="">
+      <% @product.product_colors.each do |option| %>
+        <div class="form-radio mb-3">
+          <input type="radio" style="height: 2.75rem; width: 2.75rem; <%= "background-color: #{option.option_value.value}"%>"/>
+          <label><%= option.option_value.value %></label>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+  
