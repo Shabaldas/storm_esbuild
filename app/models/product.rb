@@ -9,6 +9,7 @@ class Product < ApplicationRecord
 
   # helpers relationship
   has_one :primary_product_option, ->(_where) { where primary: true }, class_name: 'ProductOption', dependent: :destroy # rubocop:disable  Rails/InverseOf
+  has_one :secondary_product_option, ->(_where) { where primary: false }, class_name: 'ProductOption', dependent: :destroy # rubocop:disable  Rails/InverseOf
 
   accepts_nested_attributes_for :product_options, allow_destroy: true
   accepts_nested_attributes_for :product_option_values, allow_destroy: true
@@ -23,5 +24,9 @@ class Product < ApplicationRecord
 
   def product_colors
     product_option_values.joins(:product_option).where(product_options: { id: primary_product_option.id })
+  end
+
+  def product_sizes
+    product_option_values.joins(:product_option).where(product_options: { id: secondary_product_option.id })
   end
 end

@@ -1,4 +1,19 @@
 <div class="content flex items-center justify-center mt-16 mx-auto relative space-x-3">
+  <% if @product.secondary_product_option.present? %>
+    <div class="">
+      <% @product.product_sizes.each do |option| %>
+        <div class="mb-10">
+          <div class="text-heading-1 mr-3 mb-3" style="font-size: 50px;">
+            <%= option.option_value.value %>
+          </div>
+          <div class="text-heading-1 mr-3 mb-3">
+            ₴ <%= option.price %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  
   <div class="bg-dark-blue h-56 md:h-72 mt-16 rounded-3xl w-80" style="width: 500px; height: 576px;">
     <div class="px-5 py-5">
       <p class="text-zinc-400 text-base text-heading-2">
@@ -16,7 +31,7 @@
   <% if @product.primary_product_option.present? %>
     <div class="">
       <% @product.product_colors.each do |option| %>
-        <div class="form-radio mb-3">
+        <div class="form-radio ml-3 mb-3">
           <input type="radio" style="height: 2.75rem; width: 2.75rem; <%= "background-color: #{option.option_value.value}"%>"/>
           <label><%= option.option_value.value %></label>
         </div>
