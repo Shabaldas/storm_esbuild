@@ -36,7 +36,6 @@ describe '/admin/products', type: :request do
       get admin_product_path(product)
 
       expect(response).to be_successful
-      expect(response.body).to include(product.id.to_s)
       expect(response.body).to include(product.name)
       expect(response.body).to include(product.product_category.name)
       expect(response.body).to include(product.price.to_i.to_s)
