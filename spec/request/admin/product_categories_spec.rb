@@ -6,8 +6,8 @@ describe '/admin/product_categories', type: :request do
   end
 
   describe 'GET /admin/product_categories' do
-    let!(:product_category_first) { create(:product_category) }
-    let!(:product_category_second) { create(:product_category) }
+    let!(:product_category_first) { create(:product_category, name: 'Home') }
+    let!(:product_category_second) { create(:product_category, name: 'Design') }
 
     it 'display all product_categories' do
       get admin_product_categories_path
@@ -18,10 +18,10 @@ describe '/admin/product_categories', type: :request do
       expect(response.body).to include('DESCRIPTION')
       expect(response.body).to include('CREATED AT')
       expect(response.body).to include(product_category_first.id.to_s)
-      expect(response.body).to include(product_category_first.name.to_s)
+      expect(response.body).to include(product_category_first.name)
       expect(response.body).to include(product_category_first.description)
       expect(response.body).to include(product_category_second.id.to_s)
-      expect(response.body).to include(product_category_second.name.to_s)
+      expect(response.body).to include(product_category_second.name)
       expect(response.body).to include(product_category_second.description)
     end
   end

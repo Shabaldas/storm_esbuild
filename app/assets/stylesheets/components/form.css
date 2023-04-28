@@ -1,0 +1,79 @@
+
+/*///// Form layouts /////*/
+
+.form-grid {
+  @apply md:grid grid-cols-1 sm:grid-cols-2 gap-5;
+}
+
+.form-grid-single {
+  @apply grid grid-cols-1 gap-5;
+}
+
+.form-grid-single.narrow {
+  @apply grid grid-cols-1 gap-1.5;
+}
+
+.form-grid-triple {
+  @apply md:grid grid-cols-1 sm:space-y-0 sm:grid-cols-3 gap-5;
+}
+
+.form-grid .form-group, .form-grid-triple .form-group {
+  @apply mb-3 md:mb-0;
+}
+
+.form-group {
+  @apply w-full relative;
+}
+
+.form-footer {
+  @apply flex space-x-3 w-full mt-3;
+}
+
+.form-footer .btn-white {
+  @apply flex-grow;
+}
+
+textarea.form-control {
+  @apply text-base leading-normal font-normal resize-none overflow-hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+textarea.form-control::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.form-control {
+  @apply appearance-none block w-full py-1.5 px-5 min-h-btn-default bg-white text-gray-900 border border-bordercolor leading-tight rounded-none;
+  transition: ease 0.2s border;
+
+  &:focus {
+    @apply outline-none bg-white border-link-hover;
+  }
+
+  &::placeholder {
+    @apply text-disabled;
+  }
+
+  &.error {
+    @apply border-red-500;
+  }
+
+  &:disabled {
+    @apply bg-disabled;
+  }
+}
+
+.form-label {
+  @apply block text-xs left-3 px-2 cursor-pointer;
+  top: -0.35rem;
+  z-index: 1;
+}
+
+.form-label:after {
+  @apply block w-full h-2 border-t-2 z-10;
+  content: "";
+  margin-top: -8px;
+}

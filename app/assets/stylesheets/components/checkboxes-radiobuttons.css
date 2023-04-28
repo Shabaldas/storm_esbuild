@@ -1,0 +1,44 @@
+/*///// Checkboxes and Radiobuttons /////*/
+
+.form-check, .form-radio {
+  @apply flex items-center relative border-none bg-transparent w-full h-auto;
+}
+
+.form-radio label, .form-check label  {
+  @apply ml-3 relative text-base font-normal cursor-pointer rounded-full cursor-pointer;
+}
+
+.form-check.disabled label  {
+  @apply text-disabled hover:text-disabled cursor-not-allowed;
+}
+
+.form-radio.disabled label {
+  @apply text-disabled hover:text-disabled cursor-not-allowed;
+}
+
+.form-check input {
+  @apply h-btn-default w-btn-default border-primary border rounded cursor-pointer overflow-hidden appearance-none;
+}
+
+.form-check.disabled input {
+  @apply bg-pattern-disabled-bright bg-transparent hover:bg-transparent cursor-not-allowed border-bordercolor hover:border-bordercolor
+}
+
+
+.form-check input[type=checkbox]:checked {
+  @apply text-white border-primary bg-primary;
+  background-image: url("icons_svg/checkbox-background-white.svg");
+}
+
+.form-radio input {
+  @apply h-7 w-7 border-primary border bg-transparent flex-shrink-0 rounded-full cursor-pointer appearance-none;
+
+  &:disabled {
+    @apply bg-pattern-disabled-bright bg-transparent hover:bg-transparent cursor-not-allowed border-bordercolor hover:border-bordercolor;
+  }
+}
+
+.form-radio input[type=radio]:checked {
+  @apply border-primary bg-primary;
+  background-image: url("icons_svg/radio-checked-white.svg");
+}

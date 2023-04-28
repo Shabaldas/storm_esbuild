@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <rect id="check-circle" x="0" y="0" width="20" height="20" style="fill:none;"/>
+    <path d="M10,18C5.589,18 2,14.411 2,10C2,5.589 5.589,2 10,2C14.411,2 18,5.589 18,10C18,14.411 14.411,18 10,18M10,-0C4.478,-0 0,4.478 0,10C0,15.522 4.478,20 10,20C15.522,20 20,15.522 20,10C20,4.478 15.522,-0 10,-0" style="fill-rule:nonzero;"/>
+    <path d="M15.707,6.293C15.316,5.902 14.684,5.902 14.293,6.293L9,11.586L6.707,9.293C6.316,8.902 5.684,8.902 5.293,9.293C4.902,9.684 4.902,10.316 5.293,10.707L8.293,13.707C8.488,13.902 8.744,14 9,14C9.256,14 9.512,13.902 9.707,13.707L15.707,7.707C16.098,7.316 16.098,6.684 15.707,6.293Z"/>
+</svg>

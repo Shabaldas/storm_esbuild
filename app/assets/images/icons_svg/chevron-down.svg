@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 20 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <rect id="chevron-down" x="0" y="0.714" width="20" height="20" style="fill:none;"/>
+    <clipPath id="_clip1">
+        <rect x="0" y="0.714" width="20" height="20"/>
+    </clipPath>
+    <g clip-path="url(#_clip1)">
+        <path d="M3.293,8.421L9.293,14.421C9.684,14.812 10.317,14.812 10.707,14.421L16.707,8.421C17.098,8.03 17.098,7.397 16.707,7.007C16.316,6.617 15.683,6.616 15.293,7.007L10,12.3L4.707,7.007C4.316,6.616 3.683,6.616 3.293,7.007C2.903,7.398 2.902,8.031 3.293,8.421Z" style="fill-rule:nonzero;"/>
+        <rect id="bounding-box" serif:id="bounding box" x="0" y="0.714" width="20" height="20" style="fill:none;"/>
+    </g>
+</svg>
