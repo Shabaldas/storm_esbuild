@@ -25,3 +25,6 @@ application.register("checkbox-family", CheckboxFamilyController)
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
 
+import DropzoneController from "./dropzone_controller"
+application.register("dropzone", DropzoneController)
+
