@@ -2,6 +2,9 @@
   <%= link_to product_path(product.id) do %>
     <div class="bg-dark-blue h-56 md:h-72 relative rounded-3xl">
       <div class="w-full md:h-[196px] mx-auto">
+        <% if product.main_picture.attached? %>
+          <%= image_tag(product.main_picture) %> 
+        <% end %>
 			</div>
       <div class="px-5 py-5">
         <p class="text-gray-500">

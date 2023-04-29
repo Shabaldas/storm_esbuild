@@ -27,7 +27,7 @@ module Admin
     private
 
     def product_params
-      params.require(:product).permit(:name, :description, :product_category_id, :status)
+      params.require(:product).permit(:name, :description, :product_category_id, :status, :main_picture)
     end
   end
 end

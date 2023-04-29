@@ -39,3 +39,15 @@ FOR MACOS USER
 
   DatabaseSeeds::Main.new.execute
   ```
+
+### IF SOMETHING WENT WRONG
+  1. Reset Database
+    ```
+    rails db:reset
+    ```
+  2. Go to rails console and run seed again
+    ```
+    bundle exec rails c
+
+    DatabaseSeeds::Main.new.execute
+    ```
