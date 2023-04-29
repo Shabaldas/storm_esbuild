@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :product_category do
-    sequence(:name) { Faker::Company.name }
+    sequence(:name) { Faker::Name.first_name }
     sequence(:description) { Faker::Company.catch_phrase }
     ancestry { nil }
 

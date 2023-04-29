@@ -1,0 +1,14 @@
+NAME
+DESCRIPTION
+<%= @product_category.name %>
+<%= @product_category.description %>
+<% if @product_category.children.present? %>
+  <% @product_category.children.each do |children_category| %>
+    <%= children_category.name %>
+  <% end %>
+<% end %>
+
+
+<% if @product_category.has_parent? %>
+  <%= @product_category.parent.name %>
+<% end %>
