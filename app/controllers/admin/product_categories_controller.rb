@@ -14,6 +14,7 @@ module Admin
       @product_category = ProductCategory.new
     end
 
+
     def create
       @product_category = ProductCategory.new(product_category_params)
       if @product_category.save

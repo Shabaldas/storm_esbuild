@@ -13,4 +13,7 @@
     </tbody>
   </table>
   <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  <footer class="pt-6">
+    <%= link_to "Create New Product Category", new_admin_product_category_path, class: "button w-80" %>
+  </footer>
 </div>
