@@ -27,7 +27,8 @@ module Admin
     private
 
     def product_params
-      params.require(:product).permit(:name, :description, :product_category_id, :status)
+      params.require(:product).permit(:name, :description, :product_category_id, :status, :price,
+                                      product_options_attributes: [:id, :option_id, :primary, :_destroy, { product_option_values_attributes: [:id, :option_value_id, :price, :_destroy] }])
     end
   end
 end

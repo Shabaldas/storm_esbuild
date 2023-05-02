@@ -23,10 +23,10 @@ class Product < ApplicationRecord
   scope :after, ->(id) { where('products.id > ?', id).order(id: :asc) if id.present? }
 
   def product_colors
-    product_option_values.joins(:product_option).where(product_options: { id: primary_product_option.id })
+    @product_colors ||= product_option_values.joins(:product_option).where(product_options: { id: primary_product_option.id })
   end
 
   def product_sizes
-    product_option_values.joins(:product_option).where(product_options: { id: secondary_product_option.id })
+    @product_sizes ||= product_option_values.joins(:product_option).where(product_options: { id: secondary_product_option.id })
   end
 end
