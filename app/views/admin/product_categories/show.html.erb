@@ -1,9 +1,6 @@
-NAME
-DESCRIPTION
-
 
 <div class="content flex items-center justify-center mt-16 mx-auto relative space-x-3">
-  <%=  @product_category.name %>
+  <!-- <%= @product_category.name %> -->
   <%= @product_category.description %>
   <% if @product_category.children.present? %>
     <div class="">
@@ -17,13 +14,16 @@ DESCRIPTION
           </div>
         </div>
       <% end %>
+      <div class="text-heading-1 mr-3 mb-3">
+        <%= link_to "Edit", edit_admin_product_category_path(@product_category) %>
+      </div>
     </div>
   <% end %>
 
   <% if @product_category.parent.present? %>
     <div class="">
       <div class="form-radio ml-3 mb-3">
-        <label><%= product_category.parent.name + "parent" %></label>
+        <%= @product_category.parent.name  %>
       </div>
     </div>
   <% end %>
