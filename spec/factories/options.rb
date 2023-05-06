@@ -4,6 +4,7 @@ FactoryBot.define do
   end
 
   trait :size_measurement do
+    tutorial { 'Size' }
     measurement { 'mm' }
     after(:create) do |option|
       ['S', 'L', 'M', 'XS', 'XL'].each do |size|
@@ -13,6 +14,7 @@ FactoryBot.define do
   end
 
   trait :color_measurement do
+    title { 'Color' }
     measurement { 'color' }
     after(:create) do |option|
       ['White', 'Black', 'Green', 'Red', 'Blue', 'Yellow', 'Gray'].each do |color|

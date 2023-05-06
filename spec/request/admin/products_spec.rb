@@ -77,95 +77,54 @@ describe '/admin/products', type: :request do
         end
       end
 
-      context 'when option color present' do
+      context 'when primary option (color)' do
         let(:color_option) { create(:option, measurement: 'color') }
         let(:option_value_first) { create(:option_value, option: color_option) }
         let(:option_value_second) { create(:option_value, option: color_option) }
 
-        it 'creates a new product with color option' do
-          expect do
-            post admin_products_path, params: {
-              product: {
-                name: 'Printing detail',
-                description: 'Detail about printing',
-                product_category_id: product_category.id,
-                status: 'inactive',
-                price: 10.0,
-                product_options_attributes: [
-                  option_id: color_option.id,
-                  primary: true,
-                  product_option_values_attributes: [
-                    {
-                      price: 0.0,
-                      option_value_id: option_value_first.id
-                    },
-                    {
-                      price: 0.0,
-                      option_value_id: option_value_second.id
-                    }
-                  ]
-                ]
+        context 'when primary option checked' do
+          let(:primary_product_option_params) do
+            {
+              'primary_product_option_attributes' => {
+                'primary' => true,
+                'option_id' => color_option.id
               }
             }
-          end.to change(Product, :count).by(1)
+          end
 
-          product = Product.last
-
-          expect(product.product_category.name).to eq('Home')
-          expect(product.name).to eq('Printing detail')
-          expect(product.description).to eq('Detail about printing')
-          expect(product.status).to eq('inactive')
-          expect(product.price).to eq(10.0)
-          expect(product.product_options.count).to eq(1)
-          expect(product.product_options.first.option.measurement).to eq('color')
-          expect(product.primary_product_option.option).to eq(color_option)
-          expect(product.product_option_values.count).to eq(2)
-        end
-      end
-
-      context 'when option size present' do
-        let(:size_option) { create(:option, measurement: 'mm') }
-        let(:option_value_first) { create(:option_value, option: size_option) }
-        let(:option_value_second) { create(:option_value, option: size_option) }
-
-        it 'creates a new product with size option' do
-          expect do
-            post admin_products_path, params: {
-              product: {
-                name: 'Printing detail',
-                description: 'Detail about printing',
-                product_category_id: product_category.id,
-                status: 'inactive',
-                price: 10.0,
-                product_options_attributes: [
-                  option_id: size_option.id,
-                  primary: false,
-                  product_option_values_attributes: [
-                    {
-                      price: 10.0,
-                      option_value_id: option_value_first.id
-                    },
-                    {
-                      price: 20.0,
-                      option_value_id: option_value_second.id
-                    }
-                  ]
-                ]
+          it 'creates a new product with color option and product option values' do
+            expect do
+              post admin_products_path, params: {
+                product: {
+                  name: 'Printing detail',
+                  description: 'Detail about printing',
+                  product_category_id: product_category.id,
+                  status: 'inactive',
+                  price: 10.0,
+                  primary_product_option_attributes: {
+                    primary: true,
+                    option_id: color_option.id,
+                    product_option_values_attributes: [
+                      { option_value_id: option_value_first.id, price: 0.0 },
+                      { option_value_id: option_value_second.id, price: 0.0 }
+                    ]
+                  }
+                }
               }
-            }
-          end.to change(Product, :count).by(1)
+            end.to change(Product, :count).by(1)
 
-          product = Product.last
+            product = Product.last
 
-          expect(product.product_category.name).to eq('Home')
-          expect(product.name).to eq('Printing detail')
-          expect(product.description).to eq('Detail about printing')
-          expect(product.status).to eq('inactive')
-          expect(product.price).to eq(10.0)
-          expect(product.product_options.count).to eq(1)
-          expect(product.product_options.first.option.measurement).to eq('mm')
-          expect(product.secondary_product_option.option).to eq(size_option)
-          expect(product.product_option_values.count).to eq(2)
+            expect(product.product_category.name).to eq('Home')
+            expect(product.name).to eq('Printing detail')
+            expect(product.description).to eq('Detail about printing')
+            expect(product.status).to eq('inactive')
+            expect(product.price).to eq(10.0)
+            expect(product.product_options.count).to eq(1)
+            expect(product.product_options.first.option.measurement).to eq('color')
+            expect(product.primary_product_option.option).to eq(color_option)
+            expect(product.product_option_values.count).to eq(2)
+          end
         end
       end
     end

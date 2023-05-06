@@ -14,4 +14,21 @@ describe Admin::ProductHelper do
       )
     end
   end
+
+  describe '#color_option_value_for_select' do
+    delegate :color_option_value_for_select, to: :helper
+
+    let!(:option) { create(:option, measurement: 'color') }
+    let!(:option_value_first) { create(:option_value, option:, value: 'red') }
+    let!(:option_value_second) { create(:option_value, option:, value: 'blue') }
+
+    it 'returns option values for select' do
+      expect(color_option_value_for_select).to eq(
+        [
+          ['red', option_value_first.id],
+          ['blue', option_value_second.id]
+        ]
+      )
+    end
+  end
 end

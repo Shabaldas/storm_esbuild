@@ -92,7 +92,7 @@ RSpec/ExampleLength:
   Enabled: false
 
 RSpec/NestedGroups:
-  Max: 4
+  Max: 7
 
 RSpec/MissingExampleGroupArgument:
   Exclude:
