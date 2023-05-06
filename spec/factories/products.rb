@@ -5,5 +5,12 @@ FactoryBot.define do
     association :product_category
     sequence(:price) { Faker::Commerce.price(range: 0..100.0) }
     sequence(:status) { 1 }
+
+    main_picture do
+      {
+        io: File.new('./spec/fixtures/files/dummy.png'),
+        filename: 'dummy.png'
+      }
+    end
   end
 end

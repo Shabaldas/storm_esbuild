@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import 'tom-select/dist/css/tom-select.css';
-
+@import 'dropzone/dist/dropzone.css';
 
 @import "components/pagy";
 @import "components/form";
@@ -10,6 +10,8 @@
 @import "components/checkboxes-radiobuttons";
 @import "components/toggle-switch";
 @import "components/typography";
+@import "components/dropzone";
+
 
 div.field_with_errors > label {
   @apply border-red-500;

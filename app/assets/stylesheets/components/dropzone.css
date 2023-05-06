@@ -1,0 +1,172 @@
+
+
+
+/*///// File upload and attachments /////*/
+
+.form-file {
+  @apply flex h-14 py-4 justify-center border-dashed text-black border-black;
+}
+
+.form-file-btn {
+  @apply inline-flex flex-row items-center text-black hover:border-link-hover hover:text-link-hover;
+}
+
+.attachments {
+  @apply flex flex-row flex-wrap;
+}
+
+.attachments .attachment {
+  @apply mr-3.5 mb-3;
+}
+
+.attachment {
+  @apply inline-flex flex-col relative h-auto w-28 border-none bg-transparent overflow-visible shadow-none;
+
+  & .attachment-thumb {
+    @apply flex justify-center items-center w-28 h-28 overflow-hidden relative border-1 border-bordercolor hover:border-link-hover  text-white hover:no-underline hover:text-white hover:bg-link-hover bg-primary;
+
+    & .icon {
+      @apply text-icon-lg;
+    }
+
+    & img {
+      @apply min-w-full h-28;
+    }
+  }
+
+  & .attachment-name {
+    @apply mt-2 px-0 text-xs font-normal text-center text-black line-clamp-3 leading-tight;
+    white-space: normal;
+    word-break: break-all;
+  }
+
+  & .attachment-btn {
+    @apply absolute top-0 right-0 w-8 h-8 p-1.5 text-icon-xs rounded-none;
+  }
+}
+
+.form-group.inverted .form-file {
+  @apply border-white;
+}
+
+.attachment.inverted .attachment-thumb {
+  @apply border-gray-600;
+}
+
+.attachment.inverted .attachment-name {
+  @apply text-white;
+}
+
+
+/* Selectable / checkbox attachment */
+
+.attachment.selectable {
+  @apply ml-8;
+}
+
+.attachment.selectable input {
+  @apply hidden;
+}
+
+.attachment.selectable .attachment-thumb {
+  @apply border-bordercolor bg-gray-600 hover:border-link-hover hover:bg-link-hover;
+}
+
+.attachment.selectable label::before {
+  @apply absolute top-0 -left-8 block h-7 w-7 border-black border cursor-pointer;
+  content: "";
+}
+
+.attachment.selectable input:checked + label::before {
+  @apply text-white border-primary bg-primary;
+  background-image: url("$package_path/images/checkbox-background-white.svg");
+}
+
+.attachment.selectable input:checked + label .attachment-thumb {
+  @apply border-primary bg-primary hover:border-link-hover hover:bg-link-hover;
+}
+
+/* Dropzone plugin */
+
+.dropzone {
+  @apply relative flex justify-center items-start flex-wrap min-h-24 p-4 border border-dashed text-black hover:text-link-hover border-black hover:border-link-hover cursor-pointer;
+}
+
+.dz-preview {
+  @apply mr-3.5 inline-flex flex-col relative h-auto w-28 border-none bg-transparent overflow-visible shadow-none;
+
+  & .dz-image {
+    @apply flex justify-center items-center w-28 h-28 overflow-hidden relative border-1 border-bordercolor text-white bg-primary;
+
+    & .icon {
+      @apply text-icon-xl;
+    }
+
+    & img {
+      @apply min-w-full h-28;
+    }
+  }
+
+  & .dz-details {
+    @apply mt-2 px-0 text-xs font-normal text-center text-black line-clamp-3 leading-tight;
+    white-space: normal;
+    word-break: break-all;
+  }
+
+  & .dz-remove {
+    @apply absolute flex items-center justify-center top-0 right-0 w-8 h-8 bg-danger hover:bg-link-hover rounded-none;
+  }
+
+  & .dz-remove::after {
+    @apply inline-block h-6 w-5 ;
+    content: url("$package_path/images/remove-white.svg");
+  }
+}
+
+.dz-success-mark {
+  @apply hidden absolute top-0 left-0;
+}
+
+.dz-error-mark {
+  @apply hidden absolute top-0 left-0;
+}
+
+.dz-started {
+  @apply justify-start;
+}
+
+.dz-message {
+  @apply self-center;
+}
+
+.dz-started .dz-message {
+  @apply hidden;
+}
+
+.dz-error-message {
+  @apply mt-2 text-danger text-xs;
+}
+
+.dropzone-msg-title {
+  @apply text-center;
+}
+
+.dropzone-msg-desc {
+  @apply text-center text-xs;
+}
+
+.dz-size, .dz-size strong {
+  @apply text-xs font-normal;
+}
+
+.dropzone.inverted {
+  @apply border-white hover:border-link-hover text-white hover:text-link-hover;
+}
+
+.dropzone.inverted .dz-preview, .dropzone.inverted .dz-preview .dz-image { 
+  @apply border-gray-600 text-white;
+}
+
+.dropzone.inverted .dz-details {
+  @apply text-white;
+}
