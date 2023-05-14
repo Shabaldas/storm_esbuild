@@ -34,9 +34,9 @@ module.exports = {
       'labelcolor': '#1a1a1a',
 
       gray: {
-        100: '#F0F1F3',
+        100: '#717171',
         200: '#D4D6DC',
-        300: '#B8BAC5',
+        300: '#3D3D3D',
         400: '#9C9FAE',
         500: '#808497',
         600: '#505362',
@@ -135,7 +135,7 @@ module.exports = {
         'bordercolor': '#D4D6DC',
       },
       fontSize: {
-        'heading-1': ['2rem', '2rem'],
+        "heading-1": ['3.375rem', '4.08rem'],
         'heading-2': ['1.85rem', '1.85rem'],
         'heading-3': ['1.7rem', '1.7rem'],
         'heading-4': ['1.25rem', '1.25rem'],
@@ -153,7 +153,7 @@ module.exports = {
         'default': '0.3rem'
       },
       fontSize: {
-        'heading-1': ['1.5rem', '2.063rem'],
+        "heading-1": ['3.375rem', '4.08rem'],
         'heading-2': ['1.125rem', '1.55rem'],
         'heading-3': ['0.875rem', '1.375rem'],
         'heading-4': ['0.75rem', '0.75rem'],
@@ -164,12 +164,9 @@ module.exports = {
         'icon-xl': '60px',
         'icon-sm': '18px',
         'icon-xs': '16px',
-        'sm': ['0.75rem', '1rem'],
-        'xs': ['0.625rem', '0.7rem'],
         'hint': ['0.75rem', '0.875rem'],
         'title': ['1.125rem', '1.25rem'],
         'forms': ['0.875rem', '0.875rem'],
-        'base': ['0.875rem', '1.2rem'],
         'button': ['0.875rem', '1.2rem'],
         'button-sm': ['0.75rem', '1.125rem'],
       },
