@@ -92,8 +92,8 @@ describe '/admin/products', type: :request do
 
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.body).to include('New Product')
-        expect(response.body).to include('Name can&#39;t be blank')
-        expect(response.body).to include('Description can&#39;t be blank')
+        expect(response.body).to include(html_escape("Name can't be blank"))
+        expect(response.body).to include(html_escape("Description can't be blank"))
         expect(response.body).to include('Product category must exist')
       end
     end

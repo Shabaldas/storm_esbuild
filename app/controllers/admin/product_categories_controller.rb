@@ -16,9 +16,19 @@ module Admin
     end
 
     def create
-      binding.irb
-      @product_category = ProductCategory.new(check_parent_id)
+      @product_category = ProductCategory.new(product_category_params.except(:ancestry, :children))
+
       if @product_category.save
+        parent_id = product_category_params[:ancestry]
+        child_ids = product_category_params[:children]
+
+        @product_category.update!(ancestry: parent_id) if parent_id.present?
+
+        if child_ids.present?
+          child_categories = ProductCategory.where(id: child_ids)
+          child_categories.update_all(ancestry: @product_category.id) # rubocop:disable Rails/SkipsModelValidations
+        end
+
         redirect_to admin_product_categories_path
       else
         render :new, status: :unprocessable_entity
@@ -27,24 +37,8 @@ module Admin
 
     private
 
-    def check_parent_id
-      if product_category_params['parent'].present?
-        result = {}
-        product_category_params.each do |key, value|
-          result[key.to_sym] = if key == 'parent'
-                                 ProductCategory.find(value)
-                               else
-                                 value
-                               end
-        end
-        result
-      else
-        product_category_params
-      end
-    end
-
     def product_category_params
-      params.require(:product_category).permit(:name, :description, :parent)
+      params.require(:product_category).permit(:name, :description, :ancestry, children: [])
     end
   end
 end

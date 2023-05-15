@@ -13,13 +13,12 @@
       <%= form.label :parent, class: "form-label" %>
       <%= form.select :parent,
                       product_categories_for_select,
-                      { class: "", include_blank: false },
+                      { class: "", include_blank: true },
                       { multiple: false, data: { controller: "select" }}
                       %>
-      <!-- <%= form.collection_radio_buttons :parent, @product_categories, :id, :name, placeholder: "Please input", class: "w-full form-control" %> -->
     </div>
     <div class="form-group">
-      <%= form.submit "Create Product Category", class: "button w-full md:max-w-[212px]" %>
+      <%= form.submit "Create Product Category", class: "button w-full" %>
     </div>
   </div>
 <% end %>
