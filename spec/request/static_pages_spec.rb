@@ -70,7 +70,7 @@ describe '/static_pages/home', type: :request do
           post save_phone_number_path, params: { feedback_call: { phone_number: '' } }
         end.not_to change(FeedbackCall, :count)
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:found)
       end
     end
   end
