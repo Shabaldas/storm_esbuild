@@ -59,6 +59,7 @@ describe '/admin/products', type: :request do
   describe 'POST /admin/products' do
     context 'when valid params' do
       let(:product_category) { create(:product_category) }
+      let(:main_picure) { './spec/fixtures/files/dummy.png' }
 
       it 'creates a new product' do
         expect do
@@ -67,7 +68,8 @@ describe '/admin/products', type: :request do
               name: 'Printing detail',
               description: 'Detail about printing',
               product_category_id: product_category.id,
-              status: 'active'
+              status: 'active',
+              main_picture: fixture_file_upload(main_picure)
             }
           }
         end.to change(Product, :count).by(1)
@@ -85,7 +87,8 @@ describe '/admin/products', type: :request do
               name: '',
               description: '',
               product_category_id: '',
-              status: ''
+              status: '',
+              main_picture: nil
             }
           }
         end.not_to change(Product, :count)
@@ -94,6 +97,7 @@ describe '/admin/products', type: :request do
         expect(response.body).to include('New Product')
         expect(response.body).to include(html_escape("Name can't be blank"))
         expect(response.body).to include(html_escape("Description can't be blank"))
+        expect(response.body).to include(html_escape("Main picture can't be blank"))
         expect(response.body).to include('Product category must exist')
       end
     end

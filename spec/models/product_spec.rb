@@ -12,5 +12,14 @@ RSpec.describe Product do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:description) }
+
+    it 'only allows png file' do
+      product = build(:product)
+      product.main_picture = {
+        io: File.new('./spec/fixtures/files/dummy.png'),
+        filename: 'dummy.png'
+      }
+      expect(product).to be_valid
+    end
   end
 end

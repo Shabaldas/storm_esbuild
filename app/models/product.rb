@@ -2,6 +2,7 @@
 
 class Product < ApplicationRecord
   belongs_to :product_category
+  has_one_attached :main_picture
   has_many :product_options, dependent: :destroy
   has_many :options, through: :product_options
   has_many :product_option_values, through: :product_options, dependent: :destroy
@@ -16,7 +17,7 @@ class Product < ApplicationRecord
 
   enum status: { inactive: 0, active: 1 }
 
-  validates :name, :description, presence: true
+  validates :name, :description, :main_picture, presence: true
 
   # API scopes
   scope :before, ->(id) { where('products.id < ?', id).order(id: :desc) if id.present? }

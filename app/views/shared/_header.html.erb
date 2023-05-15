@@ -9,10 +9,10 @@
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
         <ul class="h-full flex flex-col lg:flex-row flex-initial justify-between items-center text-center tracking-wide">
           <li class="px-4 cursor-pointer">
-            <%= active_link_to t('global.header.head'), root_path, active: :exact %>
+            <%= active_link_to t('global.header.head'), root_path, class: "text-black", active: :exact %>
           </li>
           <li class="px-4 cursor-pointer">
-            <%= active_link_to t('global.header.store'), products_path %>
+            <%= active_link_to t('global.header.store'), products_path, class: "text-black" %>
           </li>
           <li class="px-4 cursor-pointer"></li>
           <li class="px-4 cursor-pointer"></li>

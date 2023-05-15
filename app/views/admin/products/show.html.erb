@@ -16,7 +16,9 @@
   
   <div class="bg-dark-blue h-56 md:h-72 mt-16 rounded-3xl w-80" style="width: 500px; height: 576px;">
     <div class="w-full md:h-[384px] mx-auto">
-    <%= image_tag("shop_img/model1.png", class: "w-full h-full bg-cover bg-no-repeat bg-center") %> 
+      <% if @product.main_picture.attached? %>
+        <%= image_tag(@product.main_picture) %> 
+      <% end %>
 		</div>
     <div class="px-5 py-5">
       <p class="text-gray-500">

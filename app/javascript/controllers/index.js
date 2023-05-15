@@ -4,11 +4,10 @@
 
 import { application } from "./application"
 
-import { Alert, Autosave, Dropdown, Modal, Tabs, Popover, Slideover } from "tailwindcss-stimulus-components"
+import { Alert, Autosave, Dropdown, Tabs, Popover, Slideover } from "tailwindcss-stimulus-components"
 application.register('alert', Alert)
 application.register('autosave', Autosave)
 application.register('dropdown', Dropdown)
-application.register('modal', Modal)
 application.register('tabs', Tabs)
 application.register('popover', Popover)
 application.register('slideover', Slideover)
@@ -25,3 +24,8 @@ application.register("checkbox-family", CheckboxFamilyController)
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
 
+import DropzoneController from "./dropzone_controller"
+application.register("dropzone", DropzoneController)
+
+import ModalsController from "./modals_controller"
+application.register("modals", ModalsController)
