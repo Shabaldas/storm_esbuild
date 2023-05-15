@@ -89,30 +89,6 @@ describe '/admin/product_categories', type: :request do
       end
     end
 
-    context 'when valid params and children present' do
-      let!(:product_category_one) { create(:product_category, name: 'Home') }
-      let!(:product_category_two) { create(:product_category, name: 'Design') }
-
-      it 'creates a new product_category' do
-        expect do
-          post admin_product_categories_path, params: {
-            product_category: {
-              name: 'World',
-              description: 'Product Category description',
-              children: [product_category_one.id, product_category_two.id]
-            }
-          }
-        end.to change(ProductCategory, :count).by(1)
-
-        created_product_category = ProductCategory.last
-        expect(created_product_category.children.ids).to eq([product_category_one.id, product_category_two.id])
-        expect(created_product_category.has_children?).to be(true)
-        expect(product_category_one.reload.has_parent?).to be(true)
-        expect(product_category_two.reload.has_parent?).to be(true)
-        expect(response).to redirect_to(admin_product_categories_path)
-      end
-    end
-
     context 'when invalid params' do
       it 'display error message' do
         expect do

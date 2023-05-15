@@ -11,7 +11,6 @@ module Admin
     end
 
     def new
-      @product_categories = ProductCategory.all
       @product_category = ProductCategory.new
     end
 
@@ -20,14 +19,7 @@ module Admin
 
       if @product_category.save
         parent_id = product_category_params[:ancestry]
-        child_ids = product_category_params[:children]
-
         @product_category.update!(ancestry: parent_id) if parent_id.present?
-
-        if child_ids.present?
-          child_categories = ProductCategory.where(id: child_ids)
-          child_categories.update_all(ancestry: @product_category.id) # rubocop:disable Rails/SkipsModelValidations
-        end
 
         redirect_to admin_product_categories_path
       else
