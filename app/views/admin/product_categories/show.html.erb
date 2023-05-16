@@ -1,0 +1,33 @@
+
+<div class="py-28 mt-16 mx-auto relative">
+  <div class="flex">
+    <p class="text-gray-100">Category name:</p>
+    <p class="pl-3 text-[22px]"><%= @product_category.name %></p>
+  </div>
+  </br>
+  <div class="flex">
+    <p class="text-gray-100">Category description:</p>
+    <p class="pl-3 text-[22px]"><%= @product_category.description %></p>
+  </div>
+  <% if @product_category.has_children? %>
+    </br>
+    <div class="flex">
+      <p class="text-gray-100">Children:</p>
+      <% @product_category.children.each do |child_category| %>
+        <p class="pl-3 text-[22px]">
+          <%= child_category.name %>,
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @product_category.has_parent? %>
+    </br>
+    <div class="flex">
+      <p class="text-gray-100">Parent:</p>
+      <p class="pl-3 text-[22px]">
+        <%= @product_category.parent.name %>
+      </p>
+    </div>
+  <% end %>
+</div>

@@ -1,14 +1,22 @@
 <tr>
   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
-    <%= product_category.id %>
+    <%= link_to admin_product_category_path(product_category) do %>
+      <%= product_category.id %>
+    <% end %>
   </td>
   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
-    <%= product_category.name %>
+    <%= link_to admin_product_category_path(product_category) do %>
+      <%= product_category.name %>
+    <% end %>
   </td>
   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
-    <%= product_category.description %>
+    <%= link_to admin_product_category_path(product_category) do %>
+      <%= product_category.description %>
+    <% end %>
   </td>
   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
-    <%= product_category.created_at.strftime("%F") %>
+    <%= link_to admin_product_category_path(product_category) do %>
+      <%= product_category.created_at.strftime("%F") %>
+    <% end %>
   </td>
 </tr>

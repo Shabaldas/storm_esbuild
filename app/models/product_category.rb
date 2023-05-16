@@ -6,5 +6,5 @@ class ProductCategory < ApplicationRecord
 
   scope :select_tree, ->(id) { where.not(id:).arrange }
 
-  validates :name, presence: true
+  validates :name, :description, presence: true
 end
