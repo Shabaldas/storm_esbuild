@@ -1,0 +1,16 @@
+<%= turbo_stream.remove("products_placeholder") %>
+<%= turbo_stream.append("products_list") do %>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:ml-10 pb-16">
+    <% @products.each do |product| %>
+      <%= render product %>
+    <% end %>
+  </div> 
+<% end %>
+<%= turbo_stream.update "products_pagination" do %>
+  <% if @pagy.next %>
+    <div class="text-center mt-12">
+      <%= link_to "Next", products_url(page: @pagy.next), data: { turbo_stream: true }, class: "bg-primary rounded px-6 py-3 border text-black border-black shadow" %>
+      <p class="mt-8 text-gray-500"><%== pagy_info @pagy %></p>
+    </div>
+  <% end %>
+<% end %> 

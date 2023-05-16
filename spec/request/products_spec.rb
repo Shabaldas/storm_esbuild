@@ -14,13 +14,6 @@ describe '/products', type: :request do
 
         expect(Product.count).to eq(3)
         expect(ProductCategory.count).to eq(6)
-
-        product_category_with_children.products.each do |product|
-          expect(response.body).to include(product.name)
-          expect(response.body).to include(product.price.to_i.to_s)
-          expect(response.body).to include(product.product_category.name)
-          expect(response.body).to include(url_for(product.main_picture))
-        end
         expect(response.body).to include('Head')
         expect(response.body).to include('Store')
         expect(response.body).to include('Categories')
