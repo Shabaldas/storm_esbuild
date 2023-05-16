@@ -63,7 +63,7 @@
       <div class="flex items-center mt-4">
         <p class="mr-2">Unhappy?</p>
         <div>
-          <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class: "font-bold text-metalic-grey" %></div>
+          <%= button_to "Cancel my account", registration_path(resource_name), data: { turbo_confirm: "Are you sure?" }, method: :delete , class: "font-bold text-metalic-grey" %></div>
       </div>
     </div>
   </div>
