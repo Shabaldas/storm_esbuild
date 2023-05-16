@@ -3,7 +3,12 @@
 class ProductsController < ApplicationController
   def index
     @product_categories = ProductCategory.all
-    @products = Product.all
+    @pagy, @products = pagy(Product.all, items: 12)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def show
