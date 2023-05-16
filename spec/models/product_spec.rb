@@ -22,4 +22,26 @@ RSpec.describe Product do
       expect(product).to be_valid
     end
   end
+
+  describe '#product_colors' do
+    let(:product_category) { create(:product_category) }
+    let(:product) { create(:product, product_category:) }
+    let(:product_option) { create(:product_option, product:, primary: true) }
+    let!(:product_option_value) { create(:product_option_value, product_option:) }
+
+    it 'returns product colors' do
+      expect(product.product_colors).to eq([product_option_value])
+    end
+  end
+
+  describe '#product_sizes' do
+    let(:product_category) { create(:product_category) }
+    let(:product) { create(:product, product_category:) }
+    let(:product_option) { create(:product_option, product:, primary: false) }
+    let!(:product_option_value) { create(:product_option_value, product_option:) }
+
+    it 'returns product sizes' do
+      expect(product.product_sizes).to eq([product_option_value])
+    end
+  end
 end
