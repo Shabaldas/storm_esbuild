@@ -3,19 +3,6 @@
     Categories
   </h4>
 	<div class="mt-3 ">
-		<%= form_for(@one_category, url: products_path) do |f| %>
-			<% @parents_product_categories.each do |category| %>
-				<div class="mt-3 cursor-pointer">
-					<div class="flex justify-between">
-						<div class="flex items-center">
-							<%= f.check_box :name, id: category.name %>
-							<%= f.label category.name, class: "ml-3", for: category.name %>
-						</div>
-						<p>***</p>
-					</div>
-				</div>
-			<% end %>
-		<% end %>
 	</div>
 </div>
 <hr />

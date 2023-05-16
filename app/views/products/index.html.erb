@@ -6,64 +6,21 @@
     <div class="w-full lg:w-9/12 mt-4 lg:mt-0">
       <div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:ml-10 pb-16">
-          <div class="p-5 flex flex-col bg-dark-blue rounded-3xl">
-            <p class="text-gray-500">
-              <%= t('stores.index.category_type1') %>
-            </p>
-            <div>
-              <div class="w-full h-[240px] my-2">
-                <%= image_tag("shop_img/dummy/bench.png", class:"w-full h-full object-contain mx-auto my-auto") %>
+          <% if @products.any? %>
+            <%= render "products" %>
+          <% else %>
+            <div></div>
+            <div class="w-full my-2">
+              <%= image_tag("partials_img/empty_busket.png", class: "mx-auto my-auto object-contain mb-4") %>
+              <div class="flex justify-around">
+                <span class="text-heading-4">
+                  No products at the moment
+                </span>
               </div>
             </div>
-            <div>
-              <p class="text-white text-base font-medium clamp">
-                <%= t('stores.index.goods_title1') %>
-              </p>
-              <p class="text-xl text-white pt-1">
-                ₴ 329
-              </p>
-            </div>
-          </div>
-          <div class="p-5 flex flex-col bg-dark-blue rounded-3xl">
-            <p class="text-gray-500">
-              <%= t('stores.index.category_type1') %>
-            </p>
-            <div>
-              <div class="w-full h-[240px] my-2">
-                <%= image_tag("shop_img/dummy/groot.png", class:"w-full h-full object-contain mx-auto my-auto") %>
-              </div>
-            </div>
-            <div>
-              <p class="text-white text-base font-medium clamp">
-                <%= t('stores.index.goods_title2') %>
-              </p>
-              <p class="text-xl text-white pt-1">
-                ₴ 329
-              </p>
-            </div>
-          </div>
-          <div class="p-5 flex flex-col bg-dark-blue rounded-3xl">
-            <p class="text-gray-500">
-              <%= t('stores.index.categories_title2') %>
-            </p>
-            <div>
-              <div class="w-full h-[240px] my-2">
-                <%= image_tag("shop_img/dummy/skull.png", class:"w-full h-full object-contain mx-auto my-auto") %>
-              </div>
-            </div>
-            <div>
-              <p class="text-white text-base font-medium clamp">
-                <%= t('stores.index.goods_title1') %>
-              </p>
-              <p class="text-xl text-white pt-1">
-                ₴ 329
-              </p>
-            </div>
-          </div>
-          <%= render "products" %>
+          <%end%>
         </div>
       </div>
     </div>
   </div>
-
 </div>
