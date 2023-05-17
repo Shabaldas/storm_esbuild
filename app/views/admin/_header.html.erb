@@ -1,5 +1,5 @@
 <header class="w-full h-16 fixed z-30 bg-light-grey">
- <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 lg:px-[86px]">
+ <div class="flex items-center justify-between mx-auto px-7 w-full">
     <div class="flex w-1/2 justify-between">
       <span class="text-2xl">Admin Dashboard</span>
       <div class="w-24">
@@ -9,13 +9,13 @@
       </div>
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
         <ul class="h-full flex flex-col lg:flex-row flex-initial justify-between items-center text-center tracking-wide">
-          <li class="px-4 cursor-pointer">
+          <li class="p-5 cursor-pointer">
             <%= active_link_to "Products", admin_products_path, class: "text-black" %>
           </li>
-          <li class="px-4 cursor-pointer">
+          <li class="p-5 cursor-pointer">
             <%= active_link_to "Product Categories", admin_product_categories_path, class: "text-black" %>
           </li>
-          <li class="px-4 cursor-pointer">
+          <li class="p-5 cursor-pointer">
             <%= active_link_to "Feedback Calls", admin_feedback_calls_path, class: "text-black" %>
           </li>
         </ul>
