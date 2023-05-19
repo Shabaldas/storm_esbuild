@@ -2,7 +2,7 @@
 
 class ProductsController < ApplicationController
   def index
-    @product_categories = ProductCategory.all
+    @product_categories = ProductCategory.where(ancestry: nil)
     @q = Product.ransack(params[:q])
     @pagy, @products = pagy(@q.result(distinct: true), items: 12)
 
