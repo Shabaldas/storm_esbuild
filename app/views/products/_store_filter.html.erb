@@ -5,7 +5,7 @@
 			<% @product_categories.each do |category| %>
 				<div class="form-grid-single narrow mb-5">
 					<div class="form-check">
-						<%= check_box_tag("q[product_category_name_eq_any][]", category.name) %>
+						<%= check_box_tag("q[product_category_name_eq_any][]", category.name, (true if @q.product_category_name_eq_any.try(:include?, category.name))) %>
 						<label>
 							<%= category.name %>
 						</label>
