@@ -14,4 +14,20 @@ describe Admin::ProductHelper do
       )
     end
   end
+
+  describe '#classes_for_flash' do
+    delegate :classes_for_flash, to: :helper
+
+    context 'when flash type is error' do
+      it 'returns bg-danger' do
+        expect(classes_for_flash(:error)).to eq('bg-danger')
+      end
+    end
+
+    context 'when flash type is not error' do
+      it 'returns bg-primary' do
+        expect(classes_for_flash(:notice)).to eq('bg-primary')
+      end
+    end
+  end
 end

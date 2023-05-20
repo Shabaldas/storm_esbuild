@@ -11,7 +11,12 @@
   </head>
 
   <body class="bg-light-grey">
-    <%= render 'admin/header' %>
-    <%= yield %>
+    <div class="content">
+      <div class="fixed flex items-center mt-16 py-3 right-5 rounded-2xl w-80">
+        <%= render "admin/shared/flash" %>
+      </div>
+      <%= render 'admin/header' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

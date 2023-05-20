@@ -74,6 +74,8 @@ describe '/admin/products', type: :request do
           }
         end.to change(Product, :count).by(1)
         expect(response).to redirect_to(admin_products_path)
+        follow_redirect!
+        expect(response.body).to include('Product was successfully created.')
       end
     end
 

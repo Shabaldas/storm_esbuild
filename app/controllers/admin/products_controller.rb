@@ -18,7 +18,7 @@ module Admin
       @product = Product.new(product_params)
 
       if @product.save
-        redirect_to admin_products_path
+        redirect_to admin_products_path, notice: 'Product was successfully created.' # rubocop:disable Rails/I18nLocaleTexts
       else
         render :new, status: :unprocessable_entity
       end

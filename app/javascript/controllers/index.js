@@ -15,6 +15,9 @@ application.register('slideover', Slideover)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
+
 import SelectController from "./select_controller"
 application.register("select", SelectController)
 
