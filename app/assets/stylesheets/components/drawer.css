@@ -1,0 +1,53 @@
+
+details[open].drawer-wrapper .drawer {
+  @apply fixed flex flex-col justify-between right-0 z-40 w-aside top-header h-screen max-h-screen text-white border-t-1 border-gray-800 shadow-xl;
+  padding-bottom: 60px;
+}
+
+details[open].drawer-wrapper .drawer-trigger::before {
+  @apply fixed block w-screen h-screen bg-transparent cursor-pointer z-30 bg-black opacity-50;
+  content: "";
+  top: 64px;
+  left: 0;
+}
+
+.drawer-trigger {
+  @apply cursor-pointer;
+}
+
+.drawer-trigger .btn-trigger {
+  @apply text-black hover:text-link-hover;
+}
+
+details.drawer-wrapper .close-btn {
+  @apply hidden rounded-none shadow-none w-btn-default h-btn-default text-white cursor-pointer;
+}
+
+
+details[open].drawer-wrapper .close-btn {
+  @apply flex items-center justify-center fixed right-0 top-header z-50 hover:bg-link-hover;
+}
+
+.drawer-header {
+  @apply bg-light-grey;
+}
+
+.drawer-title {
+  @apply text-2xl mb-heading px-8 pt-4 text-black;
+}
+
+.drawer-content {
+  @apply flex-1 px-8 pt-2 pb-8 overflow-y-scroll bg-light-grey text-base text-black;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.drawer-content::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.drawer-footer {
+  @apply flex items-center h-actionbar bg-light-grey px-8 py-4 space-x-2;
+}

@@ -11,6 +11,7 @@
 @import "components/toggle-switch";
 @import "components/typography";
 @import "components/dropzone";
+@import "components/drawer";
 
 
 div.field_with_errors > label {
@@ -29,6 +30,7 @@ div.field_with_errors > :is(input, textarea, select) {
   border: 0;
   box-sizing: border-box;
 }
+
 
 html,
 body {
@@ -106,6 +108,10 @@ input {
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.151);
 }
 
+.bg-header{
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
+}
 /* link */
 
 .link {
