@@ -15,12 +15,16 @@ module Admin
     end
 
     def create
-      @product_category = ProductCategory.new(product_category_params.except(:ancestry, :children))
+      @product_category = ProductCategory.new(product_category_params.except(:ancestry))
 
-      if @product_category.save
-        parent_id = product_category_params[:ancestry]
-        @product_category.update!(ancestry: parent_id) if parent_id.present?
+      parent_id = product_category_params[:ancestry]
 
+      if parent_id.present?
+        parent_category = ProductCategory.find_by(id: parent_id)
+        parent_category.children.create!(product_category_params.except(:ancestry))
+
+        redirect_to admin_product_categories_path
+      elsif @product_category.save
         redirect_to admin_product_categories_path
       else
         render :new, status: :unprocessable_entity
@@ -30,7 +34,7 @@ module Admin
     private
 
     def product_category_params
-      params.require(:product_category).permit(:name, :description, :ancestry, children: [])
+      params.require(:product_category).permit(:name, :description, :ancestry)
     end
   end
 end

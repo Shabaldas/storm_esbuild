@@ -89,6 +89,30 @@ describe '/admin/product_categories', type: :request do
       end
     end
 
+    context 'when valid params and parent has neseted children' do
+      let!(:product_category_parent) { create(:product_category, name: 'Home') }
+      let!(:product_category_child) { create(:product_category, ancestry: product_category_parent.id, name: 'Desigin') }
+
+      it 'creates a new product_category' do
+        expect do
+          post admin_product_categories_path, params: {
+            product_category: {
+              name: 'World',
+              description: 'Product Category description',
+              ancestry: product_category_child.id
+            }
+          }
+        end.to change(ProductCategory, :count).by(1)
+        created_product_category = ProductCategory.last
+        expect(created_product_category.has_parent?).to be(true)
+        expect(created_product_category.parent).to eq(product_category_child)
+        expect(product_category_parent.descendants.count).to eq(2)
+        expect(product_category_parent.children.count).to eq(1)
+        expect(product_category_child.children.count).to eq(1)
+        expect(response).to redirect_to(admin_product_categories_path)
+      end
+    end
+
     context 'when invalid params' do
       it 'display error message' do
         expect do
