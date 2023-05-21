@@ -2,6 +2,13 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
+require 'codeclimate-test-reporter'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  CodeClimate::TestReporter::Formatter
+]
+
 SimpleCov.start :rails do
   add_filter '/app/controllers/users'
   add_filter '/app/grape'
