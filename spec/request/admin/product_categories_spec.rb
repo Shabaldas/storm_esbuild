@@ -17,6 +17,13 @@ describe '/admin/product_categories', type: :request do
       expect(response.body).to include('NAME')
       expect(response.body).to include('DESCRIPTION')
       expect(response.body).to include('CREATED AT')
+      expect(response.body).to include('ACTIONS')
+      expect(response.body).to include('EDIT')
+      expect(response.body).to include('DESTROY')
+      expect(response.body).to include(admin_product_category_path(product_category_first))
+      expect(response.body).to include(admin_product_category_path(product_category_second))
+      expect(response.body).to include(edit_admin_product_category_path(product_category_first))
+      expect(response.body).to include(edit_admin_product_category_path(product_category_second))
       expect(response.body).to include(product_category_first.id.to_s)
       expect(response.body).to include(product_category_first.name)
       expect(response.body).to include(product_category_first.description)
@@ -52,6 +59,17 @@ describe '/admin/product_categories', type: :request do
         expect(response.body).to include(product_category.description)
         expect(response.body).to include(product_category.parent.name)
       end
+    end
+  end
+
+  describe 'GET /admin/product_categories/edit' do
+    let(:product_category) { create(:product_category, name: 'Home') }
+
+    it 'display the product category' do
+      get edit_admin_product_category_path(product_category)
+
+      expect(response).to be_successful
+      expect(response.body).to include('Edit Product Category')
     end
   end
 

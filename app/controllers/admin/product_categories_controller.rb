@@ -2,17 +2,19 @@
 
 module Admin
   class ProductCategoriesController < BaseController
+    before_action :find_data, only: [:show, :edit]
+
     def index
       @pagy, @product_categories = pagy(ProductCategory.all, items: 10)
     end
 
-    def show
-      @product_category = ProductCategory.find(params[:id])
-    end
+    def show; end
 
     def new
       @product_category = ProductCategory.new
     end
+
+    def edit; end
 
     def create
       @product_category = ProductCategory.new(product_category_params.except(:ancestry))
@@ -35,6 +37,10 @@ module Admin
 
     def product_category_params
       params.require(:product_category).permit(:name, :description, :ancestry)
+    end
+
+    def find_data
+      @product_category = ProductCategory.find(params[:id])
     end
   end
 end

@@ -1,22 +1,30 @@
 <tr>
-  <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
-    <%= link_to admin_product_category_path(product_category) do %>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to admin_product_category_path(product_category), class: "text-black" do %>
       <%= product_category.id %>
     <% end %>
   </td>
-  <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
-    <%= link_to admin_product_category_path(product_category) do %>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to admin_product_category_path(product_category), class: "text-black" do %>
       <%= product_category.name %>
     <% end %>
   </td>
-  <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
-    <%= link_to admin_product_category_path(product_category) do %>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to admin_product_category_path(product_category), class: "text-black" do %>
       <%= product_category.description %>
     <% end %>
   </td>
-  <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
-    <%= link_to admin_product_category_path(product_category) do %>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to admin_product_category_path(product_category), class: "text-black" do %>
       <%= product_category.created_at.strftime("%F") %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap space-x-4" scope="row">
+    <%= link_to edit_admin_product_category_path(product_category), class: "text-black bg-primary p-1.5 rounded-2xl text-black" do %>
+      EDIT
+    <% end %>
+    <%= link_to admin_product_category_path(product_category), class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
+      DESTROY
     <% end %>
   </td>
 </tr>
