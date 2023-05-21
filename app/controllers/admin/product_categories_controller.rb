@@ -2,7 +2,7 @@
 
 module Admin
   class ProductCategoriesController < BaseController
-    before_action :find_data, only: [:show, :edit]
+    before_action :find_data, only: [:show, :edit, :destroy]
 
     def index
       @pagy, @product_categories = pagy(ProductCategory.all, items: 10)
@@ -31,6 +31,11 @@ module Admin
       else
         render :new, status: :unprocessable_entity
       end
+    end
+
+    def destroy
+      @product_category.destroy
+      redirect_to admin_product_categories_path, notice: 'Product category was successfully destroyed.' # rubocop:disable Rails/I18nLocaleTexts
     end
 
     private

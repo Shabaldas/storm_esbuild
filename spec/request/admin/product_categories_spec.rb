@@ -156,4 +156,17 @@ describe '/admin/product_categories', type: :request do
       end
     end
   end
+
+  describe 'DELETE /admin/product_categories/:id' do
+    let!(:product_category) { create(:product_category, name: 'Home') }
+
+    it 'destroy the product category' do
+      expect do
+        delete admin_product_category_path(product_category)
+      end.to change(ProductCategory, :count).by(-1)
+      expect(response).to redirect_to(admin_product_categories_path)
+      follow_redirect!
+      expect(response.body).to include('Product category was successfully destroyed.')
+    end
+  end
 end
