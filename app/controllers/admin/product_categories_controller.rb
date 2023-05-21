@@ -2,7 +2,7 @@
 
 module Admin
   class ProductCategoriesController < BaseController
-    before_action :find_data, only: [:show, :edit, :destroy]
+    before_action :set_product_category, only: [:show, :edit, :destroy]
 
     def index
       @pagy, @product_categories = pagy(ProductCategory.all, items: 10)
@@ -44,7 +44,7 @@ module Admin
       params.require(:product_category).permit(:name, :description, :ancestry)
     end
 
-    def find_data
+    def set_product_category
       @product_category = ProductCategory.find(params[:id])
     end
   end

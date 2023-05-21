@@ -17,6 +17,7 @@ describe '/admin/product_categories', type: :request do
       expect(response.body).to include('NAME')
       expect(response.body).to include('DESCRIPTION')
       expect(response.body).to include('CREATED AT')
+      expect(response.body).to include('Create New Product Category')
       expect(response.body).to include('ACTIONS')
       expect(response.body).to include('EDIT')
       expect(response.body).to include('DESTROY')
