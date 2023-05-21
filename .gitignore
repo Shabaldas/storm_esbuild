@@ -27,7 +27,6 @@
 !/tmp/storage/.keep
 
 /public/assets
-/coverage
 /path
 
 # Ignore master key for decrypting credentials and more.
