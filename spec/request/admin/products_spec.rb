@@ -18,6 +18,13 @@ describe '/admin/products', type: :request do
       expect(response.body).to include('STATUS')
       expect(response.body).to include('CREATED AT')
       expect(response.body).to include('Create New Product')
+      expect(response.body).to include('ACTIONS')
+      expect(response.body).to include('EDIT')
+      expect(response.body).to include('DESTROY')
+      expect(response.body).to include(admin_product_path(products.first))
+      expect(response.body).to include(admin_product_path(products.second))
+      expect(response.body).to include(edit_admin_product_path(products.second))
+      expect(response.body).to include(edit_admin_product_path(products.second))
       expect(response.body).to include(products.first.id.to_s)
       expect(response.body).to include(products.first.name)
       expect(response.body).to include(products.first.product_category.name)
@@ -53,6 +60,18 @@ describe '/admin/products', type: :request do
       expect(response.body).to include('Product Category')
       expect(response.body).to include('Status')
       expect(response.body).to include('Create Product')
+    end
+  end
+
+  describe 'GET /admin/products/:id/edit' do
+    let(:product_category) { create(:product_category) }
+    let(:product) { create(:product, product_category:) }
+
+    it 'display edit product form' do
+      get edit_admin_product_path(product)
+
+      expect(response).to be_successful
+      expect(response.body).to include('Edit Product')
     end
   end
 
@@ -102,6 +121,20 @@ describe '/admin/products', type: :request do
         expect(response.body).to include(html_escape("Main picture can't be blank"))
         expect(response.body).to include('Product category must exist')
       end
+    end
+  end
+
+  describe 'DELETE /admin/products/:id' do
+    let!(:product_category) { create(:product_category) }
+    let!(:product) { create(:product, product_category:) }
+
+    it 'deletes a product' do
+      expect do
+        delete admin_product_path(product)
+      end.to change(Product, :count).by(-1)
+      expect(response).to redirect_to(admin_products_path)
+      follow_redirect!
+      expect(response.body).to include('Product was successfully destroyed.')
     end
   end
 end
