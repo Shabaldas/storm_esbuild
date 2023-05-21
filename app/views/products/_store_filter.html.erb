@@ -9,6 +9,7 @@
 						<div class="form-check">
 							<%= check_box_tag("q[product_category_name_eq_any][]", category.name, (true if @q.product_category_name_eq_any.try(:include?, category.name)), data: { "checkbox-family-target" => "checkbox" } ) %>
 							<label><%= category.name %></label>
+							<label><%= category.products.count %></label>
 						</div>
 					</div>
 					<% if category.children.any? %>
@@ -19,6 +20,7 @@
 										<div class="form-check">
 											<%= check_box_tag("q[product_category_name_eq_any][]", child.name, (true if @q.product_category_name_eq_any.try(:include?, child.name)), data: { "checkbox-family-target" => "checkbox" } ) %>
 											<label><%= child.name %></label>
+											<label><%= child.products.count %></label>
 										</div>
 									</div>
 									<% if child.children.any? %>
@@ -29,6 +31,7 @@
 														<div class="form-check pl-8">
 															<%= check_box_tag("q[product_category_name_eq_any][]", ch.name, (true if @q.product_category_name_eq_any.try(:include?, ch.name)), data: { "checkbox-family-target" => "checkbox" } ) %>
 															<label><%= ch.name %></label>
+															<label><%= ch.products.count %></label>
 														</div>
 													</div>	
 												</li>
