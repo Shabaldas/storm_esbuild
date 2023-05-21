@@ -1,32 +1,32 @@
 <tr>
-  <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to admin_product_path(product), class: "text-black" do %>
       <%= product.id %>
     <% end %>
   </td>
-  <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to admin_product_path(product), class: "text-black" do %>
       <%= product.name %>
     <% end %>
   </td>
-  <td class="flex font-medium justify-center py-4 text-gray-900 whitespace-nowrap" scope="row">
+  <td class="flex font-medium justify-center py-4 whitespace-nowrap" scope="row">
     <% if product.main_picture.attached? %>
       <%= link_to admin_product_path(product), class: "text-black" do %>
         <%= image_tag(product.main_picture, style: "height: 5rem;") %>
       <% end %>
     <% end %>
   </td>
-  <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to admin_product_path(product), class: "text-black" do %>
       <%= product.product_category.name %>
     <% end %>
   </td>
-  <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to admin_product_path(product), class: "text-black" do %>
       <%= product.status %>
     <% end %>
   </td>
-  <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to admin_product_path(product), class: "text-black" do %>
       <%= product.created_at.strftime("%F") %>
     <% end %>
