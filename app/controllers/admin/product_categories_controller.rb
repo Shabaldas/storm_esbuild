@@ -23,9 +23,9 @@ module Admin
         parent_category = ProductCategory.find_by(id: parent_id)
         parent_category.children.create!(product_category_params.except(:ancestry))
 
-        redirect_to admin_product_categories_path
+        redirect_to admin_product_categories_path, notice: 'Product category was successfully created.' # rubocop:disable Rails/I18nLocaleTexts
       elsif @product_category.save
-        redirect_to admin_product_categories_path
+        redirect_to admin_product_categories_path, notice: 'Product category was successfully created.' # rubocop:disable Rails/I18nLocaleTexts
       else
         render :new, status: :unprocessable_entity
       end

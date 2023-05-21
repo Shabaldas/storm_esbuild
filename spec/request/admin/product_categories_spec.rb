@@ -66,6 +66,9 @@ describe '/admin/product_categories', type: :request do
             }
           }
         end.to change(ProductCategory, :count).by(1)
+        expect(response).to redirect_to(admin_product_categories_path)
+        follow_redirect!
+        expect(response.body).to include('Product category was successfully created.')
       end
     end
 
@@ -86,6 +89,8 @@ describe '/admin/product_categories', type: :request do
         expect(created_product_category.has_parent?).to be(true)
         expect(created_product_category.parent).to eq(product_category)
         expect(response).to redirect_to(admin_product_categories_path)
+        follow_redirect!
+        expect(response.body).to include('Product category was successfully created.')
       end
     end
 
@@ -110,6 +115,8 @@ describe '/admin/product_categories', type: :request do
         expect(product_category_parent.children.count).to eq(1)
         expect(product_category_child.children.count).to eq(1)
         expect(response).to redirect_to(admin_product_categories_path)
+        follow_redirect!
+        expect(response.body).to include('Product category was successfully created.')
       end
     end
 
