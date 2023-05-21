@@ -4,8 +4,8 @@ module Admin
   class BaseController < ApplicationController
     layout 'admin'
     before_action :authorize_admin
-    
-    add_flash_types :info, :error, :warning
+
+    add_flash_types :info, :error
 
     private
 
