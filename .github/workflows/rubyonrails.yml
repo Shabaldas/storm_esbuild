@@ -38,6 +38,11 @@ jobs:
       # - name: Set up database schema
         # run: bin/rails db:schema:load
       # Add or replace test runners here
+      - name: Setup Code Climate test-reporter
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter before-build
 
       - name: Run tests
         env:
@@ -56,13 +61,7 @@ jobs:
       - name: Setup Code Climate
         uses: amancevice/setup-code-climate@v1.1
 
-
-  # lint:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
-  #     - name: Install Ruby and gems
-  #       uses: ruby/setup-ruby@d3c9825d67b0d8720afdfdde5af56c79fdb38d16 # v1.138.0
-  #       with:
-  #         bundler-cache: true
+      - name: Publish code coverage
+        run: |
+          export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
+          ./cc-test-reporter after-build -r ${{bcca2e3f7fb51e5d765cbe81b867aa12933ecbc6cb6e67477ae594736bf306ed}}
