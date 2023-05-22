@@ -73,7 +73,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ancestry (4.2.0)
       activerecord (>= 5.2.6)
-    anyway_config (2.3.0)
+    anyway_config (2.4.1)
       ruby-next-core (>= 0.14.0)
     ast (2.4.2)
     awesome_print (1.9.2)
@@ -400,7 +400,7 @@ PLATFORMS
 DEPENDENCIES
   active_link_to
   ancestry
-  anyway_config (~> 2.0)
+  anyway_config (~> 2.4)
   awesome_print
   bootsnap
   bullet
