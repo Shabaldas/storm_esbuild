@@ -5,7 +5,7 @@ details[open].drawer-wrapper .drawer {
 }
 
 details[open].drawer-wrapper .drawer-trigger::before {
-  @apply fixed block w-screen h-screen bg-transparent cursor-pointer z-30 bg-black opacity-50;
+  @apply fixed w-screen h-screen bg-transparent cursor-pointer z-30 opacity-50;
   content: "";
   top: 64px;
   left: 0;

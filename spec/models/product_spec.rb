@@ -3,6 +3,8 @@ RSpec.describe Product do
     it { is_expected.to belong_to(:product_category) }
     it { is_expected.to have_many(:product_options).dependent(:destroy) }
     it { is_expected.to have_many(:options).through(:product_options) }
+    it { is_expected.to have_many(:cart_items).dependent(:destroy) }
+    it { is_expected.to have_many(:carts).through(:cart_items) }
   end
 
   describe 'enums' do
