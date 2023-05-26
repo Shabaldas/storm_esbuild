@@ -1,3 +1,4 @@
+<%= turbo_stream_from current_cart %>
 <div class="w-screen md:w-[28rem] h-screen bg-white shadow-lg shadow-gray-600 fixed right-0 top-0 pt-6 px-2 md:pl-8 md:pr-5 z-50">
   <div class="block absolute top-5 right-5">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
@@ -12,44 +13,17 @@
       <%= t('basket.content.title') %>
     </h4>
   </div>
+
   <div class="basket-sidebar mt-8 h-4/6 overflow-y-auto pr-4">
-    <div class="flex justify-between items-center relative">
-      <div class="flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-        <div class="w-16 h-16 bg-gray-300 ml-2">
-          <%= image_tag("partials_img/logo.png") %>
-        </div>
-        <div class="ml-3">
-          <h6 class="text-sm text-gray-800 font-medium">
-            <%= t('basket.content.product_title') %>
-          </h6>
-          <div class="w-20 flex justify-between items-center mt-2">
-            <button>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-              </svg>
-            </button>
-            <p>1x</p>
-            <button>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="w-16 flex justify-end absolute bottom-0 right-0 sm:relative sm:-top-3 sm:-mt-1.5 text-sm text-gray-800 font-medium">
-        ₴ 765
-      </div>
-    </div>
-    <div class="w-full h-px bg-gray-300 my-4"></div>
+    <% current_cart.cart_items.each do |cart_item| %>
+      <%= render partial: "cart/item_line", locals: { cart_item: cart_item } %>
+    <% end %>
   </div>
+
   <div class="w-full px-8 pb-4 sm:pb-12 mt-4 absolute right-0 bottom-0">
     <div class="flex justify-between items-center text-sm text-gray-800 font-medium">
       <h5>
-        <%= t('basket.content.delivery') %>
+        Delivery
       </h5>
       <p>₴ 65</p>
     </div>
@@ -58,10 +32,10 @@
       <h5>
         <%= t('basket.content.summary') %>
       </h5>
-      <p>₴ 3890</p>
+       <p>₴ <%= render partial: "cart/total_price" %></p>
     </div>
     <div class="w-full h-16 mt-10 button flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium">
-      Drawer action
+       Payment
     </div>
   </div>
 </div>

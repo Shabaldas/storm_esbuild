@@ -10,7 +10,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   post 'save_phone_number', to: 'static_pages#save_phone_number'
-  post 'cart/add'
+  post 'cart/add_product'
+
+  namespace :carts do
+    resource :add, only: [:create]
+    resource :reduce, only: [:create]
+    resource :remove, only: [:destroy]
+  end
 
   resources :products, only: [:index, :show]
 

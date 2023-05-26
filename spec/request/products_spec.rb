@@ -45,7 +45,7 @@ describe '/products', type: :request do
 
       expect(response.body).to include(product.name)
       expect(response.body).to include(product.price.to_s)
-      expect(response.body).to include(cart_add_path)
+      expect(response.body).to include(cart_add_product_path)
       expect(response.body).to include('Head')
       expect(response.body).to include('Store')
       expect(response.body).to include('Add to cart')
