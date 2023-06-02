@@ -22,4 +22,12 @@ class ApplicationController < ActionController::Base
   def default_error_message
     I18n.t('error_message.pundit.default')
   end
+
+  def current_cart
+    cart = Cart.find_or_create_by(token: cookies[:cart_token])
+    cookies[:cart_token] ||= cart.token
+    cart
+  end
+
+  helper_method :current_cart
 end

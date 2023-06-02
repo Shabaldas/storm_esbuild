@@ -7,6 +7,8 @@ class Product < ApplicationRecord
   has_many :options, through: :product_options
   has_many :product_option_values, through: :product_options, dependent: :destroy
   has_many :option_values, through: :product_option_values, source: :option_value
+  has_many :cart_items, dependent: :destroy
+  has_many :carts, through: :cart_items
 
   # helpers relationship
   has_one :primary_product_option, ->(_where) { where primary: true }, class_name: 'ProductOption', dependent: :destroy # rubocop:disable  Rails/InverseOf
