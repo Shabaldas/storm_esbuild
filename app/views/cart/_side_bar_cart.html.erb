@@ -10,32 +10,16 @@
       <path stroke-linecap="round" stroke-line join="round" stroke-width="2" d="M9 5l7 7-7 7" />
     </svg>
     <h4 class="text-base text-gray-800 font-medium capitalize ml-2">
-      <%= t('basket.content.title') %>
+      Title
     </h4>
   </div>
 
   <div class="basket-sidebar mt-8 h-4/6 overflow-y-auto pr-4">
+    <%= render partial: "cart/empty_cart_body" %>
     <% current_cart.cart_items.each do |cart_item| %>
       <%= render partial: "cart/item_line", locals: { cart_item: cart_item } %>
     <% end %>
   </div>
 
-  <div class="w-full px-8 pb-4 sm:pb-12 mt-4 absolute right-0 bottom-0">
-    <div class="flex justify-between items-center text-sm text-gray-800 font-medium">
-      <h5>
-        Delivery
-      </h5>
-      <p>₴ 65</p>
-    </div>
-    <div class="w-full h-px bg-gray-300 my-4"></div>
-    <div class="flex justify-between items-center text-sm text-gray-800 font-medium">
-      <h5>
-        <%= t('basket.content.summary') %>
-      </h5>
-       <p>₴ <%= render partial: "cart/total_price" %></p>
-    </div>
-    <div class="w-full h-16 mt-10 button flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium">
-       Payment
-    </div>
-  </div>
+  <%= render partial: "cart/cart_footer_action" %>
 </div>

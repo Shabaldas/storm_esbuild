@@ -24,12 +24,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_cart
-    cart ||= Cart.find_by(id: session[:cart_id])
-
-    return cart unless cart.nil?
-
-    cart = Cart.create
-    session[:cart_id] = cart.id
+    cart = Cart.find_or_create_by(token: cookies[:cart_token])
+    cookies[:cart_token] ||= cart.token
     cart
   end
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Cart < ApplicationRecord
+  has_secure_token
   has_many :cart_items, dependent: :destroy
 
   def total_price
