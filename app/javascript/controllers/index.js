@@ -29,3 +29,6 @@ application.register("dropzone", DropzoneController)
 
 import ModalsController from "./modals_controller"
 application.register("modals", ModalsController)
+
+import AccordionController from "./accordion_controller";
+application.register("accordion", AccordionController);
