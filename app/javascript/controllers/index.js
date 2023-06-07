@@ -29,3 +29,9 @@ application.register("dropzone", DropzoneController)
 
 import ModalsController from "./modals_controller"
 application.register("modals", ModalsController)
+
+import TogglerController from "./toggler_controller"
+application.register("toggler", TogglerController)
+
+import NestedFormController from "./nested_form_controller"
+application.register("nested-form", NestedFormController)
