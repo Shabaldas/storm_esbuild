@@ -14,7 +14,6 @@ module Admin
       @product = Product.new
       @product.build_primary_product_option(product: @product)
       @product.build_secondary_product_option(product: @product)
-      # @product.product_options.first.product_option_values.build(product_option: @product.product_options.first)
     end
 
     def edit; end

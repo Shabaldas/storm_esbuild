@@ -18,5 +18,9 @@ module Admin
     def color_option_value_for_select
       OptionValue.where(option: Option.find_by(measurement: 'color')).map { |option_value| [option_value.value, option_value.id] }
     end
+
+    def size_option_value_for_select
+      OptionValue.where(option: Option.find_by(measurement: 'mm')).map { |option_value| [option_value.value, option_value.id] }
+    end
   end
 end
