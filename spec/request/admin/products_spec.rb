@@ -50,6 +50,12 @@ describe '/admin/products', type: :request do
   end
 
   describe 'GET /admin/products/new' do
+    let(:option) { create(:option, measurement: 'color') }
+
+    before do
+      option
+    end
+
     it 'display new product form' do
       get new_admin_product_path
 
@@ -200,6 +206,11 @@ describe '/admin/products', type: :request do
 
     context 'when invalid params' do
       let(:product_category) { create(:product_category) }
+      let(:option) { create(:option, measurement: 'color') }
+
+      before do
+        option
+      end
 
       it 'displays error message' do
         expect do

@@ -40,8 +40,7 @@ module Admin
                                       primary_product_option_attributes: [:id, :option_id, :primary, :_destroy,
                                                                           { product_option_values_attributes: [:id, :option_value_id, :price, :_destroy] }],
                                       secondary_product_option_attributes: [:id, :option_id, :primary, :_destroy,
-                                                                          { product_option_values_attributes: [:id, :option_value_id, :price, :_destroy] }]
-                                                                        )
+                                                                            { product_option_values_attributes: [:id, :option_value_id, :price, :_destroy] }])
     end
 
     def set_product
