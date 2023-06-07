@@ -5,55 +5,59 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
         </svg>
-        <a href="#" class=" block ml-2 font-base font-medium text-gray-800">
-          Back to shop
-        </a>
+        <%= link_to "Back to shop", products_path, class: "block ml-2 font-base font-medium text-gray-800" %>
       </div>
       <div class="mt-6">
-        <div class="block md:flex md:justify-between items-end font-medium text-gray-800">
-          <div>
-            <p class="text-base font-normal text-metalic-grey">
-              Collectible figurines
+        <%= form_with(url: cart_add_product_path) do |f| %>
+          <div class="block md:flex md:justify-between items-end font-medium text-gray-800">
+            <div>
+              <p class="text-base font-normal text-metalic-grey">
+                <%= @product.product_category.name %>
+              </p>
+              <h4 class="text-2xl pt-1 capitalize">
+                <%= @product.name %>
+              </h4>
+            </div>
+            <p class="text-3xl">
+              ₴ <%= @product.price %>
             </p>
-            <h4 class="text-2xl pt-1 capitalize">
-              Incrediable Hulk
-            </h4>
           </div>
-          <p class="text-3xl">₴ 329</p>
-        </div>
-        <div class="w-full h-px bg-zinc-400 my-3"></div>
-        <div class="mt-1">
-          <p class="text-base metalic-grey">
-            Color
-          </p>
-          <div class="w-full lg:w-4/6 flex justify-between items-center mt-3">
-            <input type="radio" name="model_color" class="w-8 h-8 rounded-full appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400" style="background-color:white; background-image: none; border: none;"/>
-            <input type="radio" name="model_color" class="w-8 h-8 rounded-full appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400" style="background-color:#E9646B; ;background-image: none; border: none;"/>
-            <input type="radio" name="model_color" class="w-8 h-8 rounded-full appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400" style="background-color:#F1C232; background-image: none; border: none;"/>
-            <input type="radio" name="model_color" class="w-8 h-8 rounded-full appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400" style="background-color:#000000; background-image: none; border: none;"/>
-            <input type="radio" name="model_color" class="w-8 h-8 rounded-full appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400" style="background-color:#96E06C; background-image: none; border: none;"/>
-            <input type="radio" name="model_color" class="w-8 h-8 rounded-full appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400" style="background-color:#67ACEC; background-image: none; border: none;"/>
+          <div class="w-full h-px bg-zinc-400 my-3"></div>
+          <div class="mt-1">
+            <% if @product.primary_product_option.present? %>
+              <p class="text-base metalic-grey">
+                Color
+              </p>
+              <div class="w-full lg:w-4/6 flex justify-between items-center mt-3 space-x-4">
+                <% @product.product_colors.each do |option| %>
+                  <div class="">
+                    <input type="radio" class="w-8 h-8 rounded-full appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400" style="border: none;<%= "background-color: #{option.option_value.value}"%>"/>
+                    <label><%= option.option_value.value %></label>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+
+            <p class="text-base mt-6 metalic-grey">
+              Quantity
+            </p>
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <%= f.number_field :quantity, value: 0, min: 1 %>
+
+            <% if @product.secondary_product_option.present? %>
+              <p class="text-base mt-4 metalic-grey">
+                Size
+              </p>
+              <%= f.select :option_value_id,
+                size_option_value_for_select,
+                { include_blank: false },
+                { multiple: false, class: "w-full rounded mt-1" }
+              %>
+            <% end %>
+            <%= f.submit "Add to basket", class: "mt-8 w-full button" %>
           </div>
-          <p class="text-base mt-6 metalic-grey">
-            Quantity
-          </p>
-          <select name="count" class="w-full rounded mt-1">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <p class="text-base mt-4 metalic-grey">
-            Height
-          </p>
-          <select name="height" class="w-full rounded mt-1">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <button class="mt-8 w-full button">
-            Add to basket
-          </button>
-        </div>
+        <% end %>
+        
         <div data-controller="accordion" class="font-base text-gray-800 mt-6">
           <div>
             <div data-action="click->accordion#toggle" data-accordion-target="accTitle" id="acc_btn" data-id="acc_btn1" data-active="false" class="acc_title flex justify-between items-center cursor-pointer">
@@ -96,7 +100,7 @@
     </div>
     <div class="w-full md:w-1/2 flex justify-center items-center md:order-2 order-1">
       <div class="w-2/3">
-        <%= image_tag("shop_img/dummy/trex_skull.png") %>
+        <%= image_tag(@product.main_picture) %>
       </div>
     </div>
   </div>
@@ -105,24 +109,9 @@
   <h4 class="text-2xl text-gray-800 mb-7 font-medium normal-case">Other products</h4>
   <div class="relative w-full overflow-x-auto pb-5">
     <div class="w-[110rem] pr-12 flex justify-between items-center">
-      <div class="w-72 h-80 p-5 flex flex-col bg-dark-blue rounded-3xl">
-        <p class="text-gray-500">
-          Title
-        </p>
-        <div>
-          <div class="w-full h-[185px] my-2">
-            <%= image_tag("shop_img/dummy/skull.png", class:"w-full h-full object-contain mx-auto my-auto") %>
-          </div>
-        </div>
-        <div>
-          <p class="text-white text-base font-medium clamp">
-            Skull
-          </p>
-          <p class="text-xl text-white pt-1">
-            ₴ 329
-          </p>
-        </div>
-      </div>
+      <% @suggest_products.each do |product| %>
+        <%= render partial: "suggest_products", locals: { product: product } %>
+      <% end %>
     </div>
   </div>
 </div>
