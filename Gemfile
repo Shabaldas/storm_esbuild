@@ -5,7 +5,7 @@ ruby '3.1.3'
 
 gem 'active_link_to'
 gem 'ancestry'
-gem 'anyway_config', '~> 2.0'
+gem 'anyway_config', '~> 2.4'
 gem 'cssbundling-rails'
 gem 'dotenv-rails', '~> 2.7'
 gem 'devise'
