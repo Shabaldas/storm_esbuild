@@ -14,5 +14,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @suggest_products = Product.all.sample(5)
   end
 end

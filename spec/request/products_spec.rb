@@ -43,13 +43,18 @@ describe '/products', type: :request do
     it 'redirect to product page' do
       get product_path(product)
 
+      expect(response).to be_successful
       expect(response.body).to include(product.name)
+      expect(response.body).to include(product.product_category.name)
       expect(response.body).to include(product.price.to_s)
+      expect(response.body).to include(url_for(product.main_picture))
       expect(response.body).to include(cart_add_product_path)
+      expect(response.body).to include('Color')
       expect(response.body).to include('Head')
       expect(response.body).to include('Store')
-      expect(response.body).to include('Add to cart')
-      expect(response).to be_successful
+      expect(response.body).to include('Add to basket')
+      expect(response.body).to include('Back to shop')
+      expect(response.body).to include('Other products')
     end
   end
 end

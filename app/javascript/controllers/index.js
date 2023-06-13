@@ -35,3 +35,6 @@ application.register("toggler", TogglerController)
 
 import NestedFormController from "./nested_form_controller"
 application.register("nested-form", NestedFormController)
+
+import AccordionController from "./accordion_controller";
+application.register("accordion", AccordionController);
