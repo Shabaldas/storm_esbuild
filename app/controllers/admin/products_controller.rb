@@ -12,6 +12,8 @@ module Admin
 
     def new
       @product = Product.new
+      @product.build_primary_product_option(product: @product)
+      @product.build_secondary_product_option(product: @product)
     end
 
     def edit; end
@@ -34,7 +36,11 @@ module Admin
     private
 
     def product_params
-      params.require(:product).permit(:name, :description, :product_category_id, :status, :main_picture)
+      params.require(:product).permit(:name, :description, :product_category_id, :price, :status, :main_picture,
+                                      primary_product_option_attributes: [:id, :option_id, :primary, :_destroy,
+                                                                          { product_option_values_attributes: [:id, :option_value_id, :price, :_destroy] }],
+                                      secondary_product_option_attributes: [:id, :option_id, :primary, :_destroy,
+                                                                            { product_option_values_attributes: [:id, :option_value_id, :price, :_destroy] }])
     end
 
     def set_product
