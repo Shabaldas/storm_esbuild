@@ -1,18 +1,20 @@
-<div class="w-72 h-80 p-5 flex flex-col bg-dark-blue rounded-3xl">
-  <p class="text-gray-500">
-    <%= product.product_category.name %>
-  </p>
-  <div>
-    <div class="w-full h-[185px] my-2">
-      <%= image_tag(product.main_picture, class:"w-full h-full object-contain mx-auto my-auto") %>
+<%= link_to product_path(product.id) do %>
+  <div class="w-72 h-80 p-5 flex flex-col bg-dark-blue rounded-3xl">
+    <p class="text-gray-500">
+      <%= product.product_category.name %>
+    </p>
+    <div>
+      <div class="w-full h-[185px] my-2">
+        <%= image_tag(product.main_picture, class:"w-full h-full object-contain mx-auto my-auto") %>
+      </div>
+    </div>
+    <div>
+      <p class="text-white text-base font-medium clamp">
+        <%= product.name %>
+      </p>
+      <p class="text-xl text-white pt-1">
+        ₴ <%= product.price %>
+      </p>
     </div>
   </div>
-  <div>
-    <p class="text-white text-base font-medium clamp">
-      <%= product.name %>
-    </p>
-    <p class="text-xl text-white pt-1">
-      ₴ <%= product.price %>
-    </p>
-  </div>
-</div>
+<% end %>
