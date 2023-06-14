@@ -3,6 +3,9 @@
 class CartItem < ApplicationRecord
   belongs_to :cart
   belongs_to :product
+  has_many :cart_item_option_values, dependent: :destroy
+
+  accepts_nested_attributes_for :cart_item_option_values
 
   after_update_commit do
     broadcast_replace_to cart,
