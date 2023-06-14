@@ -38,3 +38,6 @@ application.register("nested-form", NestedFormController)
 
 import AccordionController from "./accordion_controller";
 application.register("accordion", AccordionController);
+
+import SelectedSizeController from "./selected_size_controller";
+application.register("selected-size", SelectedSizeController);
