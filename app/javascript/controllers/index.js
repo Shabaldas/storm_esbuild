@@ -38,3 +38,6 @@ application.register("nested-form", NestedFormController)
 
 import AccordionController from "./accordion_controller";
 application.register("accordion", AccordionController);
+
+import CalculatorController from "./calculator_controller";
+application.register("calculator", CalculatorController);

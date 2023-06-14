@@ -26,6 +26,7 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 gem 'redis', '~> 4.0'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
+gem 'simple_form'
 gem 'turbo-rails'
 
 # gem "kredis"

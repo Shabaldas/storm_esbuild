@@ -1,0 +1,50 @@
+<div data-controller="calculator">
+  <%= simple_form_for :calculator do |f| %>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <%= f.input :file, as: :file, input_html: { data: { action: "change->calculator#onDropFile" } } %>
+    <div class="flex" >
+      <div class="flex-auto" id="scene" data-target="calculator.scene" data-calculator-target="scene"></div>
+      <div class="flex-auto print-params">
+        <div class="flex space-x-3 colors">
+          <% ApplicationHelper::COLORS.each do |color| %>
+            <div
+              class="w-5 h-5 cursor-pointer rounded-full"
+              style="background-color: #<%= color %>"
+              data-action="click->calculator#setColor"
+              data-calculator-color-param="<%= color %>"
+            ></div>
+          <% end %>
+        </div>
+        <%= f.input :material, collection: ApplicationHelper::MATERIALS, value_method: proc { |m| m.downcase }, input_html: { data: { action: "change->calculator#setMaterial" } } %>
+        <%= f.input :quality, collection: ApplicationHelper::QUALITY, label_method: proc { |q| "#{q} micron" }, input_html: { data: { action: "change->calculator#setQuality" } } %>
+        <div class="flex">
+          <div>Price</div>
+          <div data-calculator-target="price">0</div>
+          <span>₴</span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="flex space-x-3">
+    <div data-calculator-target="name"></div>
+    <div class="flex">
+      <div>Plastic consumption</div>
+      <div data-calculator-target="consumption">0</div>
+      <span>g</span>
+    </div>
+    <div class="flex">
+      <div>Size</div>
+      <div data-calculator-target="size">0 x 0 x 0</div>
+      <span>cm</span>
+    </div>
+    <div class="flex">
+      <div>Model volume</div>
+      <div data-calculator-target="volume">0</div>
+      <span>cm<sup>3</sup></span>
+    </div>
+  </div>
+</div>

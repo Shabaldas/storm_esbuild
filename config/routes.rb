@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:index, :show]
+  resources :calculators, only: :index
 
   mount ApiV1 => '/'
 end
