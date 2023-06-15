@@ -7,7 +7,7 @@
         </svg>
         <%= link_to "Back to shop", products_path, class: "block ml-2 font-base font-medium text-gray-800" %>
       </div>
-      <div class="mt-6">
+      <div data-controller="selected-size" class="mt-6">
         <%= form_with(url: cart_add_product_path) do |f| %>
           <div class="block md:flex md:justify-between items-end font-medium text-gray-800">
             <div>
@@ -18,7 +18,7 @@
                 <%= @product.name %>
               </h4>
             </div>
-            <p class="text-3xl">
+            <p data-selected-size-target="price" class="text-3xl">
               ₴ <%= @product.price %>
             </p>
           </div>
@@ -49,9 +49,12 @@
                 Size
               </p>
               <%= f.select :option_value_id,
-                size_option_value_for_select,
-                { include_blank: false },
-                { multiple: false, class: "w-full rounded mt-1" }
+                size_value_for_select(@product),
+                {},
+                { 
+                  data: { action: "change->selected-size#changePrice" },
+                  class: "w-full h-[38px] rounded mt-1"
+                }
               %>
             <% end %>
             <%= f.submit "Add to basket", class: "mt-8 w-full button" %>

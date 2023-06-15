@@ -34,4 +34,14 @@ class Product < ApplicationRecord
   def product_sizes
     @product_sizes ||= product_option_values.joins(:product_option).where(product_options: { id: secondary_product_option.id })
   end
+
+  def size_and_price
+    product_option_values.joins(:product_option).where(product_options: { id: secondary_product_option.id }).map do |option|
+      {
+        value: option.option_value.value,
+        price: option.price,
+        id: option.option_value.id
+      }
+    end
+  end
 end
