@@ -53,12 +53,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_131655) do
 
   create_table "cart_items", force: :cascade do |t|
     t.bigint "cart_id", null: false
-    t.bigint "product_id", null: false
+    t.string "cartable_type", null: false
+    t.bigint "cartable_id", null: false
     t.integer "quantity", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
-    t.index ["product_id"], name: "index_cart_items_on_product_id"
+    t.index ["cartable_type", "cartable_id"], name: "index_cart_items_on_cartable"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -153,7 +154,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_131655) do
   add_foreign_key "cart_item_option_values", "cart_items", on_delete: :cascade
   add_foreign_key "cart_item_option_values", "product_option_values", on_delete: :cascade
   add_foreign_key "cart_items", "carts"
-  add_foreign_key "cart_items", "products"
   add_foreign_key "option_values", "options", on_delete: :cascade
   add_foreign_key "product_option_values", "option_values", on_delete: :cascade
   add_foreign_key "product_option_values", "product_options", on_delete: :cascade

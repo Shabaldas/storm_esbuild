@@ -7,15 +7,16 @@ class Product < ApplicationRecord
   has_many :options, through: :product_options
   has_many :product_option_values, through: :product_options, dependent: :destroy
   has_many :option_values, through: :product_option_values, source: :option_value
-  has_many :cart_items, dependent: :destroy
+  has_many :cart_items, as: :cartable, dependent: :destroy
   has_many :carts, through: :cart_items
 
   # helpers relationship
   has_one :primary_product_option, ->(_where) { where primary: true }, class_name: 'ProductOption', dependent: :destroy # rubocop:disable  Rails/InverseOf
   has_one :secondary_product_option, ->(_where) { where primary: false }, class_name: 'ProductOption', dependent: :destroy # rubocop:disable  Rails/InverseOf
-
+  
   accepts_nested_attributes_for :product_options, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :product_option_values, reject_if: :all_blank, allow_destroy: true
+
   accepts_nested_attributes_for :primary_product_option, allow_destroy: true
   accepts_nested_attributes_for :secondary_product_option, allow_destroy: true
 
@@ -38,9 +39,9 @@ class Product < ApplicationRecord
   def size_and_price
     product_option_values.joins(:product_option).where(product_options: { id: secondary_product_option.id }).map do |option|
       {
-        value: option.option_value.value,
+        value: option.value,
         price: option.price,
-        id: option.option_value.id
+        id: option.id
       }
     end
   end

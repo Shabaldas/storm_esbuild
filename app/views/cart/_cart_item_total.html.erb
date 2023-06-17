@@ -1,3 +1,5 @@
 <span class="fw-bold" id="<%= dom_id(cart_item, "total_price") %>">
-  ₴ <%= cart_item.total %>
+  <% if cart_item.cartable.is_a?(Product) %>
+    ₴ <%= (cart_item.cart_item_option_values.sum(&:price)) * cart_item.quantity %>
+  <% end %>
 </span>

@@ -8,4 +8,8 @@ module ProductHelper
   def size_value_for_select(product)
     product.size_and_price.map { |option| [option[:value], option[:id], { data: { price: option[:price] } }] }
   end
+
+  def static_first_price(product)
+    size_value_for_select(product).first.last.dig(:data, :price).round
+  end
 end

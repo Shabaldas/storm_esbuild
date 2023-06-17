@@ -1,30 +1,34 @@
 <%= content_tag :div, class: "", id: dom_id(cart_item) do %>
   <%= content_tag :div, class: "flex justify-between items-center relative" do %>
     <div class="flex items-center">
-      <%= button_to carts_remove_path(product_id: cart_item.product.id), data: {turbo: true, "turbo-method": :delete }, method: :delete do %>
+      <%= button_to carts_remove_path(product_id: cart_item.cartable.id), data: {turbo: true, "turbo-method": :delete }, method: :delete do %>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       <% end %>
       <div class="w-16 h-16 bg-gray-300 ml-2">
-        <%= image_tag(url_for(cart_item.product.main_picture)) %>
+        <%= image_tag(url_for(cart_item.cartable.main_picture)) %>
       </div>
       <div class="ml-3">
         <h6 class="text-sm text-gray-800 font-medium">
-          <%= cart_item.product.name %>
+          <%= cart_item.cartable.name %>
         </h6>
         <div class="w-20 flex justify-between items-center mt-2">
-          <%= button_to carts_add_path(product_id: cart_item.product.id), data: { turbo: true } do %>
+          <%= link_to update_quantity_carts_cart_item_path(cart_item, operation: '+'), data: { "turbo-method": :patch }, remote: true do %>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
           <% end %>
           <p><%= render partial: "cart/item_quantity", locals: { cart_item: cart_item } %>x</p>
-          <%= button_to carts_reduce_path(product_id: cart_item.product.id), data: { turbo: true } do %>
+          <%= link_to update_quantity_carts_cart_item_path(cart_item, operation: '-'), data: { "turbo-method": :patch }, remote: true do %>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
             </svg>
           <% end %>
+        </div>
+        <div class="flex items-center text-gray-800 mt-4 text-sm">
+          <div class="w-[22px] h-[22px] rounded-full bg-lime-600 mr-2"></div>
+          <p><%= cart_item.cart_item_option_values.last.product_option_value.option_value.value %></p>
         </div>
       </div>
     </div>

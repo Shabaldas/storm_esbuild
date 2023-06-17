@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   post 'save_phone_number', to: 'static_pages#save_phone_number'
-  post 'cart/add_product'
+  patch 'cart/update_quantity'
 
   namespace :carts do
+    resources :cart_items, only: [:create, :destroy] do
+      patch :update_quantity, on: :member
+    end
+
     resource :add, only: [:create]
     resource :reduce, only: [:create]
     resource :remove, only: [:destroy]

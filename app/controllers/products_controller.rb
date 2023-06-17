@@ -14,6 +14,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @cart_item = @product.cart_items.build
+    @cart_item_option_value = @cart_item.cart_item_option_values.build
     @suggest_products = Product.all.sample(5)
   end
 end

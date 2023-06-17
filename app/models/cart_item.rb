@@ -2,11 +2,13 @@
 
 class CartItem < ApplicationRecord
   belongs_to :cart
-  belongs_to :product
+  belongs_to :cartable, polymorphic: true
+
   has_many :cart_item_option_values, dependent: :destroy
 
   accepts_nested_attributes_for :cart_item_option_values
 
+  # TODO after create commit
   after_update_commit do
     broadcast_replace_to cart,
                          target: "quantity_cart_item_#{id}",
@@ -39,6 +41,6 @@ class CartItem < ApplicationRecord
   end
 
   def total
-    product.price * quantity
+    cartable.price * quantity
   end
 end

@@ -5,6 +5,7 @@ class ProductOption < ApplicationRecord
   belongs_to :option, inverse_of: :product_options
 
   has_many :product_option_values, dependent: :destroy
-
+  
+  delegate :title, :option_values, :slug, :option_type, to: :option
   accepts_nested_attributes_for :product_option_values, allow_destroy: true
 end
