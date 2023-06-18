@@ -9,11 +9,11 @@
         <p class="w-full text-base lg:w-[60%] leading-[26px]">
           Please, provide your phone number and we will answer to all your questions.
         </p>
-        <div class="relative w-full mx-auto lg:mx-0 max-w-[365px] h-[40px] flex items-center mt-6 md:mt-9">
+        <div class="w-full mx-auto lg:mx-0 max-w-[365px] h-[40px] flex items-center mt-6 md:mt-9">
          <% feedback_call ||= @feedback_call %>
          <%= form_with model: [feedback_call], url: save_phone_number_path, method: :post do |f| %>
-            <div class="flex items-center justify-center mt-3">
-              <%= f.phone_field :phone_number, class: "w-80 outline-2 text-blue-800 pl-4 rounded-md", type: "tel", required: "required", placeholder: "+38 (067) 00 00 000" %>
+            <div class="relative flex items-center justify-center mt-3">
+              <%= f.phone_field :phone_number, class: "w-80 outline-2 text-dark-blue pl-4 rounded-md", type: "tel", required: "required", placeholder: "+38 (067) 00 00 000" %>
               <%= f.button class: "absolute right-0 w-12 h-[38px] flex items-center justify-center bg-yellow-500 rounded-r", url: save_phone_number_path, method: :post do %>
                 <p class="text-blue-800">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2A343E" class="w-6 h-6">
