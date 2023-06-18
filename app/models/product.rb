@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   # helpers relationship
   has_one :primary_product_option, ->(_where) { where primary: true }, class_name: 'ProductOption', dependent: :destroy # rubocop:disable  Rails/InverseOf
   has_one :secondary_product_option, ->(_where) { where primary: false }, class_name: 'ProductOption', dependent: :destroy # rubocop:disable  Rails/InverseOf
-  
+
   accepts_nested_attributes_for :product_options, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :product_option_values, reject_if: :all_blank, allow_destroy: true
 

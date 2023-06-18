@@ -8,7 +8,7 @@ class CartItem < ApplicationRecord
 
   accepts_nested_attributes_for :cart_item_option_values
 
-  # TODO after create commit
+  # TODO: after create commit
   after_create_commit do
     broadcast_replace_to cart,
                          target: 'cart_body',
@@ -19,7 +19,7 @@ class CartItem < ApplicationRecord
                         target: 'cart_item',
                         partial: 'cart/item_line',
                         locals: { cart_item: self }
- 
+
     broadcast_replace_to cart,
                          target: 'footer_action',
                          partial: 'cart/cart_footer_action',

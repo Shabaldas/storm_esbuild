@@ -29,8 +29,8 @@ module Carts
 
     def cart_item_params
       params.require(:cart_item)
-            .permit(:cartable_id, cart_item_option_values_attributes: [:id, :product_option_value_id])
-            .merge(quantity: 1, cart_id: current_cart.id)
+        .permit(:cartable_id, cart_item_option_values_attributes: [:id, :product_option_value_id])
+        .merge(quantity: 1, cart_id: current_cart.id)
     end
   end
 end

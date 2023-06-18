@@ -40,10 +40,10 @@ describe '/products', type: :request do
   describe 'GET /show' do
     let(:product) { create(:product) }
     let(:option) { create(:option, measurement: 'mm') }
-    let(:product_option) { create(:product_option, option: option, product: product) }
-    let(:product_option_value) { create(:product_option_value, product_option: product_option) }
+    let(:product_option) { create(:product_option, option:, product:) }
+    let(:product_option_value) { create(:product_option_value, product_option:) }
 
-    before do 
+    before do
       product_option_value
     end
 

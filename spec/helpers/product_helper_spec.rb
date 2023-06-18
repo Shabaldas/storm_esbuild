@@ -35,8 +35,8 @@ describe ProductHelper do
     it 'returns option values for select' do
       expect(size_value_for_select(product)).to eq(
         [
-          ['small', option_value_first.id, { data: { price: 10 } }],
-          ['medium', option_value_second.id, { data: { price: 20 } }]
+          ['small', option_value_first.id, { data: { price: 10.to_f } }],
+          ['medium', option_value_second.id, { data: { price: 20.to_f } }]
         ]
       )
     end
