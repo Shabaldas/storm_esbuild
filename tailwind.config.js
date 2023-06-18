@@ -19,7 +19,6 @@ module.exports = {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-
       black: "#000",
       white: "#fff",
       "dark-blue": "#2A343E",
@@ -33,7 +32,6 @@ module.exports = {
       bordercolor: "#CCCCCC",
       "hover-light": "#F3EFFE",
       labelcolor: "#1a1a1a",
-
       gray: {
         100: "#717171",
         200: "#D4D6DC",
