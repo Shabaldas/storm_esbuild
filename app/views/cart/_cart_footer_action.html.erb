@@ -1,17 +1,18 @@
 <div id="footer_action" class="w-full px-8 pb-4 sm:pb-12 mt-4 absolute right-0 bottom-0">
   <% if current_cart.cart_items.present? %>
-    <div class="w-full h-px bg-gray-300 my-4"></div>
+    <div class="w-full h-px bg-light-grey my-3"></div>
     <div class="flex justify-between items-center text-sm text-gray-800 font-medium">
-      <h5>
+      <h5 class="text-dark-blue">
         <%= t('basket.content.summary') %>
       </h5>
-        <p>₴ <%= render partial: "cart/total_price" %></p>
+      <p>₴
+        <%= render partial: "cart/total_price" %></p>
     </div>
-    <div class="w-full h-16 mt-10 button flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium">
+    <div class="w-full h-16 mt-5 button flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium">
       Payment
     </div>
   <% else %>
-    <%= link_to products_path, class: "w-full h-16 mt-10 button flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium" do %>
+    <%= link_to products_path, class: "w-full h-16 mt-5 button flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 font-medium" do %>
       Back to Products
     <% end %>
   <% end %>

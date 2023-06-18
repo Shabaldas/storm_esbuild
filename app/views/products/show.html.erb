@@ -28,9 +28,9 @@
               <p class="text-base metalic-grey">
                 Color
               </p>
-              <div class="w-full lg:w-4/6 flex justify-between items-center mt-3 space-x-4">
+              <div class="w-full lg:w-4/6 flex items-center mt-3 space-x-4">
                 <% @product.product_colors.each do |option| %>
-                  <div class="">
+                  <div>
                     <input type="radio" class="w-8 h-8 rounded-full appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400" style="border: none;<%= "background-color: #{option.option_value.value}"%>"/>
                     <label><%= option.option_value.value %></label>
                   </div>
@@ -53,7 +53,7 @@
                 {},
                 { 
                   data: { action: "change->selected-size#changePrice" },
-                  class: "w-full h-[38px] rounded mt-1"
+                  class: "w-full h-[40px] rounded mt-1 bg-white"
                 }
               %>
             <% end %>
