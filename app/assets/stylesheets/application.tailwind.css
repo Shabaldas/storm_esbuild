@@ -59,7 +59,7 @@ footer {
 
 /* input */
 
-input {
+input, select {
   width: 100%;
   height: 40px;
   border-radius: 4px;

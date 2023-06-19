@@ -1,19 +1,19 @@
 <%= turbo_stream_from current_cart %>
-<div class="w-screen md:w-[28rem] h-screen bg-white shadow-lg shadow-gray-600 fixed right-0 top-0 pt-6 px-2 md:pl-8 md:pr-5 z-50">
-  <div class="block absolute top-5 right-5">
+<div class="w-screen md:w-[28rem] h-screen bg-white shadow-lg shadow-gray-600 fixed right-0 top-0 py-6 px-2 md:pl-8 md:pr-5 z-50">
+  <div class="block absolute top-6 right-5">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
     </svg>
   </div>
   <div class="flex items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-line join="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2A343E">
+      <path stroke-linecap="round" stroke-line="stroke-line" join="round" stroke-width="2" d="M9 5l7 7-7 7"/>
     </svg>
-    <h4 class="text-base text-gray-800 font-medium capitalize ml-2">
-      Title
+    <h4 class="text-base text-dark-grey font-medium capitalize ml-2">
+      Your basket
     </h4>
   </div>
-  
+
   <%= render partial: "cart/empty_cart_body" %>
 
   <div id="cart_item" class="basket-sidebar mt-8 h-4/6 overflow-y-auto pr-4">
@@ -21,6 +21,5 @@
       <%= render partial: "cart/item_line", locals: { cart_item: cart_item } %>
     <% end %>
   </div>
-
   <%= render partial: "cart/cart_footer_action" %>
 </div>
