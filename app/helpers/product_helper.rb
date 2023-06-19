@@ -6,7 +6,7 @@ module ProductHelper
   end
 
   def size_value_for_select(product)
-    product.size_and_price.map { |option| [option[:value], option[:id], { data: { price: option[:price] } }] }
+    product.size_and_price.map { |option| [option[:value], option[:id], { data: { price: option[:price].to_f } }] }
   end
 
   def static_first_price(product)
