@@ -5,6 +5,19 @@ describe '/admin/product_categories', type: :request do
     login_as(user, scope: :user)
   end
 
+  describe 'GET /admin/product_categories/new' do
+    it 'display new product_category form' do
+      get new_admin_product_category_path
+
+      expect(response).to be_successful
+      expect(response.body).to include('New Product Category')
+      expect(response.body).to include('Name')
+      expect(response.body).to include('Description')
+      expect(response.body).to include('Parent')
+      expect(response.body).to include('Create Product Category')
+    end
+  end
+
   describe 'GET /admin/product_categories' do
     let!(:product_category_first) { create(:product_category, name: 'Home') }
     let!(:product_category_second) { create(:product_category, name: 'Design') }

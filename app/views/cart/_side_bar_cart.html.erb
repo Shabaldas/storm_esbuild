@@ -1,9 +1,8 @@
 <%= turbo_stream_from current_cart %>
 <div class="w-screen md:w-[28rem] h-screen bg-white shadow-lg shadow-gray-600 fixed right-0 top-0 py-6 px-2 md:pl-8 md:pr-5 z-50">
-  <div class="block absolute top-6 right-5">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-    </svg>
+  <div class="block absolute top-6 right-5 flex items-baseline cursor-pointer">
+    <%= image_tag("partials_img/remove_icon.png") %>
+    <p class="text-base text-zinc-500 font-medium ml-2">Clear</p>
   </div>
   <div class="flex items-center">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2A343E">
@@ -13,9 +12,7 @@
       Your basket
     </h4>
   </div>
-
   <%= render partial: "cart/empty_cart_body" %>
-
   <div id="cart_item" class="basket-sidebar mt-8 h-4/6 overflow-y-auto pr-4">
     <% current_cart.cart_items.each do |cart_item| %>
       <%= render partial: "cart/item_line", locals: { cart_item: cart_item } %>
