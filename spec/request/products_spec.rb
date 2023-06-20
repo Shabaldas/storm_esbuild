@@ -39,6 +39,13 @@ describe '/products', type: :request do
 
   describe 'GET /show' do
     let(:product) { create(:product) }
+    let(:option) { create(:option, measurement: 'mm') }
+    let(:product_option) { create(:product_option, option:, product:) }
+    let(:product_option_value) { create(:product_option_value, product_option:) }
+
+    before do
+      product_option_value
+    end
 
     it 'redirect to product page' do
       get product_path(product)
@@ -48,7 +55,7 @@ describe '/products', type: :request do
       expect(response.body).to include(product.product_category.name)
       expect(response.body).to include(product.price.to_s)
       expect(response.body).to include(url_for(product.main_picture))
-      expect(response.body).to include(cart_add_product_path)
+      expect(response.body).to include(carts_cart_items_path)
       expect(response.body).to include('Color')
       expect(response.body).to include('Head')
       expect(response.body).to include('Store')

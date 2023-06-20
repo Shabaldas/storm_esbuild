@@ -5,7 +5,8 @@ module Carts
     def destroy
       return unless product_found?
 
-      cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])
+      product = Product.find_by(id: params[:product_id])
+      cart_item = current_cart.cart_items.find_by(cartable_id: params[:product_id], cartable_type: product.class.name)
       cart_item.destroy
     end
 

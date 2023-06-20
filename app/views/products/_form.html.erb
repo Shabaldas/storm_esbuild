@@ -1,0 +1,49 @@
+<%= form_for(cart_item, url: carts_cart_items_path(product.id), method: :post, data: { controller: "selected-size" }) do |f| %>
+  <%= f.hidden_field :cartable_id, value: product.id %>
+  <div class="block md:flex md:justify-between items-end font-medium text-gray-800">
+    <div>
+      <p class="text-base font-normal text-metalic-grey">
+        <%= product.product_category.name %>
+      </p>
+      <h4 class="text-2xl pt-1 capitalize">
+        <%= product.name %>
+      </h4>
+    </div>
+    <p data-selected-size-target="price" class="text-3xl">
+      ₴ <%= static_first_price(product) %>
+    </p>
+  </div>
+  <div class="w-full h-px bg-zinc-400 my-3"></div>
+    <div class="mt-1">
+      <% if product.primary_product_option.present? %>
+        <p class="text-base metalic-grey">
+          Color
+        </p>
+        <div class="w-full lg:w-4/6 flex items-center mt-3 space-x-4">
+          <% product.product_colors.each do |option| %>
+            <div>
+              <input type="radio" class="w-8 h-8 rounded-full appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400" style="border: none;<%= "background-color: #{option.option_value.value}"%>"/>
+              <label><%= option.option_value.value %></label>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+    <% if product.secondary_product_option.present? %>
+      <p class="text-base mt-4 metalic-grey">
+        Size
+      </p>
+      <%= f.fields_for :cart_item_option_values do |cart_item_option_value| %>
+        <%= cart_item_option_value.select :product_option_value_id,
+          options_for_select(size_value_for_select(product)),
+          {},
+          { 
+            data: { action: "change->selected-size#changePrice" },
+            class: "w-full h-[40px] rounded mt-1 bg-white"
+          }
+        %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= f.submit "Add to basket", class: "mt-8 w-full button" %>
+<% end %>

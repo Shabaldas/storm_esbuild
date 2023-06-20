@@ -2,31 +2,31 @@
   <%= content_tag :div, class: "flex justify-between items-center relative" do %>
     <div class="flex">
       <div class="my-auto h-4">
-        <%= button_to carts_remove_path(product_id: cart_item.product.id), data: {turbo: true, "turbo-method": :delete }, method: :delete do  %>
+        <%= button_to carts_remove_path(product_id: cart_item.cartable.id), method: :delete do %>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         <% end %>
       </div>
       <div class="w-16 h-16 bg-dark-blue ml-2 flex justify-center items-center rounded-[10px]">
-        <%= image_tag(url_for(cart_item.product.main_picture), class:"w-auto h-full") %>
+        <%= image_tag(url_for(cart_item.cartable.main_picture), class:"w-auto h-full") %>
       </div>
       <div class="ml-3">
         <h6 class="text-sm text-dark-blue font-medium">
-          <%= cart_item.product.name %>
+          <%= cart_item.cartable.name %>
         </h6>
       </div>
     </div>
     <div class="w-16 flex flex-col justify-between text-gray-800 font-medium">
       <%= render partial: "cart/cart_item_total", locals: { cart_item: cart_item } %>
       <div class="w-full h-4 flex justify-between items-center mt-6">
-        <%= button_to carts_reduce_path(product_id: cart_item.product.id), data: { turbo: true } do %>
+        <%= link_to update_quantity_carts_cart_item_path(cart_item, operation: "-"), data: { "turbo-method": :patch }, remote: true do %>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mt-2" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"/>
           </svg>
         <% end %>
         <p class="text-sm text-dark-grey"><%= render partial: "cart/item_quantity", locals: { cart_item: cart_item } %>x</p>
-        <%= button_to carts_add_path(product_id: cart_item.product.id), data: { turbo: true } do %>
+        <%= link_to update_quantity_carts_cart_item_path(cart_item, operation: "+"), data: { "turbo-method": :patch }, remote: true do %>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mt-2" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
           </svg>

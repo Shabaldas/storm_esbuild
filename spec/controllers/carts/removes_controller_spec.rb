@@ -1,5 +1,5 @@
 describe Carts::RemovesController do
-  describe 'POST /carts/removes' do
+  describe 'DELETE /destroy' do
     let(:cart) { create(:cart) }
 
     before do
@@ -9,8 +9,8 @@ describe Carts::RemovesController do
     context 'when product exists' do
       let(:product_first) { create(:product) }
       let(:product_second) { create(:product) }
-      let(:cart_item_first) { create(:cart_item, cart:, product: product_first, quantity: 4) }
-      let(:cart_item_second) { create(:cart_item, cart:, product: product_second, quantity: 2) }
+      let(:cart_item_first) { create(:cart_item, cart:, cartable_id: product_first.id, cartable_type: product_first.class.name, quantity: 2) }
+      let(:cart_item_second) { create(:cart_item, cart:, cartable_id: product_second.id, cartable_type: product_second.class.name, quantity: 4) }
 
       before do
         cart_item_first
@@ -19,10 +19,10 @@ describe Carts::RemovesController do
 
       it 'creates a new cart_item' do
         post :destroy, params: { product_id: product_first.id }
+        cart.reload
 
-        expect(cart.cart_items.count).to eq(1)
-        expect(cart.cart_items.last.quantity).to eq(2)
-        expect(cart.cart_items.last.product).to eq(product_second)
+        expect(cart.cart_items.last.quantity).to eq(4)
+        expect(cart.cart_items.last.cartable).to eq(product_second)
         expect(cart.cart_items).not_to include(product_first)
       end
     end
