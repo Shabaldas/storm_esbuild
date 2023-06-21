@@ -2,4 +2,7 @@
   <% if cart_item.cartable.is_a?(Product) %>
     ₴ <%= (cart_item.cart_item_option_values.sum(&:price)) * cart_item.quantity %>
   <% end %>
+  <% if cart_item.cartable.is_a?(PrintModelAttribute) %>
+    ₴ <%= cart_item.cartable.subtotal_price * cart_item.quantity %>
+  <% end %>
 </span>

@@ -15,9 +15,7 @@
             <%= active_link_to t('global.header.store'), products_path, class: "text-black cursor-pointer" %>
           </li>
           <li class="px-4 cursor-pointer">
-            <% if policy(:admin).access? %>
-              <%= active_link_to "Calculator", calculators_path, class: "text-black cursor-pointer" %>
-            <% end %>
+            <%= active_link_to "Calculator", calculator_path, class: "text-black cursor-pointer" %>
           </li>
           <li class="px-4 cursor-pointer"></li>
         </ul>

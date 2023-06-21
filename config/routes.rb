@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   post 'save_phone_number', to: 'static_pages#save_phone_number'
   patch 'cart/update_quantity'
+  get :calculator, to: 'print_models#new', as: :calculator
 
   namespace :carts do
     resources :cart_items, only: [:create, :destroy] do
@@ -20,7 +21,9 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:index, :show]
-  resources :calculators, only: :index
+  resources :print_models, only: [] do
+    post :manage, on: :collection
+  end
 
   mount ApiV1 => '/'
 end

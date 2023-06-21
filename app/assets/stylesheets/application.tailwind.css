@@ -143,8 +143,6 @@ input, select {
   color: #fc0f03;
 }
 
-
-
 .clamp {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -155,4 +153,33 @@ input, select {
 .active {
   border-bottom: 2px solid rgb(250 204 21);
   padding-bottom: 3px;
+}
+
+#scene > canvas {
+  border-radius: 1rem;
+}
+
+.filling-container {
+  position: relative;
+  width: 65%;
+}
+#filling_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #f1c232;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+#filling_progressBar {
+  width: 45%;
+  height: 5px;
+  background-color: #f1c232;
+  border-radius: 3px;
+  position: absolute;
+  top: 12px;
+  left: 0;
+  z-index: 0;
 }
