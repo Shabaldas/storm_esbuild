@@ -1,4 +1,3 @@
 FactoryBot.define do
-  factory :print_model do
-  end
+  factory :print_model
 end

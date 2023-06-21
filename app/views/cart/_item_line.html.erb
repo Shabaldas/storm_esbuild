@@ -8,9 +8,19 @@
           </svg>
         <% end %>
       </div>
-      <div class="w-16 h-16 bg-dark-blue ml-2 flex justify-center items-center rounded-[10px]">
-        <%= image_tag(url_for(cart_item.cartable.main_picture), class:"w-auto h-full") %>
-      </div>
+
+      <% if cart_item.cartable.is_a?(Product) %>
+        <div class="w-16 h-16 bg-dark-blue ml-2 flex justify-center items-center rounded-[10px]">
+          <%= image_tag(url_for(cart_item.cartable.main_picture), class: "w-auto h-full") %>
+        </div>
+      <% end %>
+
+      <% if cart_item.cartable.is_a?(PrintModelAttribute) %>
+        <div class="w-16 h-16 ml-2 flex justify-center items-center rounded-[10px]">
+          <%= image_tag('shop_img/stl_logo.png', class: "w-auto h-full") %>
+        </div>
+      <% end %>
+
       <div class="ml-3">
         <h6 class="text-sm text-dark-blue font-medium">
           <%= cart_item.cartable.name %>

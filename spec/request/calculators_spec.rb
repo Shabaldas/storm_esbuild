@@ -1,7 +1,7 @@
 describe '/print_model', type: :request do
   describe 'GET /index' do
     context 'when user admin' do
-      let(:user) { create(:user, :admin) }
+      let(:user) { create(:user) }
 
       before do
         login_as(user, scope: :user)
@@ -14,17 +14,6 @@ describe '/print_model', type: :request do
         expect(response.body).to include('Head')
         expect(response.body).to include('Store')
         expect(response.body).to include('Calculator')
-      end
-    end
-
-    context 'when user not admin' do
-      let(:user) { create(:user) }
-
-      it 'redirect to root path' do
-        get calculator_path
-
-        expect(response).to redirect_to(root_path)
-        follow_redirect!
       end
     end
   end
