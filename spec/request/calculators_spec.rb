@@ -1,4 +1,4 @@
-describe '/calculators', type: :request do
+describe '/print_model', type: :request do
   describe 'GET /index' do
     context 'when user admin' do
       let(:user) { create(:user, :admin) }
@@ -8,7 +8,7 @@ describe '/calculators', type: :request do
       end
 
       it 'dispaly calculators page' do
-        get calculators_path
+        get calculator_path
 
         expect(response).to be_successful
         expect(response.body).to include('Head')
@@ -21,7 +21,7 @@ describe '/calculators', type: :request do
       let(:user) { create(:user) }
 
       it 'redirect to root path' do
-        get calculators_path
+        get calculator_path
 
         expect(response).to redirect_to(root_path)
         follow_redirect!

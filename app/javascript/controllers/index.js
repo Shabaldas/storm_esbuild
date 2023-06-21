@@ -44,3 +44,9 @@ application.register("selected-size", SelectedSizeController);
 
 import CalculatorController from "./calculator_controller";
 application.register("calculator", CalculatorController);
+
+import SidebarController from "./sidebar_controller";
+application.register("sidebar", SidebarController);
+
+import UploadModelController from "./upload_model_controller";
+application.register("upload-model", UploadModelController);
