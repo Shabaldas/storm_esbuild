@@ -22,10 +22,10 @@
                 <p class="text-base text-gray-500 text-center px-2 w-[220px]">
                   <%= t("calculator.model.format_explaining") %>
                 </p>
-                <button class="relative p-4 mt-10 bg-yellow-400 rounded-lg text-base text-center font-medium uppercase cursor-pointer sm:text-xl">
+                <button class="relative p-4 mt-10 bg-yellow-400 rounded-lg text-base text-center font-medium uppercase cursor-pointer sm:text-xl py-2 rounded w-full button w-full md:max-w-[212px]">
                   <%= f.input :file, as: :file, label: false, input_html: { id: "file", accept: ".stl", required: true, class: "w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer", data: { action: "change->calculator#onDropFile" } } %>
                   <p>
-                    <%= t("calculator.btns.upload_model") %>
+                    Upload Model
                   </p>
                 </button>
               </div>
@@ -66,10 +66,10 @@
                       <%= image_tag("calculator_img/cube.png") %>
                     </div>
                     <h4>
-                      <%= t("calculator.subtitles.characteristics") %>
+                      Characteristics
                     </h4>
                   </div>
-                  <button style="border: blue" class="w-full lg:w-1/4 h-14 lg:h-12 change-model flex lg:justify-center items-center mb-8 lg:mb-0 px-4 py-2 border-2 border-zinc-800 rounded-xl font-medium uppercase relative">
+                  <button style="border: blue" class="w-full lg:w-1/4 h-14 lg:h-12 change-model flex lg:justify-center items-center mb-8 lg:mb-0 px-4 py-2 border-2 border-zinc-800 rounded-xl font-medium uppercase relative py-2 rounded w-full button w-full md:max-w-[212px]">
                     <%= f.input :file, as: :file, label: false, input_html: { id: "file", accept: ".stl", required: true, class: "w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer", data: { action: "change->calculator#onDropFile" } } %>
                     <div class="flex items-center mx-auto">
                       <p class="mr-2">
@@ -200,7 +200,7 @@
                         <%= t("calculator.settings.price_placeholder", price: "від ₴ 1") %>
                       </h4>
                     </div>
-                    <button class="w-full h-14 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer">
+                    <button class="w-full h-14 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer py-2 rounded w-full button w-full md:max-w-[212px]">
                       <%= t("calculator.btns.order_print") %>
                     </button>
                   </div>

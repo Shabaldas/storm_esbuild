@@ -3,17 +3,18 @@
 module Carts
   class RemovesController < ApplicationController
     def destroy
-      return unless product_found?
+      cart_item = current_cart.cart_items.find_by(id: params[:cart_item])
 
-      product = Product.find_by(id: params[:product_id])
-      cart_item = current_cart.cart_items.find_by(cartable_id: params[:product_id], cartable_type: product.class.name)
-      cart_item.destroy
-    end
-
-    private
-
-    def product_found?
-      Product.exists?(params[:product_id])
+      if cart_item.cartable.is_a?(Product)
+        cart_item.destroy
+      else
+        print_model = cart_item.cartable.print_model
+        if print_model.print_model_attributes.one?
+          print_model.destroy
+        else
+          cart_item.cartable.destroy
+        end
+      end
     end
   end
 end

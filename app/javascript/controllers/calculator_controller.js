@@ -28,7 +28,7 @@ export default class extends Controller {
     this.containerWidth = this.uploadContainerTarget.clientWidth
     this.containerHeight = this.uploadContainerTarget.clientHeight
     this.autoRotate = true
-    this.grid = true
+    this.grid = false
     this.objectHeigh = 0
   }
   
@@ -89,9 +89,9 @@ export default class extends Controller {
     this.grid = !this.grid;
 
     if (this.grid) {
-      this.setHelpers()
-    } else {
       this.removeHelpers()
+    } else {
+      this.setHelpers()
     }
   }
 
@@ -237,6 +237,8 @@ export default class extends Controller {
       this.stlObject.rotateX(-Math.PI / 2)
       this.stlObject.name = 'currentObject'
       this.scene.add(this.stlObject)
+      this.setHelpers()
+      axesRenderer.render(this.axesScene, this.axesCamera)
     }, false);
     if (reader.readAsBinaryString !== undefined) {
       reader.readAsBinaryString(stlFile)
