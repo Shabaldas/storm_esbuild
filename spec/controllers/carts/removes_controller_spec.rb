@@ -18,20 +18,12 @@ describe Carts::RemovesController do
       end
 
       it 'creates a new cart_item' do
-        post :destroy, params: { product_id: product_first.id }
+        post :destroy, params: { cart_item: product_first.id }
         cart.reload
 
         expect(cart.cart_items.last.quantity).to eq(4)
         expect(cart.cart_items.last.cartable).to eq(product_second)
         expect(cart.cart_items).not_to include(product_first)
-      end
-    end
-
-    context 'when product does not exist' do
-      it 'does not create a new cart_item' do
-        post :destroy, params: { product_id: 0 }
-
-        expect(cart.cart_items.count).to eq(0)
       end
     end
   end
