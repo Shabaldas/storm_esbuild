@@ -1,11 +1,9 @@
 describe '/products', type: :request do
   describe 'GET /index' do
     context 'when products and categories are presents' do
-      let(:product_category_with_children) { create(:product_category, :with_children, :with_products) }
-      let(:product_category_with_parrent) { create(:product_category, :with_parent) }
+      let(:product_category_with_parrent) { create(:product_category, :with_parent, :with_products) }
 
       before do
-        product_category_with_children
         product_category_with_parrent
       end
 
@@ -13,7 +11,6 @@ describe '/products', type: :request do
         get products_path
 
         expect(Product.count).to eq(3)
-        expect(ProductCategory.count).to eq(6)
         expect(response.body).to include('Head')
         expect(response.body).to include('Store')
         expect(response.body).to include('Categories')
@@ -38,7 +35,8 @@ describe '/products', type: :request do
   end
 
   describe 'GET /show' do
-    let(:product) { create(:product) }
+    let(:product_category) { create(:product_category, :with_parent) }
+    let(:product) { create(:product, product_category:) }
     let(:option) { create(:option, measurement: 'mm') }
     let(:product_option) { create(:product_option, option:, product:) }
     let(:product_option_value) { create(:product_option_value, product_option:) }

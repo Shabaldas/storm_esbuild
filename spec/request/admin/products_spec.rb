@@ -6,7 +6,8 @@ describe '/admin/products', type: :request do
   end
 
   describe 'GET /admin/products' do
-    let!(:products) { create_list(:product, 2) }
+    let(:product_category) { create(:product_category, :with_parent) }
+    let!(:products) { create_list(:product, 2, product_category:) }
 
     it 'display all products' do
       get admin_products_path
@@ -37,7 +38,8 @@ describe '/admin/products', type: :request do
   end
 
   describe 'GET /admin/products/:id' do
-    let(:product) { create(:product) }
+    let(:product_category) { create(:product_category, :with_parent) }
+    let(:product) { create(:product, product_category:) }
 
     it 'display product' do
       get admin_product_path(product)
@@ -70,7 +72,7 @@ describe '/admin/products', type: :request do
   end
 
   describe 'GET /admin/products/:id/edit' do
-    let(:product_category) { create(:product_category) }
+    let(:product_category) { create(:product_category, :with_parent) }
     let(:product) { create(:product, product_category:) }
 
     it 'display edit product form' do
@@ -83,7 +85,7 @@ describe '/admin/products', type: :request do
 
   describe 'POST /admin/products' do
     context 'when valid params' do
-      let(:product_category) { create(:product_category, name: 'Home') }
+      let(:product_category) { create(:product_category, :with_parent, name: 'Home') }
       let(:main_picure) { './spec/fixtures/files/dummy.png' }
 
       context 'when simple product' do
@@ -246,7 +248,7 @@ describe '/admin/products', type: :request do
   end
 
   describe 'DELETE /admin/products/:id' do
-    let!(:product_category) { create(:product_category) }
+    let!(:product_category) { create(:product_category, :with_parent) }
     let!(:product) { create(:product, product_category:) }
 
     it 'deletes a product' do

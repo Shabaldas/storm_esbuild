@@ -37,7 +37,7 @@ module DatabaseSeeds
 
       def seed_size_product_options(option, product)
         option.option_values.pluck(:value).each.with_index(1) do |option_value, index|
-          product.product_options.find_or_create_by(option:).product_option_values.find_or_create_by!(
+          product.product_options.find_or_create_by(option:, primary: false).product_option_values.find_or_create_by!(
             option_value: option.option_values.find_by(value: option_value),
             price: 10.0 * index
           )
