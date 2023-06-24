@@ -5,6 +5,8 @@ module Carts
     def destroy
       cart_item = current_cart.cart_items.find_by(id: params[:cart_item])
 
+      return if cart_item.nil?
+
       if cart_item.cartable.is_a?(Product)
         cart_item.destroy
       else

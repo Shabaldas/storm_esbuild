@@ -8,7 +8,7 @@ RSpec.describe 'Products', type: :request do
         get '/v1/products'
       end
 
-      xit 'returns all product with has_more option' do
+      xit 'returns all product with has_more option' do # rubocop:disable RSpec/PendingWithoutReason
         expect(json_response[:data].count).to eq(50)
         expect(json_response[:has_more]).to be(true)
         expect(response).to have_http_status(:success)
@@ -25,7 +25,7 @@ RSpec.describe 'Products', type: :request do
         get '/v1/products', params: { before: before_product.id }
       end
 
-      xit 'returns all product with after option' do
+      xit 'returns all product with after option' do # rubocop:disable RSpec/PendingWithoutReason
         expect(response).to have_http_status(:success)
         expect(json_response[:data].pluck(:id).map(&:to_i)).to all(be < before_product.id)
       end
@@ -41,7 +41,7 @@ RSpec.describe 'Products', type: :request do
         get '/v1/products', params: { after: after_product.id }
       end
 
-      xit 'returns all product with after option' do
+      xit 'returns all product with after option' do # rubocop:disable RSpec/PendingWithoutReason
         expect(response).to have_http_status(:success)
         expect(json_response[:data].pluck(:id).map(&:to_i)).to all(be > after_product.id)
       end

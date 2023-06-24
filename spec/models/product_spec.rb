@@ -17,7 +17,7 @@ RSpec.describe Product do
 
     it 'only allows png file' do
       product_category = create(:product_category, :with_parent)
-      product = build(:product, product_category: product_category)
+      product = build(:product, product_category:)
       product.main_picture = {
         io: File.new('./spec/fixtures/files/dummy.png'),
         filename: 'dummy.png'
@@ -28,7 +28,7 @@ RSpec.describe Product do
     describe 'custom validations' do
       describe '#parent_product_validation' do
         let(:product_category) { create(:product_category) }
-        let(:product) { build(:product, product_category: product_category) }
+        let(:product) { build(:product, product_category:) }
 
         it 'returns error if product category is parent' do
           expect(product).to be_invalid
