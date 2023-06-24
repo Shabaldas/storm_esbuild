@@ -6,7 +6,8 @@ RSpec.describe CartItem do
   end
 
   describe '#total' do
-    let(:product) { create(:product, price: 10) }
+    let(:product_category) { create(:product_category, :with_parent) }
+    let(:product) { create(:product, product_category:, price: 10) }
     let(:cart_item) { create(:cart_item, quantity: 2, cartable_id: product.id, cartable_type: product.class.name) }
     let(:product_option) { create(:product_option, product:, primary: true) }
     let(:product_option_value) { create(:product_option_value, product_option:) }

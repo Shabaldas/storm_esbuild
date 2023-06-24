@@ -23,6 +23,7 @@ class Product < ApplicationRecord
   enum status: { inactive: 0, active: 1 }
 
   validates :name, :description, :main_picture, presence: true
+  validate :parent_product_validation
 
   # API scopes
   scope :before, ->(id) { where('products.id < ?', id).order(id: :desc) if id.present? }
@@ -33,16 +34,20 @@ class Product < ApplicationRecord
   end
 
   def product_sizes
-    @product_sizes ||= product_option_values.joins(:product_option).where(product_options: { id: secondary_product_option.id })
+    @product_sizes ||= product_option_values.joins(:product_option).where(product_options: { id: secondary_product_option&.id })
   end
 
   def size_and_price
-    product_option_values.joins(:product_option).where(product_options: { id: secondary_product_option.id }).map do |option|
+    product_sizes.map do |option|
       {
         value: option.value,
         price: option.price,
         id: option.id
       }
     end
+  end
+
+  def parent_product_validation
+    errors.add(:base, 'Parent category can not have products') if product_category&.parent.nil?
   end
 end

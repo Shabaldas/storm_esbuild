@@ -16,17 +16,30 @@ RSpec.describe Product do
     it { is_expected.to validate_presence_of(:description) }
 
     it 'only allows png file' do
-      product = build(:product)
+      product_category = create(:product_category, :with_parent)
+      product = build(:product, product_category: product_category)
       product.main_picture = {
         io: File.new('./spec/fixtures/files/dummy.png'),
         filename: 'dummy.png'
       }
       expect(product).to be_valid
     end
+
+    describe 'custom validations' do
+      describe '#parent_product_validation' do
+        let(:product_category) { create(:product_category) }
+        let(:product) { build(:product, product_category: product_category) }
+
+        it 'returns error if product category is parent' do
+          expect(product).to be_invalid
+          expect(product.errors[:base]).to include('Parent category can not have products')
+        end
+      end
+    end
   end
 
   describe '#product_colors' do
-    let(:product_category) { create(:product_category) }
+    let(:product_category) { create(:product_category, :with_parent) }
     let(:product) { create(:product, product_category:) }
     let(:product_option) { create(:product_option, product:, primary: true) }
     let!(:product_option_value) { create(:product_option_value, product_option:) }
@@ -37,7 +50,7 @@ RSpec.describe Product do
   end
 
   describe '#product_sizes' do
-    let(:product_category) { create(:product_category) }
+    let(:product_category) { create(:product_category, :with_parent) }
     let(:product) { create(:product, product_category:) }
     let(:product_option) { create(:product_option, product:, primary: false) }
     let!(:product_option_value) { create(:product_option_value, product_option:) }

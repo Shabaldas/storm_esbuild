@@ -4,7 +4,8 @@ RSpec.describe DatabaseSeeds::Dummy::ProductOptionsSeed do
     let!(:color_option) { create(:option, title: 'Color', measurement: :color) }
     let(:color_option_value) { create(:option_value, option: color_option) }
     let(:size_option_value) { create(:option_value, option: size_option) }
-    let(:products) { create_list(:product, 45) }
+    let(:product_category) { create(:product_category, :with_parent) }
+    let(:products) { create_list(:product, 45, product_category:) }
 
     before do
       products

@@ -1,7 +1,7 @@
 RSpec.describe DatabaseSeeds::Dummy::ProductsSeed do
   describe '#execute' do
-    let!(:parent_category) { create(:product_category) }
-    let!(:child_category) { create(:product_category, parent: parent_category) }
+    let!(:parent_category) { create(:product_category, name: 'Parent category') }
+    let!(:child_category) { create(:product_category, name: 'Child category', parent: parent_category) }
 
     context 'when executing seed' do
       before { described_class.new.execute }
@@ -11,7 +11,7 @@ RSpec.describe DatabaseSeeds::Dummy::ProductsSeed do
       end
 
       it 'creates 5 products for parent category' do
-        expect(parent_category.products.count).to eq(5)
+        expect(parent_category.products.count).to eq(0)
       end
 
       it 'creates unique ids for products' do

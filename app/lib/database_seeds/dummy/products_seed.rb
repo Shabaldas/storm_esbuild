@@ -6,10 +6,8 @@ module DatabaseSeeds
       ARRAY_OF_PICTURES = ['bench', 'groot', 'lamp', 'model1', 'phone_holder', 'pokemon', 'skull', 'trex_skull', 'trex_toy'].freeze
 
       def execute
-        ProductCategory.all.each do |category|
-          times = category.has_parent? ? 10 : 5
-
-          times.times do |product_id|
+        ProductCategory.only_children.each do |category|
+          10.times do |product_id|
             next if does_exist?((category.id.to_s + product_id.to_s).to_i)
 
             category.products.create!(

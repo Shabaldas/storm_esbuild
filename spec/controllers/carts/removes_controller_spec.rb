@@ -1,14 +1,15 @@
 describe Carts::RemovesController do
   describe 'DELETE /destroy' do
-    let(:cart) { create(:cart) }
+    let!(:cart) { create(:cart) }
 
     before do
       allow(controller).to receive(:current_cart).and_return(cart)
     end
 
     context 'when product exists' do
-      let(:product_first) { create(:product) }
-      let(:product_second) { create(:product) }
+      let(:product_category) { create(:product_category, :with_parent) }
+      let(:product_first) { create(:product, product_category:) }
+      let(:product_second) { create(:product, product_category:) }
       let(:cart_item_first) { create(:cart_item, cart:, cartable_id: product_first.id, cartable_type: product_first.class.name, quantity: 2) }
       let(:cart_item_second) { create(:cart_item, cart:, cartable_id: product_second.id, cartable_type: product_second.class.name, quantity: 4) }
 

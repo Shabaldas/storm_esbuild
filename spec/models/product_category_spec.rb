@@ -12,7 +12,7 @@ RSpec.describe ProductCategory do
   end
 
   describe '.create category with products' do
-    let(:product_category) { create(:product_category, :with_products) }
+    let(:product_category) { create(:product_category, :with_parent, :with_products) }
 
     it 'return products count' do
       expect(product_category.products.count).to eq(3)
