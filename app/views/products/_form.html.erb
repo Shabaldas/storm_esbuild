@@ -19,7 +19,7 @@
   </div>
   <div class="w-full h-px bg-zinc-400 my-3"></div>
     <div class="mt-1">
-      <% if product.primary_product_option.present? %>
+      <% if product.primary_product_option.present? && product.product_colors.any? %>
         <p class="text-base metalic-grey">
           Color
         </p>
@@ -33,7 +33,7 @@
         </div>
       <% end %>
 
-    <% if product.secondary_product_option.present? %>
+    <% if product.secondary_product_option.present? && product.size_and_price.any? %>
       <p class="text-base mt-4 metalic-grey">
         Size
       </p>

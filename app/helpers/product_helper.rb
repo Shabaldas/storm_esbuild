@@ -12,4 +12,8 @@ module ProductHelper
   def static_first_price(product)
     size_value_for_select(product).first.last.dig(:data, :price).round
   end
+
+  def products_count_for_parent_category(parent_category)
+    parent_category.children.sum { |category| category.products.count }
+  end
 end
