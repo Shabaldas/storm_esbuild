@@ -15,4 +15,23 @@ describe ProductHelper do
       )
     end
   end
+
+  describe '#products_count_for_parent_category' do
+    delegate :products_count_for_parent_category, to: :helper
+
+    let!(:product_category_parent) { create(:product_category, name: 'Parent') }
+    let!(:product_category_first) { create(:product_category, name: 'Home', parent: product_category_parent) }
+    let!(:product_category_second) { create(:product_category, name: 'Design', parent: product_category_parent) }
+    let(:product_first) { create(:product, product_category: product_category_first) }
+    let(:product_second) { create(:product, product_category: product_category_second) }
+
+    before do
+      product_first
+      product_second
+    end
+
+    it 'returns all products count for parent category' do
+      expect(products_count_for_parent_category(product_category_parent)).to eq(2)
+    end
+  end
 end

@@ -4,6 +4,9 @@ module Carts
   class CartItemsController < ApplicationController
     def create
       product = Product.find_by(id: cart_item_params[:cartable_id])
+
+      return if product.blank? || cart_item_params['cart_item_option_values_attributes'].nil?
+
       option_ids = cart_item_params['cart_item_option_values_attributes'].values.map { |h| h['product_option_value_id'].to_i }
       current_items = current_cart.cart_items.where(cartable_id: product.id, cartable_type: product.class.name).find do |key|
         key.cart_item_option_values.pluck(:product_option_value_id) == option_ids

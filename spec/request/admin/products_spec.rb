@@ -220,7 +220,7 @@ describe '/admin/products', type: :request do
             product: {
               name: '',
               description: '',
-              product_category_id: '',
+              product_category: product_category.id,
               status: '',
               main_picture: nil,
               price: nil,
@@ -243,6 +243,7 @@ describe '/admin/products', type: :request do
         expect(response.body).to include(html_escape("Description can't be blank"))
         expect(response.body).to include(html_escape("Main picture can't be blank"))
         expect(response.body).to include('Product category must exist')
+        expect(response.body).to include('Parent category can not have products')
       end
     end
   end

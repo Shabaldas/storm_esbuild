@@ -1,16 +1,33 @@
 describe Admin::ProductHelper do
-  describe '#product_categories_for_select' do
+  describe '#product_categories_for_categories_select' do
     delegate :product_categories_for_select, to: :helper
     let!(:product_category_first) { create(:product_category, name: 'Home') }
     let!(:product_category_second) { create(:product_category, name: 'Design') }
 
     it 'returns product categories for select' do
-      expect(product_categories_for_select).to eq(
+      expect(product_categories_for_categories_select).to eq(
         [
           ['Home', product_category_first.id],
           ['Design', product_category_second.id]
         ]
       )
+    end
+  end
+
+  describe '#product_categories_for_product_select' do
+    delegate :product_categories_for_product_select, to: :helper
+    let!(:product_category_parent) { create(:product_category, name: 'Parent') }
+    let!(:product_category_first) { create(:product_category, :with_parent, name: 'Home') }
+    let!(:product_category_second) { create(:product_category, :with_parent, name: 'Design') }
+
+    it 'returns product categories for select' do
+      expect(product_categories_for_product_select).to eq(
+        [
+          ['Home', product_category_first.id],
+          ['Design', product_category_second.id]
+        ]
+      )
+      expect(product_categories_for_product_select).not_to include(['Parent', product_category_parent.id])
     end
   end
 

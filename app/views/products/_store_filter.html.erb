@@ -9,7 +9,7 @@
               <div class="form-check">
                 <%= check_box_tag("q[product_category_name_eq_any][]", category.name, (true if @q.product_category_name_eq_any.try(:include?, category.name)), data: { "checkbox-family-target" => "checkbox" } ) %>
                 <label><%= category.name %></label>
-                <label><%= category.products.count %></label>
+                <label><%= products_count_for_parent_category(category) %></label>
               </div>
             </div>
             <% if category.children.any? %>
