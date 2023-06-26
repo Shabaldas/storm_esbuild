@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: 'dashboard#index', as: :dashboard
     resources :products, except: [:update]
-    resources :product_categories, except: [:update]
+    resources :product_categories, only: [:index, :show, :new, :edit, :create, :update, :destroy]
     resources :feedback_calls, only: [:index]
   end
   devise_for :users, controllers: { registrations: 'users/registrations' }

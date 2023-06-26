@@ -12,7 +12,7 @@
     <div class="form-group">
       <%= form.label :product_category, as: "Product Category", class: "form-label"  %>
       <%= form.select :product_category_id,
-                      product_categories_for_select,
+                      product_categories_for_product_select,
                       { class: "", include_blank: false },
                       { multiple: false, data: { controller: "select" }}
       %>

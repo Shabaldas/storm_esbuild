@@ -171,6 +171,42 @@ describe '/admin/product_categories', type: :request do
     end
   end
 
+  describe 'PUT /admin/product_categories/:id' do
+    let!(:product_category) { create(:product_category, name: 'Home') }
+
+    context 'when valid params' do
+      it 'update the product category' do
+        put admin_product_category_path(product_category), params: {
+          product_category: {
+            name: 'World',
+            description: 'Product Category description'
+          }
+        }
+        expect(response).to redirect_to(admin_product_categories_path)
+        follow_redirect!
+        expect(response.body).to include('Product category was successfully updated.')
+        expect(product_category.reload.name).to eq('World')
+        expect(product_category.reload.description).to eq('Product Category description')
+      end
+    end
+
+    context 'when invalid params' do
+      it 'display error message' do
+        put admin_product_category_path(product_category), params: {
+          product_category: {
+            name: '',
+            description: ''
+          }
+        }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.body).to include('Edit Product Category')
+        expect(response.body).to include(html_escape("Name can't be blank"))
+        expect(response.body).to include(html_escape("Description can't be blank"))
+      end
+    end
+  end
+
   describe 'DELETE /admin/product_categories/:id' do
     let!(:product_category) { create(:product_category, name: 'Home') }
 
