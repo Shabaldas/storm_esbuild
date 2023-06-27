@@ -50,3 +50,6 @@ application.register("sidebar", SidebarController);
 
 import UploadModelController from "./upload_model_controller";
 application.register("upload-model", UploadModelController);
+
+import PrintModelColorsController from "./print_model_colors_controller";
+application.register("print-model-colors", PrintModelColorsController);
