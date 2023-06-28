@@ -68,8 +68,10 @@
                                                   label: false, 
                                                   collection: ApplicationHelper::MATERIALS,
                                                   value_method: proc { |m| m.downcase }, 
+                                                  prompt: "Select material",
                                                   input_html: 
                                                     { 
+                                                      include_blank: false,
                                                       class: "w-full rounded", 
                                                       data: { action: "change->calculator#setMaterial change->print-model-colors#changeColor" } 
                                                     }, 
@@ -83,9 +85,11 @@
                         <%= attribute_field.input :quality, 
                                                   label: false, 
                                                   collection: ApplicationHelper::QUALITY, 
+                                                  prompt: "Select quality",
                                                   label_method: proc { |q| "#{q} micron" }, 
                                                   input_html: 
                                                     { 
+                                                      include_blank: false,
                                                       class: "w-full rounded", 
                                                       data: { action: "change->calculator#setQuality" } 
                                                     }, 

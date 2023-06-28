@@ -17,7 +17,6 @@ export default class extends Controller {
     const selectedMaterial = selector.options[selector.selectedIndex].value.toLowerCase();
     const colors = this.selectColorByMaterial[selectedMaterial];
     const replacedElement = document.getElementById("staticColors");
-  
     // Remove previous color options
     while (replacedElement.firstChild) {
       replacedElement.firstChild.remove();
@@ -40,11 +39,11 @@ export default class extends Controller {
   // Dummy material colors
   get selectColorByMaterial() {
     return {
-      pla: ["FFFFFF", "96E06C", "67ACEC", "5e36a2"],
-      abs: ["96E06C", "67ACEC", "5e36a2"],
-      pet: ["67ACEC", "5e36a2"],
-      nylon: ["FFFFFF"],
-      elastan: ["FFFFFF", "5e36a2"]
+      pla: ["343434", "000000", "808080", "008000", "FF0000", "FFEA00", "0000FF" ],
+      abs: ["343434", "000000", "808080", "008000", "FF0000", "FFEA00", "0000FF" ],
+      pet: ["343434", "000000", "71797E"],
+      nylon: ["EDEADE"],
+      elastan: ["000000"]
     };
   }
 }

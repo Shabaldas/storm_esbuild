@@ -23,11 +23,16 @@
         <p class="text-base metalic-grey">
           Color
         </p>
-        <div class="w-full lg:w-4/6 flex items-center mt-3 space-x-4">
-          <% product.product_colors.each do |option| %>
+        <div class="w-full lg:w-4/6 flex items-center space-x-4">
+          <%= f.fields_for :cart_item_option_values do |cart_item_option_value| %>
             <div>
-              <input type="radio" class="w-8 h-8 rounded-full appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400" style="border: none;<%= "background-color: #{option.option_value.value}"%>"/>
-              <label><%= option.option_value.value %></label>
+              <%= cart_item_option_value.collection_radio_buttons(:product_option_value_id, product.product_colors, :id, :itself, { checked: product.product_colors.first.id } ) do |builder| %>
+                <%= builder.radio_button value: builder.object.id, 
+                                         data: { color: select_colors[builder.object.value.to_sym] },
+                                         class: "w-8 h-8 mt-3 mr-3 rounded-full appearance-none bg-none checked:ring-1 ring-offset-4 ring-gray-400",
+                                        style: "background-color: #{select_colors[builder.object.value.downcase.to_sym]}; background-image: none; border: none; height: 2rem; width: 2rem;" 
+                %>
+              <% end %>
             </div>
           <% end %>
         </div>

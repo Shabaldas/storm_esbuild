@@ -8,25 +8,8 @@ module DatabaseSeeds
         size_option = Option.find_by(title: 'Size', measurement: :mm)
         color_option = Option.find_by(title: 'Color', measurement: :color)
 
-        # Product_for_parent_category
-        Product.first(8).each do |product|
-          # seed only colors option
-          seed_color_product_options(color_option, product)
-        end
-
-        Product.limit(17).offset(8).each do |product|
-          # seed only size option
-          seed_size_product_options(size_option, product)
-        end
-
-        Product.limit(13).offset(25).each do |product|
-          # seed colors&size options
-          seed_color_product_options(color_option, product)
-          seed_size_product_options(size_option, product)
-        end
-
         # Product_for_child_category
-        Product.offset(38).each do |product|
+        Product.all.each do |product|
           # seed colors&size options
           seed_color_product_options(color_option, product)
           seed_size_product_options(size_option, product)

@@ -17,11 +17,11 @@ RSpec.describe DatabaseSeeds::Dummy::ProductOptionsSeed do
       before { described_class.new.execute }
 
       it 'creates 28 products with color option' do
-        expect(Product.joins(:product_options).where(product_options: { option: color_option }).count).to eq(28)
+        expect(Product.joins(:product_options).where(product_options: { option: color_option }).count).to eq(45)
       end
 
       it 'creates 30 products with size option' do
-        expect(Product.joins(:product_options).where(product_options: { option: size_option }).count).to eq(37)
+        expect(Product.joins(:product_options).where(product_options: { option: size_option }).count).to eq(45)
       end
     end
   end

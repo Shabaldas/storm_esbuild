@@ -26,8 +26,22 @@
           <%= cart_item.cartable.name %>
         </h6>
         <div class="flex items-center">
-          <div class=" w-[16px] h-[16px] md:w-[22px] md:h-[22px] bg-red-500 rounded-full border-[0.2px] border-solid border-gray-100"></div>
-          <p class="text-sm text-dark-blue ml-2">425x35x144 мм</p>
+          <% if cart_item.cartable.is_a?(Product) %>
+            <% if cart_item.cart_item_option_values.any? %>
+              <div class="w-[16px] h-[16px] md:w-[22px] md:h-[22px] 
+                          rounded-full border-[0.2px] border-solid border-gray-100"
+                          style="background-color: <%= cart_item.cart_item_option_values.first.product_option_value.option_value.value %>">
+              </div>
+              <p class="text-sm text-dark-blue ml-2">
+                <%= cart_item.cart_item_option_values.last.selected_option_value %>
+              </p>
+            <% end %>
+          <% elsif cart_item.cartable.is_a?(PrintModelAttribute) %>
+            <div class=" w-[16px] h-[16px] md:w-[22px] md:h-[22px] rounded-full border-[0.2px] border-solid border-gray-100" style="background-color: <%= "##{cart_item.cartable.color}" %>"></div>
+            <p class="text-sm text-dark-blue ml-2">
+              <%= cart_item.cartable.quality %> micron, <%= cart_item.cartable.material.upcase %> material
+            </p>
+          <% end %>
         </div>
       </div>
     </div>

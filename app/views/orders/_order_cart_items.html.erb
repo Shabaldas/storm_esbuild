@@ -16,5 +16,6 @@
 <div id="cart_item" class="basket-sidebar mt-8 h-4/6 overflow-y-auto pr-4">
   <% @order.cart.cart_items.each do |cart_item| %>
     <%= render partial: "cart/item_line", locals: { cart_item: cart_item } %>
+    <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
   <% end %>
 </div>
