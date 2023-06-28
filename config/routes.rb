@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'save_phone_number', to: 'static_pages#save_phone_number'
   patch 'cart/update_quantity'
   get :calculator, to: 'print_models#new', as: :calculator
+  get 'checkout', to: 'orders#checkout', as: :checkout
 
   namespace :carts do
     resources :cart_items, only: [:create, :destroy] do

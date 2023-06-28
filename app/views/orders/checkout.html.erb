@@ -1,0 +1,47 @@
+<%= turbo_stream_from current_cart %>
+
+<div class="w-screen h-full lg:max-w-screen-2xl lg:mx-auto block lg:flex lg:justify-between pb-14 px-7 md:px-24 mt-24 overflow-hidden">
+  <div class="w-full lg:w-2/3">
+    <div class="text-2xl text-gray-800 font-medium">
+      Your Order
+    </div>
+    <div class="flex items-center mt-8">
+      <div class="w-6 h-6">
+        <%= image_tag("partials_img/user.png") %>
+      </div>
+      <div class="ml-2 text-gray-800 text-base font-medium">
+       Personal data
+      </div>
+    </div>
+
+    <%= form_for(@order, url: checkout_path) do |f| %>
+      <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
+
+      <div>
+        <%= render partial: "personal_data", locals: { f: f } %>
+        <%= render partial: "order_cart_items" %>
+        <%= render partial: "delivery" %>
+        <%= render partial: "payment" %>
+        
+        <%# COMMENT #%>
+        <div>
+          <div class="flex justify-between mt-10">
+            <div class="flex items-center">
+              <div class="w-6 h-6 mt-1">
+                <%= image_tag("partials_img/comment.png") %>
+              </div>
+              <div class="ml-2 text-gray-800 text-base font-medium">
+              Comment
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
+          <textarea name="comment" class="w-full rounded" placeholder="Write additional wishes for the order"
+            rows="5">
+          </textarea>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= render partial: "payment_sidebar_cart" %>
+</div>

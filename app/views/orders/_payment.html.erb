@@ -1,0 +1,35 @@
+<%# PAYMENT #%>
+<div>
+  <div class="flex justify-between mt-10">
+    <div class="flex items-center">
+      <div class="w-6 h-6 mt-1">
+        <%= image_tag("partials_img/payment.png") %>
+      </div>
+      <div class="ml-2 text-gray-800 text-base font-medium">
+        Payment
+      </div>
+    </div>
+  </div>
+  <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
+
+  <div class="flex flex-col lg:flex-row justify-between items-center">
+    <div class="w-full rounded lg:w-3/6 flex items-center bg-white p-6 mr-0 lg:mr-4">
+      <input id="payment_after_holding" type="radio" name="payment" style="background-image: none; color:#F1C232"
+        class="w-6 checked:ring-offset-1 checked:ring-gray-400" />
+      <label for="payment_after_holding" class="flex items-center cursor-pointer ml-2">
+        <p class="ml-3">
+          Upon receipt
+        </p>
+      </label>
+    </div>
+    <div class="w-full lg:w-3/6 rounded flex items-center bg-white p-6 mt-6 lg:mt-0 ml-0 lg:ml-4">
+      <input id="by_card" type="radio" name="payment" style="background-image: none; color:#F1C232"
+        class="w-6 checked:ring-offset-1 checked:ring-gray-400" />
+      <label for="by_card" class="flex items-center cursor-pointer ml-2">
+        <p class="ml-3">
+          By card
+        </p>
+      </label>
+    </div>
+  </div>
+</div>
