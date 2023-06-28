@@ -10,34 +10,38 @@
       </div>
 
       <% if cart_item.cartable.is_a?(Product) %>
-        <div class="w-16 h-16 bg-dark-blue ml-2 flex justify-center items-center rounded-[10px]">
+        <div class="w-16 h-16 bg-dark-blue ml-2 flex shrink-0 justify-center items-center rounded-[10px]">
           <%= image_tag(url_for(cart_item.cartable.main_picture), class: "w-auto h-full") %>
         </div>
       <% end %>
 
       <% if cart_item.cartable.is_a?(PrintModelAttribute) %>
-        <div class="w-16 h-16 ml-2 flex justify-center items-center rounded-[10px]">
+        <div class="w-16 h-16 ml-2 flex shrink-0 justify-center items-center rounded-[10px]">
           <%= image_tag('shop_img/stl_logo.png', class: "w-auto h-full") %>
         </div>
       <% end %>
 
-      <div class="ml-3">
-        <h6 class="text-sm text-dark-blue font-medium">
+      <div class="flex flex-col justify-between ml-3 pb-0.5">
+        <h6 class="w-full max-w-[200px] clamp-two-lines text-sm text-dark-blue font-medium">
           <%= cart_item.cartable.name %>
         </h6>
+        <div class="flex items-center">
+          <div class=" w-[16px] h-[16px] md:w-[22px] md:h-[22px] bg-red-500 rounded-full border-[0.2px] border-solid border-gray-100"></div>
+          <p class="text-sm text-dark-blue ml-2">425x35x144 мм</p>
+        </div>
       </div>
     </div>
-    <div class="w-16 flex flex-col justify-between text-gray-800 font-medium">
+    <div class="w-full max-w-[75px] flex flex-col justify-between text-gray-800 font-medium">
       <%= render partial: "cart/cart_item_total", locals: { cart_item: cart_item } %>
-      <div class="w-full h-4 flex justify-between items-center mt-6">
+      <div class="w-full h-4 flex justify-end items-center mt-6">
         <%= link_to update_quantity_carts_cart_item_path(cart_item, operation: "-"), data: { "turbo-method": :patch }, remote: true do %>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mt-2" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"/>
           </svg>
         <% end %>
-        <p class="text-sm text-dark-grey"><%= render partial: "cart/item_quantity", locals: { cart_item: cart_item } %>x</p>
+        <p class="text-sm text-dark-grey px-1"><%= render partial: "cart/item_quantity", locals: { cart_item: cart_item } %>x</p>
         <%= link_to update_quantity_carts_cart_item_path(cart_item, operation: "+"), data: { "turbo-method": :patch }, remote: true do %>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mt-2" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
           </svg>
         <% end %>
