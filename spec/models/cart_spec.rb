@@ -1,6 +1,7 @@
 RSpec.describe Cart do
   describe 'associations' do
     it { is_expected.to have_many(:cart_items).dependent(:destroy) }
+    it { is_expected.to belong_to(:order).optional }
   end
 
   describe '#total_price' do

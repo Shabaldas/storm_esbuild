@@ -1,0 +1,20 @@
+<%# CART ITEMS #%>
+<div class="flex justify-between mt-16">
+  <div class="flex items-center">
+    <div class="w-6 h-6">
+      <%= image_tag("partials_img/goods.png") %>
+    </div>
+    <div class="ml-2 text-gray-800 text-base font-medium">
+      Selected goods
+    </div>
+  </div>
+</div>
+
+<div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
+
+<%= render partial: "cart/empty_cart_body" %>
+<div id="cart_item" class="basket-sidebar mt-8 h-4/6 overflow-y-auto pr-4">
+  <% @order.cart.cart_items.each do |cart_item| %>
+    <%= render partial: "cart/item_line", locals: { cart_item: cart_item } %>
+  <% end %>
+</div>

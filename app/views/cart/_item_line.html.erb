@@ -2,7 +2,7 @@
   <%= content_tag :div, class: "flex justify-between items-center relative" do %>
     <div class="flex">
       <div class="my-auto h-4">
-        <%= button_to carts_remove_path(cart_item: cart_item), method: :delete do %>
+        <%= link_to carts_remove_path(cart_item: cart_item), data: { "turbo-method": :delete }, method: :delete, remote: true do %>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>

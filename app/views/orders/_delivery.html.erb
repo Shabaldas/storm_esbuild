@@ -1,0 +1,35 @@
+<%# DELIVERY #%>
+<div>
+  <div class="flex justify-between mt-8">
+    <div class="flex items-center">
+      <div class="w-6 h-6 mt-1">
+        <%= image_tag("partials_img/delivery.png") %>
+      </div>
+      <div class="ml-2 text-gray-800 text-base font-medium">
+        Delivery
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
+
+<div>
+  <div class="w-full h-full rounded bg-white p-6">
+    <div class="w-full h-6 flex justify-between items-center">
+      <div class="w-46 flex justify-between items-center">
+        <label
+          class="flex items-center cursor-pointer ml-3">
+          <input type="radio" name="delivery" style="background-image: none; color:#F1C232"
+          class="w-6 checked:ring-offset-1 checked:ring-gray-400" />
+          <div class="ml-3">
+            <%= image_tag("partials_img/newpost.png") %>
+          </div>
+          <p class="ml-3">
+            New post
+          </p>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

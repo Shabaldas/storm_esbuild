@@ -3,14 +3,16 @@
     <div class="w-full h-px bg-light-grey my-3"></div>
     <div class="flex justify-between items-center text-sm text-gray-800 font-medium">
       <h5 class="text-dark-blue">
-        <%= t('basket.content.summary') %>
+        Summary
       </h5>
       <p>₴
         <%= render partial: "cart/total_price" %></p>
     </div>
-    <div class="w-full h-16 mt-5 button flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium">
-      Payment
-    </div>
+    <%= link_to checkout_path do %>
+      <div class="w-full h-16 mt-5 button flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium">
+        Payment
+      </div>
+    <% end %>
   <% else %>
     <%= link_to products_path, class: "w-full h-16 mt-5 button flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 font-medium" do %>
       Back to Products
