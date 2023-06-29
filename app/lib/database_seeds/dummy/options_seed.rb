@@ -13,7 +13,7 @@ module DatabaseSeeds
           color_option.option_values.create(value: color) unless does_exist?('OptionValue', { value: color })
         end
 
-        ['S', 'L', 'M', 'XS', 'XL'].each do |size|
+        ['30x40x50 mm', '40x50x60 mm', '50x60x70 mm', '60x70x80 mm', '70x80x90 mm'].each do |size|
           size_option.option_values.create(value: size) unless does_exist?('OptionValue', { value: size })
         end
       end
