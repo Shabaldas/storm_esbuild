@@ -42,12 +42,7 @@ FOR MACOS USER
 
 ### IF SOMETHING WENT WRONG
   1. Reset Database
-    ```
-    rails db:reset
-    ```
+    ```rails db:reset```
   2. Go to rails console and run seed again
-    ```
-    bundle exec rails c
-
-    DatabaseSeeds::Main.new.execute
-    ```
+    ```bundle exec rails c```
+    ```DatabaseSeeds::Main.new.execute```
