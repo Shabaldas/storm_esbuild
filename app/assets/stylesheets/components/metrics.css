@@ -1,0 +1,12 @@
+
+.metrics-item {
+  @apply inline-flex flex-col text-left;
+}
+
+.metrics-value {
+  @apply font-black text-9xl lg:-mb-2 text-gray-200;
+}
+
+.metrics-label {
+  @apply text-xs font-bold text-gray-600;
+}

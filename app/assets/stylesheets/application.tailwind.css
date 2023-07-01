@@ -12,6 +12,7 @@
 @import "components/typography";
 @import "components/dropzone";
 @import "components/drawer";
+@import "components/metrics";
 
 
 div.field_with_errors > label {
