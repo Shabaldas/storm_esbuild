@@ -1,0 +1,23 @@
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <table>
+    <thead class="text-gray-700 bg-gray-50">
+      <tr class="text-base">
+        <th class="px-6 py-3" scope="col">ID</th>
+        <th class="px-6 py-3" scope="col">FULL NAME</th>
+        <th class="px-6 py-3" scope="col">PHONE</th>
+        <th class="px-6 py-3" scope="col">EMAIL</th>
+        <th class="px-6 py-3" scope="col">STATUS</th>
+        <th class="px-6 py-3" scope="col">SUBTOTAL</th>
+        <th class="px-6 py-3" scope="col">TOTAL</th>
+        <th class="px-6 py-3" scope="col">COMMENT</th>
+        <th class="px-6 py-3" scope="col">CREATED AT</th>
+        <th class="px-6 py-3" scope="col">UPDATED AT</th>
+        <th class="px-6 py-3" scope="col">ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "admin/orders/order", collection: @orders %>
+    </tbody>
+  </table>
+  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+</div>

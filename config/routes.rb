@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :products, except: [:update]
     resources :product_categories, except: [:update]
     resources :feedback_calls, only: [:index]
+    resources :orders, only: [:index, :show]
   end
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
