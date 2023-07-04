@@ -8,7 +8,7 @@ FOR MACOS USER
 
   better to use rbenv
 
-  - Ruby 3.1.3
+  - Ruby 3.2.2
   - Bundler - `gem install bundler`
   - Node.js 16.15.1 or higher - `brew install node@16`
   - Yarn 1.22.19 or higher - `brew install yarn` or [Install Yarn](https://yarnpkg.com/en/docs/install)
