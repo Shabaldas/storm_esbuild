@@ -85,5 +85,5 @@ test:
 production:
   <<: *default
   database: storm_esbuild_production
-  username: storm_esbuild
-  password: <%= ENV["STORM_ESBUILD_DATABASE_PASSWORD"] %>
+  username: <%= Rails.application.credentials.dig(:database, :username) %>
+  password: <%= Rails.application.credentials.dig(:database, :password) %>
