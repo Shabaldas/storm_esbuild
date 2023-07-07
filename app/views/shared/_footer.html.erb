@@ -8,9 +8,11 @@
       </div>
       <div class="w-full mt-3 xl:mt-0 xl:w-1/6 xl:ml-32 text-zinc-400 leading-8 uppercase pt-1">
         <ul>
-          <li class="mt-4 md:mt-0">
-            <%= link_to 'Calculator', calculator_path, class: "text-white" %>
-          </li>
+          <% if policy(:admin).access? %>
+            <li class="mt-4 md:mt-0">
+              <%= link_to 'Calculator', calculator_path, class: "text-white" %>
+            </li>
+          <% end %>
           <li class="mt-4 md:mt-0">
             <%= link_to 'My_office', root_path, class: "text-white" %>
           </li>
@@ -32,19 +34,13 @@
       class="flex justify-between items-center text-zinc-400 border-t border-gray-500 pt-6">
       <%#TODO MOVE TO PRESENTORS%>
       <%= "© #{Time.zone.now.year}" + " All right reserved" %>
-      <div
-        class="w-12 flex justify-between">
-        <%#CHANGE link a to link_to %>
-        <a href="https://www.facebook.com/3D.Storm.des">
-          <div class="w-2.5 h-5">
-            <%= image_tag("partials_img/facebook.png") %>
-          </div>
-        </a>
-        <a href="https://www.instagram.com/3d.storm.des/">
-          <div class="w-5 h-5">
-            <%= image_tag("partials_img/instagram.png") %>
-          </div>
-        </a>
+      <div class="w-12 flex justify-between">
+        <%= link_to "https://www.facebook.com/3D.Storm.des", class: "w-2.5 h-5", target: :blank do %>
+          <%= image_tag("partials_img/facebook.png") %>
+        <% end %>
+        <%= link_to "https://www.instagram.com/3d.storm.des/", class: "w-5 h-5", target: :blank do %>
+          <%= image_tag("partials_img/instagram.png") %>
+        <% end %>
       </div>
     </div>
   </div>

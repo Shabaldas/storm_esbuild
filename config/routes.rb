@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  namespace :admin do
+  namespace :dredd do
     get '/', to: 'dashboard#index', as: :dashboard
     resources :products, except: [:update]
     resources :product_categories, except: [:update]

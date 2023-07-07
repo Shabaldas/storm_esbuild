@@ -1,0 +1,30 @@
+<tr>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_product_category_path(product_category), class: "text-black" do %>
+      <%= product_category.id %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_product_category_path(product_category), class: "text-black" do %>
+      <%= product_category.name %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_product_category_path(product_category), class: "text-black" do %>
+      <%= product_category.description %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_product_category_path(product_category), class: "text-black" do %>
+      <%= product_category.created_at.strftime("%F") %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap space-x-4 flex" scope="row">
+    <%= link_to edit_dredd_product_category_path(product_category), class: "text-black bg-primary p-1.5 rounded-2xl text-black" do %>
+      EDIT
+    <% end %>
+    <%= button_to dredd_product_category_path(product_category), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
+      DESTROY
+    <% end %>
+  </td>
+</tr>
