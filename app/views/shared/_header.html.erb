@@ -11,58 +11,64 @@
           <li class="px-4">
             <%= active_link_to 'Head', root_path, class: "text-black cursor-pointer", active: :exact %>
           </li>
-          <li class="px-4">
-            <%= active_link_to 'Store', products_path, class: "text-black cursor-pointer" %>
-          </li>
-          <li class="px-4 cursor-pointer">
-            <%= active_link_to "Calculator", calculator_path, class: "text-black cursor-pointer" %>
-          </li>
+          <% if policy(:admin).access? %>
+            <li class="px-4">
+              <%= active_link_to 'Store', products_path, class: "text-black cursor-pointer" %>
+            </li>
+            <li class="px-4 cursor-pointer">
+              <%= active_link_to "Calculator", calculator_path, class: "text-black cursor-pointer" %>
+            </li>
+          <% end %>
           <li class="px-4 cursor-pointer"></li>
         </ul>
       </nav>
     </div>
     <div class="flex items-center">
-      <div class="w-20 lg:flex lg:justify-between">
-        <div class="relative w-7 h-7 pt-1 flex items-center lg:block" data-controller="dropdown">
-          <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="inline-block select-none">
-            <span class="appearance-none flex items-center text-gray-700">
+      <%# if policy(:admin).access? %>
+        <div class="w-20 lg:flex lg:justify-between">
+          <div class="relative w-7 h-7 pt-1 flex items-center lg:block" data-controller="dropdown">
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="inline-block select-none">
               <span class="appearance-none flex items-center text-gray-700">
-                <%= image_tag("partials_img/user.png") %>
+                <span class="appearance-none flex items-center text-gray-700">
+                  <%= image_tag("partials_img/user.png") %>
+                </span>
               </span>
-            </span>
-          </div>
-          <div data-dropdown-target="menu" class="absolute top-10 left-[50%] -translate-x-[50%] hidden">
-            <div class="w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
-              <% if user_signed_in? %>
-                <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
-                  <%= link_to "My cabinet", edit_user_registration_path, class: "text-black" %>
-                </p>
-                <hr/>
-                <div class="text-center cursor-pointer pt-2 pb-1">
-                  <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { trubo: false } %>
-                </div>
-              <% else %>
-                <p class="text-center cursor-pointer pt-2 pb-1">
-                  <%= link_to "Registration", new_user_registration_path, class: "text-black" %>
-                </p>
-                <hr/>
-                <div class="text-center px-5 pt-2 pb-1 cursor-pointer">
-                  <p class="text-center cursor-pointer" data-controller="renderer">
-                    <%= link_to "Sign in", user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }, class: "text-black" %>
-                    <span data-target="renderer.display"></span>
+            </div>
+            <div data-dropdown-target="menu" class="absolute top-10 left-[50%] -translate-x-[50%] hidden">
+              <div class="w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
+                <% if user_signed_in? %>
+                  <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
+                    <%= link_to "My cabinet", edit_user_registration_path, class: "text-black" %>
                   </p>
-                </div>
-              <% end %>
+                  <hr/>
+                  <div class="text-center cursor-pointer pt-2 pb-1">
+                    <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { trubo: false } %>
+                  </div>
+                <% else %>
+                  <p class="text-center cursor-pointer pt-2 pb-1">
+                    <%= link_to "Registration", new_user_registration_path, class: "text-black" %>
+                  </p>
+                  <hr/>
+                  <div class="text-center px-5 pt-2 pb-1 cursor-pointer">
+                    <p class="text-center cursor-pointer" data-controller="renderer">
+                      <%= link_to "Sign in", user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }, class: "text-black" %>
+                      <span data-target="renderer.display"></span>
+                    </p>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <details class="drawer-wrapper">
-        <summary class="drawer-trigger flex">
-          <%= image_tag("partials_img/basket_icon_grey.png", class: "mt-2") %>
-        </summary>
-       <%= render partial: "cart/side_bar_cart" %>
-      </details>
+      <%# end %>
+      <% if policy(:admin).access? %>
+        <details class="drawer-wrapper">
+          <summary class="drawer-trigger flex">
+            <%= image_tag("partials_img/basket_icon_grey.png", class: "mt-2") %>
+          </summary>
+        <%= render partial: "cart/side_bar_cart" %>
+        </details>
+      <% end %>
     </div>
   </div>
 </header>

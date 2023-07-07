@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PrintModelsController < ApplicationController
+  before_action :authorize_admin
+
   def new
     @print_model = PrintModel.new
     @print_model.print_model_attributes.build
@@ -39,5 +41,9 @@ class PrintModelsController < ApplicationController
 
   def print_model_params
     params.require(:print_model).permit(:id, :file, :size, :weight, :volume, print_model_attributes_attributes: [:material, :quality, :color, :subtotal_price])
+  end
+
+  def authorize_admin
+    authorize :admin, :access?
   end
 end

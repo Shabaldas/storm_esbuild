@@ -3,7 +3,7 @@ lock '~> 3.17.3'
 
 set :application, 'storm_esbuild'
 set :repo_url, 'git@github.com:Shabaldas/storm_esbuild.git'
-set :branch, :main if :main
+set :branch, :main
 set :deploy_to, "/home/deploy/#{fetch :application}"
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'

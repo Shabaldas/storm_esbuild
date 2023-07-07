@@ -1,0 +1,23 @@
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <table>
+    <thead class="text-gray-700 bg-gray-50">
+      <tr class="text-base">
+        <th class="px-6 py-3" scope="col">ID</th>
+        <th class="px-6 py-3" scope="col">NAME</th>
+        <th class="px-6 py-3" scope="col">MAIN PICTURE</th>
+        <th class="px-6 py-3" scope="col">PRODUCT CATEGORY</th>
+        <th class="px-6 py-3" scope="col">STATUS</th>
+        <th class="px-6 py-3" scope="col">CREATED AT</th>
+        <th class="px-6 py-3" scope="col">ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "dredd/products/product", collection: @products %>
+    </tbody>
+  </table>
+  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  <footer class="pt-6">
+    <%= link_to "Create New Product", new_dredd_product_path, class: "button w-80" %>
+  </footer>
+</div>
+

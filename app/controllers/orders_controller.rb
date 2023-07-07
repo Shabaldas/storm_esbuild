@@ -2,6 +2,7 @@
 
 class OrdersController < ApplicationController
   layout 'checkout'
+  before_action :authorize_admin
 
   def checkout
     @order = current_cart.order.presence || create_orders
@@ -14,5 +15,9 @@ class OrdersController < ApplicationController
     order.save
     current_cart.update(order_id: order.id)
     order
+  end
+
+  def authorize_admin
+    authorize :admin, :access?
   end
 end
