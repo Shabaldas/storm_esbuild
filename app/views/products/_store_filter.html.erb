@@ -54,7 +54,10 @@
             </div>
           </li>
         <% end %>
-        <div>
+        <div class="block lg:hidden" data-action="click->sidebar#toggle">
+          <%= f.submit "Search", class: "mt-6 lg:mt-4 rounded w-full button" %>
+        </div>
+        <div class="hidden lg:block">
           <%= f.submit "Search", class: "mt-6 lg:mt-4 rounded w-full button" %>
         </div>
       <% end %>
