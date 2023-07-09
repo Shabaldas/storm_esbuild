@@ -1,11 +1,16 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.3'
+ruby '3.2.2'
 
 gem 'active_link_to'
 gem 'ancestry'
 gem 'anyway_config', '~> 2.0'
+
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'cssbundling-rails'
 gem 'dotenv-rails', '~> 2.7'
 gem 'devise'
@@ -19,15 +24,18 @@ gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'pagy', '~> 6.0'
 gem 'pg', '~> 1.1'
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.3'
 gem 'pundit', '~> 2.2'
 gem 'ransack', '~> 3.2', '>= 3.2.1'
-gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
+gem 'rails', '~> 7.0.6'
 gem 'redis', '~> 4.0'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'simple_form'
 gem 'turbo-rails'
+
+gem 'ed25519', '>= 1.2', '< 2.0'
+gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
 
 # gem "kredis"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]

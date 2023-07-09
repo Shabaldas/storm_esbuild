@@ -1,0 +1,65 @@
+<%# PERSONAL DATA #%>
+<div class="flex flex-col lg:flex-row lg:justify-between items-center">
+  <div class="w-full lg:w-3/5">
+    <div>
+      <%= f.label :first_name, "First name" %>
+    </div>
+    <div class="mt-1">
+      <%= f.text_field :first_name,
+                          required: false,
+                          class: "w-full rounded",
+                          label: false,
+                          placeholder: "First name",
+                          value: current_user&.first_name.presence || nil,
+                          input_html: { autocomplete: "first_name" } %>
+    </div>
+  </div>
+  <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
+    <div>
+      <%= f.label :last_name, "Last name" %>
+    </div>
+    <div class="mt-1">
+      <%= f.text_field :last_name,
+                        required: false,
+                        class: "w-full rounded",
+                        label: false,
+                        placeholder: "Last name",
+                        value: current_user&.last_name.presence || nil,
+                        input_html: { autocomplete: "last_name" } %>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col lg:flex-row lg:justify-between items-center mt-5">
+  <div class="w-full lg:w-3/5">
+    <div>
+      <%= f.label :phone, "Mobile phone" %>
+    </div>
+    <div class="mt-1">
+      <%= f.phone_field :phone,
+                        required: false,
+                        label: false,
+                        class: "w-full rounded",
+                        autofocus: true,
+                        placeholder: "Phone's number",
+                        value: current_user&.phone.presence || nil,
+                        input_html: { autocomplete: "phone" } %>
+    </div>
+  </div>
+
+  <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
+    <div>
+      <%= f.label :email, "Email" %>
+    </div>
+    <div class="mt-1">
+      <%= f.email_field :email,
+                        required: false,
+                        label: false,
+                        class: "w-full rounded",
+                        autofocus: true,
+                        placeholder: "Email",
+                        value: current_user&.email.presence || nil,
+                        input_html: { autocomplete: "email" } %>
+    </div>
+  </div>
+</div>

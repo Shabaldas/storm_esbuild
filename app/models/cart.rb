@@ -2,6 +2,9 @@
 
 class Cart < ApplicationRecord
   has_secure_token
+
+  belongs_to :order, optional: true
+
   has_many :cart_items, dependent: :destroy
 
   def total_price

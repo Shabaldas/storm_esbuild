@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_20_134812) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_27_174453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_134812) do
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_carts_on_order_id"
     t.index ["token"], name: "index_carts_on_token", unique: true
   end
 
@@ -87,6 +89,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_134812) do
   create_table "options", force: :cascade do |t|
     t.string "title"
     t.integer "measurement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.string "email"
+    t.integer "status", default: 0
+    t.decimal "subtotal", precision: 8, scale: 2
+    t.decimal "total", precision: 8, scale: 2
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -175,6 +190,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_134812) do
   add_foreign_key "cart_item_option_values", "cart_items", on_delete: :cascade
   add_foreign_key "cart_item_option_values", "product_option_values", on_delete: :cascade
   add_foreign_key "cart_items", "carts"
+  add_foreign_key "carts", "orders", on_delete: :cascade
   add_foreign_key "option_values", "options", on_delete: :cascade
   add_foreign_key "print_model_attributes", "print_models", on_delete: :cascade
   add_foreign_key "product_option_values", "option_values", on_delete: :cascade

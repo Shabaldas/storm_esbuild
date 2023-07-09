@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  namespace :admin do
+  namespace :dredd do
     get '/', to: 'dashboard#index', as: :dashboard
     resources :products, except: [:update]
     resources :product_categories, except: [:update]
     resources :feedback_calls, only: [:index]
+    resources :orders, only: [:index, :show]
   end
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   post 'save_phone_number', to: 'static_pages#save_phone_number'
   patch 'cart/update_quantity'
   get :calculator, to: 'print_models#new', as: :calculator
+  get 'checkout', to: 'orders#checkout', as: :checkout
 
   namespace :carts do
     resources :cart_items, only: [:create, :destroy] do

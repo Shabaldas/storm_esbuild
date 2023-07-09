@@ -1,0 +1,60 @@
+<tr>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_order_path(order), class: "text-black" do %>
+      <%= order.id %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_order_path(order), class: "text-black" do %>
+      <%= order.user_full_name %>
+    <% end %>
+  </td>
+  <td class="flex font-medium justify-center py-4 whitespace-nowrap" scope="row">
+    <%= link_to dredd_order_path(order), class: "text-black" do %>
+      <%= order.phone %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_order_path(order), class: "text-black" do %>
+      <%= order.email %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_order_path(order), class: "text-black" do %>
+      <%= order.status %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_order_path(order), class: "text-black" do %>
+      <%= order.subtotal %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_order_path(order), class: "text-black" do %>
+      <%= order.total %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_order_path(order), class: "text-black" do %>
+      <%= order.comment %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_order_path(order), class: "text-black" do %>
+      <%= order.created_at.strftime("%F") %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_order_path(order), class: "text-black" do %>
+      <%= order.updated_at.strftime("%F") %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap space-x-4 flex" scope="row">
+    <div class="text-black bg-primary p-1.5 rounded-2xl text-black">
+      EDIT
+    </div>
+    <div class= "text-black bg-danger p-1.5 rounded-2xl text-black">
+      DESTROY
+    </div>
+  </td>
+</tr>

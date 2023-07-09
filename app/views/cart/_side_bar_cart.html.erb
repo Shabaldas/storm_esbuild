@@ -1,8 +1,12 @@
 <%= turbo_stream_from current_cart %>
-<div class="w-screen md:w-[28rem] h-screen bg-white shadow-lg shadow-gray-600 fixed right-0 top-0 py-6 px-2 md:pl-8 md:pr-5 z-50">
-  <div class="block absolute top-6 right-5 flex items-baseline cursor-pointer">
-    <%= image_tag("partials_img/remove_icon.png") %>
-    <p class="text-base text-zinc-500 font-medium ml-2">Clear all</p>
+<div class="w-screen md:w-[28rem] h-screen bg-white shadow-lg shadow-gray-600 fixed right-0 top-0 py-6 px-4 md:pl-6 md:pr-5 z-50">
+  <div class="absolute top-5 right-5 flex items-center">
+      <svg class="cursor-pointer" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6 19.1429C6 20.1643 6.9 21 8 21H16C17.1 21 18 20.1643 18 19.1429V8H6V19.1429ZM8 10H16V19H8V10ZM15.5 5L14.5 4H9.5L8.5 5H5V7H19V5H15.5Z" fill="#6E7579"/>
+      </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-4 cursor-pointer mt-[2px]" fill="none" viewBox="0 0 24 24" stroke="#6E7579">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
   </div>
   <div class="flex items-center">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2A343E">
@@ -13,7 +17,7 @@
     </h4>
   </div>
   <%= render partial: "cart/empty_cart_body" %>
-  <div id="cart_item" class="basket-sidebar mt-8 h-4/6 overflow-y-auto pr-4">
+  <div id="cart_item" class="basket-sidebar order-wrapper mt-8 overflow-y-auto pr-4">
     <% current_cart.cart_items.each do |cart_item| %>
       <%= render partial: "cart/item_line", locals: { cart_item: cart_item } %>
     <% end %>

@@ -16,4 +16,16 @@ module ProductHelper
   def products_count_for_parent_category(parent_category)
     parent_category.children.sum { |category| category.products.count }
   end
+
+  def select_colors
+    {
+      white: '#FFFFFF',
+      black: '#000000',
+      gray: '#808080',
+      green: '#008000',
+      red: '#FF0000',
+      yellow: '#FFEA00',
+      blue: '#0000FF'
+    }
+  end
 end
