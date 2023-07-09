@@ -5,7 +5,7 @@
 }
 
 .form-radio label, .form-check label  {
-  @apply ml-3 relative text-base font-normal cursor-pointer rounded-full cursor-pointer;
+  @apply ml-3 relative text-sm rounded-full cursor-pointer;
 }
 
 .form-check.disabled label  {
@@ -32,13 +32,21 @@
 
 .form-radio input {
   @apply h-7 w-7 border-primary border bg-transparent flex-shrink-0 rounded-full cursor-pointer appearance-none;
+}
 
-  &:disabled {
+.form-radio input:disabled {
     @apply bg-pattern-disabled-bright bg-transparent hover:bg-transparent cursor-not-allowed border-bordercolor hover:border-bordercolor;
-  }
 }
 
 .form-radio input[type=radio]:checked {
   @apply border-primary bg-primary;
   background-image: url("icons_svg/radio-checked-white.svg");
+}
+
+.active-dropdown .form-check label{
+  color: #2A343E;
+}
+
+.category-descendants .form-check label {
+  color: #2A343E;
 }

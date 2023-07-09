@@ -1,5 +1,5 @@
 <header class="w-full h-16 fixed z-30 bg-light-grey">
-  <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 lg:px-[86px]">
+  <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 lg:px-[100px]">
     <div class="flex w-1/2 justify-between">
       <div class="w-24">
         <%= link_to root_path do %>
@@ -61,7 +61,7 @@
         <summary class="drawer-trigger flex">
           <%= image_tag("partials_img/basket_icon_grey.png", class: "mt-2") %>
         </summary>
-       <%= render partial: "cart/side_bar_cart" %>
+        <%= render partial: "cart/side_bar_cart" %>
       </details>
     </div>
   </div>
