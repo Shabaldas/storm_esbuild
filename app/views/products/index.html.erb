@@ -1,15 +1,21 @@
 <div class="w-full max-w-screen-2xl mx-auto mt-24 px-7 lg:px-24">
-  <div class="w-full mx-auto flex">
-    <div class="w-80 relative lg:mr-6">
-      <div class="sticky top-[90px] left-0 h-auto bg-white rounded-3xl mb-6 py-6 px-8 text-zinc-500 lg:block">
+  <div class="w-full mx-auto flex flex-col lg:flex-row" data-controller="sidebar">
+    <div class="sidebar w-full h-auto max-w-[320px] flex-col shrink-0 lg:mr-6 fixed top-0 lg:relative z-40 lg:z-10 left-0  transform -translate-x-full lg:translate-x-0 transition duration-700 ease-in-out" data-sidebar-target="sidebarContainer" data-expanded="1">
+      <button data-action="click->sidebar#toggle" class="block lg:hidden absolute top-7 right-4 z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="relative top-0 lg:sticky lg:top-[90px] h-screen lg:h-auto bg-white rounded-0 lg:rounded-3xl mb-6 py-6 px-6 lg:px-8 text-zinc-500">
         <%= render "products/store_filter" %>
       </div>
-      <div class="flex-1"></div>
+      <div class="flex-1 hidden lg:block"></div>
     </div>
-    <div class="w-full lg:w-9/12 mt-4 lg:mt-0">
+    <button class="w-32 mx-auto button block lg:hidden mb-6" data-action="click->sidebar#toggle">Filters</button>
+    <div class="w-full lg:w-9/12">
       <% if @products.any? %>
         <%= turbo_frame_tag "results" do %>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 2xl:grid-cols-3 gap-6 pb-4">
             <% @products.each do |product| %>
               <%= render product %>
             <% end %>
