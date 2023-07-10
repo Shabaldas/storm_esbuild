@@ -9,6 +9,6 @@
     <%= feedback_call.processed %>
   </td>
   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
-    <%= feedback_call.created_at.strftime("%F") %>
+    <%= l(feedback_call.created_at, format: :long) %>
   </td>
 </tr>
