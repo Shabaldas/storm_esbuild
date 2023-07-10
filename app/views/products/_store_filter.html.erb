@@ -1,53 +1,67 @@
-<div class="pb-4">
-  <h4 class="text-lg text-gray-800">
+<div>
+  <h4 class="text-lg normal-case text-gray-800 mb-4">
     Categories
+  </h4>
+  <div data-controller="accordion">
     <ul data-controller="checkbox-family">
       <%= search_form_for @q, data: { turbo_frame: "results" } do |f| %>
         <% @product_categories.each do |category| %>
           <li>
-            <div class="form-grid-single narrow mb-5">
-              <div class="form-check">
-                <%= check_box_tag("q[product_category_name_eq_any][]", category.name, (true if @q.product_category_name_eq_any.try(:include?, category.name)), data: { "checkbox-family-target" => "checkbox" } ) %>
-                <label><%= category.name %></label>
-                <label><%= products_count_for_parent_category(category) %></label>
+            <div>
+              <div class="form-grid-single narrow mb-4 acc_title cursor-pointer" data-action="click->accordion#toggle" data-accordion-target="accTitle" id="acc_btn" data-id="<%= category.id %>" data-active="false">
+                <div class="form-check flex justify-between items-center">
+                  <div class="flex justify-between items-center">
+                    <%= check_box_tag("q[product_category_name_eq_any][]", category.name, (true if @q.product_category_name_eq_any.try(:include?, category.name)), data: { "checkbox-family-target" => "checkbox" } ) %>
+                    <label class="normal-case text-metalic-grey"><%= category.name %></label>
+                  </div>
+                  <label class="font-semibold text-metalic-grey"><%= products_count_for_parent_category(category) %></label>
+                </div>
               </div>
-            </div>
-            <% if category.children.any? %>
-              <ul>
-                <% category.children.each do |child| %>
-                  <li>
-                    <div class="form-grid-single narrow mb-5 pl-8">
-                      <div class="form-check">
-                        <%= check_box_tag("q[product_category_name_eq_any][]", child.name, (true if @q.product_category_name_eq_any.try(:include?, child.name)), data: { "checkbox-family-target" => "checkbox" } ) %>
-                        <label><%= child.name %></label>
-                        <label><%= child.products.count %></label>
+              <% if category.children.any? %>
+                <ul class="category-descendants hidden">
+                  <% category.children.each do |child| %>
+                    <li>
+                      <div class="form-grid-single narrow mb-4 pl-4">
+                        <div class="form-check flex justify-between items-center">
+                          <div class="flex justify-between items-center">
+                            <%= check_box_tag("q[product_category_name_eq_any][]", child.name, (true if @q.product_category_name_eq_any.try(:include?, child.name)), data: { "checkbox-family-target" => "checkbox" } ) %>
+                            <label class="normal-case text-metalic-grey"><%= child.name %></label>
+                          </div>
+                          <label class="font-semibold text-metalic-grey"><%= child.products.count %></label>
+                        </div>
                       </div>
-                    </div>
-                    <% if child.children.any? %>
-                      <ul>
-                        <% child.children.each do |ch| %>
-                          <li>
-                            <div class="form-grid-single narrow mb-5 pl-8">
-                              <div class="form-check pl-8">
-                                <%= check_box_tag("q[product_category_name_eq_any][]", ch.name, (true if @q.product_category_name_eq_any.try(:include?, ch.name)), data: { "checkbox-family-target" => "checkbox" } ) %>
-                                <label><%= ch.name %></label>
-                                <label><%= ch.products.count %></label>
+                      <% if child.children.any? %>
+                        <ul>
+                          <% child.children.each do |ch| %>
+                            <li>
+                              <div class="form-grid-single narrow mb-5 pl-8">
+                                <div class="form-check pl-4 flex justify-between items-center">
+                                  <div class="flex justify-between items-center">
+                                    <%= check_box_tag("q[product_category_name_eq_any][]", ch.name, (true if @q.product_category_name_eq_any.try(:include?, ch.name)), data: { "checkbox-family-target" => "checkbox" } ) %>
+                                    <label class="normal-case  text-metalic-grey"><%= ch.name %></label>
+                                  </div>
+                                  <label class="font-semibold  text-metalic-grey"><%= ch.products.count %></label>
+                                </div>
                               </div>
-                            </div>
-                          </li>
-                        <% end %>
-                      </ul>
-                    <% end %>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
+                            </li>
+                          <% end %>
+                        </ul>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
           </li>
         <% end %>
-        <div class="px-5">
-          <%= f.submit "Search", class: "py-2 rounded w-full button w-full md:max-w-[212px]" %>
+        <div class="block lg:hidden" data-action="click->sidebar#toggle">
+          <%= f.submit "Search", class: "mt-6 lg:mt-4 rounded w-full button" %>
+        </div>
+        <div class="hidden lg:block">
+          <%= f.submit "Search", class: "mt-6 lg:mt-4 rounded w-full button" %>
         </div>
       <% end %>
     </ul>
-    <div class="mt-3 "></div>
+
   </div>
+</div>

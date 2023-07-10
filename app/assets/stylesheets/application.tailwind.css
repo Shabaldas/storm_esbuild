@@ -72,6 +72,14 @@ input, select {
   border: 1px solid #6e7579;
 }
 
+input[type="checkbox"]{
+  display: flex;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+}
+
 /* dividers */
 
 .title-divider,
