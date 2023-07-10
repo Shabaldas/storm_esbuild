@@ -16,7 +16,7 @@
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to dredd_manual_order_path(manual_order) do %>
-      <%= image_tag("partials_img/#{app_icon_contact(manual_order.app_contact)}.png") %>
+      <%= image_tag("partials_img/#{app_icon_contact(manual_order.app_contact)}.png", class: "w-1/2") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
@@ -46,7 +46,7 @@
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to dredd_manual_order_path(manual_order) do %>
-      <%= image_tag("partials_img/#{order_status_icon(manual_order)}.png") %>
+      <%= image_tag("partials_img/#{order_status_icon(manual_order)}.png", class: "w-10/12") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
