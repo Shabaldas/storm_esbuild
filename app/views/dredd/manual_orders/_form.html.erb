@@ -1,0 +1,89 @@
+<%= render partial: "dredd/shared/errors", locals: { resource: @manual_order } %>
+<%= form_with model: [:dredd, @manual_order], url: dredd_manual_orders_path, class: "form-grid-single" do |form| %>
+   <div class="form-grid-single w-1/2">
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= form.label :first_name, class: "form-label" %>
+        <%= form.text_field :first_name, placeholder: "Please input" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :last_name, class: "form-label" %>
+        <%= form.text_field :last_name, placeholder: "Please input" %>
+      </div>
+    </div>
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= form.label :phone_number, class: "form-label" %>
+        <%= form.text_field :phone_number, placeholder: "Please input" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :app_contact, class: "form-label" %>
+        <%= form.select :app_contact, options_for_select(ManualOrder.app_contacts.keys.map {|k, v| [k.humanize.capitalize, k] } ) %>
+      </div>
+      <div class="form-group">
+        <%= form.label :email, class: "form-label" %>
+        <%= form.text_field :email, placeholder: "Please input" %>
+      </div>
+    </div>
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= form.label :price_for_modeling, class: "form-label" %>
+        <%= form.text_field :price_for_modeling, placeholder: "Please input" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :price_for_printing, class: "form-label" %>
+        <%= form.text_field :price_for_printing, placeholder: "Please input" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :count, class: "form-label" %>
+        <%= form.text_field :count, placeholder: "Please input" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :prepaid_expense, class: "form-label" %>
+        <%= form.text_field :prepaid_expense, placeholder: "Please input" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :total_price, class: "form-label" %>
+        <%= form.text_field :total_price, placeholder: "Please input" %>
+      </div>
+    </div>
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= form.label :print_material, class: "form-label" %>
+        <%= form.select :print_material, ApplicationHelper::MATERIALS, { include_blank: "---Select---" } %>
+      </div>
+      <div class="form-group">
+        <%= form.label :print_color, class: "form-label" %>
+        <%= form.select :print_color, ManualOrder::PRINTING_COLORS, { include_blank: "---Select---" } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :printed_on_printers, class: "form-label" %>
+      <%= form.select :printed_on_printers, 
+                      ManualOrder::OUR_PRINTERS,
+                      { class: "bg-white", include_blank: false },
+                      { multiple: true, data: { controller: "select" }}
+      %>
+    </div>
+    <div class="flex space-x-4">
+      <div class="form-group form-toggle">
+        <%= form.label :status, as: "Status", class: "toggle-switch-label" %>
+        <label class="toggle-switch ml-3">
+          <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "paid", "unpaid") %>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="form-group">
+         <%= form.label :deadline, class: "form-label" %>
+         <%= form.date_field :deadline %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :comment, class: "form-label" %>
+      <%= form.text_area :comment, placeholder: "Please input", class: "w-full p-2" %>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Create Manual Order", class: "button w-full md:max-w-[212px]" %>
+    </div>
+  </div>
+<% end %>

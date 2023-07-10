@@ -35,7 +35,7 @@ p {
 }
 
 a {
-  @apply text-link text-base font-medium hover:text-dark-blue hover:no-underline cursor-pointer;
+  @apply text-link text-base font-medium hover:no-underline cursor-pointer;
 }
 
 a.icon, a.icon-xs, a.icon-sm, a.icon-lg, a.icon-xl {
