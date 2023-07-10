@@ -8,7 +8,7 @@ describe '/dredd', type: :request do
   describe 'GET /dredd' do
     let(:order_first) { create(:order, :unpaid) }
     let(:order_second) { create(:order, :unpaid) }
-    let(:feedback_call) { create(:feedback_call, phone_number: '+380123456789') }
+    let(:feedback_call) { create(:feedback_call, phone_number: '+380987654321') }
 
     before do
       order_first
