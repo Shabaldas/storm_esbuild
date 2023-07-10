@@ -17,7 +17,7 @@
       </div>
       <div class="form-group">
         <%= form.label :app_contact, class: "form-label" %>
-        <%= form.select :app_contact, options_for_select(ManualOrder.app_contacts.map {|k, v| [k.humanize.capitalize, v] } ) %>
+        <%= form.select :app_contact, options_for_select(ManualOrder.app_contacts.keys.map {|k, v| [k.humanize.capitalize, k] } ) %>
       </div>
       <div class="form-group">
         <%= form.label :email, class: "form-label" %>

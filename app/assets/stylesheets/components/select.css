@@ -9,7 +9,7 @@
 /*///// Tom-Select theme https://tom-select.js.org /////*/
 
 .ts-control {
-  @apply relative overflow-hidden flex w-full justify-start items-stretch font-normal py-1.5 pl-4 rounded border bg-transparent focus:outline-none focus:ring-0 z-0;
+  @apply relative overflow-hidden flex w-full justify-start items-stretch font-normal py-1.5 pl-4 rounded border bg-white focus:outline-none focus:ring-0 z-0;
 }
 
 .ts-control input {
@@ -77,7 +77,7 @@
 /* Multi select item */
 
 .ts-wrapper.multi .ts-control, .ts-wrapper.multi.has-items .ts-control {
-  @apply h-auto min-h-12;
+  @apply h-auto min-h-12 bg-white;
 }
 
 .ts-wrapper.multi .ts-control div.item {

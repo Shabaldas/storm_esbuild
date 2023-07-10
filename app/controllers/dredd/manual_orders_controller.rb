@@ -14,12 +14,29 @@ module Dredd
       @manual_order = ManualOrder.new
     end
 
+    def create
+      @manual_order = ManualOrder.new(manual_order_params)
+
+      if @manual_order.save
+        redirect_to dredd_manual_orders_path, notice: 'Manual order was successfully created' # rubocop:disable Rails/I18nLocaleTexts
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
+
     def destroy
       @manual_order.destroy
       redirect_to dredd_manual_orders_path, notice: 'Manual Order was successfully destroyed.' # rubocop:disable Rails/I18nLocaleTexts
     end
 
     private
+
+    def manual_order_params
+      params.require(:manual_order).permit(:first_name, :last_name, :email, :phone_number, :app_contact, :count,
+                                           :price_for_modeling, :price_for_printing, :prepaid_expense, :status, :total_price, :comment,
+                                           :print_material, :print_color, :deadline, :printing_time_for_one_item,
+                                           printed_on_printers: [])
+    end
 
     def set_manual_order
       @manual_order = ManualOrder.find(params[:id])
