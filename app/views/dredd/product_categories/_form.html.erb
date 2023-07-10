@@ -1,4 +1,4 @@
-<%= render partial: "errors", locals: { product_category: @product_category } %>
+<%= render partial: "dredd/shared/errors", locals: { resource: @product_category } %>
 <%= form_with model: [:dredd, @product_category], url: dredd_product_categories_path, class: "form-grid-single" do |form| %>
   <div class="form-grid-single w-1/2">
     <div class="form-group">
