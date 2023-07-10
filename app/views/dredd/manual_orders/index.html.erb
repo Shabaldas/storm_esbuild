@@ -22,4 +22,7 @@
     </tbody>
   </table>
   <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  <footer class="pt-6">
+    <%= link_to "Create Manual Order", new_dredd_manual_order_path, class: "button w-80" %>
+  </footer>
 </div>

@@ -31,6 +31,27 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('DEADLINE')
       expect(response.body).to include('CREATED AT')
       expect(response.body).to include('ACTIONS')
+      expect(response.body).to include(new_dredd_manual_order_path)
+      expect(response.body).to include('Create Manual Order')
+    end
+  end
+
+  describe 'DELETE /dredd/manual_orders/:id' do
+    let(:manual_order_first) { create(:manual_order) }
+    let(:manual_order_second) { create(:manual_order) }
+
+    before do
+      manual_order_first
+      manual_order_second
+    end
+
+    it 'deletes the manual order' do
+      expect do
+        delete dredd_manual_order_path(manual_order_first)
+      end.to change(ManualOrder, :count).by(-1)
+      expect(response).to redirect_to(dredd_manual_orders_path)
+      follow_redirect!
+      expect(response.body).to include('Manual Order was successfully destroyed.')
     end
   end
 end

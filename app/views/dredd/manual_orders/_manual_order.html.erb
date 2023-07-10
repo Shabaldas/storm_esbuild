@@ -1,6 +1,6 @@
 <tr>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to dredd_manual_order_path(manual_order), class: "text-black font-bold" do %>
       <%= manual_order.print_code %>
     <% end %>
   </td>
@@ -9,14 +9,14 @@
       <%= manual_order&.full_name %>
     <% end %>
   </td>
-  <td class="flex font-medium justify-center py-4 whitespace-nowrap" scope="row">
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order.phone_number %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
-      <%= manual_order.app_contact %>
+    <%= link_to dredd_manual_order_path(manual_order) do %>
+      <%= image_tag("partials_img/#{app_icon_contact(manual_order.app_contact)}.png") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
@@ -45,8 +45,8 @@
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
-      <%= manual_order.status %>
+    <%= link_to dredd_manual_order_path(manual_order) do %>
+      <%= image_tag("partials_img/#{order_status_icon(manual_order)}.png") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
@@ -63,8 +63,8 @@
     <div class="text-black bg-primary p-1.5 rounded-2xl text-black">
       EDIT
     </div>
-    <div class= "text-black bg-danger p-1.5 rounded-2xl text-black">
+    <%= button_to dredd_manual_order_path(manual_order), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
       DESTROY
-    </div>
+    <% end %>
   </td>
 </tr>

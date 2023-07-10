@@ -11,7 +11,7 @@ class ManualOrder < ApplicationRecord
 
   before_create :set_print_code
 
-  enum app_contact: { telegram: 0, viber: 1, whatsup: 2, instagram: 3, messanger: 4, google: 5 }
+  enum app_contact: { telegram: 0, viber: 1, whatsapp: 2, instagram: 3, messenger: 4, google: 5 }
   enum status: { unpaid: 0, paid: 1 }
 
   def full_name
