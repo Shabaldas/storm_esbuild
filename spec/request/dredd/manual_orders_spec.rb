@@ -36,6 +36,32 @@ describe '/dredd/manual_orders', type: :request do
     end
   end
 
+  describe 'GET /dredd/manual_orders/new' do
+    it 'display new manual order form' do
+      get new_dredd_manual_order_path
+
+      expect(response).to be_successful
+      expect(response.body).to include('New Manual Order')
+      expect(response.body).to include('First name')
+      expect(response.body).to include('Last name')
+      expect(response.body).to include('Phone number')
+      expect(response.body).to include('App contact')
+      expect(response.body).to include('Email')
+      expect(response.body).to include('Price for modeling')
+      expect(response.body).to include('Price for printing')
+      expect(response.body).to include('Count')
+      expect(response.body).to include('Total price')
+      expect(response.body).to include('Status')
+      expect(response.body).to include('Prepaid expense')
+      expect(response.body).to include('Print material')
+      expect(response.body).to include('Print color')
+      expect(response.body).to include('Printed on printers')
+      expect(response.body).to include('Deadline')
+      expect(response.body).to include('Comment')
+      expect(response.body).to include('Create Manual Order"')
+    end
+  end
+
   describe 'DELETE /dredd/manual_orders/:id' do
     let(:manual_order_first) { create(:manual_order) }
     let(:manual_order_second) { create(:manual_order) }
