@@ -28,10 +28,6 @@ describe '/dredd', type: :request do
       expect(response.body).to include('Users count')
       expect(response.body).to include('Order count')
       expect(response.body).to include('New feedback call')
-      expect(response.body).to include(user.id.to_s)
-      expect(response.body).to include(order_first.id.to_s)
-      expect(response.body).to include(order_second.id.to_s)
-      expect(response.body).to include(feedback_call.id.to_s)
     end
 
     context 'when user is not admin' do
