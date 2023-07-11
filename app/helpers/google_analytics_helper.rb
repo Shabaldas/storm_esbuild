@@ -14,4 +14,16 @@ module GoogleAnalyticsHelper
       JAVASCRIPT
     end
   end
+
+  def google_tag_manager_script
+    javascript_tag do
+      "
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QMC1QVF8BG');
+      ".html_safe
+    end
+  end
 end
