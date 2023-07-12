@@ -32,6 +32,8 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('CREATED AT')
       expect(response.body).to include('ACTIONS')
       expect(response.body).to include(new_dredd_manual_order_path)
+      expect(response.body).to include(edit_dredd_manual_order_path(manual_order_first))
+      expect(response.body).to include(edit_dredd_manual_order_path(manual_order_second))
       expect(response.body).to include('Create Manual Order')
     end
   end
@@ -58,7 +60,7 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('Printed on printers')
       expect(response.body).to include('Deadline')
       expect(response.body).to include('Comment')
-      expect(response.body).to include('Create Manual Order"')
+      expect(response.body).to include('Save')
     end
   end
 
@@ -91,6 +93,8 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('PLA')
       expect(response.body).to include('Ender-3 Pro, Ultimaker')
       expect(response.body).to include('Comment')
+      expect(response.body).to include('Edit manual order')
+      expect(response.body).to include(edit_dredd_manual_order_path(manual_order))
     end
   end
 
@@ -134,6 +138,59 @@ describe '/dredd/manual_orders', type: :request do
       expect(manual_order.printed_on_printers).to include('Ender-3 Pro')
       expect(manual_order.comment).to eq('Just for fun')
       expect(manual_order.deadline).not_to be_nil
+    end
+  end
+
+  describe 'PUT /dredd/manual_orders/:id' do
+    let!(:manual_order) do
+      create(:manual_order,
+             first_name: 'John', last_name: 'Doe', total_price: 500,
+             phone_number: '0673646509', email: '3d.storm.des@gmail.com',
+             print_material: 'ABS', app_contact: 'viber', comment: 'Comment')
+    end
+
+    let(:params) do
+      {
+        manual_order: {
+          first_name: 'John',
+          last_name: 'Doe',
+          phone_number: '+380673646509',
+          email: '3d.storm.des@gmail.com',
+          app_contact: 'telegram',
+          price_for_modeling: '100',
+          price_for_printing: '200',
+          count: '2',
+          total_price: '600',
+          prepaid_expense: '200',
+          print_color: 'White',
+          print_material: 'PLA',
+          printed_on_printers: ['Ender-3Pro, Guider, Custom'],
+          comment: 'New comment'
+        }
+      }
+    end
+
+    it 'update manual order' do
+      expect do
+        put(dredd_manual_order_path(manual_order), params:)
+        manual_order.reload
+      end.to change(ManualOrder, :count).by(0) # rubocop:disable RSpec/ChangeByZero
+          .and change(manual_order, :app_contact).from('viber').to('telegram')
+          .and change(manual_order, :phone_number).from('0673646509').to('+380673646509')
+          .and change(manual_order, :comment).from('Comment').to('New comment')
+          .and change(manual_order, :total_price).from(500.0).to(600.0)
+          .and change(manual_order, :print_material).from('ABS').to('PLA')
+          .and change(manual_order, :print_color).from(nil).to('White')
+          .and change(manual_order, :prepaid_expense).from(nil).to(200.0)
+          .and change(manual_order, :price_for_printing).from(nil).to(200.0)
+          .and change(manual_order, :price_for_modeling).from(nil).to(100.0)
+          .and change(manual_order, :count).from(nil).to(2)
+
+      expect(manual_order.full_name).to eq('John Doe')
+      expect(manual_order.printed_on_printers).to eq('["Ender-3Pro, Guider, Custom"]')
+      expect(response).to redirect_to(dredd_manual_order_path(manual_order))
+      follow_redirect!
+      expect(response.body).to include('Manual Order was successfully updated.')
     end
   end
 
