@@ -4,8 +4,6 @@ module Dredd
   module ManualOrderHelper
     def app_icon_contact(app_contact)
       case app_contact.to_sym
-      when :telegram
-        'telegram_icon'
       when :viber
         'viber_icon'
       when :whatsapp
@@ -17,7 +15,7 @@ module Dredd
       when :google
         'google_icon'
       else
-        'phone_icon'
+        'telegram_icon'
       end
     end
 
@@ -27,6 +25,10 @@ module Dredd
       else
         'unpaid_icon'
       end
+    end
+
+    def get_selected_printers_names(manual_order)
+      JSON.parse(manual_order.printed_on_printers).reject(&:empty?).join(', ')
     end
   end
 end
