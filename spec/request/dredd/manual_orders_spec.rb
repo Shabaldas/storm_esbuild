@@ -60,7 +60,7 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('Printed on printers')
       expect(response.body).to include('Deadline')
       expect(response.body).to include('Comment')
-      expect(response.body).to include('Create Manual Order')
+      expect(response.body).to include('Save')
     end
   end
 
