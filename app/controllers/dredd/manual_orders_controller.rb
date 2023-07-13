@@ -42,7 +42,7 @@ module Dredd
     def manual_order_params
       params.require(:manual_order).permit(:print_code, :first_name, :last_name, :email, :phone_number, :app_contact, :count,
                                            :price_for_modeling, :price_for_printing, :prepaid_expense, :status, :total_price, :comment,
-                                           :print_material, :print_color, :deadline, :printing_time_for_one_item, printed_on_printers: [])
+                                           :print_material, :print_color, :deadline, :printing_time_for_one_item)
     end
 
     def set_manual_order

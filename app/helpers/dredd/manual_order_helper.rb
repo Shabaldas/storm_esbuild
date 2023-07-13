@@ -12,23 +12,19 @@ module Dredd
         'instagram_icon'
       when :messenger
         'messenger_icon'
-      when :google
-        'google_icon'
-      else
+      when :telegram
         'telegram_icon'
+      else
+        'google_icon'
       end
     end
 
     def order_status_icon(manual_order)
-      if manual_order.paid?
-        'paid_icon'
+      if manual_order.done?
+        'done_icon'
       else
-        'unpaid_icon'
+        'not_done_icon'
       end
-    end
-
-    def get_selected_printers_names(manual_order)
-      JSON.parse(manual_order.printed_on_printers).reject(&:empty?).join(', ')
     end
   end
 end

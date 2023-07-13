@@ -22,9 +22,6 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('FULL NAME')
       expect(response.body).to include('MOBILE PHONE')
       expect(response.body).to include('APP CONTACT')
-      expect(response.body).to include('PRICE FOR MODELING')
-      expect(response.body).to include('PRICE FOR PRINTING')
-      expect(response.body).to include('COUNT')
       expect(response.body).to include('TOTAL PRICE')
       expect(response.body).to include('PREPAID EXPENSE')
       expect(response.body).to include('STATUS')
@@ -57,7 +54,6 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('Prepaid expense')
       expect(response.body).to include('Print material')
       expect(response.body).to include('Print color')
-      expect(response.body).to include('Printed on printers')
       expect(response.body).to include('Deadline')
       expect(response.body).to include('Comment')
       expect(response.body).to include('Save')
@@ -81,7 +77,6 @@ describe '/dredd/manual_orders', type: :request do
             prepaid_expense: '200',
             print_color: 'White',
             print_material: 'PLA',
-            printed_on_printers: ['Ender-3 Pro'],
             comment: 'Just for fun',
             deadline: DateTime.now + 1.day
           }
@@ -101,7 +96,6 @@ describe '/dredd/manual_orders', type: :request do
       expect(manual_order.prepaid_expense.to_s).to eq('200.0')
       expect(manual_order.print_color).to eq('White')
       expect(manual_order.print_material).to eq('PLA')
-      expect(manual_order.printed_on_printers).to include('Ender-3 Pro')
       expect(manual_order.comment).to eq('Just for fun')
       expect(manual_order.deadline).not_to be_nil
     end
@@ -130,7 +124,6 @@ describe '/dredd/manual_orders', type: :request do
           prepaid_expense: '200',
           print_color: 'White',
           print_material: 'PLA',
-          printed_on_printers: ['Ender-3Pro, Guider, Custom'],
           comment: 'New comment'
         }
       }
@@ -153,7 +146,6 @@ describe '/dredd/manual_orders', type: :request do
           .and change(manual_order, :count).from(nil).to(2)
 
       expect(manual_order.full_name).to eq('John Doe')
-      expect(manual_order.printed_on_printers).to eq('["Ender-3Pro, Guider, Custom"]')
       expect(response).to redirect_to(dredd_manual_orders_path)
       follow_redirect!
       expect(response.body).to include('Manual Order was successfully updated.')
