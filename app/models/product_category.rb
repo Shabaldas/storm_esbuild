@@ -3,6 +3,7 @@
 class ProductCategory < ApplicationRecord
   has_many :products, dependent: :destroy
   has_ancestry
+  has_one_attached :main_picture
 
   scope :select_tree, ->(id) { where.not(id:).arrange }
   scope :only_parents, -> { where(ancestry: nil) }
