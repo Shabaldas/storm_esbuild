@@ -6,13 +6,6 @@
       <%= form.text_field :name, placeholder: "Please input" %>
     </div>
     
-    <%#TODO REMOVE AFTER DEPLOY%>
-    <%= form.file_field :main_picture %>
-    <%= form.label :main_picture %>
-    <div data-controller="dropzone" class="form-group dropzone">
-      <%= form.file_field :main_picture,  multiple: false, direct_upload: true, data: { dropzone_target: 'input' }, class: "hidden" %>
-    </div>
-
     <div class="form-group">
       <%= form.label :description, class: "form-label" %>
       <%= form.text_area :description, placeholder: "Please input", class: "w-full form-control" %>

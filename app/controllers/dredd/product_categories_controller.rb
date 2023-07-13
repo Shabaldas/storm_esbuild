@@ -41,7 +41,7 @@ module Dredd
     private
 
     def product_category_params
-      params.require(:product_category).permit(:name, :description, :ancestry, :main_picture)
+      params.require(:product_category).permit(:name, :description, :ancestry)
     end
 
     def set_product_category
