@@ -1,18 +1,14 @@
 # frozen_string_literal: true
 
 class ManualOrder < ApplicationRecord
-  OUR_PRINTERS = [
-    'Ender-3Pro', 'Guider', 'Custom'
-  ].freeze
-
   PRINTING_COLORS = [
-    'Black', 'White', 'Transparent', 'Natural', 'Orange'
+    'Black', 'White', 'Transparent', 'Natural', 'Orange', 'Grey'
   ].freeze
 
   before_create :set_print_code
 
-  enum app_contact: { telegram: 0, viber: 1, whatsapp: 2, instagram: 3, messenger: 4, google: 5 }
-  enum status: { unpaid: 0, paid: 1 }
+  enum app_contact: { google: 0, viber: 1, whatsapp: 2, instagram: 3, messenger: 4, telegram: 5 }
+  enum status: { not_done: 0, done: 1 }
 
   validates :first_name, :total_price, presence: true
   validates :phone_number, phone: true, allow_blank: true

@@ -5,8 +5,8 @@ describe Dredd::ManualOrderHelper do
     context 'when app contact is not persisted' do
       let!(:manual_order) { create(:manual_order) }
 
-      it 'returns telegram icon' do
-        expect(app_icon_contact(manual_order.app_contact)).to eq('telegram_icon')
+      it 'returns google icon by default' do
+        expect(app_icon_contact(manual_order.app_contact)).to eq('google_icon')
       end
     end
 
@@ -42,11 +42,11 @@ describe Dredd::ManualOrderHelper do
       end
     end
 
-    context 'when app contact is google' do
-      let!(:manual_order) { create(:manual_order, app_contact: :google) }
+    context 'when app contact is telegram' do
+      let!(:manual_order) { create(:manual_order, app_contact: :telegram) }
 
-      it 'returns google icon' do
-        expect(app_icon_contact(manual_order.app_contact)).to eq('google_icon')
+      it 'returns telegram icon' do
+        expect(app_icon_contact(manual_order.app_contact)).to eq('telegram_icon')
       end
     end
   end
@@ -54,20 +54,10 @@ describe Dredd::ManualOrderHelper do
   describe '#order_status_icon' do
     delegate :order_status_icon, to: :helper
 
-    let!(:manual_order) { create(:manual_order, status: :paid) }
+    let!(:manual_order) { create(:manual_order, status: :done) }
 
-    it 'returns paid icon' do
-      expect(order_status_icon(manual_order)).to eq('paid_icon')
-    end
-  end
-
-  describe '#get_selected_printers_names' do
-    delegate :get_selected_printers_names, to: :helper
-
-    let!(:manual_order) { create(:manual_order, printed_on_printers: '["", "Printer 1", "Printer 2"]') }
-
-    it 'returns selected printers names' do
-      expect(get_selected_printers_names(manual_order)).to eq('Printer 1, Printer 2')
+    it 'returns done icon' do
+      expect(order_status_icon(manual_order)).to eq('done_icon')
     end
   end
 end

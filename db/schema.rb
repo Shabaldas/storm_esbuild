@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_10_095931) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_13_171623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,7 +93,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_095931) do
     t.decimal "prepaid_expense", precision: 8, scale: 2
     t.string "print_material"
     t.string "print_color"
-    t.string "printed_on_printers"
     t.datetime "deadline"
     t.string "printing_time_for_one_item"
     t.text "comment"

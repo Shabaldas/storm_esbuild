@@ -42,15 +42,6 @@
           </div>
           <div class="form-group">
             <p class="font-semibold">
-              <% if @manual_order.printed_on_printers.present? %>
-                <%= get_selected_printers_names(@manual_order) %>
-              <% else %>
-                -
-              <% end %>
-            </p>  
-          </div>
-          <div class="form-group">
-            <p class="font-semibold">
               <%= @manual_order.printing_time_for_one_item.presence || "-" %>
             </p>  
           </div>
