@@ -9,11 +9,13 @@ describe '/dredd', type: :request do
     let(:order_first) { create(:order, :unpaid) }
     let(:order_second) { create(:order, :unpaid) }
     let(:feedback_call) { create(:feedback_call, phone_number: '+380976404050') }
+    let(:manual_order) { create(:manual_order) }
 
     before do
       order_first
       order_second
       feedback_call
+      manual_order
     end
 
     it 'display admin dashboard' do
@@ -24,9 +26,9 @@ describe '/dredd', type: :request do
       expect(response.body).to include('Products')
       expect(response.body).to include('Product Categories')
       expect(response.body).to include('Feedback Calls')
-      expect(response.body).to include('All Orders')
+      expect(response.body).to include('Manual Orders')
+      expect(response.body).to include('Internet Orders')
       expect(response.body).to include('Users count')
-      expect(response.body).to include('Order count')
       expect(response.body).to include('New feedback call')
     end
 
@@ -38,31 +40,6 @@ describe '/dredd', type: :request do
         expect(response).to redirect_to(root_path)
         follow_redirect!
       end
-    end
-  end
-
-  describe 'GET /all_orders' do
-    let(:order_first) { create(:order, :unpaid) }
-    let(:manual_order) { create(:manual_order) }
-
-    before do
-      order_first
-      manual_order
-    end
-
-    it 'display order dashboard' do
-      get dredd_all_orders_path
-
-      expect(response).to be_successful
-      expect(response.body).to include('Admin Dashboard')
-      expect(response.body).to include('Products')
-      expect(response.body).to include('Product Categories')
-      expect(response.body).to include('Feedback Calls')
-      expect(response.body).to include('All Orders')
-      expect(response.body).to include('Manual Orders')
-      expect(response.body).to include('Shop Orders')
-      expect(response.body).to include(dredd_orders_path)
-      expect(response.body).to include(dredd_manual_orders_path)
     end
   end
 end

@@ -64,40 +64,6 @@ describe '/dredd/manual_orders', type: :request do
     end
   end
 
-  describe 'GET /dredd/manual_orders/:id' do
-    let(:manual_order) do
-      create(:manual_order,
-             first_name: 'John', last_name: 'Doe', total_price: '500',
-             phone_number: '0673646509', email: '3d.storm.des@gmail.com',
-             app_contact: 'viber', price_for_printing: '200', count: '2',
-             prepaid_expense: '200', print_color: 'White', print_material: 'PLA',
-             printed_on_printers: ['Ender-3 Pro, Ultimaker'], comment: 'Comment')
-    end
-
-    it 'display manual order' do
-      get dredd_manual_order_path(manual_order)
-
-      expect(response).to be_successful
-      expect(response.body).to include('Client Contacts')
-      expect(response.body).to include('Printing Information')
-      expect(response.body).to include('Price Information')
-      expect(response.body).to include('Manual Order information')
-      expect(response.body).to include('John Doe')
-      expect(response.body).to include('0673646509')
-      expect(response.body).to include('3d.storm.des@gmail.com')
-      expect(response.body).to include('viber')
-      expect(response.body).to include('200')
-      expect(response.body).to include('2')
-      expect(response.body).to include('500')
-      expect(response.body).to include('White')
-      expect(response.body).to include('PLA')
-      expect(response.body).to include('Ender-3 Pro, Ultimaker')
-      expect(response.body).to include('Comment')
-      expect(response.body).to include('Edit manual order')
-      expect(response.body).to include(edit_dredd_manual_order_path(manual_order))
-    end
-  end
-
   describe 'POST /dredd/manual_orders' do
     it 'create a new manual order' do
       expect do
@@ -188,7 +154,7 @@ describe '/dredd/manual_orders', type: :request do
 
       expect(manual_order.full_name).to eq('John Doe')
       expect(manual_order.printed_on_printers).to eq('["Ender-3Pro, Guider, Custom"]')
-      expect(response).to redirect_to(dredd_manual_order_path(manual_order))
+      expect(response).to redirect_to(dredd_manual_orders_path)
       follow_redirect!
       expect(response.body).to include('Manual Order was successfully updated.')
     end

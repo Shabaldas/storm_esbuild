@@ -15,7 +15,7 @@ class ManualOrder < ApplicationRecord
   enum status: { unpaid: 0, paid: 1 }
 
   validates :first_name, :total_price, presence: true
-  validates :phone_number, presence: true, phone: true
+  validates :phone_number, phone: true, allow_blank: true
 
   def full_name
     "#{first_name} #{last_name}"

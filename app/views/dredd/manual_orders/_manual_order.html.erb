@@ -1,68 +1,65 @@
 <tr>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black font-bold" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black font-bold" do %>
       <%= manual_order.print_code %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order&.full_name %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order.phone_number %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order) do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order) do %>
       <%= image_tag("partials_img/#{app_icon_contact(manual_order.app_contact)}.png", class: "w-1/2") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order.price_for_modeling %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order.price_for_printing %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order.count %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order.total_price %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order.prepaid_expense %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order) do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order) do %>
       <%= image_tag("partials_img/#{order_status_icon(manual_order)}.png", class: "w-10/12") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order.deadline&.strftime("%F") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= l(manual_order.created_at, format: :long)  %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap space-x-4 flex" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black bg-primary p-1.5 rounded-2xl text-black" do %>
-      EDIT
-    <% end %>
     <%= button_to dredd_manual_order_path(manual_order), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
       DESTROY
     <% end %>

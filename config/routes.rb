@@ -1,15 +1,13 @@
-# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   root 'static_pages#home'
 
   namespace :dredd do
     get '/', to: 'dashboard#index', as: :dashboard
-    get 'all_orders', to: 'dashboard#all_orders'
     resources :products, except: [:update]
     resources :product_categories, except: [:update]
     resources :feedback_calls, only: [:index]
     resources :orders, only: [:index, :show]
-    resources :manual_orders
+    resources :manual_orders, except: :show
   end
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
@@ -32,4 +30,3 @@ Rails.application.routes.draw do
 
   mount ApiV1 => '/'
 end
-# rubocop:enable Metrics/BlockLength
