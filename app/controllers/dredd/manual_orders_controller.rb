@@ -2,13 +2,11 @@
 
 module Dredd
   class ManualOrdersController < BaseController
-    before_action :set_manual_order, only: [:show, :edit, :update, :destroy]
+    before_action :set_manual_order, only: [:edit, :update, :destroy]
 
     def index
       @pagy, @manual_orders = pagy(ManualOrder.all, items: 20)
     end
-
-    def show; end
 
     def new
       @manual_order = ManualOrder.new
@@ -28,7 +26,7 @@ module Dredd
 
     def update
       if @manual_order.update(manual_order_params)
-        redirect_to dredd_manual_order_path(@manual_order), notice: 'Manual Order was successfully updated.' # rubocop:disable Rails/I18nLocaleTexts
+        redirect_to dredd_manual_orders_path, notice: 'Manual Order was successfully updated.' # rubocop:disable Rails/I18nLocaleTexts
       else
         render :edit, status: :unprocessable_entity
       end
