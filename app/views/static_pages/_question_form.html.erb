@@ -1,8 +1,32 @@
 <%= turbo_frame_tag "feedback-form" do %>
   <div class="max-w-screen-2xl mx-auto px-7 md:px-24">
     <div class="flex flex-col-reverse md:flex-row justify-around items-center lg:items-start">
+      
+
+      <lottie-player
+        autoplay
+        mode="normal"
+        src=<%= asset_path('home_img/phone_mp4_2.json')%>
+        style="width: 320px"
+      >
+      </lottie-player>
+      <lottie-player
+        autoplay
+        mode="normal"
+        src=<%= asset_path('home_img/phone_mp4.json')%>
+        style="width: 320px"
+      >
+      </lottie-player>
+
+
+      <video autoplay muted playsinline>
+          <source src="vhome_img/phone.gif" type="video/gif">
+          <img src="home_img/phone.gif">
+      </video>
+
       <div class="w-2/4 hidden lg:block ">
-        <%= image_tag("home_img/phone.png") %>
+        <div class= "w-full phone-test" style="height:200px"></div>
+        <%#= image_tag("home_img/phone.gif", class: "phone-test") %>
       </div>
       <div class="w-full lg:w-[45%] text-center lg:text-left pt-0 pb-8 lg:pt-[103px] text-light-grey">
         <h1 class="text-3xl md:text-heading-1 pb-5">Do you have any questions?</h1>
