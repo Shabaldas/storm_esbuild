@@ -231,3 +231,32 @@ input[type="checkbox"]{
     height: calc(100vh-183px);
   }
 }
+
+
+.phone-test {
+  animation: play 0s steps(1, end) 1;
+ 
+  background-image: url('home_img/phone.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  
+  /* object-fit: contain; */
+
+}
+
+  /* .phone-test:hover { */
+    /* background-size: contain; */
+    /* background-size: contain;
+    background-repeat: no-repeat; */
+    /* background-image: url('home_img/phone.png'); */
+  /* } */
+
+
+  @keyframes play {
+  0% {
+    background-image: url('home_img/phone.gif');
+  }
+  100% {
+    background-image: url('home_img/phone.png');
+  }
+}
