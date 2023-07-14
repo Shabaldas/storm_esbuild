@@ -1,6 +1,6 @@
+# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   root 'static_pages#home'
-
   namespace :dredd do
     get '/', to: 'dashboard#index', as: :dashboard
     resources :products, except: [:update]
@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show]
     resources :manual_orders, except: :show
   end
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
   post 'save_phone_number', to: 'static_pages#save_phone_number'
   patch 'cart/update_quantity'
@@ -30,3 +34,4 @@ Rails.application.routes.draw do
 
   mount ApiV1 => '/'
 end
+# rubocop:enable Metrics/BlockLength

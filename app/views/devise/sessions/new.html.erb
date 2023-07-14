@@ -34,8 +34,15 @@
         <div class="mt-[20px] mb-4">
           <%= f.submit "Log in", class:"button w-full md:max-w-[212px]", data: { turbo: false } %>
         </div>
+        <div>
+          or
+        </div>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
         <div class="content-divider"></div>
       </div>
+    <% end %>
+    <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "login-with-google-btn" do %>
+      Sign in with Google
     <% end %>
     <div class="flex items-center [&>*:nth-child(odd)]:mr-8">
       <%= render "devise/shared/links" %>

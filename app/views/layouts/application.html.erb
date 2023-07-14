@@ -26,7 +26,9 @@
 
   <body class="bg-light-grey">
     <%= google_analytics_tag_body_script %>
-    
+    <div class="fixed flex items-center mt-16 py-3 right-5 rounded-2xl w-80">
+      <%= render "dredd/shared/flash" %>
+    </div>
     <%= render 'shared/header' %>
     <div class="content">
       <%= yield %>
