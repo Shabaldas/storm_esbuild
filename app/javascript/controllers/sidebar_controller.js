@@ -1,27 +1,27 @@
-import { Controller } from '@hotwired/stimulus'
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets=["sidebarContainer"]
+  static targets = ["sidebarContainer"];
 
-  connect() {
-  }
+  connect() {}
 
-  toggle() {
+  toggle(e) {
     if (this.sidebarContainerTarget.dataset.expanded === "1") {
-      this.collapse()
+      this.expand();
     } else {
-      this.expand()
+      this.collapse();
     }
   }
 
-  collapse() {
-    this.sidebarContainerTarget.classList.remove("-translate-x-full")
-    this.sidebarContainerTarget.dataset.expanded = "0"
+  expand() {
+    this.sidebarContainerTarget.classList.remove("-translate-x-full");
+    this.sidebarContainerTarget.dataset.expanded = "0";
+    document.body.style.overflow = "hidden";
   }
 
-  expand() {
-    this.sidebarContainerTarget.classList.add("-translate-x-full")
-    this.sidebarContainerTarget.dataset.expanded = "1"
-    document.body.style.overflow="visible"
+  collapse() {
+    this.sidebarContainerTarget.classList.add("-translate-x-full");
+    this.sidebarContainerTarget.dataset.expanded = "1";
+    document.body.style.overflow = "visible";
   }
 }

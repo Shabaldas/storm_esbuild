@@ -1,0 +1,25 @@
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <table>
+    <thead class="text-gray-700 bg-gray-50">
+      <tr class="text-base">
+        <th class="px-6 py-3" scope="col">PRINT CODE</th>
+        <th class="px-6 py-3" scope="col">FULL NAME</th>
+        <th class="px-6 py-3" scope="col">MOBILE PHONE</th>
+        <th class="px-6 py-3" scope="col">APP CONTACT</th>
+        <th class="px-6 py-3" scope="col">TOTAL PRICE</th>
+        <th class="px-6 py-3" scope="col">PREPAID EXPENSE</th>
+        <th class="px-6 py-3" scope="col">STATUS</th>
+        <th class="px-6 py-3" scope="col">DEADLINE</th>
+        <th class="px-6 py-3" scope="col">CREATED AT</th>
+        <th class="px-6 py-3" scope="col">ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "dredd/manual_orders/manual_order", collection: @manual_orders %>
+    </tbody>
+  </table>
+  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  <footer class="pt-6">
+    <%= link_to "Create Manual Order", new_dredd_manual_order_path, class: "button w-80" %>
+  </footer>
+</div>

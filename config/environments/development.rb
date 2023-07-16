@@ -70,6 +70,8 @@ Rails.application.configure do
     host: 'localhost',
     port: 3000
   }
+  # config.asset_host = "http://localhost:3000"
+  config.action_mailer.asset_host = "http://localhost:3000"
 
   config.action_mailer.smtp_settings = {
     address: 'email-smtp.eu-central-1.amazonaws.com',

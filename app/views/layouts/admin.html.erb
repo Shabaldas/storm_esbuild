@@ -8,9 +8,24 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <%= google_analytics_head_script %>
+    <%= google_analytics_tag_head_script %>
+    <%= favicon_link_tag asset_path('partials_img/favicon.png') %>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMC1QVF8BG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QMC1QVF8BG');
+    </script>
   </head>
 
   <body class="bg-light-grey">
+    <%= google_analytics_tag_body_script %>
+
     <div class="content">
       <div class="fixed flex items-center mt-16 py-3 right-5 rounded-2xl w-80">
         <%= render "dredd/shared/flash" %>

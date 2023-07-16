@@ -40,7 +40,7 @@ describe '/static_pages/home', type: :request do
       context 'when user is not logged in' do
         it 'creates feedback call' do
           expect do
-            post save_phone_number_path, params: { feedback_call: { phone_number: '+380123456789' } }
+            post save_phone_number_path, params: { feedback_call: { phone_number: '+380976404050' } }
           end.to change(FeedbackCall, :count).by(1)
 
           expect(response).to redirect_to(root_path)
@@ -56,7 +56,7 @@ describe '/static_pages/home', type: :request do
 
         it 'creates feedback call' do
           expect do
-            post save_phone_number_path, params: { feedback_call: { phone_number: '+380123456789' } }
+            post save_phone_number_path, params: { feedback_call: { phone_number: '+380976404050' } }
           end.to change(FeedbackCall, :count).by(1)
 
           expect(response).to redirect_to(root_path)

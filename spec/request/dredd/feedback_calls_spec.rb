@@ -6,8 +6,8 @@ describe '/dredd/product_categories', type: :request do
   end
 
   describe 'GET /dredd/feedback_cals' do
-    let!(:feedback_call_first) { create(:feedback_call, phone_number: '+380123456789', processed: true) }
-    let!(:feedback_call_second) { create(:feedback_call, phone_number: '+380987654321') }
+    let!(:feedback_call_first) { create(:feedback_call, phone_number: '+380976404050', processed: true) }
+    let!(:feedback_call_second) { create(:feedback_call, phone_number: '+380976404050') }
 
     it 'display all feedback_calls' do
       get dredd_feedback_calls_path

@@ -6,6 +6,7 @@ export default class extends Controller {
   connect() {
     this.select = new TomSelect(this.element, { 
       closeAfterSelect: true,
+      plugins: ['remove_button'],
       render: {
         no_results:function(data,escape){
           return '<div class="no-results p-2">No results found for "'+escape(data.input)+'"</div>';

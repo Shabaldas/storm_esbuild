@@ -1,23 +1,35 @@
 </br>
 </br>
 </br>
-<div class="grid gap-2 grid-cols-6 mb-6 p-6">
-  <div class="metrics-item">
-    <div class="metrics-value">
-      <%= @users_count %>
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <div class="grid gap-2 grid-cols-6 mb-6 p-6">
+    <div class="metrics-item">
+      <div class="metrics-value">
+        <%= @users_count %>
+      </div>
+      <div class="metrics-label">Users count</div>
     </div>
-    <div class="metrics-label">Users count</div>
-  </div>
-  <div class="metrics-item">
-    <div class="metrics-value">
-      <%= @new_orders %>
+    <div class="metrics-item">
+      <%= link_to dredd_manual_orders_path do %>
+        <div class="metrics-value">
+          <%= @manual_orders.count %>
+        </div>
+        <div class="metrics-label">Manual Orders</div>
+      <% end %> 
     </div>
-    <div class="metrics-label">Order count</div>
-  </div>
-  <div class="metrics-item">
-    <div class="metrics-value">
-      <%= @new_feedback_calls %>
+    <div class="metrics-item">
+      <%= link_to dredd_orders_path do %>
+        <div class="metrics-value">
+          <%= @orders.count %>
+        </div>
+        <div class="metrics-label">Internet Orders</div>
+      <% end %>
     </div>
-    <div class="metrics-label">New feedback call</div>
+    <div class="metrics-item">
+      <div class="metrics-value">
+        <%= @new_feedback_calls %>
+      </div>
+      <div class="metrics-label">New feedback call</div>
+    </div>
   </div>
 </div>

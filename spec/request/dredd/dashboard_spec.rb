@@ -8,12 +8,14 @@ describe '/dredd', type: :request do
   describe 'GET /dredd' do
     let(:order_first) { create(:order, :unpaid) }
     let(:order_second) { create(:order, :unpaid) }
-    let(:feedback_call) { create(:feedback_call, phone_number: '+380123456789') }
+    let(:feedback_call) { create(:feedback_call, phone_number: '+380976404050') }
+    let(:manual_order) { create(:manual_order) }
 
     before do
       order_first
       order_second
       feedback_call
+      manual_order
     end
 
     it 'display admin dashboard' do
@@ -24,15 +26,10 @@ describe '/dredd', type: :request do
       expect(response.body).to include('Products')
       expect(response.body).to include('Product Categories')
       expect(response.body).to include('Feedback Calls')
-      expect(response.body).to include('Feedback Calls')
-      expect(response.body).to include('Orders')
+      expect(response.body).to include('Manual Orders')
+      expect(response.body).to include('Internet Orders')
       expect(response.body).to include('Users count')
-      expect(response.body).to include('Order count')
       expect(response.body).to include('New feedback call')
-      expect(response.body).to include(user.id.to_s)
-      expect(response.body).to include(order_first.id.to_s)
-      expect(response.body).to include(order_second.id.to_s)
-      expect(response.body).to include(feedback_call.id.to_s)
     end
 
     context 'when user is not admin' do
