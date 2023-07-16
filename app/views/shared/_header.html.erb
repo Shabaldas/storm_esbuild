@@ -9,14 +9,14 @@
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
         <ul class="h-full flex flex-col lg:flex-row flex-initial justify-between items-center text-center tracking-wide">
           <li class="px-4">
-            <%= active_link_to 'Head', root_path, class: "text-black cursor-pointer", active: :exact %>
+            <%= active_link_to t('global.header.head'), root_path, class: "text-black cursor-pointer", active: :exact %>
           </li>
           <% if policy(:admin).access? %>
             <li class="px-4">
-              <%= active_link_to 'Store', products_path, class: "text-black cursor-pointer" %>
+              <%= active_link_to t('global.header.store'), products_path, class: "text-black cursor-pointer" %>
             </li>
             <li class="px-4 cursor-pointer">
-              <%= active_link_to "Calculator", calculator_path, class: "text-black cursor-pointer" %>
+              <%= active_link_to t('global.header.calculator'), calculator_path, class: "text-black cursor-pointer" %>
             </li>
           <% end %>
           <li class="px-4 cursor-pointer"></li>
@@ -38,20 +38,20 @@
               <div class="w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
                 <% if user_signed_in? %>
                   <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
-                    <%= link_to "My cabinet", edit_user_registration_path, class: "text-black" %>
+                    <%= link_to t('global.header.my_cabinet'), edit_user_registration_path, class: "text-black" %>
                   </p>
                   <hr/>
                   <div class="text-center cursor-pointer pt-2 pb-1">
-                    <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { trubo: false } %>
+                    <%= button_to t('global.header.log_out'), destroy_user_session_path, method: :delete, data: { trubo: false } %>
                   </div>
                 <% else %>
                   <p class="text-center cursor-pointer pt-2 pb-1">
-                    <%= link_to "Registration", new_user_registration_path, class: "text-black" %>
+                    <%= link_to t('global.header.registration'), new_user_registration_path, class: "text-black" %>
                   </p>
                   <hr/>
                   <div class="text-center px-5 pt-2 pb-1 cursor-pointer">
                     <p class="text-center cursor-pointer" data-controller="renderer">
-                      <%= link_to "Sign in", user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }, class: "text-black" %>
+                      <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }, class: "text-black" %>
                       <span data-target="renderer.display"></span>
                     </p>
                   </div>
@@ -67,7 +67,7 @@
               </span>
             <% end %>
           <% end %>
-          
+
         </div>
       <%# end %>
       <% if policy(:admin).access? %>

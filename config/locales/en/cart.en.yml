@@ -1,0 +1,13 @@
+en:
+  cart:
+    cart_footer_action:
+      summary: "Summary"
+      payment: "Payment"
+      back_to_product: "Back to Products"
+    empty_cart_body:
+      empty: "Still empty..."
+    item_line:
+      micron: "micron"
+      material: "material"
+    side_bar_cart:
+      basket: "Your basket"

@@ -1,0 +1,13 @@
+uk:
+  cart:
+    cart_footer_action:
+      summary: "Резюме"
+      payment: "Оплата"
+      back_to_product: "Назад до продуктів"
+    empty_cart_body:
+      empty: "Все ще порожній..."
+    item_line:
+      micron: "мікрон"
+      material: "матеріал"
+    side_bar_cart:
+      basket: "Ваш кошик"

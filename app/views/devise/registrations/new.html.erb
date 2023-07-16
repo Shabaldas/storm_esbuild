@@ -1,7 +1,7 @@
 <div class="w-full max-w-screen-2xl mx-auto px-7 md:px-24 mt-9 mb-10 text-dark-grey">
   <div class="w-full lg:w-4/6 mt-9">
     <div class="text-2xl font-medium">
-      <h2>Sign up</h2>
+      <h2><%= t("devise.registrations.new.title") %></h2>
     </div>
     <div class="flex items-center mt-8">
       <div class="w-6 h-6 -mt-0.5">
@@ -23,7 +23,7 @@
               <%= f.label :first_name, t("devise.registrations.first_name"), class: "text-sm" %>
             </div>
             <div class="mt-1">
-              <%= f.text_field :first_name, placeholder: "Please input" %>
+              <%= f.text_field :first_name, placeholder: t("devise.registrations.new.input") %>
             </div>
           </div>
           <div class="w-full lg:w-3/5 ml-0 md:ml-6 mt-1">
@@ -31,7 +31,7 @@
               <%= f.label :last_name, t("devise.registrations.last_name"), class: "text-sm" %>
             </div>
             <div class="mt-1">
-              <%= f.text_field :last_name, placeholder: "Please input" %>
+              <%= f.text_field :last_name, placeholder: t("devise.registrations.new.input") %>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
             </svg>
           </div>
           <div class="ml-2 text-base font-medium">
-            Password
+            <%= t("devise.registrations.password") %>
           </div>
         </div>
         <div class="title-divider"></div>
@@ -70,7 +70,7 @@
               <%= f.label :password ,class: "text-sm"%>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Enter password" %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: t("devise.registrations.enter_password") %>
             </div>
           </div>
           <div class="w-full lg:w-3/5 ml-0 md:ml-6">
@@ -78,12 +78,12 @@
               <%= f.label :password_confirmation , class: "text-sm"%>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control",  placeholder: "Confirm password" %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control",  placeholder: t("devise.registrations.confirm_password") %>
             </div>
           </div>
         </div>
         <div class="mt-[32px]">
-          <%= f.submit "Sign up", class: "button w-full md:w-56", data: { turbo: false } %>
+          <%= f.submit t("devise.registrations.new.title"), class: "button w-full md:w-56", data: { turbo: false } %>
         </div>
       </div>
     </div>
