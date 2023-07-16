@@ -1,8 +1,8 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import 'tom-select/dist/css/tom-select.css';
-@import 'dropzone/dist/dropzone.css';
+@import "tom-select/dist/css/tom-select.css";
+@import "dropzone/dist/dropzone.css";
 
 @import "components/pagy";
 @import "components/form";
@@ -13,7 +13,6 @@
 @import "components/dropzone";
 @import "components/drawer";
 @import "components/metrics";
-
 
 div.field_with_errors > label {
   @apply border-red-500;
@@ -36,7 +35,6 @@ div.field_with_errors > :is(input, textarea, select) {
   box-sizing: border-box;
 }
 
-
 html,
 body {
   height: 100%;
@@ -45,10 +43,10 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  font-size: 16px;    
+  font-size: 16px;
 }
 
-body:has(.drawer-wrapper[open]){
+body:has(.drawer-wrapper[open]) {
   overflow: hidden;
 }
 
@@ -64,7 +62,8 @@ footer {
 
 /* input */
 
-input, select {
+input,
+select {
   width: 100%;
   height: 40px;
   border-radius: 4px;
@@ -118,7 +117,7 @@ input, select {
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.151);
 }
 
-.bg-header{
+.bg-header {
   --tw-bg-opacity: 1;
   background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
 }
@@ -204,11 +203,11 @@ input, select {
 .basket-sidebar::-webkit-scrollbar {
   width: 5px;
 }
- 
+
 .basket-sidebar::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.178);
 }
- 
+
 .basket-sidebar::-webkit-scrollbar-thumb {
   background-color: rgba(204, 202, 202, 0.863);
   border-radius: 5px;
@@ -219,7 +218,101 @@ input, select {
     margin: 12px 0;
   }
 
-  .order-wrapper{
+  .order-wrapper {
     height: calc(100vh-183px);
   }
+}
+
+.carousel-grid {
+  width: 100%;
+  padding-top: 57px;
+  padding-bottom: 10px;
+  background-color: transparent;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  margin: 0 auto;
+  animation: scroll-left 20s infinite linear;
+}
+
+.carousel-list {
+  display: flex;
+}
+
+.carousel-item {
+  display: flex;
+  min-width: 360px;
+  height: 100px;
+  flex-basis: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: all 0.4s ease-in-out;
+}
+
+.carousel-item img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+}
+
+.carousel-item:hover {
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-2880px);
+  }
+}
+
+@media (max-width: 769px) {
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-2400px);
+    }
+  }
+
+  .carousel-item {
+    min-width: 300px;
+  }
+
+  .carousel-item img {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 640px) {
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-1600px);
+    }
+  }
+
+  .carousel-item {
+    min-width: 200px;
+  }
+
+  .carousel-item img {
+    max-width: 120px;
+  }
+}
+
+.feedback-form img {
+  width: 100%;
 }
