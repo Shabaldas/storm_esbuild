@@ -1,4 +1,66 @@
 <div class=" w-full max-w-screen-2xl mx-auto px-7 md:px-24 mt-9 mb-10 text-dark-grey">
+  <div class="w-full lg:w-2/3">
+    </br>
+    </br>
+    </br>
+    <div class="text-2xl text-gray-800 font-medium">
+      Hello, <%= resource.first_name %>! 👋
+    </div>
+    <div class="flex items-center mt-8">
+      <div class="w-6 h-6">
+        <%= image_tag("partials_img/user.png") %>
+      </div>
+      <div class="ml-2 text-gray-800 text-base font-medium">
+        Personal data
+      </div>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
+
+      <div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center space-x-4">
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :first_name, "First name" %>
+            </div>
+            <div class="mt-1">
+              <%= f.text_field :first_name, class: "w-full rounded", placeholder: "Enter your first name" %>
+            </div>
+          </div>
+
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :last_name, "Last name" %>
+            </div>
+            <div class="mt-1">
+              <%= f.text_field :last_name, class: "w-full rounded", placeholder: "Enter your first name" %>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center space-x-4">
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :phone, "Mobile phone" %>
+            </div>
+            <div class="mt-1">
+              <%= f.text_field :phone, class: "w-full rounded", placeholder: "Enter your first name" %>
+            </div>
+          </div>
+
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :email:,"Email" %>
+            </div>
+            <div class="mt-1">
+              <%= f.text_field :email:, class: "w-full rounded", placeholder: "Enter your first name" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
   <div class="mt-9">
     <div class="text-2xl font-medium">
       <h2>Edit
