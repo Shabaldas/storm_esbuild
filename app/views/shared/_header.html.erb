@@ -25,14 +25,10 @@
     </div>
     <div class="flex items-center space-x-4">
       <%# if policy(:admin).access? %>
-        <div class="w-20 lg:flex lg:justify-between">
-          <div class="relative w-7 h-7 pt-1 flex items-center lg:block" data-controller="dropdown">
-            <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="inline-block select-none">
-              <span class="appearance-none flex items-center text-gray-700">
-                <span class="appearance-none flex items-center text-gray-700">
-                  <%= image_tag("partials_img/user.png") %>
-                </span>
-              </span>
+        <div class="w-20 flex justify-between items-center">
+          <div class="relative w-7 h-7 flex items-center lg:block" data-controller="dropdown">
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="select-none">
+              <%= image_tag("partials_img/user.png") %>
             </div>
             <div data-dropdown-target="menu" class="absolute top-10 left-[50%] -translate-x-[50%] hidden">
               <div class="w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
@@ -63,7 +59,7 @@
           <% I18n.available_locales.reject { |locale| current_locale?(locale) }.each do |locale| %>
             <%= link_to locale_path(locale), data: { "turbo-method": :put } do %>
               <span class="appearance-none flex items-center text-gray-700">
-                <%= image_tag("partials_img/#{current_locale_icon(locale)}.png", class: "mt-2 w-7") %>
+                <%= image_tag("partials_img/#{current_locale_icon(locale)}.png", class: "w-7") %>
               </span>
             <% end %>
           <% end %>
