@@ -18,7 +18,7 @@ describe '/products', type: :request do
           get products_path
 
           expect(Product.count).to eq(3)
-          expect(response.body).to include('Head')
+          expect(response.body).to include('Main')
           expect(response.body).to include('Store')
           expect(response.body).to include('Categories')
           expect(response.body).to include('Search')
@@ -31,7 +31,7 @@ describe '/products', type: :request do
           get products_path
 
           expect(Product.count).to eq(0)
-          expect(response.body).to include('Head')
+          expect(response.body).to include('Main')
           expect(response.body).to include('Store')
           expect(response.body).to include('Categories')
           expect(response.body).to include('Search')
@@ -53,7 +53,7 @@ describe '/products', type: :request do
 
         expect(response).to redirect_to(root_path)
         follow_redirect!
-        expect(response.body).to include('Head')
+        expect(response.body).to include('Main')
         expect(response.body).not_to include('Store')
         expect(response.body).not_to include('Categories')
         expect(response.body).not_to include('Search')
@@ -86,7 +86,7 @@ describe '/products', type: :request do
         expect(response.body).to include(url_for(product.main_picture))
         expect(response.body).to include(carts_cart_items_path)
         expect(response.body).to include('Color')
-        expect(response.body).to include('Head')
+        expect(response.body).to include('Main')
         expect(response.body).to include('Store')
         expect(response.body).to include('Add to basket')
         expect(response.body).to include('Back to shop')
@@ -107,7 +107,7 @@ describe '/products', type: :request do
         get product_path(product)
         expect(response).to redirect_to(root_path)
         follow_redirect!
-        expect(response.body).to include('Head')
+        expect(response.body).to include('Main')
         expect(response.body).not_to include('Store')
       end
     end

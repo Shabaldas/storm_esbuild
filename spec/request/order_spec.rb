@@ -64,7 +64,7 @@ describe '/order', type: :request do
 
         expect(response).to redirect_to(root_path)
         follow_redirect!
-        expect(response.body).to include('Head')
+        expect(response.body).to include('Main')
         expect(response.body).not_to include('Calculator')
         expect(response.body).not_to include('Your Order')
       end

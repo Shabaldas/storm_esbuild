@@ -3,7 +3,7 @@ en:
     cart_footer_action:
       summary: "Summary"
       payment: "Payment"
-      back_to_product: "Back to Products"
+      back_to_product: "Back to Store"
     empty_cart_body:
       empty: "Still empty..."
     item_line:

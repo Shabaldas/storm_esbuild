@@ -9,13 +9,11 @@ en:
       store: "Store"
       calculator: "Calculator"
       my_cabinet: "My cabinet"
-      log_out: "Log Out"
       registration: "Registration"
       sign_in: "Sign in"
 
       en_switch: "English"
       uk_switch: "Ukrainian"
-      store: "Shop"
       edit_profile: "Edit Profile"
       log_out: "Log Out"
     footer:
@@ -23,7 +21,7 @@ en:
       contacts: "Contacts"
       phone_number: "(096) 640 40 50"
       address: "Address"
-      street: "st. Tysmenytska, 248"
+      street: "st. Ukrainian Victory, 23"
       city: "Ivano-Frankivsk"
       law: " All right reserved"
     device:
