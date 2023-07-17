@@ -1,11 +1,11 @@
 uk:
   cart:
     cart_footer_action:
-      summary: "Резюме"
+      summary: "До сплати"
       payment: "Оплата"
-      back_to_product: "Назад до продуктів"
+      back_to_product: "Назад до покупок"
     empty_cart_body:
-      empty: "Все ще порожній..."
+      empty: "Все ще порожньо"
     item_line:
       micron: "мікрон"
       material: "матеріал"

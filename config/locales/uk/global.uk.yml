@@ -12,16 +12,14 @@ uk:
       log_out: "Вийти"
       registration: "Реєстрація"
       sign_in: "Увійти"
-
       en_switch: "Англійська"
       uk_switch: "Українська"
       edit_profile: "Редагувати профіль"
-      log_out: "Вийти"
     footer:
       calculator: "Калькулятор"
       contacts: "Контакти"
       phone_number: "(096) 640 40 50"
       address: "Адреса"
-      street: "вул. Тисменицька 248"
-      city: "Івано-Франківськ"
+      street: "вул. Української Перемоги, 23"
+      city: "м. Івано-Франківськ"
       law: " Всі права захищені"

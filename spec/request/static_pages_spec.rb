@@ -5,7 +5,7 @@ describe '/static_pages/home', type: :request do
         get root_path
 
         expect(response).to be_successful
-        expect(response.body).to include('Head')
+        expect(response.body).to include('Main')
         expect(response.body).to include(root_path)
         expect(response.body).not_to include('Store')
         expect(response.body).not_to include(products_path)
@@ -25,7 +25,7 @@ describe '/static_pages/home', type: :request do
         get root_path
 
         expect(response).to be_successful
-        expect(response.body).to include('Head')
+        expect(response.body).to include('Main')
         expect(response.body).to include(root_path)
         expect(response.body).to include('Store')
         expect(response.body).to include(products_path)
