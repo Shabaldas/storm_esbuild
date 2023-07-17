@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_error_message
-    I18n.t('error_message.pundit.default')
+    I18n.t('global.error_message.pundit.admin_policy.access?')
   end
 
   def set_locale

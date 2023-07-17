@@ -1,9 +1,17 @@
 uk:
   global:
+    error_message:
+      active_record_not_found: Ця сторінка не існує
+      active_record_invalid:
+        remote_path_url: "Неправильна віддалена URL-адреса"
+      pundit:
+        default: Щось пішло не так!
+        admin_policy:
+          access?: Ви не маєте доступу до цієї сторінки.
     admin:
-      product: "Повязані продукти"
+      product: "Пов`язані продукти"
       add_product: "Додати продукт"
-    translate: "The Storm  зараз українською!"
+    translate: "Переключено на українську мову!"
     header:
       head: "Головна"
       store: "Магазин"
@@ -12,8 +20,6 @@ uk:
       log_out: "Вийти"
       registration: "Реєстрація"
       sign_in: "Увійти"
-      en_switch: "Англійська"
-      uk_switch: "Українська"
       edit_profile: "Редагувати профіль"
     footer:
       calculator: "Калькулятор"
@@ -22,4 +28,4 @@ uk:
       address: "Адреса"
       street: "вул. Української Перемоги, 23"
       city: "м. Івано-Франківськ"
-      law: " Всі права захищені"
+      law: "Всі права захищені"

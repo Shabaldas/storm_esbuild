@@ -14,9 +14,9 @@ module ApplicationHelper
   def current_locale_icon(locale)
     case locale
     when :en
-      'england'
-    when :uk
       'ukraine'
+    when :uk
+      'england'
     end
   end
 end
