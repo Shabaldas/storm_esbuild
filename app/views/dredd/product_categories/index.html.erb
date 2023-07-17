@@ -2,11 +2,11 @@
   <table>
     <thead class="text-gray-700 bg-gray-50">
       <tr class="text-base">
-        <th class="px-6 py-3" scope="col">ID</th>
-        <th class="px-6 py-3" scope="col">NAME</th>
-        <th class="px-6 py-3" scope="col">DESCRIPTION</th>
-        <th class="px-6 py-3" scope="col">CREATED AT</th>
-        <th class="px-6 py-3" scope="col">ACTIONS</th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.feedback_calls.id") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.product_categories.name_big") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.product_categories.description_big") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.feedback_calls.created_at") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.orders.actions") %></th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +15,6 @@
   </table>
   <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
   <footer class="pt-6">
-    <%= link_to "Create New Product Category", new_dredd_product_category_path, class: "button w-80" %>
+    <%= link_to t("dredd.product_categories.cre_new_prod_category"), new_dredd_product_category_path, class: "button w-80" %>
   </footer>
 </div>

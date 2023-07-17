@@ -1,7 +1,7 @@
 <div class="w-full max-w-screen-2xl mx-auto px-7 md:px-24 mt-9 mb-10 text-dark-grey">
   <div class="mt-9">
     <div class="text-2xl font-medium">
-      <h2>Log in</h2>
+      <h2><%= t("devise.sessions.new.login") %></h2>
     </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="w-full md:max-w-[436px] mt-8">
@@ -18,7 +18,7 @@
             <%= f.label :password, class:"text-sm" %>
           </div>
           <div class="mt-1">
-            <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded", placeholder: "Enter password" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded", placeholder: t("devise.registrations.enter_password") %>
           </div>
         </div>
         <div class="w-full">
@@ -32,17 +32,17 @@
           </div>
         </div>
         <div class="mt-[20px] mb-4">
-          <%= f.submit "Log in", class:"button w-full md:max-w-[212px]", data: { turbo: false } %>
+          <%= f.submit t("devise.sessions.new.login"), class:"button w-full md:max-w-[212px]", data: { turbo: false } %>
         </div>
         <div>
-          or
+          <%= t("devise.registrations.new.or") %>
         </div>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
         <div class="content-divider"></div>
       </div>
     <% end %>
     <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "login-with-google-btn" do %>
-      Sign in with Google
+      <%= t("devise.sessions.new.sign_google") %>
     <% end %>
     <div class="flex items-center [&>*:nth-child(odd)]:mr-8">
       <%= render "devise/shared/links" %>

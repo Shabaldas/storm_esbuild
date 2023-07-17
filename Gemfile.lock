@@ -331,6 +331,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-i18n (7.0.3)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.0.6)
       actionpack (= 7.0.6)
       activesupport (= 7.0.6)
@@ -517,6 +520,7 @@ DEPENDENCIES
   pundit (~> 2.2)
   rails (~> 7.0.6)
   rails-controller-testing
+  rails-i18n
   ransack (~> 3.2, >= 3.2.1)
   redis (~> 4.0)
   rspec-rails

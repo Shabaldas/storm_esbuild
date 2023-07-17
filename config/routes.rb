@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :manual_orders, except: :show
   end
 
+  put 'locales/:locale', to: 'locales#update', as: :locale,
+                         constraints: { locale: /#{I18n.available_locales.join('|')}/ }
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'

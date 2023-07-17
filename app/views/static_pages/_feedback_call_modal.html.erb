@@ -10,10 +10,10 @@
         <%= image_tag("partials_img/success.png") %>
       </div>
       <p class="text-center text-base text-gray-400 pb-4">
-        We will call you later
+        <%= t("static_pages.feedback_call.call_later") %>
       </p>
       <div>
-        <%= link_to "OK", "#", data: { action: "modals#close" }, class: "button w-80" %>
+        <%= link_to t("static_pages.feedback_call.ok"), "#", data: { action: "modals#close" }, class: "button w-80" %>
       </div>
     </div>
   </div>
