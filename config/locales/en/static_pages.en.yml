@@ -7,7 +7,7 @@ en:
       questions: "Do you have any questions?"
       provide: "Please, provide your phone number and we will answer to all your questions."
     home:
-      3dprint: "3D-Print"
+      3dprint: "3D Print"
       print_ideas: "Let's Printing Dreams, One Layer at a Time!"
       scroll_down: "Scroll down"
       prototyping: "Our expert team specializes in providing top-notch 3D prints that cater to all your requirements, be it for prototyping or production purposes. Equipped with state-of-the-art technology and software, we transform your ideas into tangible creations."
@@ -24,3 +24,5 @@ en:
       low: "Low"
       medium: "Medium"
       high: "High"
+      partners: "Partners"
+      we_work_with: "We Work With"

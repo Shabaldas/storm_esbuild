@@ -1,8 +1,12 @@
 <div class="w-full max-w-screen-2xl mx-auto px-7 md:px-16 lg:px-24">
   <div class="h-screen flex flex-col justify-center items-center">
     <div class="w-full text-center mt-0 md:mt-10">
-      <span class="text-sm font-medium text-gray-100 uppercase">3D-Print</span>
-      <h1 class="w-[300px] mx-auto text-dark-blue text-3xl lg:text-heading-1">Print your ideas</h1>
+      <span class="text-sm font-medium text-gray-100 uppercase">
+        <%= t("static_pages.home.3dprint") %>
+      </span>
+      <h1 class="w-1/2 mx-auto text-dark-blue text-3xl md:text-heading-1">
+        <%= t("static_pages.home.print_ideas") %>
+      </h1>
     </div>
     <div class="w-full lg:w-4/5 mx-auto lg:pr-12">
       <%= image_tag("home_img/3d_print.png") %>
@@ -104,10 +108,10 @@
 <div class="w-full relative flex flex-col md:flex-end items-center py-20 md:py-28 overflow-hidden">
   <div class="w-full max-w-screen-2xl mx-auto pl-7 pr-7 md:pr-0 md:pl-24 relative z-20">
     <p class="text-base md:text-lg uppercase text-zinc">
-      Partners
+      <%= t("static_pages.home.partners") %>
     </p>
-    <h1 class="mt-2 text-3xl lg:text-heading-1 text-dark-blue capitalize">
-      We work with
+    <h1 class="mt-2 text-3xl lg:text-heading-1 text-dark-blue">
+      <%= t("static_pages.home.we_work_with") %>
     </h1>
   </div>
 
