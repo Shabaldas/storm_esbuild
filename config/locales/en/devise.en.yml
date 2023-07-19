@@ -1,8 +1,18 @@
-# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
-
 en:
   devise:
+    titles:
+      sign_in: "Sign in"
+      sign_up: "Sign Up"
+      log_in: "Log In"
+      goggle: "Sign in with Goggle"
+      remember_me: "Remember me"
+      or: "Or"
+      password_reset: "Password Reset"
+    providers:
+      google_oauth2: "Google"
     confirmations:
+      new:
+        resend: "Resend confirmation instructions"
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
@@ -17,6 +27,25 @@ en:
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
+      confirmation:
+        welcome: "Welcome"
+        confirm: "You can confirm your account email through the link below:"
+        button: "Confirm my account"
+      changed:
+        hello: "Hello"
+        message: "We're contacting you to notify you that your email is being changed to "
+        messagesecond: "We're contacting you to notify you that your email has been changed to "
+      email:
+        message: "We're contacting you to notify you that your password has been changed."
+      reset:
+        message: "Someone has requested a link to change your password. You can do this through the link below."
+        change: "Change my password"
+        if: "If you didn't request this, please ignore this email."
+        messagesecond: "Your password won't change until you access the link above and create a new one."
+      unlock:
+        message: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        click: "Click the link below to unlock your account:"
+        button: "Unlock my account"
       confirmation_instructions:
         subject: "Confirmation instructions"
       reset_password_instructions:
@@ -31,12 +60,52 @@ en:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     passwords:
+      edit:
+        title: "Change your password"
+        label: "New password"
+        labelsecond: "Confirm new password"
+        button: "Change my password"
+      new:
+        title: "Forgot your password?"
+        button: "Reset password"
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
     registrations:
+      registration: "Registration"
+      personal_date: "Personal date"
+      first_name: "First name"
+      last_name: "Last name"
+      phone: "Phone"
+      email: "E-mail"
+      password: "Password"
+      save: "SAVE"
+      edit_profile: "Edit profile %{event_name}"
+      new_password: "Enter a new password"
+      enter_password: "Enter password"
+      confirm_password: "Confirm password"
+      existing_password: "Enter an existing password"
+      update: "Update"
+      back:  "Back"
+      email_or: "E-mail or phone number"
+      edit:
+        title: "Edit"
+        confirmation: "Currently waiting confirmation for: "
+        leave: "(leave blank if you don't want to change it)"
+        confirm: "(we need your current password to confirm your changes)"
+        update: "Update"
+        cancel: "Cancel my account"
+        unhap: "Unhappy?"
+        button: "Cancel my account"
+        sure: "Are you sure?"
+        back: "Back"
+        min: "characters minimum"
+      new:
+        title: "Sign up"
+        input: "Please input"
+        or: "or"
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
@@ -46,13 +115,23 @@ en:
       updated: "Your account has been updated successfully."
       updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again."
     sessions:
+      new:
+        login: "Log in"
+        sign_google: "Sign in with Google"
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
     unlocks:
+      new:
+        title: "Resend unlock instructions"
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+    shared:
+      links:
+        confirm: "Didn't receive confirmation instructions?"
+        unlock: "Didn't receive unlock instructions?"
+        sign: "Sign in with"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

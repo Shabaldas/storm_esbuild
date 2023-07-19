@@ -1,0 +1,26 @@
+en:
+  static_pages:
+    feedback_call:
+      call_later: "We will call you later"
+      ok: "OK"
+    question_form:
+      questions: "Do you have any questions?"
+      provide: "Please, provide your phone number and we will answer to all your questions."
+    home:
+      3dprint: "3D-Print"
+      print_ideas: "Let's Printing Dreams, One Layer at a Time!"
+      scroll_down: "Scroll down"
+      prototyping: "Our expert team specializes in providing top-notch 3D prints that cater to all your requirements, be it for prototyping or production purposes. Equipped with state-of-the-art technology and software, we transform your ideas into tangible creations."
+      projects: "400 Projects"
+      modeling: "3D Modeling"
+      render_projects: "85 Projects"
+      rendering: "Rendering"
+      print_projects: "600 Projects"
+      print: "Print"
+      quality: "Quality"
+      many_levels: "Many Levels"
+      details: "Details"
+      accuracy: "3D printed object quality is evaluated based on geometric accuracy, surface finish, and material properties, referring to how closely it matches the design, its texture and strength."
+      low: "Low"
+      medium: "Medium"
+      high: "High"

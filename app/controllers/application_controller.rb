@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include Pagy::Backend
 
+  before_action :set_locale
+
   rescue_from Pundit::NotAuthorizedError do |error|
     redirect_to root_path, alert: pundit_error_message(error)
   end
@@ -20,7 +22,12 @@ class ApplicationController < ActionController::Base
   end
 
   def default_error_message
-    I18n.t('error_message.pundit.default')
+    I18n.t('global.error_message.pundit.admin_policy.access?')
+  end
+
+  def set_locale
+    locale_in_cookies = I18n.available_locales.map(&:to_s).include?(cookies[:locale])
+    I18n.locale = locale_in_cookies ? cookies[:locale] : I18n.default_locale
   end
 
   def current_cart

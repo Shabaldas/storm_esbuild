@@ -2,16 +2,16 @@
   <table>
     <thead class="text-gray-700 bg-gray-50">
       <tr class="text-base">
-        <th class="px-6 py-3" scope="col">PRINT CODE</th>
-        <th class="px-6 py-3" scope="col">FULL NAME</th>
-        <th class="px-6 py-3" scope="col">MOBILE PHONE</th>
-        <th class="px-6 py-3" scope="col">APP CONTACT</th>
-        <th class="px-6 py-3" scope="col">TOTAL PRICE</th>
-        <th class="px-6 py-3" scope="col">PREPAID EXPENSE</th>
-        <th class="px-6 py-3" scope="col">STATUS</th>
-        <th class="px-6 py-3" scope="col">DEADLINE</th>
-        <th class="px-6 py-3" scope="col">CREATED AT</th>
-        <th class="px-6 py-3" scope="col">ACTIONS</th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.print_code") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.full_name") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.phone_number") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.app_contact") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.total_price") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.prepaid_expense") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.status") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.deadline") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.created_at") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.actions") %></th>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +20,6 @@
   </table>
   <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
   <footer class="pt-6">
-    <%= link_to "Create Manual Order", new_dredd_manual_order_path, class: "button w-80" %>
+    <%= link_to t("dredd.manual_orders.manual_order"), new_dredd_manual_order_path, class: "button w-80" %>
   </footer>
 </div>
