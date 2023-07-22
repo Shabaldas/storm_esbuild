@@ -8,7 +8,7 @@ Sentry.init do |config|
   config.traces_sample_rate = 1.0
   config.environment = 'production'
   # or
-  config.traces_sampler = lambda do |context|
+  config.traces_sampler = lambda do |_context|
     true
   end
 end
