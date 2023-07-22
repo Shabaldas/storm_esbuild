@@ -18,7 +18,7 @@
         </ul>
       </nav>
       <% I18n.available_locales.reject { |locale| current_locale?(locale) }.each do |locale| %>
-        <%= link_to locale_path(locale), data: { "turbo-method": :put } do %>
+        <%= button_to locale_path(locale), method: :put, data: { turbo: false } do %>
           <span class="appearance-none flex items-center mr-4 text-gray-700" style="position: absolute;right: 0;">
             <%= image_tag("partials_img/#{current_locale_icon(locale)}.png", class: "mt-2 w-7") %>
           </span>
