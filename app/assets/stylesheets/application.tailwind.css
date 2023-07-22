@@ -52,6 +52,10 @@ body:has(.drawer-wrapper[open]){
   overflow: hidden;
 }
 
+.screen-height {
+  height: calc(100vh-68px);
+}
+
 /* content */
 
 .content {
@@ -274,3 +278,13 @@ input[type="checkbox"]{
     cursor: not-allowed;
   }
 }
+
+/* tabs*/
+.tab a {
+  color: white;
+}
+
+.tab.inactive a {
+  color:#2A343E
+}
+

@@ -20,7 +20,7 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       black: "#000",
-      white: "#fff",
+      white: "#ffffff",
       "dark-blue": "#2A343E",
       "metalic-grey": "#6E7579",
       "light-blue": "#3E4C59",
@@ -53,6 +53,7 @@ module.exports = {
         500: "#B0B42B",
       },
       yellow: {
+        300: "#F1C232",
         500: "#FFCB00",
       },
       blue: {
