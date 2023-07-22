@@ -32,7 +32,10 @@ class PrintModelsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.update('print_model_id_field', partial: 'form')
+        render turbo_stream: [
+          # turbo_stream.update('print_model_id_field', partial: 'form')
+          turbo_stream.update('loaderwrapper', partial: 'loader')
+        ]
       end
     end
   end

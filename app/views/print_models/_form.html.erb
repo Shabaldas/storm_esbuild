@@ -115,9 +115,16 @@
                         <%= t("calculator.settings.price_placeholder", price: "від ₴ 1") %>
                       </h4>
                     </div>
-                    <button class="w-full h-14 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer py-2 rounded w-full button w-full md:max-w-[212px]">
-                      <%= t("calculator.btns.order_print") %>
-                    </button>
+                    <div data-controller="loader">
+                      
+                      <button data-action="click->loader#showLoader" class="w-full h-14 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer py-2 rounded w-full button w-full md:max-w-[212px]">
+                        <%= t("calculator.btns.order_print") %>
+                      </button>
+                      
+                      <%= turbo_frame_tag "loaderwrapper" do %>
+                        <%= render "loader" %>
+                      <% end %>
+                    </div>
                   </div>
                 <% end %>
               </div>
