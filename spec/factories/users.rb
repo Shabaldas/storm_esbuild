@@ -6,7 +6,7 @@ FactoryBot.define do
     password { 'greatSecurePasswordWith132456879and!@#%' }
     password_confirmation { 'greatSecurePasswordWith132456879and!@#%' }
     phone { Faker::PhoneNumber.phone_number }
-    
+
     trait :admin do
       role { :admin }
     end
