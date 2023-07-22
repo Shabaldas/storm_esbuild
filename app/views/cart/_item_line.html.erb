@@ -28,7 +28,7 @@
         <div class="flex items-center">
           <% if cart_item.cartable.is_a?(Product) %>
             <% if cart_item.cart_item_option_values.any? %>
-              <div class="w-[16px] h-[16px] md:w-[22px] md:h-[22px] 
+              <div class="w-[16px] h-[16px] md:w-[22px] md:h-[22px]
                           rounded-full border-[0.2px] border-solid border-gray-100"
                           style="background-color: <%= cart_item.cart_item_option_values.first.product_option_value.option_value.value %>">
               </div>
@@ -39,7 +39,7 @@
           <% elsif cart_item.cartable.is_a?(PrintModelAttribute) %>
             <div class=" w-[16px] h-[16px] md:w-[22px] md:h-[22px] rounded-full border-[0.2px] border-solid border-gray-100" style="background-color: <%= "##{cart_item.cartable.color}" %>"></div>
             <p class="text-sm text-dark-blue ml-2">
-              <%= cart_item.cartable.quality %> micron, <%= cart_item.cartable.material.upcase %> material
+              <%= cart_item.cartable.quality %> <%= t("cart.item_line.micron") %>, <%= cart_item.cartable.material.upcase %> <%= t("cart.item_line.material") %>
             </p>
           <% end %>
         </div>

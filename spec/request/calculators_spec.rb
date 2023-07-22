@@ -11,7 +11,7 @@ describe '/print_model', type: :request do
         get calculator_path
 
         expect(response).to be_successful
-        expect(response.body).to include('Head')
+        expect(response.body).to include('Main')
         expect(response.body).to include('Store')
         expect(response.body).to include('Calculator')
       end
@@ -29,7 +29,7 @@ describe '/print_model', type: :request do
 
         expect(response).to redirect_to(root_path)
         follow_redirect!
-        expect(response.body).to include('Head')
+        expect(response.body).to include('Main')
         expect(response.body).not_to include('Store')
         expect(response.body).not_to include('Calculator')
       end
