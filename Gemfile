@@ -36,6 +36,8 @@ gem 'redis', '~> 4.0'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'simple_form'
+gem 'sentry-ruby'
+gem 'sentry-rails'
 gem 'turbo-rails'
 
 gem 'ed25519', '>= 1.2', '< 2.0'
