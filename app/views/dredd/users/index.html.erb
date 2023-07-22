@@ -1,0 +1,24 @@
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <table>
+    <thead class="text-gray-700 bg-gray-50">
+      <tr class="text-base">
+        <th class="px-6 py-3" scope="col"><%= t("dredd.users.id") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.users.full_name") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.users.phone") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.users.email") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.users.created_at") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <td>
+        <h1><%= t("dredd.users.admins") %></h1>
+        <%= render partial: "dredd/users/user", collection: @admins %>
+      </td>
+      <td>
+        <h1><%= t("dredd.users.customers") %></h1>
+        <%= render partial: "dredd/users/user", collection: @customers %>
+      </td>
+    </tbody>
+  </table>
+  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+</div>

@@ -50,4 +50,6 @@ class Product < ApplicationRecord
   def parent_product_validation
     errors.add(:base, 'Parent category can not have products') if product_category&.parent.nil?
   end
+
+  
 end

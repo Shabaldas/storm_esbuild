@@ -9,6 +9,7 @@
       </div>
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
         <ul class="h-full flex flex-col lg:flex-row flex-initial justify-between items-center text-center tracking-wide space-x-4">
+          <%= active_link_to t("dredd.header.users"), dredd_users_path, class: "text-black cursor-pointer pl-5" %>
           <%= active_link_to t("dredd.header.products"), dredd_products_path, class: "text-black cursor-pointer pl-5" %>
           <%= active_link_to t("dredd.header.product_categories"), dredd_product_categories_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.feedback_calls"), dredd_feedback_calls_path, class: "text-black cursor-pointer" %>
@@ -18,7 +19,7 @@
       </nav>
       <% I18n.available_locales.reject { |locale| current_locale?(locale) }.each do |locale| %>
         <%= link_to locale_path(locale), data: { "turbo-method": :put } do %>
-          <span class="appearance-none flex items-center text-gray-700">
+          <span class="appearance-none flex items-center mr-4 text-gray-700" style="position: absolute;right: 0;">
             <%= image_tag("partials_img/#{current_locale_icon(locale)}.png", class: "mt-2 w-7") %>
           </span>
         <% end %>

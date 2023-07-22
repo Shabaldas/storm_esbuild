@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :feedback_calls, only: [:index]
     resources :orders, only: [:index, :show]
     resources :manual_orders, except: :show
+    resources :users, except: [:show, :destroy]
   end
 
   put 'locales/:locale', to: 'locales#update', as: :locale,
