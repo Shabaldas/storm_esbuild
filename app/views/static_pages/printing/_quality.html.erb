@@ -1,0 +1,55 @@
+<table class="w-full text-sm text-left text-dark-blue">
+  <caption class="pb-1.5 text-left text-2xl md:text-4xl text-dark-blue">
+    <%= quality %> mcr
+  </caption>
+  <thead class="text-xs text-dark-blue uppercase">
+    <tr class="border-b-2 border-t-2 border-solid border-dark-blue">
+      <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
+        Quantity
+      </th>
+      <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
+        Price
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="border-b-1 border-solid border-dark-blue">
+      <td class="py-1.5 px-4 text-base font-medium">
+        1g
+      </td>
+      <td data-selected-material-and-price-target="onegramm" class="py-1.5 px-4 text-base font-medium">
+         <%= price_per_one %> hrn/g
+      </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class="border-b-1 border-solid border-dark-blue">
+      <td class="py-1.5 px-4 text-base font-medium">
+        50g
+      </td>
+      <td data-selected-material-and-price-target="fifthgramm" class="py-1.5 px-4 text-base font-medium">
+         <%= price_per_fifth %> hrn/g
+      </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class="border-b-1 border-solid border-dark-blue">
+      <td class="py-1.5 px-4 text-base font-medium">
+        100g
+      </td>
+      <td data-selected-material-and-price-target="hundredthgramm" class="py-1.5 px-4 text-base font-medium">
+         <%= price_per_hundredth %> hrn/g
+      </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class="border-b-1 border-solid border-dark-blue">
+      <td class="py-1.5 px-4 text-base font-medium">
+        250g
+      </td>
+      <td data-selected-material-and-price-target="hundredandfiftygramm" class="py-1.5 px-4 text-base font-medium">
+         <%= price_per_hundred_and_fifty %> hrn/g
+      </td>
+    </tr>
+  </tbody>
+</table>

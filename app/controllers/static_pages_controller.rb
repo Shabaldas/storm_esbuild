@@ -14,6 +14,10 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def printing
+    
+  end
+
   private
 
   def feedback_call_params
