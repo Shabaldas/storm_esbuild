@@ -47,86 +47,26 @@
           <p class="mt-2 p-4 bg-white bg-opacity-50 rounded-2xl text-dark-blue">A laser scans and fuses the powdered material layer by layer.</p>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 mt-6 items-end">
-        <div>
-          <label for="material" class="block text-sm font-medium text-metalic-grey">Матеріал</label>
-          <select id="material" class="mb-6 bg-gray-50 border border-gray-300 text-dark-blue text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5">
-            <option selected="selected">
-              Пластик ABS
-              <span>(від 12₴/г)</span>
-            </option>
-          </select>
-          <table class="w-full text-sm text-left text-dark-blue">
-            <caption class="pb-1.5 text-left text-2xl md:text-4xl text-dark-blue">100 mcr</caption>
-            <thead class="text-xs text-dark-blue uppercase">
-              <tr class="border-b-2 border-t-2 border-solid border-dark-blue">
-                <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-                  Quantity
-                </th>
-                <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-                  Price
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b-1 border-solid border-dark-blue">
-                <td class="py-1.5 px-4 text-base font-medium">
-                  1g
-                </td>
-                <td class="py-1.5 px-4 text-base font-medium">
-                  12 hrn/g
-                </td>
-              </tr>
-            </tbody>
-          </table>
+
+      <div data-controller="print-prices-table">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16">
+          <div>
+            <label for="material" class="block text-sm font-medium text-metalic-grey">Матеріал</label>
+            <select data-print-prices-table-target="materialSelect" data-action="change->print-prices-table#change" id="material" class="bg-gray-50 border border-gray-300 text-dark-blue text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5">
+              <option selected="selected" value="ABS">
+                Пластик ABS
+                <span>(від 12₴/г)</span>
+              </option>
+              <option value="PLA">
+                Пластик PLA
+                <span>(від 22₴/г)</span>
+              </option>
+            </select>
+          </div>
         </div>
-        <table class="w-full text-sm text-left text-dark-blue">
-          <caption class="pb-1.5 text-left text-2xl md:text-4xl text-dark-blue">200 mcr</caption>
-          <thead class="text-xs text-dark-blue uppercase">
-            <tr class="border-b-2 border-t-2 border-solid border-dark-blue">
-              <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-                Quantity
-              </th>
-              <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-                Price
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b-1 border-solid border-dark-blue">
-              <td class="py-1.5 px-4 text-base font-medium">
-                1g
-              </td>
-              <td class="py-1.5 px-4 text-base font-medium">
-                12 hrn/g
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table class="w-full text-sm text-left text-dark-blue">
-          <caption class="pb-1.5 text-left text-2xl md:text-4xl text-dark-blue">300 mcr</caption>
-          <thead class="text-xs text-dark-blue uppercase">
-            <tr class="border-b-2 border-t-2 border-solid border-dark-blue">
-              <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-                Quantity
-              </th>
-              <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-                Price
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b-1 border-solid border-dark-blue">
-              <td class="py-1.5 px-4 text-base font-medium">
-                1g
-              </td>
-              <td class="py-1.5 px-4 text-base font-medium">
-                12 hrn/g
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="material-prices-tables grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 mt-6 items-end"></div>
       </div>
+
     </div>
     <div class="hidden" data-tabs-target="panel">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
