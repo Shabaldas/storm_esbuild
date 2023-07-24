@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_14_210453) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_23_112812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -145,6 +145,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_210453) do
     t.string "size"
     t.float "weight"
     t.float "volume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "printer_maintenances", force: :cascade do |t|
+    t.bigint "printer_id", null: false
+    t.string "problem", null: false
+    t.datetime "problem_find"
+    t.string "time_for_fix"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["printer_id"], name: "index_printer_maintenances_on_printer_id"
+  end
+
+  create_table "printers", force: :cascade do |t|
+    t.integer "printer_code", null: false
+    t.string "firm"
+    t.string "model"
+    t.integer "printing_technology", default: 0
+    t.integer "state", default: 0
+    t.integer "type_mechanic", default: 0
+    t.string "table_size", null: false
+    t.decimal "price_for_printer", precision: 8, scale: 2, default: "0.0", null: false
+    t.datetime "bought"
+    t.string "comment"
+    t.string "by_for_upgrade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,65 @@
+<tr>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.printer_code %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.firm %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.printing_technology %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.state %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.type_mechanic %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.table_size %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.price_for_printer %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.bought %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.comment %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.by_for_upgrade %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to dredd_printer_path(printer), class: "text-black" do %>
+      <%= printer.created_at.strftime("%F") %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap space-x-4 flex" scope="row">
+    <%= link_to edit_dredd_printer_path(printer), method: :update, class: "text-black bg-primary p-1.5 rounded-2xl text-black" do %>
+      <%= t("dredd.orders.edit") %>
+    <% end %>
+    <%= button_to dredd_printer_path(printer), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
+      <%= t("dredd.manual_orders.destroy") %>
+    <% end %>
+  </td>
+</tr>

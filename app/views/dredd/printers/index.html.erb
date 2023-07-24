@@ -1,0 +1,28 @@
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <table>
+    <thead class="text-gray-700 bg-gray-50">
+      <tr class="text-base">
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.printer_code") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.firm") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.printing_technology") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.state") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.type_mechanic") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.table_size") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.price_for_printer") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.bought") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.comment") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.by_for_upgrade") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.created_at") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <td>
+        <%= render partial: "dredd/printers/printer", collection: @printers %>
+      </td>
+    </tbody>
+  </table>
+  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  <footer class="pt-6">
+    <%= link_to t("dredd.printers.cre_new_printer"), new_dredd_printer_path, class: "button w-80" %>
+  </footer>
+</div>
