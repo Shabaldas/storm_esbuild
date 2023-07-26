@@ -114,6 +114,7 @@ module.exports = {
         },
         blue: {
           200: "#4860E5",
+          300: "#5D5FEF",
           500: "#3F50B4",
         },
         petrol: {
