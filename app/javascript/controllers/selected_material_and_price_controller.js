@@ -1,19 +1,23 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["onegramm", "fifthgramm", "hundredthgramm", "hundredandfiftygramm"]
-
-  connect() {
-    console.log("connectLOL");
+  changeFdm(event) {
+    const frame100 = document.getElementById('printing_100');
+    const frame200 = document.getElementById('printing_200');
+    const frame300 = document.getElementById('printing_300');
+    frame100.src=event.target.value;
+    frame200.src=event.target.value;
+    frame300.src=event.target.value;
+    frame100.reload();
+    frame200.reload();
+    frame300.reload();
   }
 
-  changePrice(e) {
-    console.log(e.target);
-    const selector = e.target;
-    console.log(selector.selectedIndex);
-    const currentPrice = +selector.options[selector.selectedIndex];
-    console.log(currentPrice);
-  //   const currentPrice = +selector.options[selector.selectedIndex].dataset.price;
-  //   this.priceTarget.textContent = `₴ ${currentPrice}`;
+  changeSla(event) {
+    
   }
+  changeDlp(event) {
+
+  }
+
 }

@@ -1,0 +1,21 @@
+<div>
+  <% if params[:material] == 'ELASTAN,TPU, Nylon, PC' %>
+    <%= render partial: "static_pages/printing/quality", 
+                          locals: { 
+                            quality: quality,
+                            price_per_fifth: fdm_materials_price_for_table('ELASTAN,TPU, Nylon, PC')[quality][:price_per_fifth],
+                            price_per_hundredth: fdm_materials_price_for_table('ELASTAN,TPU, Nylon, PC')[quality][:price_per_hundredth],
+                            price_per_hundred_and_fifty: fdm_materials_price_for_table('ELASTAN,TPU, Nylon, PC')[quality][:price_per_hundred_and_fifty],
+                          } 
+    %>
+  <% else %>
+    <%= render partial: "static_pages/printing/quality", 
+                          locals: { 
+                            quality: quality,
+                            price_per_fifth: fdm_materials_price_for_table('ABS+, PLA, PET, coPET')[quality][:price_per_fifth],
+                            price_per_hundredth: fdm_materials_price_for_table('ABS+, PLA, PET, coPET')[quality][:price_per_hundredth],
+                            price_per_hundred_and_fifty: fdm_materials_price_for_table('ABS+, PLA, PET, coPET')[quality][:price_per_hundred_and_fifty],
+                          } 
+      %>
+  <% end %>
+</div>

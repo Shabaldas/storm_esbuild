@@ -33,7 +33,6 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:index, :show]
-  resource :print, only: [:show]
   resources :print_models, only: [] do
     post :manage, on: :collection
   end

@@ -1,77 +1,105 @@
 # frozen_string_literal: true
 
 module PrintingHelper
-  MATERIALS = {
-    'PLA' => {
-      100 => {
-        price_per_one: 100,
-        price_per_fifth: 75,
-        price_per_hundredth: 55,
-        price_per_hundred_and_fifty: 15
+  FDM_MATERIALS = {
+    'ABS+, PLA, PET, coPET' => {
+      '100' => {
+        price_per_fifth: 8.0,
+        price_per_hundredth: 7.5,
+        price_per_hundred_and_fifty: 7.0
       },
-      200 => {
-        price_per_one: 150,
-        price_per_fifth: 125,
-        price_per_hundredth: 105,
-        price_per_hundred_and_fifty: 65
+      '200' => {
+        price_per_fifth: 7.0,
+        price_per_hundredth: 6.5,
+        price_per_hundred_and_fifty: 6.0
       },
-      300 => {
-        price_per_one: 200,
-        price_per_fifth: 175,
-        price_per_hundredth: 155,
-        price_per_hundred_and_fifty: 115
+      '300' => {
+        price_per_fifth: 6.5,
+        price_per_hundredth: 5.5,
+        price_per_hundred_and_fifty: 5.0
       }
     },
-    'ABS' => {
-      100 => {
-        price_per_one: 200,
-        price_per_fifth: 175,
-        price_per_hundredth: 155,
-        price_per_hundred_and_fifty: 115
+    'ELASTAN,TPU, Nylon, PC' => {
+      '100' => {
+        price_per_fifth: 16.0,
+        price_per_hundredth: 14.0,
+        price_per_hundred_and_fifty: 11.0
       },
-      200 => {
-        price_per_one: 250,
-        price_per_fifth: 225,
-        price_per_hundredth: 205,
-        price_per_hundred_and_fifty: 165
+      '200' => {
+        price_per_fifth: 14.0,
+        price_per_hundredth: 12.0,
+        price_per_hundred_and_fifty: 10.0
       },
-      300 => {
-        price_per_one: 300,
-        price_per_fifth: 275,
-        price_per_hundredth: 255,
-        price_per_hundred_and_fifty: 215
+      '300' => {
+        price_per_fifth: 12.0,
+        price_per_hundredth: 10.0,
+        price_per_hundred_and_fifty: 8.0
       }
-    },
+    }
   }.freeze
 
-  def material_for_select
-    MATERIALS.map do |material, value|
-      # binding.pry
-      [
-        "Пластик #{material} (від #{value[:price_per_one]}₴/г)",
-        material,
-        {
-          data: {
-            '100'=> {
-              price_per_one: value[100][:price_per_one],
-              price_per_fifth: value[100][:price_per_fifth],
-              price_per_hundredth: value[100][:price_per_hundredth],
-              price_per_hundred_and_fifty: value[100][:price_per_hundred_and_fifty]
-            },
-            '200'=> {
-              price_per_one: value[200][:price_per_one],
-              price_per_fifth: value[200][:price_per_fifth],
-              price_per_hundredth: value[200][:price_per_hundredth],
-              price_per_hundred_and_fifty: value[200][:price_per_hundred_and_fifty]
-            },
-            '300'=> {
-              price_per_one: value[300][:price_per_one],
-              price_per_fifth: value[300][:price_per_fifth],
-              price_per_hundredth: value[300][:price_per_hundredth],
-              price_per_hundred_and_fifty: value[300][:price_per_hundred_and_fifty]
-            }
-          }
+  def sla_materials
+    {
+      'SLA ENGENIRING' => {
+        '35' => {
+          price_per_fifth: 8.0,
+          price_per_hundredth: 7.5,
+          price_per_hundred_and_fifty: 7.0
+        },
+        '50' => {
+          price_per_fifth: 7.0,
+          price_per_hundredth: 6.5,
+          price_per_hundred_and_fifty: 6.0
+        },
+        '300' => {
+          price_per_fifth: 6.5,
+          price_per_hundredth: 5.5,
+          price_per_hundred_and_fifty: 5.0
         }
+      }
+    }.freeze
+  end
+
+  def dlp_materials
+    {
+      'DLP MODEL PHOTOPOLYMER RESIN' => {
+        '35' => {
+          price_per_fifth: 8.0,
+          price_per_hundredth: 7.5,
+          price_per_hundred_and_fifty: 7.0
+        },
+        '50' => {
+          price_per_fifth: 7.0,
+          price_per_hundredth: 6.5,
+          price_per_hundred_and_fifty: 6.0
+        },
+        '300' => {
+          price_per_fifth: 6.5,
+          price_per_hundredth: 5.5,
+          price_per_hundred_and_fifty: 5.0
+        }
+      }
+    }.freeze
+  end
+
+  def fdm_materials_price_for_table(params_material)
+    FDM_MATERIALS[params_material]
+  end
+
+  def fdm_material_for_select
+    FDM_MATERIALS.map do |material, _value|
+      [
+        "#{t('static_pages.printing.plastics')} #{material}",
+        printing_path(material:)
+      ]
+    end
+  end
+
+  def sla_material_for_select
+    FDM_MATERIALS.map do |material, _value|
+      [
+        "#{t('static_pages.printing.plastics')} #{material}",
+        printing_path(material:)
       ]
     end
   end
