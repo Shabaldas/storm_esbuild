@@ -13,6 +13,9 @@
           </li>
           <% if policy(:admin).access? %>
             <li class="px-4">
+              <%= active_link_to t('global.header.printing'), printing_path, class: "text-black cursor-pointer" %>
+            </li>
+            <li class="px-4">
               <%= active_link_to t('global.header.store'), products_path, class: "text-black cursor-pointer" %>
             </li>
             <li class="px-4 cursor-pointer">

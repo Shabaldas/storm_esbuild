@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   }
 
   post 'save_phone_number', to: 'static_pages#save_phone_number'
+  get 'printing', to: 'static_pages#printing'
   patch 'cart/update_quantity'
   get :calculator, to: 'print_models#new', as: :calculator
   get 'checkout', to: 'orders#checkout', as: :checkout
@@ -32,7 +33,6 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:index, :show]
-  resource :print, only: [:show]
   resources :print_models, only: [] do
     post :manage, on: :collection
   end
