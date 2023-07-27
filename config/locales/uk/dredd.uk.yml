@@ -43,6 +43,8 @@ uk:
       manual_order_information: "Інформація про ручне замовлення"
       comments: "Коментарі"
       edit_manual_order: "Редагувати ручне замовлення"
+      quality: "Якість друку"
+      infill: "Заповнення"
     orders:
       edit: "РЕДАГУВАТИ"
       full_name: "ПОВНЕ ІМ'Я"

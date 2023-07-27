@@ -43,6 +43,8 @@ en:
       manual_order_information: "Manual Order Information"
       comments: "Comments"
       edit_manual_order: "Edit manual order"
+      quality: "Quality"
+      infill: "Infill"
     orders:
       edit: "EDIT"
       full_name: "FULL NAME"
