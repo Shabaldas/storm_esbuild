@@ -23,55 +23,60 @@
         </ul>
       </nav>
     </div>
-    <div class="flex items-center space-x-4">
+    <div class="flex items-center space-x-5">
       <%# if policy(:admin).access? %>
-        <div class="w-20 flex justify-between items-center">
-          <div class="relative w-7 h-7 flex items-center lg:block" data-controller="dropdown">
-            <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="select-none">
-              <%= image_tag("partials_img/user.png") %>
-            </div>
-            <div data-dropdown-target="menu" class="absolute top-10 left-[50%] -translate-x-[50%] hidden">
-              <div class="w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
-                <% if user_signed_in? %>
-                  <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
-                    <%= link_to t('global.header.my_cabinet'), edit_user_registration_path, class: "text-black" %>
+      <div class="w-20 flex justify-between items-center">
+        <div class="relative w-7 h-7 flex items-center lg:block" data-controller="dropdown">
+          <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="select-none">
+            <%= image_tag("partials_img/user.png") %>
+          </div>
+          <div data-dropdown-target="menu" class="absolute top-10 left-[50%] -translate-x-[50%] hidden">
+            <div class="w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
+              <% if user_signed_in? %>
+                <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
+                  <%= link_to t('global.header.my_cabinet'), edit_user_registration_path, class: "text-black" %>
+                </p>
+                <hr/>
+                <div class="text-center cursor-pointer pt-2 pb-1">
+                  <%= button_to t('global.header.log_out'), destroy_user_session_path, method: :delete, data: { trubo: false } %>
+                </div>
+              <% else %>
+                <p class="text-center cursor-pointer pt-2 pb-1">
+                  <%= link_to t('global.header.registration'), new_user_registration_path, class: "text-black" %>
+                </p>
+                <hr/>
+                <div class="text-center px-5 pt-2 pb-1 cursor-pointer">
+                  <p class="text-center cursor-pointer" data-controller="renderer">
+                    <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }, class: "text-black" %>
+                    <span data-target="renderer.display"></span>
                   </p>
-                  <hr/>
-                  <div class="text-center cursor-pointer pt-2 pb-1">
-                    <%= button_to t('global.header.log_out'), destroy_user_session_path, method: :delete, data: { trubo: false } %>
-                  </div>
-                <% else %>
-                  <p class="text-center cursor-pointer pt-2 pb-1">
-                    <%= link_to t('global.header.registration'), new_user_registration_path, class: "text-black" %>
-                  </p>
-                  <hr/>
-                  <div class="text-center px-5 pt-2 pb-1 cursor-pointer">
-                    <p class="text-center cursor-pointer" data-controller="renderer">
-                      <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }, class: "text-black" %>
-                      <span data-target="renderer.display"></span>
-                    </p>
-                  </div>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             </div>
           </div>
+        </div>
 
-          <% I18n.available_locales.reject { |locale| current_locale?(locale) }.each do |locale| %>
-            <%= link_to locale_path(locale), data: { "turbo-method": :put } do %>
+        <% I18n.available_locales.reject { |locale| current_locale?(locale) }.each do |locale| %>
+          <div class="h-[28px]">
+            <%= button_to locale_path(locale), method: :put, data: { turbo: false } do %>
               <span class="appearance-none flex items-center text-gray-700">
                 <%= image_tag("partials_img/#{current_locale_icon(locale)}.png", class: "w-7") %>
               </span>
             <% end %>
-          <% end %>
+          </div>
+        <% end %>
+      </div>
 
-        </div>
       <%# end %>
       <% if policy(:admin).access? %>
         <details class="drawer-wrapper">
-          <summary class="drawer-trigger flex">
-            <%= image_tag("partials_img/basket_icon_grey.png", class: "mt-2") %>
+          <summary class="drawer-trigger flex relative">
+            <%= image_tag("partials_img/basket_icon_grey.png", class: "mt-0") %>
+            <span class="w-[18px] h-[18px] absolute -top-2.5 left-3 flex justify-center items-center bg-yellow-500 rounded-full text-[10px] text-dark-blue font-semibold">
+              12
+            </span>
           </summary>
-        <%= render partial: "cart/side_bar_cart" %>
+          <%= render partial: "cart/side_bar_cart" %>
         </details>
       <% end %>
     </div>

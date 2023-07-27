@@ -48,6 +48,8 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('Email')
       expect(response.body).to include('Price for modeling')
       expect(response.body).to include('Price for printing')
+      expect(response.body).to include('Quality')
+      expect(response.body).to include('Infill')
       expect(response.body).to include('Count')
       expect(response.body).to include('Total price')
       expect(response.body).to include('Status')
@@ -78,6 +80,8 @@ describe '/dredd/manual_orders', type: :request do
             print_color: 'White',
             print_material: 'PLA',
             comment: 'Just for fun',
+            quality: '0.1mm',
+            infill: '50%',
             deadline: DateTime.now + 1.day
           }
         }
@@ -97,6 +101,8 @@ describe '/dredd/manual_orders', type: :request do
       expect(manual_order.print_color).to eq('White')
       expect(manual_order.print_material).to eq('PLA')
       expect(manual_order.comment).to eq('Just for fun')
+      expect(manual_order.quality).to eq('0.1mm')
+      expect(manual_order.infill).to eq('50%')
       expect(manual_order.deadline).not_to be_nil
     end
   end
@@ -106,6 +112,7 @@ describe '/dredd/manual_orders', type: :request do
       create(:manual_order,
              first_name: 'John', last_name: 'Doe', total_price: 500,
              phone_number: '0673646509', email: '3d.storm.des@gmail.com',
+             quality: '0.1mm', infill: '50%',
              print_material: 'ABS', app_contact: 'viber', comment: 'Comment')
     end
 
@@ -120,6 +127,8 @@ describe '/dredd/manual_orders', type: :request do
           price_for_modeling: '100',
           price_for_printing: '200',
           count: '2',
+          quality: '0.2mm',
+          infill: '100%',
           total_price: '600',
           prepaid_expense: '200',
           print_color: 'White',
@@ -143,6 +152,8 @@ describe '/dredd/manual_orders', type: :request do
           .and change(manual_order, :prepaid_expense).from(nil).to(200.0)
           .and change(manual_order, :price_for_printing).from(nil).to(200.0)
           .and change(manual_order, :price_for_modeling).from(nil).to(100.0)
+          .and change(manual_order, :quality).from('0.1mm').to('0.2mm')
+          .and change(manual_order, :infill).from('50%').to('100%')
           .and change(manual_order, :count).from(nil).to(2)
 
       expect(manual_order.full_name).to eq('John Doe')
