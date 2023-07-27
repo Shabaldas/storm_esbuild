@@ -13,99 +13,39 @@
     </div>
     <div class="hidden lg:block">
       <p class="p-4 bg-white bg-opacity-50 rounded-2xl text-dark-blue">
-        SLA uses a UV laser to solidify liquid resin, creating detailed and precise 3D objects.
+        <%= t("static_pages.printing.sla_tag_1") %>
       </p>
       <p class="mt-2 p-4 bg-white bg-opacity-50 rounded-2xl text-dark-blue">
-        Its high resolution makes SLA suitable for intricate designs and prototypes.
+        <%= t("static_pages.printing.sla_tag_2") %>
       </p>
       <p class="mt-2 p-4 bg-white bg-opacity-50 rounded-2xl text-dark-blue">
-        SLA's layer-by-layer resin curing process allows for the production of intricate, functional prototypes and end-use parts with exceptional detail.
+        <%= t("static_pages.printing.sla_tag_3") %>
       </p>
     </div>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 mt-6 items-end">
+  <div data-controller="selected-material-and-price" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 mt-6 items-end">
     <div>
       <label for="material" class="block text-sm font-medium text-metalic-grey">
         <%= t("static_pages.printing.material") %>
       </label>
-      <%= select_tag(:material, options_for_select(sla_materials), 
+      <%= select_tag(:material, options_for_select(sla_material_for_select), 
                                 class: "mb-6 bg-gray-50 border border-gray-300 text-dark-blue text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5",
                                 data: {
                                   action: "change->selected-material-and-price#changeSla",
                                 })
       %>
-      <table class="w-full text-sm text-left text-dark-blue">
-        <label for="table" class="block text-sm font-medium text-metalic-grey">
-          <%= t("static_pages.printing.quality") %>
-        </label>
-        <caption class="pb-1.5 text-left text-2xl md:text-4xl text-dark-blue">100 mcr</caption>
-        <thead class="text-xs text-dark-blue uppercase">
-          <tr class="border-b-2 border-t-2 border-solid border-dark-blue">
-            <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-              Quantity
-            </th>
-            <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-              Price
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="border-b-1 border-solid border-dark-blue">
-            <td class="py-1.5 px-4 text-base font-medium">
-              до 50g
-            </td>
-            <td class="py-1.5 px-4 text-base font-medium">
-              15 hrn/g
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <label for="table" class="block text-sm font-medium text-metalic-grey">
+        <%= t("static_pages.printing.quality") %>
+      </label>
+      <%= turbo_frame_tag :printing_sla_25 do %>
+        <%= render partial: "static_pages/printing/sla_table_quality", locals: { quality: '25', quality_mm: '0,25' } %>
+      <% end %>
     </div>
-    <table class="w-full text-sm text-left text-dark-blue">
-      <caption class="pb-1.5 text-left text-2xl md:text-4xl text-dark-blue">200 mcr</caption>
-      <thead class="text-xs text-dark-blue uppercase">
-        <tr class="border-b-2 border-t-2 border-solid border-dark-blue">
-          <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-            Quantity
-          </th>
-          <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-            Price
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="border-b-1 border-solid border-dark-blue">
-          <td class="py-1.5 px-4 text-base font-medium">
-            100g
-          </td>
-          <td class="py-1.5 px-4 text-base font-medium">
-            15 hrn/g
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="w-full text-sm text-left text-dark-blue">
-      <caption class="pb-1.5 text-left text-2xl md:text-4xl text-dark-blue">300 mcr</caption>
-      <thead class="text-xs text-dark-blue uppercase">
-        <tr class="border-b-2 border-t-2 border-solid border-dark-blue">
-          <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-            Quantity
-          </th>
-          <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
-            Price
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="border-b-1 border-solid border-dark-blue">
-          <td class="py-1.5 px-4 text-base font-medium">
-            250g
-          </td>
-          <td class="py-1.5 px-4 text-base font-medium">
-            15 hrn/g
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <%= turbo_frame_tag :printing_sla_35 do %>
+      <%= render partial: "static_pages/printing/sla_table_quality", locals: { quality: '35', quality_mm: '0,35' } %>
+    <% end %>
+    <%= turbo_frame_tag :printing_sla_50 do %>
+      <%= render partial: "static_pages/printing/sla_table_quality", locals: { quality: '50', quality_mm: '0,50' } %>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,23 @@
+<div>
+  <% if params[:material] == 'Engineering Resin' %>
+     <%= render partial: "static_pages/printing/quality", 
+                          locals: { 
+                            quality: quality,
+                            quality_mm: quality_mm,
+                            price_per_fifth: dlp_materials_price_for_table('Engineering Resin')[quality][:price_per_fifth],
+                            price_per_hundredth: dlp_materials_price_for_table('Engineering Resin')[quality][:price_per_hundredth],
+                            price_per_hundred_and_fifty: dlp_materials_price_for_table('Engineering Resin')[quality][:price_per_hundred_and_fifty],
+                          } 
+    %>
+  <% else %>
+    <%= render partial: "static_pages/printing/quality", 
+                          locals: { 
+                            quality: quality,
+                            quality_mm: quality_mm,
+                            price_per_fifth: dlp_materials_price_for_table('Modeling Resin')[quality][:price_per_fifth],
+                            price_per_hundredth: dlp_materials_price_for_table('Modeling Resin')[quality][:price_per_hundredth],
+                            price_per_hundred_and_fifty: dlp_materials_price_for_table('Modeling Resin')[quality][:price_per_hundred_and_fifty],
+                          } 
+    %>
+  <% end %>
+</div>
