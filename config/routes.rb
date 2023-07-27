@@ -9,8 +9,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show]
     resources :manual_orders, except: :show
     resources :users, except: [:show, :destroy]
-    resources :printers
-    resources :printer_maintenances
+    resources :printers, except: :show
   end
 
   put 'locales/:locale', to: 'locales#update', as: :locale,

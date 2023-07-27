@@ -6,15 +6,15 @@ module Dredd
 
     def index
       @pagy, @printers = pagy(Printer.all, items: 10)
+      @printer = Printer.first
     end
-
-    def show; end
 
     def new
       @printer = Printer.new
     end
 
-    def edit; end
+    def edit
+    end
 
     def create
       @printer = Printer.new(prepare_params(product_params))
@@ -26,6 +26,7 @@ module Dredd
     end
 
     def update
+      binding.irb
       if @printer.update(prepare_params(product_params))
         redirect_to dredd_printers_path, notice: 'Printer was successfully updated.' # rubocop:disable Rails/I18nLocaleTexts
       else
@@ -41,6 +42,7 @@ module Dredd
     private
 
     def product_params
+      binding.irb
       params.require(:printer).permit(:printer_code, :firm, :model, :printing_technology, :state,
                                       :type_mechanic, :table_size, :price_for_printer, :bought,
                                       :comment, :by_for_upgrade)
