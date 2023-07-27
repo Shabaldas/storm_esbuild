@@ -1,0 +1,23 @@
+<div>
+  <% if params[:material] == 'High precision photopolymer Resin' %>
+    <%= render partial: "static_pages/printing/quality", 
+                          locals: { 
+                            quality: quality,
+                            quality_mm: quality_mm,
+                            price_per_fifth: sla_materials_price_for_table('High precision photopolymer Resin')[quality][:price_per_fifth],
+                            price_per_hundredth: sla_materials_price_for_table('High precision photopolymer Resin')[quality][:price_per_hundredth],
+                            price_per_hundred_and_fifty: sla_materials_price_for_table('High precision photopolymer Resin')[quality][:price_per_hundred_and_fifty],
+                          } 
+    %>
+  <% else %>
+    <%= render partial: "static_pages/printing/quality", 
+                          locals: { 
+                            quality: quality,
+                            quality_mm: quality_mm,
+                            price_per_fifth: sla_materials_price_for_table('Modeling Resin, Flexible 80A, Clear')[quality][:price_per_fifth],
+                            price_per_hundredth: sla_materials_price_for_table('Modeling Resin, Flexible 80A, Clear')[quality][:price_per_hundredth],
+                            price_per_hundred_and_fifty: sla_materials_price_for_table('Modeling Resin, Flexible 80A, Clear')[quality][:price_per_hundred_and_fifty],
+                          } 
+    %>
+  <% end %>
+</div>

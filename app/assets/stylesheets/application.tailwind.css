@@ -50,6 +50,10 @@ body:has(.drawer-wrapper[open]) {
   overflow: hidden;
 }
 
+.screen-height {
+  height: calc(100vh-68px);
+}
+
 /* content */
 
 .content {
@@ -63,12 +67,18 @@ footer {
 /* input */
 
 input,
+textarea,
 select {
   width: 100%;
   height: 40px;
   border-radius: 4px;
   padding: 0 16px;
   border: 1px solid #6e7579;
+}
+
+textarea {
+  padding:10px 16px;
+  resize: none;
 }
 
 input[type="checkbox"]{
@@ -367,3 +377,13 @@ input[type="checkbox"]{
     cursor: not-allowed;
   }
 }
+
+/* tabs*/
+.tab a {
+  color: white;
+}
+
+.tab.inactive a {
+  color:#2A343E
+}
+

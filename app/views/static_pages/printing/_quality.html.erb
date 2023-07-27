@@ -1,0 +1,46 @@
+<table class="w-full text-sm text-left text-dark-blue">
+  <caption class="pb-1.5 text-left text-2xl md:text-4xl text-dark-blue">
+   
+    <%= quality %> <%= t("static_pages.printing.mcr") %> (<%= quality_mm %> <%= t("static_pages.printing.mm") %>)
+  </caption>
+  <thead class="text-xs text-dark-blue uppercase">
+    <tr class="border-b-2 border-t-2 border-solid border-dark-blue">
+      <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
+        <%= t("static_pages.printing.quantity") %>
+      </th>
+      <th scope="col" class="py-1.5 px-4 text-base normal-case font-normal">
+        <%= t("static_pages.printing.price") %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="border-b-1 border-solid border-dark-blue">
+      <td class="py-1.5 px-4 text-base font-medium">
+        <%= t("static_pages.printing.to") %> 50 <%= t("static_pages.printing.gram") %>
+      </td>
+      <td data-selected-material-and-price-target="fifthgramm" class="py-1.5 px-4 text-base font-medium">
+         <%= price_per_fifth %> <%= t("static_pages.printing.value") %>
+      </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class="border-b-1 border-solid border-dark-blue">
+      <td class="py-1.5 px-4 text-base font-medium">
+        <%= t("static_pages.printing.from") %> 100 <%= t("static_pages.printing.gram") %>
+      </td>
+      <td data-selected-material-and-price-target="hundredthgramm" class="py-1.5 px-4 text-base font-medium">
+         <%= price_per_hundredth %> <%= t("static_pages.printing.value") %>
+      </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class="border-b-1 border-solid border-dark-blue">
+      <td class="py-1.5 px-4 text-base font-medium">
+       <%= t("static_pages.printing.from") %> 250 <%= t("static_pages.printing.gram") %>
+      </td>
+      <td data-selected-material-and-price-target="hundredandfiftygramm" class="py-1.5 px-4 text-base font-medium">
+         <%= price_per_hundred_and_fifty %> <%= t("static_pages.printing.value") %>
+      </td>
+    </tr>
+  </tbody>
+</table>

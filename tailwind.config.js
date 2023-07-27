@@ -109,10 +109,12 @@ module.exports = {
           500: "#B0B42B",
         },
         yellow: {
+          300: "#EDD58E",
           500: "#FFCB00",
         },
         blue: {
           200: "#4860E5",
+          300: "#5D5FEF",
           500: "#3F50B4",
         },
         petrol: {

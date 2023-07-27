@@ -1,0 +1,47 @@
+<div class="w-full max-w-screen-2xl mx-auto px-7 md:px-16 lg:px-24">
+  <div class="flex flex-col screen-height mt-[68px] md:flex-row items-center justify-center md:justify-between">
+    <div class="w-full md:w-3/6 order-2 md:order-1">
+      <div class="mt-12 text-center md:text-left md:mt-0">
+        <p class="text-base md:text-lg uppercase text-gray-100">
+          <%= t("static_pages.home.services") %>
+        </p>
+        <h1 class="text-3xl lg:text-heading-1 text-dark-blue capitalize">
+          <%= t("static_pages.home.3dprinting") %>
+        </h1>
+        <p class="w-full md:max-w-[472px] mt-6 md:mt-10 text-dark-blue">
+          <%= t("static_pages.printing.3dprinting_description") %>        
+        </p>
+      </div>
+    </div>
+    <div class="w-4/6 order-1 md:order-2 flex justify-end">
+      <%= image_tag("print_img/arm-rendering.png") %>
+    </div>
+  </div>
+
+  <div data-controller="tabs" data-tabs-active-tab="bg-dark-blue opacity-100 rounded-[24px] text-white" class="relative pt-6 pb-6 md:pb-8 px-6 md:px-8 my-20 md:mt-[108px] md:mb-[154px] rounded-[30px] overflow-hidden bg-yellow-300">
+    <p class="absolute bottom-3 right-6 md:right-8 text-sm text-dark-blue">
+      <%= t("static_pages.printing.minimum_price") %>
+    </p>
+    <ul class="flex items-center">
+      <li class="tab py-1.5 px-5 border-2 border-solid border-dark-blue rounded-full cursor-pointer" data-tabs-target="tab" data-action="click->tabs#change">
+        <a class="bg-none no-underline font-base text-dark-blue font-medium" href="#">
+          FDM
+        </a>
+      </li>
+      <li class="tab py-1.5 px-5 border-2 border-solid border-dark-blue ml-2 rounded-full cursor-pointer" data-tabs-target="tab" data-action="click->tabs#change">
+        <a class="bg-none no-underline font-base text-dark-blue font-medium" href="#">
+          SLA
+        </a>
+      </li>
+      <li class="tab py-1.5 px-5 border-2 border-solid border-dark-blue ml-2 rounded-full cursor-pointer" data-tabs-target="tab" data-action="click->tabs#change">
+        <a class="bg-none no-underline font-base text-dark-blue font-medium" href="#">
+          DLP
+        </a>
+      </li>
+    </ul>
+    <hr class="h-[2px] mt-4 md:mt-[22px] mb-5 md:mb-6 border-0 bg-dark-blue"/>
+    <%= render partial: "static_pages/printing/fdm_tab" %>
+    <%= render partial: "static_pages/printing/sla_tab" %>
+    <%= render partial: "static_pages/printing/dlp_tab" %>
+  </div>
+</div>
