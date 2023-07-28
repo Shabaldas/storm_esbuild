@@ -9,6 +9,9 @@ describe '/static_pages/home', type: :request do
         expect(response.body).to include(root_path)
         expect(response.body).not_to include('Store')
         expect(response.body).not_to include(products_path)
+        expect(response.body).to include(printing_path)
+        expect(response.body).to include(modeling_path)
+        expect(response.body).to include(rendering_path)
         expect(response.body).to include('Do you have any questions?')
         expect(response.body).to include(save_phone_number_path)
       end
