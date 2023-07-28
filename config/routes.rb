@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :feedback_calls, only: [:index]
     resources :orders, only: [:index, :show]
     resources :manual_orders, except: :show
+    resources :modeling_orders, except: [:new, :show]
+    resources :rendering_orders, except: [:new, :show]
+    resources :printing_orders, except: [:new, :show]
     resources :users, except: [:show, :destroy]
   end
 
@@ -19,9 +22,9 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  get 'printing', to: 'static_pages#printing'
-  get 'rendering', to: 'static_pages#rendering'
-  get 'modeling', to: 'static_pages#modeling'
+  get 'printing', to: 'printing_orders#index'
+  get 'rendering', to: 'rendering_orders#index'
+  get 'modeling', to: 'modeling_orders#index'
   get 'calculator', to: 'print_models#new', as: :calculator
   get 'checkout', to: 'orders#checkout', as: :checkout
 
@@ -35,6 +38,9 @@ Rails.application.routes.draw do
     resource :remove, only: [:destroy]
   end
 
+  resources :modeling_orders, only: :create
+  resources :rendering_orders, only: :create
+  resources :printing_orders, only: :create
   resources :products, only: [:index, :show]
   resources :print_models, only: [] do
     post :manage, on: :collection

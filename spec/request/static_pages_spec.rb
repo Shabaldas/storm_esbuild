@@ -52,7 +52,7 @@ describe '/static_pages/home', type: :request do
         expect(response).to be_successful
         expect(response.body).to include('Printing')
         expect(response.body).to include(printing_path)
-        expect(response.body).to include('Services')
+        expect(response.body).to include('Service')
         expect(response.body).to include('FDM')
         expect(response.body).to include('SLA')
         expect(response.body).to include('DLP')
@@ -77,7 +77,7 @@ describe '/static_pages/home', type: :request do
         expect(response).to be_successful
         expect(response.body).to include('Rendering')
         expect(response.body).to include(rendering_path)
-        expect(response.body).to include('Services')
+        expect(response.body).to include('Service')
       end
     end
   end
@@ -96,7 +96,7 @@ describe '/static_pages/home', type: :request do
         expect(response).to be_successful
         expect(response.body).to include('Modeling')
         expect(response.body).to include(modeling_path)
-        expect(response.body).to include('Services')
+        expect(response.body).to include('Service')
       end
     end
   end

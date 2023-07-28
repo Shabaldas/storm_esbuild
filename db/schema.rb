@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_27_074936) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -102,6 +102,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_074936) do
     t.string "infill"
   end
 
+  create_table "modeling_orders", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "email"
+    t.string "link_to_model"
+    t.integer "status", default: 0
+    t.decimal "total_price", precision: 8, scale: 2
+    t.datetime "deadline"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "option_values", force: :cascade do |t|
     t.bigint "option_id", null: false
     t.string "value"
@@ -151,6 +165,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_074936) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "printing_orders", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "email"
+    t.string "link_to_model"
+    t.integer "status", default: 0
+    t.decimal "total_price", precision: 8, scale: 2
+    t.datetime "deadline"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "product_categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -191,6 +219,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_074936) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_products_on_name"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
+  end
+
+  create_table "rendering_orders", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "email"
+    t.string "link_to_model"
+    t.integer "status", default: 0
+    t.decimal "total_price", precision: 8, scale: 2
+    t.datetime "deadline"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
