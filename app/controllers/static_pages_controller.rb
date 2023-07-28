@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class StaticPagesController < ApplicationController
-  before_action :authorize_admin, only: :printing
-
   def home
     @feedback_call = FeedbackCall.new
   end
@@ -17,14 +15,12 @@ class StaticPagesController < ApplicationController
   end
 
   def printing; end
+  def renderin; end
+  def modeling; end
 
   private
 
   def feedback_call_params
     params.require(:feedback_call).permit(:phone_number)
-  end
-
-  def authorize_admin
-    authorize :admin, :access?
   end
 end

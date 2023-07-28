@@ -17,6 +17,8 @@ uk:
       store: "Магазин"
       calculator: "Калькулятор"
       printing: "Друк"
+      modeling: "Моделювання"
+      rendering: "Візуаліація"
       my_cabinet: "Мій кабінет"
       log_out: "Вийти"
       registration: "Реєстрація"

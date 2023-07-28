@@ -11,10 +11,16 @@
           <li class="px-4">
             <%= active_link_to t('global.header.head'), root_path, class: "text-black cursor-pointer", active: :exact %>
           </li>
+          <li class="px-4">
+            <%= active_link_to t('global.header.modeling'), modeling_path, class: "text-black cursor-pointer" %>
+          </li>
+          <li class="px-4">
+            <%= active_link_to t('global.header.printing'), printing_path, class: "text-black cursor-pointer" %>
+          </li>
+          <li class="px-4">
+            <%= active_link_to t('global.header.rendering'), rendering_path, class: "text-black cursor-pointer" %>
+          </li>
           <% if policy(:admin).access? %>
-            <li class="px-4">
-              <%= active_link_to t('global.header.printing'), printing_path, class: "text-black cursor-pointer" %>
-            </li>
             <li class="px-4">
               <%= active_link_to t('global.header.store'), products_path, class: "text-black cursor-pointer" %>
             </li>
@@ -76,7 +82,7 @@
           <summary class="drawer-trigger flex relative">
             <%= image_tag("partials_img/basket_icon_grey.png", class: "mt-0") %>
             <span class="w-[18px] h-[18px] absolute -top-2.5 left-3 flex justify-center items-center bg-yellow-500 rounded-full text-[10px] text-dark-blue font-semibold">
-              12
+              0
             </span>
           </summary>
           <%= render partial: "cart/side_bar_cart" %>
