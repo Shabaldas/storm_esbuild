@@ -14,10 +14,6 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def printing; end
-  def renderin; end
-  def modeling; end
-
   private
 
   def feedback_call_params

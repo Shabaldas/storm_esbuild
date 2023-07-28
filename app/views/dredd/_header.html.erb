@@ -15,6 +15,9 @@
           <%= active_link_to t("dredd.header.feedback_calls"), dredd_feedback_calls_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.manual_orders"), dredd_manual_orders_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.internet_orders"), dredd_orders_path, class: "text-black cursor-pointer" %>
+          <%= active_link_to t("dredd.header.modeling_orders"), dredd_modeling_orders_path, class: "text-black cursor-pointer" %>
+          <%= active_link_to t("dredd.header.printing_orders"), dredd_printing_orders_path, class: "text-black cursor-pointer" %>
+          <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-black cursor-pointer" %>
         </ul>
       </nav>
       <% I18n.available_locales.reject { |locale| current_locale?(locale) }.each do |locale| %>
