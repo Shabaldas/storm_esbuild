@@ -9,6 +9,9 @@ describe '/static_pages/home', type: :request do
         expect(response.body).to include(root_path)
         expect(response.body).not_to include('Store')
         expect(response.body).not_to include(products_path)
+        expect(response.body).to include(printing_path)
+        expect(response.body).to include(modeling_path)
+        expect(response.body).to include(rendering_path)
         expect(response.body).to include('Do you have any questions?')
         expect(response.body).to include(save_phone_number_path)
       end
@@ -31,6 +34,69 @@ describe '/static_pages/home', type: :request do
         expect(response.body).to include(products_path)
         expect(response.body).to include('Do you have any questions?')
         expect(response.body).to include(save_phone_number_path)
+      end
+    end
+  end
+
+  describe 'GET /static_pages/printing' do
+    let(:user) { create(:user, :admin) }
+
+    before do
+      login_as(user, scope: :user)
+    end
+
+    context 'when user is not logined' do
+      it 'display printing page' do
+        get printing_path
+
+        expect(response).to be_successful
+        expect(response.body).to include('Printing')
+        expect(response.body).to include(printing_path)
+        expect(response.body).to include('Services')
+        expect(response.body).to include('FDM')
+        expect(response.body).to include('SLA')
+        expect(response.body).to include('DLP')
+        expect(response.body).to include('Price')
+        expect(response.body).to include('Quantity')
+        expect(response.body).to include('Layer height')
+      end
+    end
+  end
+
+  describe 'GET /static_pages/rendering' do
+    let(:user) { create(:user, :admin) }
+
+    before do
+      login_as(user, scope: :user)
+    end
+
+    context 'when user is not logined' do
+      it 'display rendering page' do
+        get rendering_path
+
+        expect(response).to be_successful
+        expect(response.body).to include('Rendering')
+        expect(response.body).to include(rendering_path)
+        expect(response.body).to include('Services')
+      end
+    end
+  end
+
+  describe 'GET /static_pages/modeling' do
+    let(:user) { create(:user, :admin) }
+
+    before do
+      login_as(user, scope: :user)
+    end
+
+    context 'when user is not logined' do
+      it 'display modeling page' do
+        get modeling_path
+
+        expect(response).to be_successful
+        expect(response.body).to include('Modeling')
+        expect(response.body).to include(modeling_path)
+        expect(response.body).to include('Services')
       end
     end
   end

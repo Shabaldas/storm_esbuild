@@ -8,6 +8,8 @@ en:
       provide: "Please, provide your phone number and we will answer to all your questions."
     home:
       3dprinting: "3D Printing"
+      3dmodeling: "3D Modeling"
+      3drendering: "3D Rendering"
       print_ideas_html: "Let's Print Dreams, One Layer at a Time!"
       scroll_down: "Scroll down"
       prototyping: "Our expert team specializes in providing top-notch 3D prints that cater to all your requirements, be it for prototyping or production purposes. Equipped with state-of-the-art technology and software, we transform your ideas into tangible creations."
@@ -27,6 +29,10 @@ en:
       partners: "Partners"
       we_work_with: "We Work With"
       services: "Services"
+    rendering:
+      3drendering_description: "Experience the magic of 3D rendering, where creativity meets reality. Our advanced 3D rendering services bring ideas to life with stunning visualizations and lifelike simulations. From architectural designs to product concepts, we offer a range of rendering solutions to suit your needs. Elevate your projects with high-quality images and animations that leave a lasting impact on your audience. Embrace the world of 3D rendering and unlock limitless possibilities for your visual content. Let our expertise transform your vision into a tangible and awe-inspiring reality."
+    modeling:
+      3dmodeling_description: "Unleash the full potential of your imagination with 3D modeling. Our expert team crafts lifelike digital representations of your ideas, whether for architecture, products, characters, or more. Experience customization and precision as we transform your visions into reality, perfect for visualization or prototyping. Embrace the cutting-edge of design and innovation with our top-tier 3D modeling services."
     printing:
       quality: "Layer height"
       quantity: "Quantity"

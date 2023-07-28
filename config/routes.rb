@@ -19,11 +19,14 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  post 'save_phone_number', to: 'static_pages#save_phone_number'
   get 'printing', to: 'static_pages#printing'
-  patch 'cart/update_quantity'
-  get :calculator, to: 'print_models#new', as: :calculator
+  get 'rendering', to: 'static_pages#rendering'
+  get 'modeling', to: 'static_pages#modeling'
+  get 'calculator', to: 'print_models#new', as: :calculator
   get 'checkout', to: 'orders#checkout', as: :checkout
+
+  patch 'cart/update_quantity'
+  post 'save_phone_number', to: 'static_pages#save_phone_number'
 
   namespace :carts do
     resources :cart_items, only: [:create, :destroy] do
