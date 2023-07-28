@@ -38,14 +38,14 @@
         <%= t("static_pages.printing.quality") %>
       </label>
       <%= turbo_frame_tag :printing_dlp_25 do %>
-        <%= render partial: "static_pages/printing/dlp_table_quality", locals: { quality: '25', quality_mm: '0,25' } %>
+        <%= render partial: "static_pages/printing/dlp_table_quality", locals: { quality: '25', quality_mm: '0,025' } %>
       <% end %>
     </div>
     <%= turbo_frame_tag :printing_dlp_35 do %>
-      <%= render partial: "static_pages/printing/dlp_table_quality", locals: { quality: '35', quality_mm: '0,35' } %>
+      <%= render partial: "static_pages/printing/dlp_table_quality", locals: { quality: '35', quality_mm: '0,035' } %>
     <% end %>
     <%= turbo_frame_tag :printing_dlp_50 do %>
-      <%= render partial: "static_pages/printing/dlp_table_quality", locals: { quality: '50', quality_mm: '0,50' } %>
+      <%= render partial: "static_pages/printing/dlp_table_quality", locals: { quality: '50', quality_mm: '0,050' } %>
     <% end %>
   </div>
 </div>
