@@ -22,6 +22,7 @@ en:
       comment: "Comment"
       total_price: "Price"
       deadline: "Deadline"
+      actions: "Actions"
     manual_orders:
       please_input: "Please input"
       first_name: "First name "

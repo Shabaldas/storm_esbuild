@@ -18,13 +18,5 @@ module Dredd
         'google_icon'
       end
     end
-
-    def order_status_icon(manual_order)
-      if manual_order.done?
-        'done_icon'
-      else
-        'not_done_icon'
-      end
-    end
   end
 end

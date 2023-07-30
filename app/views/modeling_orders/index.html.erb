@@ -14,8 +14,11 @@
       </div>
     </div>
     <div class="w-4/6 order-1 md:order-2 flex justify-end">
-      <%= image_tag("print_img/arm_modeling.png") %>
+      <%= image_tag("print_img/arm_modeling.svg") %>
     </div>
   </div>
-  <%#= render partial: "shared/upload_form" %>
+  <%= turbo_frame_tag "modeling-form" do %>
+    <%= render partial: "shared/upload_form", locals: { model: @modeling_order, order_name: "modeling", image_icon: "picture-and-pdf" } %>
+  <% end %>
+  <%= turbo_frame_tag "modeling-modal" %>
 </div>

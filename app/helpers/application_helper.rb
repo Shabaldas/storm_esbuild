@@ -19,4 +19,12 @@ module ApplicationHelper
       'england'
     end
   end
+
+  def order_status_icon(order)
+    if order.paid?
+      'done_icon'
+    else
+      'not_done_icon'
+    end
+  end
 end
