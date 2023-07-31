@@ -6,8 +6,18 @@ describe '/dredd/product_categories', type: :request do
   end
 
   describe 'GET /dredd/feedback_cals' do
-    let!(:feedback_call_first) { create(:feedback_call, phone_number: '+380976404050', processed: true) }
-    let!(:feedback_call_second) { create(:feedback_call, phone_number: '+380976404050') }
+    let(:feedback_call_first) { create(:feedback_call, phone_number: '+380976404050', processed: true) }
+    let(:feedback_call_second) { create(:feedback_call, phone_number: '+380976404050') }
+    let(:stubed_request) do
+      stub_request(:post, /api.telegram.org/)
+        .and_return(status: 200, body: '', headers: {})
+    end
+
+    before do
+      stubed_request
+      feedback_call_second
+      feedback_call_first
+    end
 
     it 'display all feedback_calls' do
       get dredd_feedback_calls_path
