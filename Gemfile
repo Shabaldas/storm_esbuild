@@ -83,7 +83,7 @@ group :test do
   gem 'timecop', '~> 0.9.6'
   gem 'simplecov', require: false
   gem 'capybara'
-  gem 'codeclimate-test-reporter', '~> 0.4.8'
+  gem 'codeclimate-test-reporter', '~> 1.0.7'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
