@@ -18,6 +18,7 @@ describe '/dredd/users', type: :request do
       end
 
       it 'display all products' do
+        stub_request(:post, /api.telegram.org/).to_return(status: 200, body: '', headers: {})
         get dredd_users_path
 
         expect(response).to be_successful
