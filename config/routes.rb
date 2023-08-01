@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index', as: :dashboard
     resources :products, except: [:update]
     resources :product_categories, except: [:update]
-    resources :feedback_calls, only: [:index]
+    resources :feedback_calls, only: [:index, :update, :destroy]
     resources :orders, only: [:index, :show]
     resources :manual_orders, except: :show
     resources :modeling_orders, except: [:new, :show]

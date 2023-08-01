@@ -13,6 +13,8 @@ uk:
       phone_number: "НОМЕР ТЕЛЕФОНУ"
       processed: "ОБРОБЛЕНО"
       created_at: "СТВОРЕНО"
+      actions: "ДІЇ"
+      called: "ПЕРЕДЗВОНЕНО"
     3d_orders: 
       id: "ID"
       full_name: "Повне ім'я"
