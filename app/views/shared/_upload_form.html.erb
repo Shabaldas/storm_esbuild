@@ -3,7 +3,7 @@
     <div class="flex items-center">
       <%= image_tag("icons_svg/settings.svg", class:'mr-1.5') %>
       <span class="text-dark-grey font-semibold">
-        Замовити 3D <%= order_name %>
+        <%= t("static_pages.upload_form.order") %> 3D <%= order_name %>
       </span>
     </div>
     <div class="w-full flex flex-col">
@@ -12,29 +12,27 @@
       </div>
       <div class="mt-7 w-full sm:max-w-[470px]">
         <div class="mt-7 w-full sm:max-w-[470px]">
-          <%= form.label 'Full name', class: "text-sm text-metalic-grey" %>
-          <%= form.text_field :first_name, placeholder: "Please input your full name" %>
+          <%= form.label t("static_pages.upload_form.full_name"), class: "text-sm text-metalic-grey" %>
+          <%= form.text_field :first_name, required: "required", placeholder: t("static_pages.upload_form.please_input") %>
         </div>
         <div class="mt-7 w-full sm:max-w-[470px]">
-          <%= form.label 'Mobile phone', class: "text-sm text-metalic-grey" %>
-          <%= form.text_field :phone_number, placeholder: "Please input" %>
+          <%= form.label t("static_pages.upload_form.mobile_phone"), class: "text-sm text-metalic-grey" %>
+          <%= form.text_field :phone_number, type: "tel", required: "required", placeholder: "+38 (096) 640 40 50" %>
         </div>
         <div class="mt-7 w-full sm:max-w-[470px]">
-          <%= form.label 'Email', class: "text-sm text-metalic-grey" %>
-          <%= form.text_field :email, placeholder: "Please input" %>
+          <%= form.label t("static_pages.upload_form.email"), class: "text-sm text-metalic-grey" %>
+          <%= form.text_field :email, placeholder: "example@email.com" %>
         </div>
         <div class="mt-7 w-full sm:max-w-[470px]">
-          <%= form.label 'Link', class: "text-sm text-metalic-grey" %>
-          <%= form.text_field :link_to_model, placeholder: "Please input" %>
+          <%= form.label t("static_pages.upload_form.link"), class: "text-sm text-metalic-grey" %>
+          <%= form.text_field :link_to_model, placeholder: t("static_pages.upload_form.please_input") %>
         </div>
         <span class="flex justify-end p-1 text-[10px] text-metalic-grey">
-          *Прикріпіть, будь ласка, посилання на Ваші файли, з відкритим доступом для скачування, якщо розмір одного завантажуваного файлу більше 25 МБ.
-          Максимальний розмір завантажених файлів, не повинен перебільшувати 150 МБ.
+          <%= t("static_pages.upload_form.link_message") %>
         </span>
-
         <div class="mt-7 w-full sm:max-w-[470px]">
-          <%= form.label 'Comment', class: "text-sm text-metalic-grey" %>
-          <%= form.text_area :comment, placeholder: "Напишіть додаткові побажання до замовлення", class: "w-full h-24" %>
+          <%= form.label t("static_pages.upload_form.comment"), class: "text-sm text-metalic-grey" %>
+          <%= form.text_area :comment, placeholder: t("static_pages.upload_form.comment_placeholder"), class: "w-full h-24" %>
         </div>
       </div>
       <%= form.submit "Замовити 3Д друк", class: "button w-full mx-auto sm:mx-0 sm:w-56 mt-8" %>

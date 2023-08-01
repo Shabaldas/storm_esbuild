@@ -7,6 +7,7 @@ gem 'active_link_to'
 gem 'ancestry'
 gem 'anyway_config', '~> 2.0'
 gem 'aws-sdk-s3', require: false
+gem 'active_storage_validations'
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
