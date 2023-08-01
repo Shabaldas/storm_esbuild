@@ -6,11 +6,15 @@ class StaticPagesController < ApplicationController
   end
 
   def save_phone_number
-    @feedback_call = FeedbackCall.create(feedback_call_params)
+    @feedback_call = FeedbackCall.new(feedback_call_params)
 
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to root_path }
+    if @feedback_call.save
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to root_path }
+      end
+    else
+      render :home
     end
   end
 

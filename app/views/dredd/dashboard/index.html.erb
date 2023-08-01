@@ -52,10 +52,12 @@
       <% end %>
     </div>
     <div class="metrics-item">
-      <div class="metrics-value">
-        <%= @new_feedback_calls %>
-      </div>
-      <div class="metrics-label"><%= t("dredd.dashboard.feedback_call") %></div>
+      <%= link_to dredd_feedback_calls_path do %>
+        <div class="metrics-value">
+          <%= @new_feedback_calls.count %>
+        </div>
+        <div class="metrics-label"><%= t("dredd.dashboard.feedback_call") %></div>
+      <% end %>
     </div>
   </div>
 </div>

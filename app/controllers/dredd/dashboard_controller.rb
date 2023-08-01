@@ -9,7 +9,7 @@ module Dredd
       @modeling_orders = ModelingOrder.all
       @rendering_orders = RenderingOrder.all
       @printing_orders = PrintingOrder.all
-      @new_feedback_calls = FeedbackCall.where(processed: false).count
+      @new_feedback_calls = FeedbackCall.all
     end
   end
 end

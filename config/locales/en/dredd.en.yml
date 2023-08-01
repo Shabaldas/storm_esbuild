@@ -13,6 +13,8 @@ en:
       phone_number: "PHONE NUMBER"
       processed: "PROCESSED"
       created_at: "CREATED AT"
+      actions: "ACTIONS"
+      called: "CALLED"
     3d_orders: 
       id: "ID"
       full_name: "Full name"
