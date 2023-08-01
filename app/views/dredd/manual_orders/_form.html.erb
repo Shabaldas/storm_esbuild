@@ -1,5 +1,5 @@
 <%= render partial: "dredd/shared/errors", locals: { resource: @manual_order } %>
-<%= form_with model: [:dredd, @manual_order], class: "form-grid-single" do |form| %>
+<%= form_with model: [:dredd, @manual_order], class: "form-grid-single", data: { controller: "manual-order-form" } do |form| %>
    <div class="form-grid-single w-10/12">
     <div class="flex space-x-4">
       <div class="form-group">
@@ -28,15 +28,21 @@
     <div class="flex space-x-4">
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.price_for_modeling"), class: "form-label" %>
-        <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input"),
+                                                 data: { target: "manual-order-form.priceModeling", action: "change->manual-order-form#updatePreviewOnInput" }
+        %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.price_for_printing"), class: "form-label" %>
-        <%= form.text_field :price_for_printing, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= form.text_field :price_for_printing, placeholder: t("dredd.manual_orders.please_input"),
+                                                 data: { target: "manual-order-form.pricePrinting", action: "change->manual-order-form#updatePreviewOnInput" }
+        %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.count"), class: "form-label" %>
-        <%= form.text_field :count, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= form.text_field :count, placeholder: t("dredd.manual_orders.please_input"),
+                                    data: { target: "manual-order-form.count", action: "change->manual-order-form#updatePreviewOnInput" }
+        %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.prepaid_expense"), class: "form-label" %>
@@ -44,8 +50,13 @@
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.total_price"), class: "form-label" %>
-        <%= form.text_field :total_price, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= form.text_field :total_price, placeholder: t("dredd.manual_orders.please_input"),
+                                          data: { target: "manual-order-form.totalPrice", action: "input->manual-order-form#updateCustomTotalPrice" }
+        %>
       </div>
+      <span class="pt-5 text-gray-400 w-1/2" data-target="manual-order-form.previewPrice">
+        ≈ 0 грн
+      </span>
     </div>
     <div class="flex space-x-4">
       <div class="form-group">

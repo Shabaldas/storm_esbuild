@@ -56,3 +56,6 @@ application.register("print-model-colors", PrintModelColorsController);
 
 import SelectedMaterialAndPriceController from "./selected_material_and_price_controller";
 application.register("selected-material-and-price", SelectedMaterialAndPriceController);
+
+import ManualOrderFormController from "./manual_order_form_controller";
+application.register("manual-order-form", ManualOrderFormController);
