@@ -22,11 +22,11 @@
     <table>
       <thead class="text-gray-700 bg-gray-50">
         <tr class="text-base">
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.print_code") %></th>
+          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :print_code, t("dredd.manual_orders.print_code"), class: "text-black") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.full_name") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.phone_number") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.app_contact") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.total_price") %></th>
+          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :total_price, t("dredd.manual_orders.total_price"), class: "text-black") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.prepaid_expense") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.status") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.deadline") %></th>
