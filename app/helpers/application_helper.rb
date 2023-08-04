@@ -11,12 +11,17 @@ module ApplicationHelper
     I18n.locale == locale
   end
 
-  def current_locale_icon(locale)
-    case locale
-    when :en
-      'ukraine'
-    when :uk
-      'england'
+  def locale_switcher(locale, flag_path)
+    if current_locale?(locale)
+      content_tag(:div, class: 'flex w-6 h-6 p-0 justify-center items-center cursor-not-allowed') do
+        image_tag(flag_path, class: ('opacity-40' if current_locale?(locale)).to_s)
+      end
+    else
+      button_to locale_path(locale), method: :put, data: { turbo: false }, class: 'pt-1' do
+        content_tag(:div, class: 'flex w-6 h-6 p-0 justify-center items-center') do
+          image_tag(flag_path, class: ('opacity-40' if current_locale?(locale)).to_s)
+        end
+      end
     end
   end
 end
