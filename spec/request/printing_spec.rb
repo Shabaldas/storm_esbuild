@@ -26,27 +26,58 @@ describe '/printing_orders', type: :request do
 
   describe 'POST /printing_orders/create' do
     context 'when valid data' do
-      it 'create printing order' do
-        expect do
-          post printing_orders_path, params: {
+      context 'without attached files' do
+        it 'create printing order' do
+          expect do
+            post printing_orders_path, params: {
+              printing_order: {
+                first_name: 'John',
+                last_name: 'Doe',
+                email: 'example@example.com',
+                phone_number: '+380976404050',
+                link_to_model: 'https://www.thingiverse.com/thing:2789086',
+                comment: 'Test comment'
+              }
+            }
+          end.to change(PrintingOrder, :count).by(1)
+
+          printing_order = PrintingOrder.last
+          expect(printing_order.first_name).to eq('John')
+          expect(printing_order.last_name).to eq('Doe')
+          expect(printing_order.email).to eq('example@example.com')
+          expect(printing_order.phone_number).to eq('+380976404050')
+          expect(printing_order.link_to_model).to eq('https://www.thingiverse.com/thing:2789086')
+          expect(printing_order.comment).to eq('Test comment')
+        end
+      end
+
+      context 'with attached files' do
+        let(:attachment_file_one_name) { './spec/fixtures/files/3d_stl_model.stl' }
+        let(:attachment_file_two_name) { './spec/fixtures/files/dummy.png' }
+        let(:params) do
+          {
             printing_order: {
               first_name: 'John',
               last_name: 'Doe',
               email: 'example@example.com',
               phone_number: '+380976404050',
               link_to_model: 'https://www.thingiverse.com/thing:2789086',
-              comment: 'Test comment'
+              comment: 'Test comment',
+              files: [
+                fixture_file_upload(attachment_file_one_name),
+                fixture_file_upload(attachment_file_two_name)
+              ]
             }
           }
-        end.to change(PrintingOrder, :count).by(1)
+        end
 
-        printing_order = PrintingOrder.last
-        expect(printing_order.first_name).to eq('John')
-        expect(printing_order.last_name).to eq('Doe')
-        expect(printing_order.email).to eq('example@example.com')
-        expect(printing_order.phone_number).to eq('+380976404050')
-        expect(printing_order.link_to_model).to eq('https://www.thingiverse.com/thing:2789086')
-        expect(printing_order.comment).to eq('Test comment')
+        it 'create printing order' do
+          expect do
+            post printing_orders_path, params:
+          end.to change(PrintingOrder, :count).by(1)
+             .and change(ActiveStorage::Attachment, :count).by(2)
+             .and change(ActiveStorage::Blob, :count).by(2)
+        end
       end
     end
 

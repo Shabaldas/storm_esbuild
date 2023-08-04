@@ -18,7 +18,7 @@
     </div>
   </div>
   <%= turbo_frame_tag "rendering-form" do %>
-    <%= render partial: "shared/upload_form", locals: { model: @rendering_order, order_name: "rendering", image_icon: "stl_and_obj" } %>
+    <%= render partial: "shared/upload_form", locals: { model: @rendering_order, order_name: "rendering", image_icon: "file_svg" } %>
   <% end %>
   <%= turbo_frame_tag "rendering-modal" %>
 </div>
