@@ -50,6 +50,10 @@ body:has(.drawer-wrapper[open]) {
   overflow: hidden;
 }
 
+body:has([data-slideover-open-value=true]) {
+  overflow: hidden;
+}
+
 .screen-height {
   height: calc(100vh-68px);
 }
