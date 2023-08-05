@@ -32,4 +32,15 @@ module ApplicationHelper
       'not_done_icon'
     end
   end
+
+  def order_accepted_files(order_name)
+    case order_name.to_s
+    when 'printing'
+      '.obj,.stl,.zip,.rar,.7z'
+    when 'modeling'
+      '.pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.zip,.rar,.7z'
+    else
+      '.pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.obj,.stl, .step, .stp, .iges, .igs, .sldprt, .sldasm, .prt, .asm, .x_t, .x_b, .xmt_txt, .xmt_bin, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t,.zip,.rar,.7z'
+    end
+  end
 end

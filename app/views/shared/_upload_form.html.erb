@@ -39,7 +39,12 @@
     </div>
   </div>
 
-  <div data-controller="dropzone" class="overflow-auto w-full h-[300px] sm:h-[504px] dropzone-default dz-clickable dropzone lg:w-1/2 ml-0 lg:ml-6 flex items-center justify-center bg-light-grey rounded-[20px] border-2 border-dashed border-zinc order-1 lg:order-2" style="border-radius: inherit">
+  <div data-controller="dropzone" 
+       class="overflow-auto w-full h-[300px] sm:h-[504px] dropzone-default dz-clickable dropzone lg:w-1/2 ml-0 lg:ml-6 flex items-center justify-center bg-light-grey rounded-[20px] border-2 border-dashed border-zinc order-1 lg:order-2" 
+       style="border-radius: inherit"
+       data-dropzone-accepted-files = <%= order_accepted_files(order_name) %>
+       data-dropzone-max-file-size = "25"
+  >
     <div>
       <%= form.file_field :files, multiple: :true, direct_upload: true, data: { dropzone_target: 'input' }, class: "hidden" %>
       <div class="text-center">
