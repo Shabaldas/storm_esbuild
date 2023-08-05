@@ -1,5 +1,5 @@
 <header class="w-full h-16 fixed z-30 bg-light-grey">
-  <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 lg:px-[100px]">
+  <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 xl:px-24">
     <div class="flex w-1/2 justify-between">
       <div class="w-24">
         <%= link_to root_path do %>
@@ -42,11 +42,11 @@
       </div>
       <div class="flex justify-between items-center">
         <div class="relative w-7 h-auto flex items-center lg:block" data-controller="dropdown">
-          <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="select-none -mt-[3px]">
+          <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="select-none -mt-[3px] shrink-0">
             <%= image_tag("icons_svg/user.svg") %>
           </div>
           <div data-dropdown-target="menu" class="absolute top-10 left-[50%] -translate-x-[50%] hidden">
-            <div class="w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
+            <div class="w-[146px] lg:w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
               <% if user_signed_in? %>
                 <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
                   <%= link_to t('global.header.my_cabinet'), edit_user_registration_path, class: "text-black" %>
@@ -72,10 +72,10 @@
         </div>
 
         <% if policy(:admin).access? %>
-          <details class="drawer-wrapper">
+          <details class="drawer-wrapper w-5 mx-4">
             <summary class="drawer-trigger flex relative">
-              <%= image_tag("partials_img/basket_icon_grey.png", class: "mt-0") %>
-              <span class="w-[18px] h-[18px] absolute -top-2.5 left-3 flex justify-center items-center bg-yellow-500 rounded-full text-[10px] text-dark-blue font-semibold">
+              <%= image_tag("partials_img/basket_icon_grey.png", class: "-mt-1 shrink-0") %>
+              <span class="w-[18px] h-[18px] absolute -top-3.5 left-3 flex justify-center items-center bg-yellow-500 rounded-full text-[10px] text-dark-blue font-semibold">
                 0
               </span>
             </summary>
@@ -83,7 +83,7 @@
           </details>
         <% end %>
 
-        <div data-controller="slideover" data-action="keydown.esc->modal#close" tabindex="-1" class="menu-sidebar">
+        <div data-controller="slideover" data-action="keydown.esc->modal#close" tabindex="-1">
           <div id="sidebar-mobile">
             <div data-slideover-target="overlay" class="fixed inset-0 flex lg:hidden z-40" data-transition-enter="transition ease-out duration-200" data-transition-enter-from="opacity-0" data-transition-enter-to="opacity-100" data-transition-leave="transition ease-in duration-150" data-transition-leave-from="opacity-100" data-transition-leave-to="opacity-0">
               <div class="fixed inset-0">
@@ -128,7 +128,7 @@
             </div>
           </div>
 
-          <button class="block lg:hidden ml-12" data-action="click->slideover#toggle click@window->slideover#hide">
+          <button class="block lg:hidden ml-8" data-action="click->slideover#toggle click@window->slideover#hide">
             <div class="w-4">
               <div class="w-full h-0.5 rounded-sm bg-gray-100"></div>
               <div class="w-full h-0.5 rounded-sm bg-gray-100 my-1"></div>
