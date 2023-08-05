@@ -11,6 +11,34 @@
           <li class="px-4">
             <%= active_link_to t('global.header.head'), root_path, class: "text-black cursor-pointer", active: :exact %>
           </li>
+          <div data-controller="dropdown" class="relative">
+            <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="<%="active" if ("/modeling /rendering /printing").include?(request.fullpath) && request.fullpath.chars.count > 2 %>">
+              <div class="flex">
+                Services
+              </div>
+            </button>
+            <div
+              data-dropdown-target="menu"
+              class="absolute top-10 left-[50%] -translate-x-[50%] hidden"
+              data-transition-enter-from="opacity-0 scale-95"
+              data-transition-enter-to="opacity-100 scale-100"
+              data-transition-leave-from="opacity-100 scale-100"
+              data-transition-leave-to="opacity-0 scale-95"
+            >
+              <div class="w-[186px] rounded-2xl shadow border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
+                <div>
+                  <%= link_to t('global.header.modeling'), modeling_path, data: { action: "dropdown#toggle" }, class: "text-black cursor-pointer" %>
+                </div>
+                <div>
+                  <%= link_to t('global.header.printing'), printing_path, data: { action: "dropdown#toggle" }, class: "text-black cursor-pointer" %>
+                </div>
+                <div>
+                  <%= link_to t('global.header.rendering'), rendering_path, data: { action: "dropdown#toggle" }, class: "text-black cursor-pointer" %>
+               </div>
+              </div>
+            </div>
+          </div>
+
           <li class="px-4">
             <%= active_link_to t('global.header.modeling'), modeling_path, class: "text-black cursor-pointer" %>
           </li>
@@ -46,7 +74,7 @@
             <%= image_tag("icons_svg/user.svg") %>
           </div>
           <div data-dropdown-target="menu" class="absolute top-10 left-[50%] -translate-x-[50%] hidden">
-            <div class="w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
+            <div class="w-[186px] shadow rounded-2xl border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
               <% if user_signed_in? %>
                 <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
                   <%= link_to t('global.header.my_cabinet'), edit_user_registration_path, class: "text-black" %>
