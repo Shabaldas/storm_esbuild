@@ -3,7 +3,7 @@
     <div class="flex w-1/2 justify-between">
       <div class="w-24">
         <%= link_to root_path do %>
-          <%= image_tag("partials_img/logo.png") %>
+          <%= image_tag("icons_svg/logo.svg", class: "pt-2") %>
         <% end %>
       </div>
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
@@ -74,7 +74,7 @@
         <% if policy(:admin).access? %>
           <details class="drawer-wrapper w-5 mx-4">
             <summary class="drawer-trigger flex relative">
-              <%= image_tag("partials_img/basket_icon_grey.png", class: "-mt-1 shrink-0") %>
+              <%= image_tag("icons_svg/basket_icon_grey.svg", class: "-mt-1 shrink-0") %>
               <span class="w-[18px] h-[18px] absolute -top-3.5 left-3 flex justify-center items-center bg-yellow-500 rounded-full text-[10px] text-dark-blue font-semibold">
                 0
               </span>
