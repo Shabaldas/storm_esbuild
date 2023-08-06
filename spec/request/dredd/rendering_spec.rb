@@ -18,6 +18,24 @@ describe '/dredd/rendering_orders', type: :request do
       expect(response.body).to include('Price')
       expect(response.body).to include('Deadline')
       expect(response.body).to include('Comment')
+      expect(response.body).to include('Actions')
+    end
+  end
+
+  describe 'DELETE /dredd/rendering_orders/:id' do
+    let(:rendering_order) { create(:rendering_order) }
+    let(:stubed_request) do
+      stub_request(:post, /api.telegram.org/)
+        .and_return(status: 200, body: '', headers: {})
+    end
+
+    before do
+      stubed_request
+      rendering_order
+    end
+
+    it 'deletes rendering order' do
+      expect { delete dredd_rendering_order_path(rendering_order) }.to change(RenderingOrder, :count).by(-1)
     end
   end
 end

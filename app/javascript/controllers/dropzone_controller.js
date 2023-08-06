@@ -59,7 +59,7 @@ export default class extends Controller {
     }
   }
   get maxFileSize() {
-    return this.data.get("maxFileSize") || 256;
+    return this.data.get("maxFileSize") || 150;
   }
   get acceptedFiles() {
     return this.data.get("acceptedFiles");
@@ -149,7 +149,7 @@ function createDirectUpload(file, url, controller) {
 }
 
 function generateIcon(iconClass) {
-  return `<div class='w-full h-full flex justify-center items-center'><div class='icon text-6xl ${iconClass}'></div></div>`
+  return `<div class='w-full h-full flex justify-center items-center'><div class=''></div></div>`
 }
 
 function setIcon(file, extensionName, fileType) {
@@ -163,9 +163,12 @@ function setIcon(file, extensionName, fileType) {
   }
 }
 
+
 function changeUploadedFileIcon(file) {
-  setIcon(file, "docx", "icon-review-xl");
-  setIcon(file, "yml", "icon-review-xl");
+  setIcon(file, "csv", "icon-file");
+  setIcon(file, "stl", "icon-file");
+  setIcon(file, "obj", "icon-file");
+  setIcon(file, "yml", "icon-file");
 }
 
 function createDropZone(controller) {

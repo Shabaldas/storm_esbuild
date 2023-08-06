@@ -1,0 +1,7 @@
+<% if @printing_order.errors.any? %>
+  <%= turbo_stream.replace("upload-form", partial: "shared/upload_form", locals: { model: @printing_order } ) %>
+<% else %>
+  <%= turbo_stream.replace("upload-form", partial: "shared/upload_form", locals: { model: PrintingOrder.new, order_name: "printing", image_icon: "stl_and_obj" } ) %>
+  <%= turbo_stream.append("printing-modal", partial: "shared/modal") %>
+<% end %>
+

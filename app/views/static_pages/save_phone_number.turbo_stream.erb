@@ -2,5 +2,5 @@
   <%= turbo_stream.replace("feedback-form", partial: "static_pages/question_form", locals: { feedback_call: @feedback_call }) %>
 <% else %>
   <%= turbo_stream.replace("feedback-form", partial: "static_pages/question_form", locals: { feedback_call: FeedbackCall.new } ) %>
-  <%= turbo_stream.append("feedback-form", partial: "static_pages/feedback_call_modal") %>
+  <%= turbo_stream.append("feedback-form", partial: "shared/modal") %>
 <% end %>

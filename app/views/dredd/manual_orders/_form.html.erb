@@ -69,7 +69,7 @@
       <div class="form-group form-toggle">
         <%= form.label t("dredd.manual_orders.status"), class: "form-label" %>
         <label class="toggle-switch ml-3">
-          <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "done", "not_done") %>
+          <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "paid", "unpaid") %>
           <span class="slider"></span>
         </label>
       </div>

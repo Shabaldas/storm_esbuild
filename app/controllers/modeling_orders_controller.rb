@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ModelingOrdersController < ApplicationController
-  def modeling
+  def index
     @modeling_order = ModelingOrder.new
   end
 
@@ -11,10 +11,10 @@ class ModelingOrdersController < ApplicationController
     if @modeling_order.save
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to root_path }
+        format.html { redirect_to modeling_orders_path }
       end
     else
-      render :new
+      render :index
     end
   end
 

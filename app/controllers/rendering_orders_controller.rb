@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RenderingOrdersController < ApplicationController
-  def rendering
+  def index
     @rendering_order = RenderingOrder.new
   end
 
@@ -11,10 +11,10 @@ class RenderingOrdersController < ApplicationController
     if @rendering_order.save
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to root_path }
+        format.html { redirect_to rendering_orders_path }
       end
     else
-      render :new
+      render :index
     end
   end
 
