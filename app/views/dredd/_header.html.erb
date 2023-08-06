@@ -16,15 +16,18 @@
           <%= active_link_to t("dredd.header.manual_orders"), dredd_manual_orders_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.internet_orders"), dredd_orders_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.printers"), dredd_printers_path, class: "text-black cursor-pointer" %>
+          <%= active_link_to t("dredd.header.modeling_orders"), dredd_modeling_orders_path, class: "text-black cursor-pointer" %>
+          <%= active_link_to t("dredd.header.printing_orders"), dredd_printing_orders_path, class: "text-black cursor-pointer" %>
+          <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-black cursor-pointer" %>
         </ul>
       </nav>
-      <% I18n.available_locales.reject { |locale| current_locale?(locale) }.each do |locale| %>
-        <%= button_to locale_path(locale), method: :put, data: { turbo: false } do %>
-          <span class="appearance-none flex items-center mr-4 text-gray-700" style="position: absolute;right: 0;">
-            <%= image_tag("partials_img/#{current_locale_icon(locale)}.png", class: "mt-2 w-7") %>
-          </span>
-        <% end %>
-      <% end %>
+      <div class="inline-flex justify-center items-center gap-2.5" style="position: absolute;right: 0;">
+        <%= locale_switcher(I18n.available_locales.first, "icons_svg/english_flag.svg") %>
+        <div class="inline-flex justify-center items-center">
+          <span class="w-px h-4" style="background: var(--dark-blue, #2A343E);"></span>
+        </div>
+        <%= locale_switcher(I18n.available_locales.last, "icons_svg/ukraine_flag.svg") %>
+      </div>
     </div>
   </div>
 </header>

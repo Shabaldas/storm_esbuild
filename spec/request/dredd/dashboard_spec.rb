@@ -10,8 +10,13 @@ describe '/dredd', type: :request do
     let(:order_second) { create(:order, :unpaid) }
     let(:feedback_call) { create(:feedback_call, phone_number: '+380976404050') }
     let(:manual_order) { create(:manual_order) }
+    let(:stubed_request) do
+      stub_request(:post, /api.telegram.org/)
+        .and_return(status: 200, body: '', headers: {})
+    end
 
     before do
+      stubed_request
       order_first
       order_second
       feedback_call
@@ -27,6 +32,9 @@ describe '/dredd', type: :request do
       expect(response.body).to include('Product Categories')
       expect(response.body).to include('Feedback Calls')
       expect(response.body).to include('Manual Orders')
+      expect(response.body).to include('Printing Orders')
+      expect(response.body).to include('Rendering Orders')
+      expect(response.body).to include('Modeling Orders')
       expect(response.body).to include('Internet Orders')
       expect(response.body).to include('Users count')
       expect(response.body).to include('New feedback call')

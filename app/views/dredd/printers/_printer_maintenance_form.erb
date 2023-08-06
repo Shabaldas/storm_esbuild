@@ -1,0 +1,17 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object %>">
+  <div class="form-group">
+    <%= f.label t("dredd.printers.problem"), class: "form-label" %>
+    <%= f.text_field :problem, placeholder: t("dredd.manual_orders.please_input") %>
+  </div>
+  <div class="form-group">
+    <%= f.label t("dredd.printers.problem_find"), class: "form-label" %>
+    <%= f.date_field :problem_find %>
+  </div>
+  <div class="form-group">
+    <%= f.label t("dredd.printers.time_for_fix"), class: "form-label" %>
+    <%= f.text_field :time_for_fix, placeholder: t("dredd.manual_orders.please_input") %>
+  </div>
+
+  <button type="button" data-action="nested-form#remove"><%= t("dredd.products.remove_color") %></button>
+  <%= f.hidden_field :_destroy%>
+</div>

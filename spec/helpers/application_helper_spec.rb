@@ -1,20 +1,30 @@
 describe ApplicationHelper do
-  describe '#current_locale_icon' do
-    delegate :current_locale_icon, to: :helper
+  describe '#locale_switcher' do
+    delegate :locale_switcher, to: :helper
 
-    context 'when locale en' do
-      let(:locale) { :en }
+    context 'when current locale is en' do
+      before { allow(I18n).to receive(:locale).and_return(:en) }
 
-      it 'return ukraine icon' do
-        expect(current_locale_icon(locale)).to eq('ukraine')
+      it 'returns a button to change the locale to uk' do
+        expect(locale_switcher(:uk, 'icons_svg/ukraine_flag.svg')).to have_button(
+          type: 'submit',
+          class: 'pt-1'
+        )
+
+        expect(locale_switcher(:uk, 'icons_svg/ukraine_flag.svg')).to have_css(
+          'div.flex.w-6.h-6.p-0.justify-center.items-center'
+        )
       end
-    end
 
-    context 'when locale uk' do
-      let(:locale) { :uk }
+      it 'returns a div element and en locale will be disabled' do
+        expect(locale_switcher(:en, 'icons_svg/english_flag.svg')).not_to have_button(
+          type: 'submit',
+          class: 'pt-1'
+        )
 
-      it 'return england icon' do
-        expect(current_locale_icon(locale)).to eq('england')
+        expect(locale_switcher(:en, 'icons_svg/english_flag.svg')).to have_css(
+          'div.flex.w-6.h-6.p-0.justify-center.items-center.cursor-not-allowed'
+        )
       end
     end
   end

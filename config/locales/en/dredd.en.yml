@@ -4,12 +4,26 @@ en:
       user_count: "Users count"
       manual_orders: "Manual Orders"
       internet_orders: "Internet Orders"
+      modeling_orders: "Modeling Orders"
+      rendering_orders: "Rendering Orders"
+      printing_orders: "Printing Orders"
       feedback_call: "New feedback call"
     feedback_calls:
       id: "ID"
       phone_number: "PHONE NUMBER"
       processed: "PROCESSED"
       created_at: "CREATED AT"
+      actions: "ACTIONS"
+      called: "CALLED"
+    3d_orders:
+      id: "ID"
+      full_name: "Full name"
+      phone_number: "Phone number"
+      email: "Email"
+      status: "Status"
+      comment: "Comment"
+      total_price: "Price"
+      deadline: "Deadline"
     manual_orders:
       please_input: "Please input"
       first_name: "First name "
@@ -43,6 +57,8 @@ en:
       manual_order_information: "Manual Order Information"
       comments: "Comments"
       edit_manual_order: "Edit manual order"
+      quality: "Quality"
+      infill: "Infill"
     orders:
       edit: "EDIT"
       full_name: "FULL NAME"
@@ -101,6 +117,10 @@ en:
       users: "Users"
       manual_orders: "Manual Orders"
       internet_orders: "Internet Orders"
+      modeling_orders: "Modeling Orders"
+      rendering_orders: "Rendering Orders"
+      printing_orders: "Printing Orders"
+      printers: "Printers"
     printers:
       printer_code: "Printer code"
       firm: "Firm"
@@ -118,3 +138,4 @@ en:
       cre_printer: "Create printer"
       edit: "Edit"
       new_printer: "New Printer"
+

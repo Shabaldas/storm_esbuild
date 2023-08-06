@@ -6,9 +6,21 @@
     <%= feedback_call.phone_number %>
   </td>
   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
-    <%= feedback_call.processed %>
+    <%= image_tag("partials_img/#{proccessed_icon(feedback_call)}.png", class: "w-8 w-1/2") %>
   </td>
   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row">
     <%= l(feedback_call.created_at, format: :long) %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap space-x-4 flex" scope="row">
+    <%= button_to dredd_feedback_call_path(feedback_call), method: :put, class: "text-black" do %> 
+      <div class="bg-zinc p-1.5 rounded-2xl text-black">
+        <%= t("dredd.feedback_call.called") %>
+      </div>
+    <% end %>
+    <%= button_to dredd_feedback_call_path(feedback_call), method: :delete, class: "text-black" do %> 
+      <div class="bg-danger p-1.5 rounded-2xl text-black">
+        <%= t("dredd.feedback_call.destroy") %>
+      </div>
+    <% end %>
   </td>
 </tr>

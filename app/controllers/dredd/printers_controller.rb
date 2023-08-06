@@ -11,6 +11,7 @@ module Dredd
 
     def new
       @printer = Printer.new
+      @printer.printer_maintenance.build
     end
 
     def edit
@@ -26,7 +27,6 @@ module Dredd
     end
 
     def update
-      binding.irb
       if @printer.update(prepare_params(product_params))
         redirect_to dredd_printers_path, notice: 'Printer was successfully updated.' # rubocop:disable Rails/I18nLocaleTexts
       else
@@ -42,10 +42,10 @@ module Dredd
     private
 
     def product_params
-      binding.irb
       params.require(:printer).permit(:printer_code, :firm, :model, :printing_technology, :state,
                                       :type_mechanic, :table_size, :price_for_printer, :bought,
-                                      :comment, :by_for_upgrade)
+                                      :comment, :by_for_upgrade,
+                                      printer_maintenance_attributes: [:id, :printer, :problem, :problem_find, :time_for_fix, :_destroy])
     end
 
     def prepare_params(product_params)

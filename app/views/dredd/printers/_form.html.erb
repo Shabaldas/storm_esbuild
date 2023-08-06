@@ -45,6 +45,24 @@
       <%= form.label t("dredd.printers.by_for_upgrade"), class: "form-label" %>
       <%= form.text_area :by_for_upgrade, placeholder: t("dredd.manual_orders.please_input"), class: "w-full form-control" %>
     </div>
+
+    <div data-controller="toggler nested-form" data-nested-form-wrapper-selector-value='.nested-form-wrapper'>
+      <label><%= t("dredd.products.colors_present") %></label>
+      <input data-action="input->toggler#toggle" data-target="toggler.input" type="checkbox">
+      <div data-target="toggler.hideme" id="stuff_to_hide">
+        <%= form.fields_for :printer_maintenance do |printer_maintenance| %>
+          <%= printer_maintenance.label t("dredd.products.primary") %>
+
+          <template data-nested-form-target="template">
+            <%= render "printer_maintenance_form", f: printer_maintenance %>
+          </template>
+
+          <div data-nested-form-target="target"></div>
+          <button type="button" data-action="nested-form#add"><%= t("dredd.products.add_color") %></button>
+        <% end %>
+      </div>
+    </div>
+
     <div class="form-group">
       <%= form.submit t("dredd.manual_orders.save"), class: "button w-full md:max-w-[212px]" %>
     </div>
