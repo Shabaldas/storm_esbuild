@@ -26,6 +26,15 @@ describe '/printing_orders', type: :request do
 
   describe 'POST /printing_orders/create' do
     context 'when valid data' do
+      let(:stubed_request) do
+        stub_request(:post, /api.telegram.org/)
+          .and_return(status: 200, body: '', headers: {})
+      end
+
+      before do
+        stubed_request
+      end
+
       context 'without attached files' do
         it 'create printing order' do
           expect do

@@ -23,7 +23,16 @@ describe '/dredd/printing_orders', type: :request do
   end
 
   describe 'DELETE /dredd/printing_orders/:id' do
-    let!(:printing_order) { create(:printing_order) }
+    let(:printing_order) { create(:printing_order) }
+    let(:stubed_request) do
+      stub_request(:post, /api.telegram.org/)
+        .and_return(status: 200, body: '', headers: {})
+    end
+
+    before do
+      stubed_request
+      printing_order
+    end
 
     it 'deletes printing order' do
       expect { delete dredd_printing_order_path(printing_order) }.to change(PrintingOrder, :count).by(-1)

@@ -14,6 +14,15 @@ describe '/rendering_orders', type: :request do
 
   describe 'POST /rendering_orders/create' do
     context 'when valid data' do
+      let(:stubed_request) do
+        stub_request(:post, /api.telegram.org/)
+          .and_return(status: 200, body: '', headers: {})
+      end
+
+      before do
+        stubed_request
+      end
+
       it 'create rendering order' do
         expect do
           post rendering_orders_path, params: {
