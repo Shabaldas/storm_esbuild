@@ -17,8 +17,6 @@
       <%= image_tag("print_img/arm_modeling.svg") %>
     </div>
   </div>
-  <%= turbo_frame_tag "modeling-form" do %>
-    <%= render partial: "shared/upload_form", locals: { model: @modeling_order, order_name: "modeling", image_icon: "picture-and-pdf" } %>
-  <% end %>
+  <%= render partial: "shared/upload_form", locals: { model: @modeling_order, order_name: "modeling", image_icon: "picture-and-pdf" } %>
   <%= turbo_frame_tag "modeling-modal" %>
 </div>

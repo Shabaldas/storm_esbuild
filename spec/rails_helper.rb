@@ -33,6 +33,7 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'webmock/rspec'
 require 'database_cleaner/active_record'
+require 'active_storage_validations/matchers'
 require 'pundit/rspec'
 # Sidekiq::Testing.fake!
 ActiveJob::Base.queue_adapter = :test
@@ -63,6 +64,7 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  config.include ActiveStorageValidations::Matchers
   config.include Warden::Test::Helpers, type: :request
   config.include Warden::Test::Helpers, type: :feature
   config.include Devise::Test::ControllerHelpers, type: :controller

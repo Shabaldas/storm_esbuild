@@ -17,8 +17,6 @@
       <%= image_tag("print_img/arm_rendering.svg") %>
     </div>
   </div>
-  <%= turbo_frame_tag "rendering-form" do %>
-    <%= render partial: "shared/upload_form", locals: { model: @rendering_order, order_name: "rendering", image_icon: "file_svg" } %>
-  <% end %>
+  <%= render partial: "shared/upload_form", locals: { model: @rendering_order, order_name: "rendering", image_icon: "file_svg" } %>
   <%= turbo_frame_tag "rendering-modal" %>
 </div>

@@ -45,8 +45,6 @@
     <%= render partial: "static_pages/printing/sla_tab" %>
     <%= render partial: "static_pages/printing/dlp_tab" %>
   </div>
-  <%= turbo_frame_tag "printing-form" do %>
-    <%= render partial: "shared/upload_form", locals: { model: @printing_order, order_name: "printing", image_icon: "stl_and_obj" } %>
-  <% end %>
+  <%= render partial: "shared/upload_form", locals: { model: @printing_order, order_name: "printing", image_icon: "stl_and_obj" } %>
   <%= turbo_frame_tag "printing-modal" %>
 </div>

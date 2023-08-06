@@ -40,7 +40,7 @@ module ApplicationHelper
     when 'modeling'
       '.pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.zip,.rar,.7z'
     else
-      '.pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.obj,.stl, .step, .stp, .iges, .igs, .sldprt, .sldasm, .prt, .asm, .x_t, .x_b, .xmt_txt, .xmt_bin, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t, .x_b, .x_t,.zip,.rar,.7z'
+      '.pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.obj,.stl,.step,.stp,.iges,.igs,.sldprt,.sldasm,.prt,.asm,.x_t,.x_b,.xmt_txt,.xmt_bin,.zip,.rar,.7z'
     end
   end
 end

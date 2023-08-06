@@ -59,7 +59,7 @@ export default class extends Controller {
     }
   }
   get maxFileSize() {
-    return this.data.get("maxFileSize") || 256;
+    return this.data.get("maxFileSize") || 150;
   }
   get acceptedFiles() {
     return this.data.get("acceptedFiles");

@@ -1,6 +1,6 @@
 <% if @rendering_order.errors.any? %>
-  <%= turbo_stream.replace("rendering-form", partial: "shared/upload_form", locals: { model: @rendering_order } ) %>
+  <%= turbo_stream.replace("upload-form", partial: "shared/upload_form", locals: { model: @rendering_order } ) %>
 <% else %>
-  <%= turbo_stream.replace("rendering-form", partial: "shared/upload_form", locals: { model: RenderingOrder.new, order_name: "rendering", image_icon: "file_svg" } ) %>
+  <%= turbo_stream.replace("upload-form", partial: "shared/upload_form", locals: { model: RenderingOrder.new, order_name: "rendering", image_icon: "file_svg" } ) %>
   <%= turbo_stream.append("rendering-modal", partial: "shared/modal") %>
 <% end %>

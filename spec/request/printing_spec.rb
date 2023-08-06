@@ -52,8 +52,7 @@ describe '/printing_orders', type: :request do
       end
 
       context 'with attached files' do
-        let(:attachment_file_one_name) { './spec/fixtures/files/3d_stl_model.stl' }
-        let(:attachment_file_two_name) { './spec/fixtures/files/dummy.png' }
+        let(:attachment_file_name) { './spec/fixtures/files/3d_stl_model.stl' }
         let(:params) do
           {
             printing_order: {
@@ -64,8 +63,7 @@ describe '/printing_orders', type: :request do
               link_to_model: 'https://www.thingiverse.com/thing:2789086',
               comment: 'Test comment',
               files: [
-                fixture_file_upload(attachment_file_one_name),
-                fixture_file_upload(attachment_file_two_name)
+                fixture_file_upload(attachment_file_name)
               ]
             }
           }
@@ -73,10 +71,13 @@ describe '/printing_orders', type: :request do
 
         it 'create printing order' do
           expect do
-            post printing_orders_path, params:
+            post(printing_orders_path, params:)
           end.to change(PrintingOrder, :count).by(1)
-             .and change(ActiveStorage::Attachment, :count).by(2)
-             .and change(ActiveStorage::Blob, :count).by(2)
+             .and change(ActiveStorage::Attachment, :count).by(1)
+             .and change(ActiveStorage::Blob, :count).by(1)
+          printing_order = PrintingOrder.last
+          expect(printing_order.files).to be_attached
+          expect(printing_order.link_to_model).to eq('https://www.thingiverse.com/thing:2789086')
         end
       end
     end
