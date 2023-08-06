@@ -138,3 +138,8 @@ uk:
       cre_printer: "Додати принтер"
       edit: "Редагувати"
       new_printer: "Новий принтер"
+      problem: "Проблема"
+      problem_find: "Знайдено Проблему"
+      time_for_fix: "Час для вирішення"
+      remove_printer_maintenance: "Видалити Обслуговування принтера"
+      add_printer_maintenance: "Додати Обслуговування принтера"

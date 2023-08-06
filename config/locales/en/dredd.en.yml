@@ -138,4 +138,8 @@ en:
       cre_printer: "Create printer"
       edit: "Edit"
       new_printer: "New Printer"
-
+      problem: "Problem"
+      problem_find: "Problem find"
+      time_for_fix: "Time for fix"
+      remove_printer_maintenance: "Remove Printer Maintenance"
+      add_printer_maintenance: "Add Printer Maintenance"

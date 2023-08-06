@@ -11,10 +11,13 @@ module Dredd
 
     def new
       @printer = Printer.new
-      @printer.printer_maintenance.build
+      @printer_maintenance = []
+      # @printer.printer_maintenance.build
+      6.times { @printer.printer_maintenance.build }
     end
 
     def edit
+      @printer_maintenance = @printer.printer_maintenance
     end
 
     def create
@@ -45,7 +48,7 @@ module Dredd
       params.require(:printer).permit(:printer_code, :firm, :model, :printing_technology, :state,
                                       :type_mechanic, :table_size, :price_for_printer, :bought,
                                       :comment, :by_for_upgrade,
-                                      printer_maintenance_attributes: [:id, :printer, :problem, :problem_find, :time_for_fix, :_destroy])
+                                      printer_maintenance_attributes: [:id, :problem, :problem_find, :time_for_fix, :_destroy])
     end
 
     def prepare_params(product_params)
