@@ -5,7 +5,7 @@ ruby '3.2.2'
 
 gem 'active_link_to'
 gem 'ancestry'
-gem 'anyway_config', '~> 2.0'
+gem 'anyway_config', '~> 2.5'
 gem 'aws-sdk-s3', require: false
 gem 'active_storage_validations'
 gem 'capistrano', '~> 3.11'
