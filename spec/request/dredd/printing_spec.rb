@@ -22,6 +22,49 @@ describe '/dredd/printing_orders', type: :request do
     end
   end
 
+  describe 'PUT /dredd/printing_orders/:id' do
+    let(:printing_order) { create(:printing_order) }
+    let(:stubed_request) do
+      stub_request(:post, /api.telegram.org/)
+        .and_return(status: 200, body: '', headers: {})
+    end
+
+    let(:params) do
+      {
+        printing_order: {
+          first_name: 'John',
+          last_name: 'Doe',
+          email: 'example@example.com',
+          phone_number: '+380976404050',
+          link_to_model: 'https://www.thingiverse.com/thing:2789086',
+          comment: 'Test comment',
+          status: 'paid'
+        }
+
+      }
+    end
+
+    before do
+      stubed_request
+      printing_order
+    end
+
+    it 'updates printing order' do
+      expect do
+        put(dredd_printing_order_path(printing_order), params:)
+      end.to change { printing_order.reload.status }.from('unpaid').to('paid')
+
+      printing_order.reload
+      expect(printing_order.first_name).to eq('John')
+      expect(printing_order.last_name).to eq('Doe')
+      expect(printing_order.email).to eq('example@example.com')
+      expect(printing_order.phone_number).to eq('+380976404050')
+      expect(printing_order.link_to_model).to eq('https://www.thingiverse.com/thing:2789086')
+      expect(printing_order.comment).to eq('Test comment')
+      expect(printing_order.status).to eq('paid')
+    end
+  end
+
   describe 'DELETE /dredd/printing_orders/:id' do
     let(:printing_order) { create(:printing_order) }
     let(:stubed_request) do
