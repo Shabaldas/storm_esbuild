@@ -84,6 +84,9 @@ en:
       category_description: "Category description:"
       children: "Children:"
       parent: "Parent:"
+    printing_orders:
+      edit_printing_order: "Edit 3D Printing Order"
+      files: "Attached Files"
     products:
       product_category: "Product Category"
       base_price: "Base Price"
