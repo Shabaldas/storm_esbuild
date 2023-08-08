@@ -1,67 +1,179 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+  <head>
+    <title>404</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      *,
+      :after,
+      ::before {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        box-sizing: border-box;
+      }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+      }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+      .rails-default-error-page {
+        height: 100vh;
+        background-color: #e9e9e9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+      .rails-error-wrapper {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
+      .rails-error-message h1 {
+        color: #2a343e;
+        font-family: Inter;
+        font-size: 210px;
+        font-weight: 700;
+        line-height: normal;
+        margin: 0;
+        text-align: center;
+      }
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+      .sun-img {
+        position: absolute;
+        top: -100px;
+        left: -25%;
+        opacity: 0.95;
+        z-index: 3;
+      }
+
+      .sun-img img {
+        width: 456px;
+        position: relative;
+      }
+
+      .sun-img:before {
+        position: absolute;
+        content: "";
+        width: 356px;
+        height: 356px;
+        top: -100px;
+        left: 0;
+        border-radius: 340px;
+        background: radial-gradient(
+          50% 50% at 50% 50%,
+          #f1c232 0%,
+          rgba(241, 194, 50, 0) 100%
+        );
+        filter: blur(15px);
+      }
+
+      .cloud-img {
+        position: absolute;
+        width: 100%;
+        max-width: 201px;
+        bottom: 40px;
+        right: -90px;
+        z-index: 1;
+      }
+
+      .rails-error-message {
+        position: relative;
+        z-index: 2;
+      }
+
+      .rails-error-message p {
+        color: #6e7579;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      @media (max-width: 1025px) {
+        .rails-error-message h1 {
+          font-size: 120px;
+        }
+
+        .rails-error-message p {
+          font-size: 18px;
+          margin-top: 20px;
+        }
+
+        .sun-img {
+          top: -32px;
+          left: -10%;
+        }
+
+        .sun-img img {
+          width: 170px;
+        }
+
+        .sun-img:before {
+          width: 140px;
+          height: 140px;
+          top: -40px;
+          left: 25px;
+        }
+
+        .cloud-img {
+          width: 100px;
+          bottom: 50px;
+          right: -30px;
+        }
+      }
+
+      @media (max-width: 769px) {
+        .rails-error-message h1 {
+          font-size: 80px;
+        }
+
+        .sun-img {
+          top: -33px;
+          left: -5%;
+        }
+
+        .sun-img img {
+          width: 150px;
+        }
+
+        .sun-img:before {
+          width: 110px;
+          height: 110px;
+          top: -30px;
+          left: 25px;
+        }
+
+        .cloud-img {
+          width: 80px;
+          bottom: 35px;
+          right: 0;
+        }
+
+        .rails-error-message p {
+          margin-top: 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="rails-default-error-page">
+      <div class="rails-error-wrapper">
+        <div class="sun-img">
+          <img class="sun-img" src="sun-with-cloud.png" alt="Sun with cloud" />
+        </div>
+        <div class="rails-error-message">
+          <h1>404</h1>
+          <p>Oooops... Page not found</p>
+        </div>
+        <img class="cloud-img" src="cloud.png" alt="Cloud" />
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+  </body>
 </html>
