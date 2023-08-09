@@ -40,7 +40,6 @@ describe '/dredd/printing_orders', type: :request do
           comment: 'Test comment',
           status: 'paid'
         }
-
       }
     end
 

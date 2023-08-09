@@ -87,6 +87,12 @@ uk:
     printing_orders:
       edit_printing_order: "Редагувати замовлення 3D друку"
       files: "Прикріплені файли"
+    rendering_orders:
+      edit_printing_order: "Редагувати замовлення 3D рендерингу"
+      files: "Прикріплені файли"
+    modeling_orders:
+      edit_printing_order: "Редагувати замовлення 3D моделювання"
+      files: "Прикріплені файли"
     products:
       product_category: "Категорія продукту"
       base_price: "Базова ціна"

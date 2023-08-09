@@ -1,0 +1,74 @@
+<%= render partial: "dredd/shared/errors", locals: { resource: @modeling_order } %>
+<%= form_with model: [:dredd, @modeling_order], class: "form-grid-single" do |form| %>
+   <div class="form-grid-single w-10/12">
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= form.label t("dredd.manual_orders.first_name"), class: "form-label" %>
+        <%= form.text_field :first_name, placeholder: t("dredd.manual_orders.please_input") %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.manual_orders.last_name"), class: "form-label" %>
+        <%= form.text_field :last_name, placeholder: t("dredd.manual_orders.please_input") %>
+      </div>
+    </div>
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= form.label t("dredd.manual_orders.phone_number"), class: "form-label" %>
+        <%= form.text_field :phone_number, placeholder: t("dredd.manual_orders.please_input") %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.manual_orders.email"), class: "form-label" %>
+        <%= form.text_field :email, placeholder: t("dredd.manual_orders.please_input") %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.manual_orders.total_price"), class: "form-label" %>
+        <%= form.text_field :total_price, placeholder: t("dredd.manual_orders.please_input") %>
+      </div>
+    </div>
+    <div class="flex space-x-4">
+      <div class="form-group form-toggle">
+        <%= form.label t("dredd.manual_orders.status"), class: "form-label" %>
+        <label class="toggle-switch ml-3">
+          <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "paid", "unpaid") %>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="form-group">
+         <%= form.label t("dredd.manual_orders.deadline"), class: "form-label" %>
+         <%= form.date_field :deadline %>
+      </div>
+    </div>
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= t("dredd.printing_orders.files") %>
+        <div class="grid grid-cols-1 gap-4">
+          <% if form.object.files.any? %>
+            <% form.object.files.each do |file| %>
+              <div class="flex items-center space-x-4">
+                <% if file.image? %>
+                  <div class="flex">
+                    <%= image_tag file, class: "w-20 h-20" %>
+                    <%= link_to file, class: "text-blue-500", target: "_blank" do %>
+                      <p><%= file.filename %></p><%= image_tag "partials_img/download-icon.png", alt: "Download Icon", class: "w-6 h-6 mr-2" %>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <%= link_to file, class: "text-blue-500 flex" do %>
+                    <p><%= file.filename %></p><%= image_tag "partials_img/download-icon.png", alt: "Download Icon", class: "w-6 h-6 mr-2" %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label t("dredd.manual_orders.comment"), class: "form-label" %>
+      <%= form.text_area :comment, placeholder: t("dredd.manual_orders.please_input"), class: "h-32 w-full p-2" %>
+    </div>
+    <div class="form-group">
+      <%= form.submit t("dredd.manual_orders.save"), class: "button w-full md:max-w-[212px]" %>
+    </div>
+  </div>
+<% end %>
