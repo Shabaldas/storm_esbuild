@@ -1,46 +1,46 @@
 <tr>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_rendering_order_path(rendering_order), class: "text-black" do %>
+    <%= link_to edit_dredd_rendering_order_path(rendering_order), class: "text-black" do %>
       #<%= rendering_order.id %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_rendering_order_path(rendering_order), class: "text-black" do %>
+    <%= link_to edit_dredd_rendering_order_path(rendering_order), class: "text-black" do %>
       <%= rendering_order.full_name %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_rendering_order_path(rendering_order), class: "text-black" do %>
+    <%= link_to edit_dredd_rendering_order_path(rendering_order), class: "text-black" do %>
       <%= rendering_order.phone_number %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_rendering_order_path(rendering_order), class: "text-black" do %>
+    <%= link_to edit_dredd_rendering_order_path(rendering_order), class: "text-black" do %>
       <%= rendering_order.email %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_rendering_order_path(rendering_order) do %>
+    <%= link_to edit_dredd_rendering_order_path(rendering_order) do %>
       <%= image_tag("partials_img/#{order_status_icon(rendering_order)}.png", class: "h-8 w-8 w-10/12") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_rendering_order_path(rendering_order), class: "text-black" do %>
+    <%= link_to edit_dredd_rendering_order_path(rendering_order), class: "text-black" do %>
       <%= rendering_order.total_price %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_rendering_order_path(rendering_order), class: "text-black" do %>
+    <%= link_to edit_dredd_rendering_order_path(rendering_order), class: "text-black" do %>
       <%= rendering_order.deadline&.strftime("%F") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to dredd_rendering_order_path(rendering_order), class: "text-black" do %>
+    <%= link_to edit_dredd_rendering_order_path(rendering_order), class: "text-black" do %>
       <%= rendering_order.comment %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap space-x-4 flex" scope="row">
-    <%= button_to dredd_rendering_order_path(rendering_order), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
+    <%= button_to edit_dredd_rendering_order_path(rendering_order), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
       <%= t("dredd.manual_orders.destroy") %>
     <% end %>
   </td>

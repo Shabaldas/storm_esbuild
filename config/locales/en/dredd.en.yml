@@ -87,6 +87,12 @@ en:
     printing_orders:
       edit_printing_order: "Edit 3D Printing Order"
       files: "Attached Files"
+    rendering_orders:
+      edit_rendering_order: "Edit 3D Rendering Order"
+      files: "Attached Files"
+    modeling_orders:
+      edit_modeling_order: "Edit 3D Modeleing Order"
+      files: "Attached Files"
     products:
       product_category: "Product Category"
       base_price: "Base Price"
