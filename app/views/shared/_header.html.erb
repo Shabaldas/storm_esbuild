@@ -115,6 +115,9 @@
                       </li>
                       <% if policy(:admin).access? %>
                         <li class="py-4">
+                          <%= active_link_to t("dredd.header.admin_dashboard"), dredd_dashboard_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                        </li>
+                        <li class="py-4">
                           <%= active_link_to t('global.header.store'), products_path, class: "text-white text-lg font-medium cursor-pointer" %>
                         </li>
                         <li class="py-4 cursor-pointer">

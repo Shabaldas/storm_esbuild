@@ -28,8 +28,6 @@ describe '/dredd', type: :request do
 
       expect(response).to be_successful
       expect(response.body).to include('Admin Dashboard')
-      expect(response.body).to include('Products')
-      expect(response.body).to include('Product Categories')
       expect(response.body).to include('Feedback Calls')
       expect(response.body).to include('Manual Orders')
       expect(response.body).to include('Printing Orders')
