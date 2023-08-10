@@ -52,7 +52,7 @@
                     <%= active_link_to t('global.header.head'), root_path, class: "text-white text-lg font-medium cursor-pointer", active: :exact %>
                   </li>
                   <li class="py-4">
-                    <%= active_link_to t("dredd.header.admin_dashboard"), dredd_dashboard_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                    <%= active_link_to t("dredd.header.admin_dashboard"), dredd_dashboard_path, active: :exact, class: "text-white text-lg font-medium cursor-pointer" %>
                   </li>
                   <li class="py-4">
                     <%= active_link_to t("dredd.header.feedback_calls"), dredd_feedback_calls_path, class: "text-white text-lg font-medium cursor-pointer" %>
