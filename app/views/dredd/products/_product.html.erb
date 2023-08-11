@@ -33,10 +33,10 @@
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap space-x-4 flex" scope="row">
     <%= link_to edit_dredd_product_path(product), class: "text-black bg-primary p-1.5 rounded-2xl text-black" do %>
-      EDIT
+      <%= t("dredd.orders.edit") %>
     <% end %>
     <%= button_to dredd_product_path(product), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
-      DESTROY
+      <%= t("dredd.manual_orders.destroy") %>
     <% end %>
   </td>
 </tr>

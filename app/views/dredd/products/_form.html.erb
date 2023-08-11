@@ -2,15 +2,15 @@
 <%= form_with model: [:dredd, @product], url: dredd_products_path, class: "form-grid-single" do |form| %>
   <div class="form-grid-single w-1/2">
     <div class="form-group">
-      <%= form.label :name, class: "form-label" %>
+      <%= form.label t("dredd.product_categories.name"), class: "form-label" %>
       <%= form.text_field :name, placeholder: "Please input" %>
     </div>
     <div class="form-group">
-      <%= form.label :description, class: "form-label" %>
+      <%= form.label t("dredd.product_categories.description"), class: "form-label" %>
       <%= form.text_area :description, placeholder: "Please input", class: "w-full form-control" %>
     </div>
     <div class="form-group">
-      <%= form.label :product_category, as: "Product Category", class: "form-label"  %>
+      <%= form.label t("dredd.products.product_category"), class: "form-label"  %>
       <%= form.select :product_category_id,
                       product_categories_for_product_select,
                       { class: "", include_blank: false },
@@ -19,27 +19,27 @@
     </div>
 
     <div class="form-group form-toggle">
-      <%= form.label :status, as: "Status", class: "toggle-switch-label" %>
+      <%= form.label t("dredd.manual_orders.status"), class: "toggle-switch-label" %>
       <label class="toggle-switch ml-3">
         <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "active", "inactive") %>
         <span class="slider"></span>
       </label>
     </div>
     <div class="form-group">
-      <%= form.label "Base Price", class: "form-label" %>
+      <%= form.label t("dredd.products.base_price"), class: "form-label" %>
       <%= form.text_field :price, placeholder: "Please input" %>
     </div>
-    <%= form.label :main_picture %>
+    <%= form.label t("dredd.products.main_picture") %>
     <div data-controller="dropzone" class="form-group dropzone">
       <%= form.file_field :main_picture,  multiple: false, direct_upload: true, data: { dropzone_target: 'input' }, class: "hidden" %>
     </div>
 
     <div data-controller="toggler nested-form" data-nested-form-wrapper-selector-value='.nested-form-wrapper'>
-      <label>Colors present?</label>
+      <label><%= t("dredd.products.colors_present") %></label>
       <input data-action="input->toggler#toggle" data-target="toggler.input" type="checkbox">
       <div data-target="toggler.hideme" id="stuff_to_hide">
         <%= form.fields_for :primary_product_option do |primary_option| %>
-          <%= primary_option.label :primary %>
+          <%= primary_option.label t("dredd.products.primary") %>
           <%= primary_option.check_box :primary, { checked: true }, true, false  %>
           <%= primary_option.hidden_field :option_id, value: Option.last.id %>
 
@@ -54,17 +54,17 @@
           <% end %>
 
           <div data-nested-form-target="target"></div>
-          <button type="button" data-action="nested-form#add">Add Color</button>
+          <button type="button" data-action="nested-form#add"><%= t("dredd.products.add_color") %></button>
         <% end %>
       </div>
     </div>
 
     <div data-controller="toggler nested-form" data-nested-form-wrapper-selector-value='.nested-form-wrapper'>
-      <label>Sizes present?</label>
+      <label><%= t("dredd.products.size_present") %></label>
       <input data-action="input->toggler#toggle" data-target="toggler.input" type="checkbox">
       <div data-target="toggler.hideme" id="stuff_to_hide"  >
         <%= form.fields_for :secondary_product_option do |secondary_option| %>
-          <%= secondary_option.label :secondary %>
+          <%= secondary_option.label t("dredd.products.secondary") %>
           <%= secondary_option.hidden_field :option_id, value: Option.first.id %>
 
           <template data-nested-form-target="template">
@@ -78,12 +78,12 @@
           <% end %>
 
           <div data-nested-form-target="target"></div>
-          <button type="button" data-action="nested-form#add">Add Size</button>
+          <button type="button" data-action="nested-form#add"><%= t("dredd.products.add_size") %></button>
         <% end %>
       </div>
     </div>
     <div class="form-group">
-      <%= form.submit "Create Product", class: "button w-full md:max-w-[212px]" %>
+      <%= form.submit t("dredd.products.create_product"), class: "button w-full md:max-w-[212px]" %>
     </div>
   </div>
 <% end %>

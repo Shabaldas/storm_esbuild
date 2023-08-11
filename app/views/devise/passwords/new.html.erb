@@ -1,7 +1,7 @@
 <div class="w-full max-w-screen-2xl mx-auto px-7 md:px-24 mt-9 text-grey-800">
   <div class="mt-9">
     <div class="text-2xl font-medium">
-      <h2>Forgot your password?</h2>
+      <h2><%= t("devise.passwords.new.title") %></h2>
     </div>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="actions mt-[32px] mb-4">
-          <%= f.submit "Reset password" , data: { turbo: false }, class:"button w-full md:max-w-[212px]" %>
+          <%= f.submit t("devise.passwords.new.button") , data: { turbo: false }, class:"button w-full md:max-w-[212px]" %>
         </div>
         <div class="content-divider"></div>
       </div>

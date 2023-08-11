@@ -2,16 +2,22 @@
   <table>
     <thead class="text-gray-700 bg-gray-50">
       <tr class="text-base">
-        <th class="px-6 py-3" scope="col">ID</th>
-        <th class="px-6 py-3" scope="col">PHONE NUMBER</th>
-        <th class="px-6 py-3" scope="col">PROCESSED</th>
-        <th class="px-6 py-3" scope="col">CREATED AT</th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.feedback_calls.id") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.feedback_calls.phone_number") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.feedback_calls.processed") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.feedback_calls.created_at") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.feedback_calls.actions") %></th>
       </tr>
     </thead>
     <tbody>
-      <%= render partial: "dredd/feedback_calls/feedback_call", collection: @feedback_calls %>
+
+      <% @feedback_calls.each do |feedback_call| %>
+        <%= render partial: "dredd/feedback_calls/feedback_call", locals: { feedback_call: feedback_call } %>
+      <% end %>
+
+
+      <%#= render partial: "dredd/feedback_calls/feedback_call", collection: @feedback_calls %>
     </tbody>
   </table>
   <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
 </div>
-

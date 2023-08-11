@@ -1,0 +1,21 @@
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <table>
+    <thead class="text-gray-700 bg-gray-50">
+      <tr class="text-base">
+        <th class="px-6 py-3" scope="col"><%= t("dredd.3d_orders.id") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.3d_orders.full_name") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.3d_orders.phone_number") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.3d_orders.email") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.3d_orders.status") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.3d_orders.total_price") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.3d_orders.deadline") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.3d_orders.comment") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.3d_orders.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "dredd/printing_orders/printing_order", collection: @printing_orders %>
+    </tbody>
+  </table>
+  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+</div>

@@ -1,25 +1,52 @@
-<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
-  <table>
-    <thead class="text-gray-700 bg-gray-50">
-      <tr class="text-base">
-        <th class="px-6 py-3" scope="col">PRINT CODE</th>
-        <th class="px-6 py-3" scope="col">FULL NAME</th>
-        <th class="px-6 py-3" scope="col">MOBILE PHONE</th>
-        <th class="px-6 py-3" scope="col">APP CONTACT</th>
-        <th class="px-6 py-3" scope="col">TOTAL PRICE</th>
-        <th class="px-6 py-3" scope="col">PREPAID EXPENSE</th>
-        <th class="px-6 py-3" scope="col">STATUS</th>
-        <th class="px-6 py-3" scope="col">DEADLINE</th>
-        <th class="px-6 py-3" scope="col">CREATED AT</th>
-        <th class="px-6 py-3" scope="col">ACTIONS</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render partial: "dredd/manual_orders/manual_order", collection: @manual_orders %>
-    </tbody>
-  </table>
-  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
-  <footer class="pt-6">
-    <%= link_to "Create Manual Order", new_dredd_manual_order_path, class: "button w-80" %>
-  </footer>
+<div class="max-w-screen-2xl mt-24 px-7 w-full">
+  <div class="w-full mx-auto flex flex-col lg:flex-row" data-controller="sidebar">
+    <div class="sidebar w-full h-auto max-w-[320px] flex-col shrink-0 lg:mr-6 fixed top-0 lg:relative z-40 lg:z-10 left-0 mb-0 lg:mb-36 transform -translate-x-full lg:translate-x-0 transition duration-700 ease-in-out" data-sidebar-target="sidebarContainer" data-expanded="1">
+      <div class="relative top-0 lg:sticky lg:top-[90px] h-screen lg:h-auto bg-white rounded-0 lg:rounded-3xl py-6 px-6 lg:px-8 text-zinc-500">
+        <div>
+          <h4 class="text-lg normal-case text-gray-800 mb-4">
+            Search
+          </h4>
+          <div data-controller="accordion">
+            <%= search_form_for(@q, url: dredd_manual_orders_path) do |f| %>
+              <%= f.select :status_eq, ManualOrder.statuses.to_a.map { |w| [w[0].humanize, w[1]] },
+                                                                     { :include_blank => true }
+              %>
+              <div class="hidden lg:block">
+                <%= f.submit "Search", class: "mt-6 lg:mt-4 rounded w-full button" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table>
+      <thead class="text-gray-700 bg-gray-50">
+        <tr class="text-base">
+          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :print_code, t("dredd.manual_orders.print_code"), class: "text-black") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.full_name") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.phone_number") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.app_contact") %></th>
+          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :total_price, t("dredd.manual_orders.total_price"), class: "text-black") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.prepaid_expense") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.status") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.deadline") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.created_at") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "dredd/manual_orders/manual_order", collection: @manual_orders %>
+      </tbody>
+    </table>
+  </div>
+  <div class="flex justify-center w-full">
+    <div class="absolute p-6">
+      <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+    </div>
+    <div class="my-6 p-6">
+      <footer class="pt-6">
+        <%= link_to t("dredd.manual_orders.manual_order"), new_dredd_manual_order_path, class: "button w-80" %>
+      </footer>
+    </div>
+  </div>
 </div>

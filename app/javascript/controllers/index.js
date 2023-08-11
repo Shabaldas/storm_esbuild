@@ -53,3 +53,6 @@ application.register("upload-model", UploadModelController);
 
 import PrintModelColorsController from "./print_model_colors_controller";
 application.register("print-model-colors", PrintModelColorsController);
+
+import SelectedMaterialAndPriceController from "./selected_material_and_price_controller";
+application.register("selected-material-and-price", SelectedMaterialAndPriceController);
