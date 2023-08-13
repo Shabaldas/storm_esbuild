@@ -40,6 +40,8 @@
       <div data-target="toggler.hideme" id="stuff_to_hide">
         <%= form.fields_for :primary_product_option do |primary_option| %>
           <%= primary_option.label t("dredd.products.primary") %>
+          <%= primary_option.check_box :primary, { checked: true }, true, false  %>
+          <%= primary_option.hidden_field :option_id, value: Option.last.id %>
 
           <template data-nested-form-target="template">
             <%= primary_option.fields_for :product_option_values, ProductOptionValue.new, child_index: 'NEW_RECORD' do |product_option_values_form| %>
@@ -62,6 +64,8 @@
       <input data-action="input->toggler#toggle" data-target="toggler.input" type="checkbox">
       <div data-target="toggler.hideme" id="stuff_to_hide"  >
         <%= form.fields_for :secondary_product_option do |secondary_option| %>
+          <%= secondary_option.label t("dredd.products.secondary") %>
+          <%= secondary_option.hidden_field :option_id, value: Option.first.id %>
 
           <template data-nested-form-target="template">
             <%= secondary_option.fields_for :product_option_values, ProductOptionValue.new, child_index: 'NEW_RECORD' do |product_option_values_form| %>

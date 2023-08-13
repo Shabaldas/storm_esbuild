@@ -6,14 +6,11 @@ module Dredd
 
     def index
       @pagy, @printers = pagy(Printer.all, items: 10)
-      @printer = Printer.first
     end
 
     def new
       @printer = Printer.new
-      @printer_maintenance = []
-      # @printer.printer_maintenance.build
-      6.times { @printer.printer_maintenance.build }
+      @printer.printer_maintenance.build
     end
 
     def edit
