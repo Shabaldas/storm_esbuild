@@ -6,16 +6,18 @@
     <div class="text-2xl text-gray-800 font-medium">
       Hello, <%= resource.first_name %>! 👋
     </div>
-    <div class="flex items-center mt-8">
-      <div class="w-6 h-6">
-        <%= image_tag("partials_img/user.png") %>
-      </div>
-      <div class="ml-2 text-gray-800 text-base font-medium">
-        Personal data
-      </div>
-    </div>
+    
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="flex items-center mt-8">
+        <div class="w-6 h-6">
+          <%= image_tag("partials_img/user.png") %>
+        </div>
+        <div class="ml-2 text-gray-800 text-base font-medium">
+          Personal data
+        </div>
+      </div>
+
       <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
 
       <div>
@@ -50,13 +52,45 @@
 
           <div class="w-full lg:w-3/5">
             <div>
-              <%= f.label :email:,"Email" %>
+              <%= f.label :email, "Email" %>
             </div>
             <div class="mt-1">
-              <%= f.text_field :email:, class: "w-full rounded", placeholder: "Enter your first name" %>
+              <%= f.text_field :email, class: "w-full rounded", placeholder: "Enter your first name" %>
             </div>
           </div>
         </div>
+      </div>
+      
+      <div class="flex items-center mt-8">
+        <div class="w-6 h-6">
+          <%= image_tag("partials_img/lock.png") %>
+        </div>
+        <div class="ml-2 text-gray-800 text-base font-medium">
+          Password
+        </div>
+      </div>
+      <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
+
+      <div class="flex flex-col lg:flex-row lg:justify-between items-center space-x-4">
+        <div class="w-full lg:w-3/5">
+          <div>
+            <%= f.label :password, class: "text-sm"%>
+            <i class="text-xs"><%= t("devise.registrations.edit.leave") %></i>
+          </div>
+          <div class="mt-1">
+            <%= f.password_field :password, autocomplete: "new-password", class: "w-full rounded", placeholder: t("devise.registrations.new_password") %>
+          </div>
+        </div>
+
+        <div class="w-full lg:w-3/5">
+          <div>
+            <%= f.label :password_confirmation, class:"text-sm" %>
+          </div>
+          <div class="mt-1">
+            <%= f.password_field :password_confirmation, class: "w-full rounded", autocomplete: "new-password", placeholder: t("devise.passwords.edit.labelsecond") %>
+          </div>
+        </div>
+        
       </div>
     <% end %>
   </div>
