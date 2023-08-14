@@ -12,7 +12,7 @@
         <th class="px-6 py-3" scope="col"><%= t("dredd.printers.bought") %></th>
         <th class="px-6 py-3" scope="col"><%= t("dredd.printers.comment") %></th>
         <th class="px-6 py-3" scope="col"><%= t("dredd.printers.by_for_upgrade") %></th>
-        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.created_at") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.printers.actions") %></th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +23,6 @@
   </table>
   <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
   <footer class="pt-6">
-    <%= link_to t("dredd.printers.cre_new_printer"), new_dredd_printer_path, class: "button w-80" %>
+    <%= link_to t("dredd.printers.create_new_printer"), new_dredd_printer_path, class: "button w-80" %>
   </footer>
 </div>

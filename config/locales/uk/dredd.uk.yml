@@ -122,6 +122,7 @@ uk:
       printing_orders: "Замовлення 3D друк"
       printers: "Принтери"
     printers:
+      actions: "Дії"
       printer_code: "Код принтера"
       firm: "Фірма"
       model: "Модель"
@@ -134,7 +135,7 @@ uk:
       comment: "Коментар"
       by_for_upgrade: "Купити для оновлення"
       created_at: "Створено"
-      cre_new_printer: "Додати новий принтер"
+      create_new_printer: "Додати новий принтер"
       cre_printer: "Додати принтер"
       edit: "Редагувати"
       new_printer: "Новий принтер"

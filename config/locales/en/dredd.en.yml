@@ -122,6 +122,7 @@ en:
       printing_orders: "Printing Orders"
       printers: "Printers"
     printers:
+      actions: "ACTIONS"
       printer_code: "Printer code"
       firm: "Firm"
       model: "Model"
@@ -134,7 +135,7 @@ en:
       comment: "Comment"
       by_for_upgrade: "By for upgrade"
       created_at: "Сreated at"
-      cre_new_printer: "Add new printer"
+      create_new_printer: "Add new printer"
       cre_printer: "Create printer"
       edit: "Edit"
       new_printer: "New Printer"

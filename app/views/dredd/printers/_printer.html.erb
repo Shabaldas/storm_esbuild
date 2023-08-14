@@ -36,7 +36,7 @@
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to edit_dredd_printer_path(printer), class: "text-black" do %>
-      <%= printer.bought %>
+      <%= printer.bought&.strftime("%F") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
@@ -47,11 +47,6 @@
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to edit_dredd_printer_path(printer), class: "text-black" do %>
       <%= printer.by_for_upgrade %>
-    <% end %>
-  </td>
-  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_printer_path(printer), class: "text-black" do %>
-      <%= printer.created_at.strftime("%F") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap space-x-4 flex" scope="row">

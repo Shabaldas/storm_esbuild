@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_14_210810) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -176,14 +176,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
   end
 
   create_table "printers", force: :cascade do |t|
-    t.integer "printer_code", null: false
+    t.string "printer_code"
     t.string "firm"
     t.string "model"
     t.integer "printing_technology", default: 0
     t.integer "state", default: 0
     t.integer "type_mechanic", default: 0
-    t.string "table_size", null: false
-    t.decimal "price_for_printer", precision: 8, scale: 2, default: "0.0", null: false
+    t.string "table_size"
+    t.decimal "price_for_printer", precision: 8, scale: 2, default: "0.0"
     t.datetime "bought"
     t.string "comment"
     t.string "by_for_upgrade"

@@ -1,41 +1,47 @@
 <%= render partial: "dredd/shared/errors", locals: { resource: @printer } %>
 <%= form_with model: [:dredd, @printer], class: "form-grid-single" do |form| %>
   <div class="form-grid-single w-1/2">
-    <div class="form-group">
-      <%= form.label t("dredd.printers.printer_code"), class: "form-label" %>
-      <%= form.number_field :printer_code, placeholder: t("dredd.manual_orders.please_input") %>
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= form.label t("dredd.printers.printer_code"), class: "form-label" %>
+        <%= form.text_field :printer_code, placeholder: t("dredd.manual_orders.please_input") %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.printers.firm"), class: "form-label" %>
+        <%= form.text_field :firm, placeholder: t("dredd.manual_orders.please_input") %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.printers.model"), class: "form-label" %>
+        <%= form.text_field :model, placeholder: t("dredd.manual_orders.please_input") %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= form.label t("dredd.printers.firm"), class: "form-label" %>
-      <%= form.text_field :firm, placeholder: t("dredd.manual_orders.please_input") %>
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= form.label t("dredd.printers.printing_technology"), class: "form-label" %>
+        <%= form.select :printing_technology, options_for_select(Printer.printing_technologies.map { |k, _v| [k.humanize.upcase, k] } ) %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.printers.state"), class: "form-label" %>
+        <%= form.select :state, options_for_select(Printer.states.map { |k, _v| [k.humanize.upcase, k] } ) %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.printers.type_mechanic"), class: "form-label" %>
+        <%= form.select :type_mechanic, options_for_select(Printer.type_mechanics.map { |k, _v| [k.humanize.upcase, k] } ) %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= form.label t("dredd.printers.model"), class: "form-label" %>
-      <%= form.text_field :model, placeholder: t("dredd.manual_orders.please_input") %>
-    </div>
-    <div class="form-group">
-      <%= form.label t("dredd.printers.printing_technology"), class: "form-label" %>
-      <%= form.select :printing_technology, options_for_select(ApplicationHelper::PRINTING_TECHNOLOGY, selected: select_value(@printer.printing_technology)), include_blank: true %>
-    </div>
-    <div class="form-group">
-      <%= form.label t("dredd.printers.state"), class: "form-label" %>
-      <%= form.select :state, options_for_select(ApplicationHelper::STATE, selected: select_value(@printer.state)), include_blank: true %>
-    </div>
-    <div class="form-group">
-      <%= form.label t("dredd.printers.type_mechanic"), class: "form-label" %>
-      <%= form.select :type_mechanic,  options_for_select(ApplicationHelper::TYPE_MECHANIC, selected: select_value(@printer.type_mechanic)), include_blank: true %>
-    </div>
-    <div class="form-group">
-      <%= form.label t("dredd.printers.table_size"), class: "form-label" %>
-      <%= form.text_field :table_size, placeholder:t("dredd.manual_orders.please_input") %>
-    </div>
-    <div class="form-group">
-      <%= form.label t("dredd.printers.price_for_printer"), class: "form-label" %>
-      <%= form.text_field :price_for_printer, placeholder: t("dredd.manual_orders.please_input") %>
-    </div>
-    <div class="form-group">
-      <%= form.label t("dredd.printers.bought"), class: "form-label" %>
-      <%= form.date_field :bought %>
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= form.label t("dredd.printers.table_size"), class: "form-label" %>
+        <%= form.text_field :table_size, placeholder:t("dredd.manual_orders.please_input") %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.printers.price_for_printer"), class: "form-label" %>
+        <%= form.text_field :price_for_printer, placeholder: t("dredd.manual_orders.please_input") %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.printers.bought"), class: "form-label" %>
+        <%= form.date_field :bought %>
+      </div>
     </div>
     <div class="form-group">
       <%= form.label t("dredd.printers.comment"), class: "form-label" %>
@@ -46,20 +52,20 @@
       <%= form.text_area :by_for_upgrade, placeholder: t("dredd.manual_orders.please_input"), class: "w-full form-control" %>
     </div>
 
-    <% @printer_maintenance.each do |printer_maintenance| %>
-      <%= render partial: "printer_maintenance_table", locals: { printer_maintenance: printer_maintenance } %>
-    <% end %>
+    <%# @printer_maintenance.each do |printer_maintenance| %>
+      <%#= render partial: "printer_maintenance_table", locals: { printer_maintenance: printer_maintenance } %>
+    <%# end %>
 
     <div data-controller="toggler nested-form" data-nested-form-wrapper-selector-value='.nested-form-wrapper'>
-        <%= form.fields_for :printer_maintenance do |printer_maintenance| %>
-
-          <template data-nested-form-target="template">
-            <%= render "printer_maintenance_form", f: printer_maintenance %>
-          </template>
-
-          <div data-nested-form-target="target"></div>
-        <% end %>
-        <button type="button" data-action="nested-form#add"><%= t("dredd.printers.add_printer_maintenance") %></button>
+      <%= form.fields_for :printer_maintenance do |printer_maintenance| %>
+        <template data-nested-form-target="template">
+          <%= render "printer_maintenance_form", f: printer_maintenance %>
+        </template>
+        <div data-nested-form-target="target"></div>
+      <% end %>
+      <button type="button" data-action="nested-form#add">
+        <%= t("dredd.printers.add_printer_maintenance") %>
+      </button>
     </div>
 
     <div class="form-group">
