@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Printer < ApplicationRecord
-  has_many :printer_maintenance, dependent: :destroy
+  has_many :printer_maintenances, dependent: :destroy
 
-  accepts_nested_attributes_for :printer_maintenance, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :printer_maintenances, reject_if: :all_blank, allow_destroy: true
 
   enum printing_technology: { fdm: 0, dlp: 1, sla: 2, sls: 3 }
   enum state: { perfect: 0, satisfactory: 1, so_so: 2, sell: 3 }

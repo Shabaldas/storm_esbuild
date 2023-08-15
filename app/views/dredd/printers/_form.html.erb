@@ -52,17 +52,18 @@
       <%= form.text_area :by_for_upgrade, placeholder: t("dredd.manual_orders.please_input"), class: "w-full form-control" %>
     </div>
 
-    <%# @printer_maintenance.each do |printer_maintenance| %>
-      <%#= render partial: "printer_maintenance_table", locals: { printer_maintenance: printer_maintenance } %>
-    <%# end %>
-
-    <div data-controller="toggler nested-form" data-nested-form-wrapper-selector-value='.nested-form-wrapper'>
-      <%= form.fields_for :printer_maintenance do |printer_maintenance| %>
-        <template data-nested-form-target="template">
+    <div data-controller="nested-form" data-nested-form-wrapper-selector-value='.nested-form-wrapper'>
+      <template data-nested-form-target="template">
+        <%= form.fields_for :printer_maintenances, PrinterMaintenance.new, child_index: 'NEW_RECORD' do |printer_maintenance| %>
           <%= render "printer_maintenance_form", f: printer_maintenance %>
-        </template>
-        <div data-nested-form-target="target"></div>
+        <% end %>
+      </template>
+
+      <%= form.fields_for :printer_maintenances do |printer_maintenance| %>
+        <%= render "printer_maintenance_form", f: printer_maintenance %>
       <% end %>
+      
+      <div data-nested-form-target="target"></div>
       <button type="button" data-action="nested-form#add">
         <%= t("dredd.printers.add_printer_maintenance") %>
       </button>
