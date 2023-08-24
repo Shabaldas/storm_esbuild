@@ -1,5 +1,9 @@
 <header class="w-full h-16 fixed z-30 bg-light-grey">
-  <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 xl:px-24">
+  <div class="w-full relative max-w-screen-2xl mx-auto flex justify-between items-center px-7 xl:px-24">
+    <div class="absolute top-20 right-6 xl:right-24 w-[260px] md:w-[360px] z-50">
+      <%= render "dredd/shared/flash" %>
+    </div>
+
     <div class="flex w-1/2 justify-between">
       <div class="w-24">
         <%= link_to root_path do %>
