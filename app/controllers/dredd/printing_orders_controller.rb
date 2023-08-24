@@ -12,7 +12,8 @@ module Dredd
 
     def update
       if @printing_order.update(printing_order_params)
-        redirect_to dredd_printing_orders_path, notice: 'Printing order was successfully updated.' # rubocop:disable Rails/I18nLocaleTexts
+
+        redirect_to dredd_printing_orders_path, notice: { text: 'Printing order was successfully updated.', icon: 'success_icon' }
       else
         render :edit, status: :unprocessable_entity
       end
@@ -20,7 +21,7 @@ module Dredd
 
     def destroy
       @printing_order.destroy
-      redirect_to dredd_printing_orders_path, notice: 'Printing order was successfully destroyed.' # rubocop:disable Rails/I18nLocaleTexts
+      redirect_to dredd_printing_orders_path, error: { text: 'Printing order was successfully destroyed.', icon: 'attention' }
     end
 
     private

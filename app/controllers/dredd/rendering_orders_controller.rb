@@ -12,7 +12,7 @@ module Dredd
 
     def update
       if @rendering_order.update(rendering_order_params)
-        redirect_to dredd_rendering_orders_path, notice: 'Rendering order was successfully updated.' # rubocop:disable Rails/I18nLocaleTexts
+        redirect_to dredd_rendering_orders_path, notice: { text: 'Rendering order was successfully updated.', icon: 'success_icon' }
       else
         render :edit, status: :unprocessable_entity
       end
@@ -20,7 +20,7 @@ module Dredd
 
     def destroy
       @rendering_order.destroy
-      redirect_to dredd_rendering_orders_path, notice: 'Rendering order was successfully destroyed.' # rubocop:disable Rails/I18nLocaleTexts
+      redirect_to dredd_rendering_orders_path, error: { text: 'Rendering order was successfully destroyed.', icon: 'attention' }
     end
 
     private

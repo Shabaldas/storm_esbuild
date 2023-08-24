@@ -1,10 +1,15 @@
 <% flash.each do |key, value| %>
-  <div data-controller="flash" class="px-2 py-2 md:px-4 rounded-md md:rounded-xl <%= classes_for_flash(key) %>" style="background:#9CD697">
+  <%# HARDCODED VALUES SHOULD BE CHANGED %>
+  <% icon = value["icon"].present? ? value["icon"] : "success_icon" %>
+  <% text = value["text"].present? ? value["text"] : value %>
+
+  <div data-controller="flash" class="px-2 py-2 md:px-4 rounded-md md:rounded-xl" style="background:#<%= backgroud_color_for_flash(key) %>">
     <div class="flex items-start justify-between">
       <div class="flex items-start">
-        <%= image_tag("icons_svg/success_icon.svg", class: "h-6 w-6 shrink-0") %>
-        <h2 class="mx-2 mt-[1.45px] text-base font-medium text-dark-blue text-left">
-          <%= value %>
+        <%= image_tag("icons_svg/#{icon}.svg", class: "h-6 w-6 shrink-0") %>
+        <h2 class="mx-2 mt-[1.45px] 
+        text-base font-medium text-dark-blue text-left">
+          <%= text %>
         </h2>
       </div>
       <button type="button" data-action="flash#dismiss">
