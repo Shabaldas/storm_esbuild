@@ -2,13 +2,13 @@
   <div data-controller="flash" class="px-2 py-2 md:px-4 rounded-md md:rounded-xl <%= classes_for_flash(key) %>" style="background:#9CD697">
     <div class="flex items-start justify-between">
       <div class="flex items-start">
-        <%= image_tag("icons_svg/success_icon.svg", class: "w-4 h-4 md:h-6 md:w-6 shrink-0 mt-[2px] md:mt-[7px]") %>
-        <h2 class="mx-2 text-sm md:text-base font-medium text-dark-blue md:leading-10 text-left">
+        <%= image_tag("icons_svg/success_icon.svg", class: "h-6 w-6 shrink-0") %>
+        <h2 class="mx-2 mt-[1.45px] text-base font-medium text-dark-blue text-left">
           <%= value %>
         </h2>
       </div>
-      <button type="button" data-action="flash#dismiss" class="mt-[2px] md:mt-[7px]">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="#2A343E">
+      <button type="button" data-action="flash#dismiss">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#2A343E">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
