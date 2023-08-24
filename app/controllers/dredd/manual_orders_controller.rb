@@ -19,7 +19,7 @@ module Dredd
       @manual_order = ManualOrder.new(manual_order_params)
 
       if @manual_order.save
-        redirect_to dredd_manual_orders_path, notice: 'Manual order was successfully created' # rubocop:disable Rails/I18nLocaleTexts
+        redirect_to dredd_manual_orders_path, notice: { text: 'Manual order was successfully created', icon: 'success_icon' }
       else
         render :new, status: :unprocessable_entity
       end
@@ -27,15 +27,15 @@ module Dredd
 
     def update
       if @manual_order.update(manual_order_params)
-        redirect_to dredd_manual_orders_path, notice: 'Manual Order was successfully updated.' # rubocop:disable Rails/I18nLocaleTexts
+        redirect_to dredd_manual_orders_path, notice: { text: 'Manual Order was successfully updated.', icon: 'success_icon' }
       else
         render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
-      @manual_order.destroy
-      redirect_to dredd_manual_orders_path, notice: 'Manual Order was successfully destroyed.' # rubocop:disable Rails/I18nLocaleTexts
+      @manual_order.destroy!
+      redirect_to dredd_manual_orders_path, error: { text: 'Manual Order was successfully destroyed.', icon: 'attention' }
     end
 
     private

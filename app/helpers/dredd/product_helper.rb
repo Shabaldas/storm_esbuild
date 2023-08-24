@@ -10,12 +10,14 @@ module Dredd
       ProductCategory.all.map { |product_category| [product_category.name, product_category.id] }
     end
 
-    def classes_for_flash(flash_type)
+    def backgroud_color_for_flash(flash_type)
       case flash_type.to_sym
       when :error
-        'bg-danger'
+        'EEB3AF'
+      when :info
+        'ABD9E3'
       else
-        'bg-primary'
+        '9CD697'
       end
     end
 

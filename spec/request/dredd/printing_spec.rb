@@ -6,6 +6,17 @@ describe '/dredd/printing_orders', type: :request do
   end
 
   describe 'GET /dredd/printing_orders' do
+    let(:printing_order) { create(:printing_order) }
+    let(:stubed_request) do
+      stub_request(:post, /api.telegram.org/)
+        .and_return(status: 200, body: '', headers: {})
+    end
+
+    before do
+      stubed_request
+      printing_order
+    end
+
     it 'displays all printing orders' do
       get dredd_printing_orders_path
 
@@ -19,6 +30,8 @@ describe '/dredd/printing_orders', type: :request do
       expect(response.body).to include('Deadline')
       expect(response.body).to include('Comment')
       expect(response.body).to include('Actions')
+      expect(response.body).to include(dredd_printing_order_path(printing_order))
+      expect(response.body).to include(edit_dredd_printing_order_path(printing_order))
     end
   end
 

@@ -6,6 +6,17 @@ describe '/dredd/rendering_orders', type: :request do
   end
 
   describe 'GET /dredd/rendering_orders' do
+    let(:rendering_order) { create(:rendering_order) }
+    let(:stubed_request) do
+      stub_request(:post, /api.telegram.org/)
+        .and_return(status: 200, body: '', headers: {})
+    end
+
+    before do
+      stubed_request
+      rendering_order
+    end
+
     it 'displays all rendering orders' do
       get dredd_rendering_orders_path
 
@@ -19,6 +30,8 @@ describe '/dredd/rendering_orders', type: :request do
       expect(response.body).to include('Deadline')
       expect(response.body).to include('Comment')
       expect(response.body).to include('Actions')
+      expect(response.body).to include(dredd_rendering_order_path(rendering_order))
+      expect(response.body).to include(edit_dredd_rendering_order_path(rendering_order))
     end
   end
 
