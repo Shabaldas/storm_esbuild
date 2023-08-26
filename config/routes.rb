@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   }
 
   get 'printing', to: 'printing_orders#index'
+  get 'printing_in_your_city/:id', to: 'printing_orders#printing_in_your_city', as: 'printing_in_your_city'
   get 'rendering', to: 'rendering_orders#index'
   get 'modeling', to: 'modeling_orders#index'
   get 'calculator', to: 'print_models#new', as: :calculator

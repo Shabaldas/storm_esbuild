@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_20_144901) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
     t.bigint "order_id"
     t.index ["order_id"], name: "index_carts_on_order_id"
     t.index ["token"], name: "index_carts_on_token", unique: true
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "english_name", null: false
+    t.string "ukrainian_name", null: false
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "feedback_calls", force: :cascade do |t|
@@ -161,6 +169,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
     t.string "size"
     t.float "weight"
     t.float "volume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "printer_maintenances", force: :cascade do |t|
+    t.bigint "printer_id", null: false
+    t.string "problem", null: false
+    t.datetime "problem_find"
+    t.string "time_for_fix"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["printer_id"], name: "index_printer_maintenances_on_printer_id"
+  end
+
+  create_table "printers", force: :cascade do |t|
+    t.string "printer_code"
+    t.string "firm"
+    t.string "model"
+    t.integer "printing_technology", default: 0
+    t.integer "state", default: 0
+    t.integer "type_mechanic", default: 0
+    t.string "table_size"
+    t.decimal "price_for_printer", precision: 8, scale: 2, default: "0.0"
+    t.datetime "bought"
+    t.string "comment"
+    t.string "by_for_upgrade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
