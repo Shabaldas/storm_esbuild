@@ -1,22 +1,7 @@
 <div class="w-full max-w-screen-2xl mx-auto px-7 md:px-16 lg:px-24">
-  <div class="flex flex-col screen-height mt-[68px] md:flex-row items-center justify-center md:justify-between">
-    <div class="w-full md:w-3/6 order-2 md:order-1">
-      <div class="mt-12 text-center md:text-left md:mt-0">
-        <p class="text-base md:text-lg uppercase text-gray-100">
-          <%= t("static_pages.home.services") %>
-        </p>
-        <h1 class="text-3xl lg:text-heading-1 text-dark-blue capitalize">
-          <%= t("static_pages.home.3dmodeling") %>
-        </h1>
-        <p class="w-full md:max-w-[472px] mt-6 md:mt-10 text-dark-blue">
-          <%= t("static_pages.modeling.3dmodeling_description") %>        
-        </p>
-      </div>
-    </div>
-    <div class="w-4/6 order-1 md:order-2 flex justify-end">
-      <%= image_tag("print_img/arm_modeling.svg") %>
-    </div>
-  </div>
+  <%= turbo_frame_tag "lazy-content" do %>
+    <%= render partial: "lazy_content" %>
+  <% end %>
   <%= render partial: "shared/upload_form", locals: { model: @modeling_order, order_name: "modeling", image_icon: "picture-and-pdf" } %>
   <%= turbo_frame_tag "modeling-modal" %>
 </div>

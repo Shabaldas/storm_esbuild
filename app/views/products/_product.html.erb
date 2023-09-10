@@ -6,8 +6,13 @@
       </p>
       <div>
         <% if product.main_picture.attached? %>
-          <div class="w-full h-[240px] my-2">
-            <%= image_tag(product.main_picture, class:"w-full h-full object-contain mx-auto my-auto") %>
+          <div class="w-full h-[240px] my-2" data-controller="loading">
+            <div class="spinner">
+              <%= render partial: "spinner" %>
+            </div>
+            <div class="image-container hidden">
+              <%= image_tag(product.main_picture, class: "w-full h-full object-contain mx-auto my-auto") %>
+            </div>
           </div>
         <% end %>
       </div>
