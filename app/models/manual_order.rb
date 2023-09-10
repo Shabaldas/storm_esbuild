@@ -5,7 +5,7 @@ class ManualOrder < ApplicationRecord
     'Black', 'White', 'Grey', 'Transparent', 'Blue,', 'Yellow', 'Violet', 'Natural', 'Orange'
   ].freeze
 
-  MODELLERS = ['Andriy', 'Anton'].freeze
+  MODELLERS = ['Andriy', 'Anton', 'Dima', 'Taras (hutsul)'].freeze
 
   before_create :set_print_code
 
