@@ -2,8 +2,10 @@
 
 class ManualOrder < ApplicationRecord
   PRINTING_COLORS = [
-    'Black', 'White', 'Transparent', 'Natural', 'Orange', 'Grey'
+    'Black', 'White', 'Grey', 'Transparent', 'Blue,', 'Yellow', 'Violet', 'Natural', 'Orange'
   ].freeze
+
+  MODELLERS = ['Andriy', 'Anton'].freeze
 
   before_create :set_print_code
 

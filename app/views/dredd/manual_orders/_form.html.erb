@@ -31,6 +31,10 @@
         <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input") %>
       </div>
       <div class="form-group">
+        <%= form.label t("dredd.manual_orders.modeller"), class: "form-label" %>
+        <%= form.select :modeller, ManualOrder::MODELLERS, { include_blank: t("dredd.manual_orders.select") } %>
+      </div>
+      <div class="form-group">
         <%= form.label t("dredd.manual_orders.price_for_printing"), class: "form-label" %>
         <%= form.text_field :price_for_printing, placeholder: t("dredd.manual_orders.please_input") %>
       </div>
