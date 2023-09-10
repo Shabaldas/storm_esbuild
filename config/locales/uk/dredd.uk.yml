@@ -32,6 +32,7 @@ uk:
       phone_number: "Номер телефону"
       app_contact: "Контакт застосунку"
       email: "Електронна пошта"
+      modeller: "Моделлер"
       price_for_modeling: "Вартість моделювання"
       price_for_printing: "Вартість друку"
       count: "Кількість"

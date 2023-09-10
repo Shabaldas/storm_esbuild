@@ -32,6 +32,7 @@ en:
       phone_number: "Phone number"
       app_contact: "Application contact"
       email: "email"
+      modeller: "Modeller"
       price_for_modeling: "Price for modeling"
       price_for_printing: "Price for printing"
       count: "Count"
