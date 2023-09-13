@@ -3,7 +3,6 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application";
-import Lightbox from "stimulus-lightbox";
 
 import {
   Alert,
@@ -19,7 +18,6 @@ application.register("dropdown", Dropdown);
 application.register("tabs", Tabs);
 application.register("popover", Popover);
 application.register("slideover", Slideover);
-application.register("lightbox", Lightbox);
 
 import HelloController from "./hello_controller";
 application.register("hello", HelloController);
@@ -71,3 +69,6 @@ application.register(
 
 import CarouselController from "./carousel_controller";
 application.register("carousel", CarouselController);
+
+import LightboxController from "./lightbox_controller";
+application.register("lightbox", LightboxController);

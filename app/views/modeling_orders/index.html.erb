@@ -36,11 +36,14 @@
         </div>
       </div>
     </div>
-    <div data-controller="carousel" class="swiper-container" data-carousel-options-value='{"pagination": { "el": ".swiper-pagination"}, "navigation": { "nextEl": ".swiper-button-next","prevEl": ".swiper-button-prev"}}'>
-      <div class="swiper-wrapper" data-controller="lightbox" data-lightbox-options-value='{"index": 0, "controls": true}'>
-        <a class="swiper-slide w-full" href="/assets/print_img/dinosaur.png">
+    <div data-controller="carousel" class="swiper-container">
+      <div class="swiper-wrapper" data-controller="lightbox">
+        <div class="swiper-slide w-full relative">
+          <a class="lightbox-item w-10 h-10 flex items-center justify-center rounded-lg absolute top-4 right-4 sm:top-8 sm:right-8 bg-white z-20" href="/assets/print_img/dinosaur.png">
+            <%= image_tag("icons_svg/arrows-pointing-out.svg", class:"w-9 h-9") %>
+          </a>
           <div class="w-full relative block max-w-[1240px] h-full max-h-[560px] rounded-2xl sm:rounded-[30px] overflow-hidden">
-            <div class="relative w-full md:h-[420px] lg:h-[560px]">
+            <div class="w-full md:h-[420px] lg:h-[560px]">
               <%= image_tag("print_img/dinosaur.png", class:"w-full h-full object-cover bg-center") %>
             </div>
             <div class="absolute top-0 left-0 w-full h-full flex justify-between items-end px-4 py-4 sm:px-8 sm:py-10 bg-gradient-to-t from-[#2A343E] rounded-2xl sm:rounded-[30px]">
@@ -52,10 +55,13 @@
                 <%= image_tag("icons_svg/print-label.svg", class:"w-full") %></div>
             </div>
           </div>
-        </a>
-        <a class="swiper-slide w-full" href="/assets/print_img/dinosaur.png">
+        </div>
+        <div class="swiper-slide w-full relative">
+          <a class="lightbox-item w-10 h-10 flex items-center justify-center rounded-lg absolute top-4 right-4 sm:top-8 sm:right-8 bg-white z-20" href="/assets/print_img/dinosaur.png">
+            <%= image_tag("icons_svg/arrows-pointing-out.svg", class:"w-9 h-9") %>
+          </a>
           <div class="w-full relative block max-w-[1240px] h-full max-h-[560px] rounded-2xl sm:rounded-[30px] overflow-hidden">
-            <div class="relative w-full md:h-[420px] lg:h-[560px]">
+            <div class="w-full md:h-[420px] lg:h-[560px]">
               <%= image_tag("print_img/dinosaur.png", class:"w-full h-full object-cover bg-center") %>
             </div>
             <div class="absolute top-0 left-0 w-full h-full flex justify-between items-end px-4 py-4 sm:px-8 sm:py-10 bg-gradient-to-t from-[#2A343E] rounded-2xl sm:rounded-[30px]">
@@ -67,7 +73,7 @@
                 <%= image_tag("icons_svg/print-label.svg", class:"w-full") %></div>
             </div>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </div>

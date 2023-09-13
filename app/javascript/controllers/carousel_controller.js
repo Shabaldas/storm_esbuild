@@ -9,6 +9,12 @@ export default class extends Carousel {
   get defaultOptions() {
     return {
       clickable: true,
+      spaceBetween: 24,
+      pagination: { el: ".swiper-pagination" },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
     };
   }
 }

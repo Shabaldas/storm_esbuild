@@ -412,3 +412,16 @@ input[type="checkbox"] {
 .tab.inactive a {
   color: #2a343e;
 }
+
+/* lightbox icons */
+.lg-toolbar .lg-close::after {
+  content: "\2715";
+}
+
+.lg-next::after {
+  content: "\2192";
+}
+
+.lg-prev::after {
+  content: "\2190";
+}
