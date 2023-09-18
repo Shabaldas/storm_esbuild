@@ -1,0 +1,8 @@
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <div class="mt-9">
+    <div class="text-2xl font-medium">
+      <h2><%= t("dredd.portfolio.edit_portfolio") %><%= @portfolio.name %></h2>
+    </div>
+    <%= render partial: 'form', locals: { portfolio: @portfolio } %>
+  </div>
+</div>
