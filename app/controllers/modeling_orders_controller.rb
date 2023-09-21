@@ -3,6 +3,7 @@
 class ModelingOrdersController < ApplicationController
   def index
     @modeling_order = ModelingOrder.new
+    @modeling_portfolios = Portfolio.modeling.active.active.with_attached_main_picture
   end
 
   def create

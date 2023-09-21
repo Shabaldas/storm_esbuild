@@ -2,10 +2,10 @@ describe Dredd::ManualOrderHelper do
   describe '#app_icon_contact' do
     delegate :app_icon_contact, to: :helper
 
-    context 'when app contact is not persisted' do
-      let!(:manual_order) { create(:manual_order) }
+    context 'when app contact is google' do
+      let!(:manual_order) { create(:manual_order, app_contact: :google) }
 
-      it 'returns google icon by default' do
+      it 'returns google icon' do
         expect(app_icon_contact(manual_order.app_contact)).to eq('google_icon')
       end
     end
