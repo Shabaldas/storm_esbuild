@@ -13,6 +13,7 @@ export default class extends Lightbox {
       controls: true,
       closable: true,
       counter: true,
+      loop: true,
       download: false,
       selector: ".lightbox-item",
       mobileSettings: {

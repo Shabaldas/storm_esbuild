@@ -156,6 +156,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_161423) do
   create_table "portfolios", force: :cascade do |t|
     t.string "name"
     t.string "category_name"
+    t.integer "order"
     t.string "description"
     t.integer "status", default: 0
     t.integer "portfolio_type", default: 0

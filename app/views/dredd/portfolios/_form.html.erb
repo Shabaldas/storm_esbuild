@@ -41,15 +41,18 @@
     </div>
 
     <%= form.label t("dredd.portfolios.main_picture") %>
+    <% if form.object.main_picture.attached? %>
+      <%= image_tag(form.object.main_picture, class: "h-24 w-24 rounded-full") %>
+    <% end %>
+
     <div data-controller="dropzone" class="form-group dropzone">
-      <%= form.file_field :main_picture,  multiple: false, direct_upload: true, data: { dropzone_target: 'input' }, class: "hidden" %>
+      <%= form.file_field :main_picture, multiple: false, direct_upload: true, data: { dropzone_target: 'input' }, class: "hidden" %>
       <div class="text-center">
         <div class="dz-default dz-message">
           <p class="dropzone-msg-desc text-xs pt-2"><%= t("static_pages.upload_form.dropzone_message") %></p>
         </div>
       </div>
     </div>
-
     <div class="form-group">
       <%= form.submit t("dredd.portfolios.save"), class: "button w-full md:max-w-[212px]" %>
     </div>

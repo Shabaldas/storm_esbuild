@@ -3,6 +3,7 @@ class CreatePortfolio < ActiveRecord::Migration[7.0]
     create_table :portfolios do |t|
       t.string :name
       t.string :category_name
+      t.integer :order
       t.string :description
       t.integer :status, default: 0
       t.integer :portfolio_type, default: 0
