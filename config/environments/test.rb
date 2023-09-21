@@ -55,6 +55,12 @@ Rails.application.configure do
   config.i18n.available_locales = [:en, :uk]
   config.i18n.default_locale = :en
 
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.raise = false # raise an error if n+1 query occurs
+  end
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
