@@ -5,7 +5,7 @@ module Dredd
     before_action :set_portfolio, only: [:edit, :update, :destroy]
 
     def index
-      @pagy, @portfolios = pagy(Portfolio.all.order(:portfolio_type), items: 20)
+      @pagy, @portfolios = pagy(Portfolio.with_attached_main_picture.order(:portfolio_type), items: 20)
     end
 
     def new
