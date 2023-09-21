@@ -112,6 +112,23 @@ en:
       create_new_product: "Create New Product"
       main_picture: "MAIN PICTURE"
       product_category_big: "PRODUCT CATEGORY"
+    portfolios:
+      id: "ID"
+      name: "NAME"
+      status: "STATUS"
+      created_at: "CREATED AT"
+      actions: "ACTIONS"
+      main_picture: "MAIN PICTURE"
+      new_portfolio: "New Portfolio"
+      edit_portfolio: "Edit Portfolio"
+      create_new_portfolio: "Create New Portfolio"
+      create_portfolio: "Create Portfolio"
+      category_name: "Category name"
+      created_by_machine: "Created by machine"
+      description: "Description"
+      portfolio_type: "Portfolio type"
+      tags: "Tags"
+      save: "Save"
     users:
       admins: ADMINS
       id: "ID"
@@ -131,3 +148,4 @@ en:
       modeling_orders: "Modeling Orders"
       rendering_orders: "Rendering Orders"
       printing_orders: "Printing Orders"
+      portfolios: "Portfolios"

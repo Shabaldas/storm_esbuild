@@ -3,6 +3,7 @@
 class PrintingOrdersController < ApplicationController
   def index
     @printing_order = PrintingOrder.new
+    @printing_portfolios = Portfolio.printing.active
   end
 
   def create

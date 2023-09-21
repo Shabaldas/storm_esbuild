@@ -10,6 +10,36 @@ describe '/rendering_orders', type: :request do
         expect(response.body).to include('Service')
       end
     end
+
+    context 'when rendering portfolio present' do
+      let(:modeling_portfolio_active) { create(:portfolio, name: 'ModelingActive', portfolio_type: :modeling, status: :active) }
+      let(:modeling_portfolio_inactive) { create(:portfolio, name: 'ModelingInctive', portfolio_type: :modeling, status: :inactive) }
+      let(:rendering_portfolio_active) { create(:portfolio, name: 'RenderingActive', portfolio_type: :rendering, status: :active) }
+      let(:rendering_portfolio_inactive) { create(:portfolio, name: 'RenderingInctive', portfolio_type: :rendering, status: :inactive) }
+      let(:printing_portfolio_active) { create(:portfolio, name: 'PrintingActive', portfolio_type: :printing, status: :active) }
+      let(:printing_portfolio_inactive) { create(:portfolio, name: 'PrintingInctive', portfolio_type: :printing, status: :inactive) }
+
+      before do
+        modeling_portfolio_active
+        modeling_portfolio_inactive
+        rendering_portfolio_active
+        rendering_portfolio_inactive
+        printing_portfolio_active
+        printing_portfolio_inactive
+      end
+
+      it 'display rendering page with rendering portfolio' do
+        get rendering_path
+
+        expect(response).to be_successful
+        expect(response.body).not_to include(printing_portfolio_active.name)
+        expect(response.body).not_to include(printing_portfolio_inactive.name)
+        expect(response.body).not_to include(modeling_portfolio_active.name)
+        expect(response.body).not_to include(modeling_portfolio_inactive.name)
+        expect(response.body).to include(rendering_portfolio_active.name)
+        expect(response.body).not_to include(rendering_portfolio_inactive.name)
+      end
+    end
   end
 
   describe 'POST /rendering_orders/create' do

@@ -3,6 +3,7 @@
 class RenderingOrdersController < ApplicationController
   def index
     @rendering_order = RenderingOrder.new
+    @rendering_portfolios = Portfolio.rendering.active
   end
 
   def create
