@@ -1,7 +1,7 @@
 <header class="w-full h-16 fixed z-30 bg-light-grey">
- <div class="flex items-center justify-between mx-auto px-7 w-full">
+ <div class="card-gradient flex items-center justify-between mx-auto px-7 w-full">
     <div class="flex w-1/2 justify-between">
-      <span class="text-2xl"><%= t("dredd.header.admin_dashboard") %></span>
+      <span class="text-2xl text-black"><%= t("dredd.header.admin_dashboard") %></span>
       <div class="w-24">
         <%= link_to dredd_dashboard_path do %>
           <%= image_tag("icons_svg/logo.svg", class: "pt-2") %>
@@ -19,6 +19,7 @@
           <%= active_link_to t("dredd.header.printing_orders"), dredd_printing_orders_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.portfolios"), dredd_portfolios_path, class: "text-black cursor-pointer" %>
+          <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-black cursor-pointer" %>
           <div class="inline-flex justify-center items-center gap-2.5">
             <%= locale_switcher(I18n.available_locales.first, "icons_svg/english_flag.svg") %>
             <div class="inline-flex justify-center items-center">
@@ -72,6 +73,12 @@
                   </li>
                   <li class="py-4">
                     <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.portfolios"), dredd_portfolios_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-white text-lg font-medium cursor-pointer" %>
                   </li>
                 </ul>
               </nav>

@@ -37,6 +37,7 @@ describe '/dredd', type: :request do
       expect(response.body).to include('Users count')
       expect(response.body).to include('New feedback call')
       expect(response.body).to include('Portfolios')
+      expect(response.body).to include('Accountings')
     end
 
     context 'when user is not admin' do
