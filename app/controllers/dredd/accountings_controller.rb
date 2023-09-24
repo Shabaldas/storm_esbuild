@@ -8,12 +8,11 @@ module Dredd
 
     def monthly
       return if params['date'].blank?
-  
+
       parsed_date = Date.strptime(params['date'], '%m/%Y')
       @formated_date = parsed_date.strftime('%B %Y')
       @earnings_from_selected_month = earnings_from_manual_orders[params['date']]
     end
-
 
     private
 
@@ -35,8 +34,6 @@ module Dredd
       @accountings_data_for_last_six_months ||=
         last_six_months.map do |month|
           total_earnings = (earnings_from_manual_orders[month] || []).sum(&:total_price)
-          # total_epam_bonus = (current_worker_epam_bonuses[month] || []).sum(&:total)
-
           [month, total_earnings]
         end
     end

@@ -1,9 +1,9 @@
 </br>
 </br>
 </br>
-<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
-  <div class="grid gap-2 grid-cols-6 mb-6 p-6">
-    <div class="metrics-item">
+<div class="main-content main-content-padding">
+  <div class="">
+    <div class="card mb-5 metrics-item">
       <%= link_to dredd_users_path do %>
         <div class="metrics-value">
           <%= @users_count %>
@@ -11,7 +11,7 @@
         <div class="metrics-label"><%= t("dredd.dashboard.user_count") %></div>
       <% end %>
     </div>
-    <div class="metrics-item">
+    <div class="card mb-5 metrics-item">
       <%= link_to dredd_manual_orders_path do %>
         <div class="metrics-value">
           <%= @manual_orders.count %>
@@ -19,7 +19,7 @@
         <div class="metrics-label"><%= t("dredd.dashboard.manual_orders") %></div>
       <% end %>
     </div>
-    <div class="metrics-item">
+    <div class="card mb-5 metrics-item">
       <%= link_to dredd_orders_path do %>
         <div class="metrics-value">
           <%= @shop_orders.count %>
@@ -27,7 +27,7 @@
         <div class="metrics-label"><%= t("dredd.dashboard.internet_orders") %></div>
       <% end %>
     </div>
-    <div class="metrics-item">
+    <div class="card mb-5 metrics-item">
       <%= link_to dredd_modeling_orders_path do %>
         <div class="metrics-value">
           <%= @modeling_orders.count %>
@@ -35,7 +35,7 @@
         <div class="metrics-label"><%= t("dredd.dashboard.modeling_orders") %></div>
       <% end %>
     </div>
-    <div class="metrics-item">
+    <div class="card mb-5 metrics-item">
       <%= link_to dredd_printing_orders_path do %>
         <div class="metrics-value">
           <%= @printing_orders.count %>
@@ -43,7 +43,7 @@
         <div class="metrics-label"><%= t("dredd.dashboard.printing_orders") %></div>
       <% end %>
     </div>
-    <div class="metrics-item">
+    <div class="card mb-5 metrics-item">
       <%= link_to dredd_rendering_orders_path do %>
         <div class="metrics-value">
           <%= @rendering_orders.count %>
@@ -51,7 +51,7 @@
         <div class="metrics-label"><%= t("dredd.dashboard.rendering_orders") %></div>
       <% end %>
     </div>
-    <div class="metrics-item">
+    <div class="card mb-5 metrics-item">
       <%= link_to dredd_feedback_calls_path do %>
         <div class="metrics-value">
           <%= @new_feedback_calls.count %>

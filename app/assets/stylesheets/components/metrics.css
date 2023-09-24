@@ -96,3 +96,89 @@
 .page-header.billing::after {
   @apply from-teal-500 to-blue-500;
 }
+
+.card {
+  @apply flex flex-col justify-between bg-white rounded-xl shadow;
+}
+
+.card-header {
+  @apply p-5 pb-heading;
+}
+
+a.card-header {
+  @apply mb-5 py-4 bg-petrol-700 text-white rounded-t hover:no-underline hover:bg-link-hover hover:text-white;
+
+  &:hover .card-text-secondary {
+    @apply text-white;
+  }
+}
+
+.card-title {
+  @apply text-heading-3;
+}
+
+.card-text-secondary {
+  @apply text-xs text-gray-400;
+}
+
+.card-body {
+  @apply flex-grow px-5 pb-4 first:pt-5;
+}
+
+.card-footer {
+  @apply w-full space-x-0.5 flex justify-between bg-gray-100 rounded-b-xl ;
+
+  & .btn {
+    @apply shadow-none h-btn-default rounded-none first:rounded-bl last:rounded-br;
+  }
+
+  & .btn-primary {
+    @apply flex-grow;
+  }
+
+  & .btn-secondary {
+    @apply text-white bg-primary hover:bg-link-hover;
+  }
+
+  & .btn-more {
+    @apply flex-grow-0 w-btn-default;
+  }
+}
+
+.card-footer-lg {
+  @apply flex px-5 py-3 space-x-3 rounded-b bg-actionbar;
+
+  & .btn-secondary {
+    @apply text-white;
+  }
+}
+
+.card-actions-more-actions {
+  @apply relative;
+}
+
+.card-actions-more-actions[open] .card-actions-more-menu {
+  @apply absolute bottom-btn-default right-0 top-auto mt-0 mb-1;
+}
+
+.card-footer .card-actions-more-btn .btn {
+  @apply rounded-bl-none;
+}
+
+.card-gradient {
+  @apply text-white relative bg-gradient-to-r z-0 from-yellow-500 to-blue-500;
+
+  & .app-title {
+    @apply text-white;
+  }
+}
+
+.card-gradient-corner {
+  @apply relative overflow-hidden z-0;
+}
+
+.card-gradient-corner .app-content:after {
+  @apply absolute block -bottom-14 -right-14 w-24 h-24 bg-gradient-to-br rotate-45 from-red-500 to-blue-500;
+  transform: rotate(45deg);
+  content: "";
+}

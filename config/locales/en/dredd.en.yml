@@ -1,5 +1,17 @@
 en:
   dredd:
+    accountings:
+      accountings_this_month: "Accountings this month"
+      accountings_for_previous_months: "Accountings for previous months"
+      costs: "Costs"
+      monthly:
+        order: "Order"
+        earning_label: "Earning"
+        costs: "Costs"
+        empty_costs: "Costs are empty"
+        empty_orders: "Orders are empty"
+        accounting_month_title: "Accounting for %{date}"
+        back: "Back"
     dashboard:
       user_count: "Users count"
       manual_orders: "Manual Orders"

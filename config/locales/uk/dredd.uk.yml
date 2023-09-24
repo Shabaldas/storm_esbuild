@@ -1,5 +1,17 @@
 uk:
   dredd:
+    accountings:
+      accountings_this_month: "Бухагалтерія цього місяця"
+      accountings_for_previous_months: "Бухагалтерія за попередні місяці"
+      costs: "Витрати"
+      monthly:
+        order: "Замовлення"
+        earning_label: "Заробіток"
+        costs: "Витрати"
+        empty_costs: "Витрати відсутні"
+        empty_orders: "Замовлення відсутні"
+        accounting_month_title: "Бухгалтерія за %{date}"
+        back: "Назад"
     dashboard:
       user_count: "Кількість користувачів"
       manual_orders: "Ручні замовлення"

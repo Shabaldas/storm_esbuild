@@ -2,19 +2,19 @@
   <section class="page-header billing with-metrics mobile-metrics">
     <div class="page-info">
       <h1 class="text-[22px]">
-        Бухагалтерія цього місяця
+        <%= t('dredd.accountings.accountings_this_month') %>
       </h1>
     </div>
     <div class="page-metrics">
       <div class="metrics-item">
         <div class="metrics-label">
-           Заробіток
+          <%= t('dredd.accountings.monthly.earning_label') %>
         </div>
         <div class="metrics-value">
           <% if earnings_from_manual_orders_for_current_month.present? %>
-            <%#= link_to monthly_rewards_path(date: Time.current.strftime('%-m/%Y')), class: "text-black font-thin" do %>
-              <%= earnings_from_manual_orders_for_current_month.sum(&:total_price) %>
-            <%# end %>
+            <%= link_to monthly_dredd_accountings_path(date: Time.current.strftime('%-m/%Y')), class: "text-black metrics-value" do %>
+              UAH <%= earnings_from_manual_orders_for_current_month.sum(&:total_price) %>
+            <% end %>
           <% else %>  
             <%= t('.empty_gig_time_activity') %>
           <% end %>
@@ -22,7 +22,7 @@
       </div>
       <div class="metrics-item">
         <div class="metrics-label">
-          Витрати
+          <%= t('dredd.accountings.costs') %>
         </div>
         <div class="metrics-value">
           -
@@ -35,10 +35,10 @@
     <div class="heading-divider left">
       <div class="heading-divider-line"></div>
       <div class="text-heading-4">
-        Бухагалтерія за минулі місяці
+        <%= t('dredd.accountings.accountings_for_previous_months') %>
       </div>
     </div>
-    <div class="list-spacing list-capped-width">
+    <div class="">
       <%= render partial: 'accounting_data', collection: accountings_data_for_last_six_months, as: :accounting %>
     </div>
   </section>
