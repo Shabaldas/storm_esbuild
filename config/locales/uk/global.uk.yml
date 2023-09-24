@@ -1,4 +1,12 @@
 uk:
+  time:
+    formats:
+      date_only: "%Y-%m-%d"
+      default: "%d %b %Y %I:%M %p"
+      short: "%b %Y"
+  date:
+    formats:
+      short: "%b %Y"
   global:
     error_message:
       active_record_not_found: Ця сторінка не існує

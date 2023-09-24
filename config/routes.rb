@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :printing_orders, except: [:new, :show]
     resources :users, except: [:show, :destroy]
     resources :portfolios, except: :show
+    resources :accountings, only: :index do
+      get :monthly, on: :collection
+    end
   end
 
   put 'locales/:locale', to: 'locales#update', as: :locale,

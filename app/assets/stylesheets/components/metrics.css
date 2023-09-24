@@ -10,3 +10,89 @@
 .metrics-label {
   @apply text-xs font-bold text-gray-600;
 }
+
+.page-metrics {
+  @apply hidden self-end md:grid grid-flow-col auto-cols-fr justify-center items-stretch w-full h-20 mt-3.5 p-4 bg-white shadow rounded;
+  grid-area: pagemetrics;
+}
+
+.page-metrics .metrics-item {
+  @apply flex flex-col justify-start place-self-stretch w-full px-4 text-center text-black text-sm border-l first:border-0 hover:no-underline;
+}
+
+.page-metrics .metrics-item .btn { 
+  @apply mt-auto h-7;
+}
+
+.page-metrics .metrics-label {
+  @apply text-xs font-bold mb-1;
+}
+
+.page-metrics .metrics-value {
+  @apply font-normal text-2xl lg:text-3xl;
+}
+
+.page-header.mobile-metrics .page-metrics {
+  @apply grid grid-flow-row grid-cols-2 gap-2 md:gap-0 mb-0 p-0 md:p-4 bg-transparent shadow-none md:grid-flow-col md:bg-white md:shadow;
+}
+
+.page-header.mobile-metrics .page-metrics .metrics-item {
+  @apply p-2.5 md:px-4 md:py-0 border-0 md:border-l-1 bg-white md:bg-transparent rounded shadow md:shadow-none md:rounded-none;
+  &:first-child {
+    @apply md:border-0;
+  }
+}
+
+.list-item-wrapper {
+  @apply flex flex-row items-stretch justify-between min-w-0 rounded shadow-md bg-white;
+}
+
+.list-item-header {
+  @apply flex flex-row justify-between mb-3;
+
+  & div {
+    @apply last:mr-0;
+  }
+}
+
+.list-item-title {
+  @apply truncate;
+}
+
+.list-item-content {
+  @apply relative flex flex-col flex-grow py-3.5 px-5;
+  overflow: hidden;
+}
+
+.list-item-status {
+  @apply inline-flex items-center ml-3 mt-1 self-start whitespace-nowrap;
+
+  & .icon {
+    @apply mr-2;
+  }
+}
+
+.page-header-content {
+  @apply hidden md:block w-full p-5 text-black bg-white z-10 text-sm line-clamp-3 rounded shadow;
+}
+
+.page-title {
+  @apply flex sm:flex-row items-start sm:mb-2 md:mb-0 text-xl sm:text-heading-1;
+}
+
+.page-header.details-page .page-title {
+  @apply flex-col-reverse sm:flex-row;
+}
+
+.main-content-padding {
+  @apply p-4 sm:p-6 lg:p-12 xl:p-14;
+}
+
+.main-content {
+  @apply flex flex-col flex-grow relative overflow-x-hidden overflow-y-scroll;
+}
+
+
+.page-header.billing::after {
+  @apply from-teal-500 to-blue-500;
+}

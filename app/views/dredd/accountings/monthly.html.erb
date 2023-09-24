@@ -1,0 +1,105 @@
+<div class="main-content main-content-padding">  
+  </br>
+  <section class="page-header billing with-metrics mobile-metrics">
+    <div class="page-info">
+      <h1 class="text-xl">
+        <%= link_to dredd_accountings_path, class: "back-btn text-black" do %>
+          <div class="icon icon-arrow-left"></div>
+          <div class="button-text">
+            <%= t('.back') %>
+          </div>
+        <% end %>
+        Accounting for <%= @formated_date%>
+      </h1>
+    </div>
+
+    <div class="page-metrics">
+      <div class="metrics-item">
+        <div class="metrics-label">
+          <%= t('.gig_time_activity_label') %>
+        </div>
+        <div class="metrics-value">
+          <% if @earnings_from_selected_month.present? %>
+            <%= @earnings_from_selected_month.sum(&:total_price) %>
+          <% else %>  
+            <%= t('.empty_gig_time_activity') %>
+          <% end %>
+        </div>
+      </div>
+      <div class="metrics-item">
+        <div class="metrics-label">
+          <%= t('.bonus_label') %>
+        </div>
+        <div class="metrics-value">
+          <% if @earnings_from_selected_month.present? %>
+            <%= @earnings_from_selected_month.sum(&:total_price) %>
+          <% else %>  
+            <%= t('.empty_gig_time_activity') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="section">
+  <div class="grid grid-cols-2">
+    <div class="pl-5">
+      <div class="heading-divider left">
+        <div class="heading-divider-line"></div>
+        <div class="heading-divider-text">
+          <div class="text-heading-3">
+            <%= t('.gig_time_activity_label') %>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-spacing list-capped-width">
+        <% if @earnings_from_selected_month.present? %>
+          <% @earnings_from_selected_month.each do |earning| %>
+            <div class="list-item-content">
+              <div class="list-item-header">
+                <div class="list-item-title">
+                  <%= earning.print_code %>
+                  <div class="meta-info">
+                    <span>
+                      <%= earning.full_name %>
+                    </span>
+                    |
+                    <span>
+                      <%= earning.comment %>
+                    </span>
+                    <p>
+                      <%= l(earning.updated_at, format: :date_only) %>
+                    </p>
+                  </div>
+                </div>
+                <div class="list-item-status">
+                  <span class="payout">
+                    <%= earning.total_price %>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          <% end %>
+        <% else %>
+          <p class="p-1"><%= t('.empty_gig_time_activities') %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="pl-5">
+      <div class="heading-divider left">
+        <div class="heading-divider-line"></div>
+        <div class="heading-divider-text">
+          <div class="text-heading-3">
+            <%= t('.bonus_label') %>
+          </div>
+        </div>
+      </div>
+      <div class="list-spacing list-capped-width">
+        <p class="p-1"><%= t('.empty_bonuses') %></p>
+      </div>
+    </div>
+  </div>
+</section>
