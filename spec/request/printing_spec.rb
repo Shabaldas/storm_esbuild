@@ -59,9 +59,13 @@ describe '/printing_orders', type: :request do
         stub_request(:post, /api.telegram.org/)
           .and_return(status: 200, body: '', headers: {})
       end
+      let(:telegram_api_double) { instance_double(Telegram::Bot::Api) }
+      let(:phone_number) { '+380673646509' }
 
       before do
         stubed_request
+        allow(Telegram::Bot::Api).to receive(:new).and_return(telegram_api_double)
+        allow(telegram_api_double).to receive(:call)
       end
 
       context 'without attached files' do

@@ -1,8 +1,12 @@
 describe '/dredd/printing_orders', type: :request do
   let(:user) { create(:user, :admin) }
+  let(:telegram_api_double) { instance_double(Telegram::Bot::Api) }
+  let(:phone_number) { '+380673646509' }
 
   before do
     login_as(user, scope: :user)
+    allow(Telegram::Bot::Api).to receive(:new).and_return(telegram_api_double)
+    allow(telegram_api_double).to receive(:call)
   end
 
   describe 'GET /dredd/printing_orders' do
@@ -41,6 +45,8 @@ describe '/dredd/printing_orders', type: :request do
       stub_request(:post, /api.telegram.org/)
         .and_return(status: 200, body: '', headers: {})
     end
+    let(:telegram_api_double) { instance_double(Telegram::Bot::Api) }
+    let(:phone_number) { '+380673646509' }
 
     let(:params) do
       {
@@ -59,6 +65,8 @@ describe '/dredd/printing_orders', type: :request do
     before do
       stubed_request
       printing_order
+      allow(Telegram::Bot::Api).to receive(:new).and_return(telegram_api_double)
+      allow(telegram_api_double).to receive(:call)
     end
 
     it 'updates printing order' do
@@ -83,10 +91,14 @@ describe '/dredd/printing_orders', type: :request do
       stub_request(:post, /api.telegram.org/)
         .and_return(status: 200, body: '', headers: {})
     end
+    let(:telegram_api_double) { instance_double(Telegram::Bot::Api) }
+    let(:phone_number) { '1234567890' }
 
     before do
       stubed_request
       printing_order
+      allow(Telegram::Bot::Api).to receive(:new).and_return(telegram_api_double)
+      allow(telegram_api_double).to receive(:call)
     end
 
     it 'deletes printing order' do

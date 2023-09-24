@@ -19,9 +19,13 @@ describe '/static_pages/home', type: :request do
 
     context 'when user is logged in' do
       let(:user) { create(:user, :admin) }
+      let(:telegram_api_double) { instance_double(Telegram::Bot::Api) }
+      let(:phone_number) { '1234567890' }
 
       before do
         login_as(user, scope: :user)
+        allow(Telegram::Bot::Api).to receive(:new).and_return(telegram_api_double)
+        allow(telegram_api_double).to receive(:call)
       end
 
       it 'display home page' do
@@ -44,9 +48,13 @@ describe '/static_pages/home', type: :request do
         stub_request(:post, /api.telegram.org/)
           .and_return(status: 200, body: '', headers: {})
       end
+      let(:telegram_api_double) { instance_double(Telegram::Bot::Api) }
+      let(:phone_number) { '+380673646509' }
 
       before do
         stubed_request
+        allow(Telegram::Bot::Api).to receive(:new).and_return(telegram_api_double)
+        allow(telegram_api_double).to receive(:call)
       end
 
       context 'when user is not logged in' do
