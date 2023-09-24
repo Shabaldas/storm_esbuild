@@ -71,14 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_161423) do
     t.index ["token"], name: "index_carts_on_token", unique: true
   end
 
-  create_table "cities", force: :cascade do |t|
-    t.string "english_name", null: false
-    t.string "ukrainian_name", null: false
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "feedback_calls", force: :cascade do |t|
     t.string "phone_number", null: false
     t.boolean "processed", default: false
