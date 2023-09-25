@@ -40,6 +40,7 @@ gem 'stimulus-rails'
 gem 'simple_form'
 gem 'sentry-ruby'
 gem 'sentry-rails'
+gem "telegram-bot-ruby"
 gem 'turbo-rails'
 
 gem 'ed25519', '>= 1.2', '< 2.0'

@@ -8,9 +8,9 @@ class FeedbackCall < ApplicationRecord
   private
 
   def send_telegram_message
-    plain_text = "Hello admins! Someone left a mobile phone number for feedback on our website.
-    Actually, here it is: #{phone_number}. Please call as soon as you can, and don't forget to delete this number from the database ;)".html_safe
-
-    HTTParty.post("https://api.telegram.org/bot#{TelegramConfig.token}/sendMessage?chat_id=#{TelegramConfig.chat_id}&text=#{plain_text}&reply_to_message_id=12")
+    plain_text = "<b> Hello admins! </b> \n Someone left a mobile phone number for feedback on our website. \n" \
+                 "Actually, here it is: <b>#{phone_number}</b> Please call as soon as you can, and don't forget to delete this number from the database."
+    api = ::Telegram::Bot::Api.new(TelegramConfig.token)
+    api.call('sendMessage', chat_id: TelegramConfig.chat_id, text: plain_text, reply_to_message_id: 12, parse_mode: 'HTML')
   end
 end
