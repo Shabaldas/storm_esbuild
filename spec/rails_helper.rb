@@ -35,7 +35,8 @@ require 'webmock/rspec'
 require 'database_cleaner/active_record'
 require 'active_storage_validations/matchers'
 require 'pundit/rspec'
-# Sidekiq::Testing.fake!
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
 ActiveJob::Base.queue_adapter = :test
 # Add additional requires below this line. Rails is not loaded until this point!
 
