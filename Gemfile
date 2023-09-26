@@ -85,6 +85,7 @@ end
 group :development do
   gem 'spring'
   gem 'web-console'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do
