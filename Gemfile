@@ -35,11 +35,18 @@ gem 'ransack', '~> 3.2', '>= 3.2.1'
 gem 'rails', '~> 7.0.6'
 gem 'rails-i18n'
 gem 'redis', '~> 4.0'
+gem "sidekiq-cron"
+gem "redis-namespace"
+gem 'sidekiq', '~> 7.0.0'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'simple_form'
 gem 'sentry-ruby'
 gem 'sentry-rails'
+gem "sentry-sidekiq"
+gem "sentry-delayed_job"
+gem "sentry-resque"
+gem "sentry-opentelemetry"
 gem "telegram-bot-ruby"
 gem 'turbo-rails'
 
