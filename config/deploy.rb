@@ -1,4 +1,6 @@
 # config valid for current version and patch releases of Capistrano
+require 'capistrano/sidekiq'
+
 lock '~> 3.17.3'
 
 set :application, 'storm_esbuild'
