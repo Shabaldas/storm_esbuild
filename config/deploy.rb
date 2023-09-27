@@ -10,7 +10,9 @@ set :deploy_to, "/home/deploy/#{fetch :application}"
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 
-set :sidekiq_config, -> { File.join(shared_path, 'config', 'schedule.yml') }
+# set :sidekiq_config, -> { File.join(shared_path, 'config', 'schedule.yml') }
+
+set :sidekiq_config_files, ['schedule.yml']
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
 

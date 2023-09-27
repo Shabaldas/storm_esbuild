@@ -11,6 +11,7 @@ gem 'active_storage_validations'
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-sidekiq', group: :development
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'cssbundling-rails'
 gem 'dotenv-rails', '~> 2.7'
