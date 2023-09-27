@@ -10,8 +10,11 @@ set :deploy_to, "/home/deploy/#{fetch :application}"
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 
+set :sidekiq_config, -> { File.join(shared_path, 'config', 'schedule.yml') }
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
+
+after 'deploy:published', 'sidekiq:restart'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
