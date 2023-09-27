@@ -265,7 +265,7 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.2)
-    minitest (5.18.1)
+    minitest (5.20.0)
     mono_logger (1.1.2)
     msgpack (1.6.0)
     multi_json (1.15.0)
@@ -344,7 +344,7 @@ GEM
     public_suffix (5.0.1)
     puma (6.3.0)
       nio4r (~> 2.0)
-    pundit (2.3.0)
+    pundit (2.3.1)
       activesupport (>= 3.0.0)
     raabro (1.4.0)
     racc (1.7.1)
@@ -620,7 +620,7 @@ DEPENDENCIES
   phonelib
   pry-rails
   puma (~> 6.3)
-  pundit (~> 2.2)
+  pundit (~> 2.3)
   rails (~> 7.0.6)
   rails-controller-testing
   rails-i18n
