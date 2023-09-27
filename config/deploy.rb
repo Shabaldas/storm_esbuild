@@ -16,7 +16,6 @@ set :sidekiq_config_files, ['schedule.yml']
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
 
-after 'deploy:published', 'sidekiq:restart'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
