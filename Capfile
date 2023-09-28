@@ -16,9 +16,7 @@ require 'capistrano/deploy'
 # or
 require 'capistrano/scm/git'
 install_plugin Capistrano::SCM::Git
-install_plugin Capistrano::Sidekiq
 
-install_plugin Capistrano::Sidekiq::Systemd
 
 # Include tasks from other gems included in your Gemfile
 #
@@ -40,6 +38,9 @@ require 'capistrano/rails'
 # require "capistrano/rails/migrations"
 require 'capistrano/passenger'
 require 'capistrano/sidekiq'
+
+install_plugin Capistrano::Sidekiq
+install_plugin Capistrano::Sidekiq::Systemd
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
