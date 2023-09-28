@@ -2,7 +2,6 @@
 
 lock '~> 3.17.3'
 
-before :deploy, 'greetings:hello'
 set :application, 'storm_esbuild'
 set :repo_url, 'git@github.com:Shabaldas/storm_esbuild.git'
 set :branch, :main
@@ -23,7 +22,6 @@ end
 
 set :sidekiq_processes, 2
 
-after :deploy, 'greetings:hello'
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
 
