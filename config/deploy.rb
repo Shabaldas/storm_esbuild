@@ -16,9 +16,9 @@ set :sidekiq_default_hooks => true
 set :sidekiq_env => fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
 set :sidekiq_config_files, ['schedule.yml']
 
-# namespace :deploy do
-#   after :restart { invoke 'sidekiq:restart' }
-# end
+namespace :deploy do
+  after :finishing, 'sidekiq:restart'
+end
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
 
