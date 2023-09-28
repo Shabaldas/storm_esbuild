@@ -1,6 +1,5 @@
 # config valid for current version and patch releases of Capistrano
 
-
 lock '~> 3.17.3'
 
 set :application, 'storm_esbuild'
@@ -12,7 +11,14 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 
 # set :sidekiq_config, -> { File.join(shared_path, 'config', 'schedule.yml') }
 
+set :sidekiq_roles => :worker
+set :sidekiq_default_hooks => true
+set :sidekiq_env => fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
 set :sidekiq_config_files, ['schedule.yml']
+
+# namespace :deploy do
+#   after :restart { invoke 'sidekiq:restart' }
+# end
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
 
