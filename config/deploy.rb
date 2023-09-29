@@ -11,9 +11,9 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 
 # set :sidekiq_config, -> { File.join(shared_path, 'config', 'schedule.yml') }
 
-set :sidekiq_roles => :worker
-set :sidekiq_default_hooks => true
-set :sidekiq_env => fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
+set sidekiq_roles: :worker
+set sidekiq_default_hooks: true
+set sidekiq_env: fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
 set :sidekiq_config_files, ['schedule.yml']
 
 namespace :deploy do
