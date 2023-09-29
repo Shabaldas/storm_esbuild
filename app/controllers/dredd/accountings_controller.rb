@@ -18,7 +18,7 @@ module Dredd
 
     helper_method :earnings_from_manual_orders
     def earnings_from_manual_orders
-      @earnings_from_manual_orders ||= ManualOrder.paid.group_by { |order| [order.updated_at.month, order.updated_at.year].join('/') }
+      @earnings_from_manual_orders ||= ManualOrder.paid.group_by { |order| [order.end_date&.month, order.end_date&.year].join('/') }
     end
 
     helper_method :earnings_from_manual_orders_for_current_month
