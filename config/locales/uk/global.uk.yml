@@ -6,6 +6,7 @@ uk:
       short: "%b %Y"
   date:
     formats:
+      date_only: "%Y-%m-%d"
       short: "%b %Y"
   global:
     error_message:
