@@ -91,7 +91,7 @@ end
 
 group :test do
   gem 'database_cleaner-active_record'
-  gem 'timecop', '~> 0.9.6'
+  gem 'timecop'
   gem 'simplecov', require: false
   gem 'capybara'
   gem 'codeclimate-test-reporter', '~> 0.4.8'

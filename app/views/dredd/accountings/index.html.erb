@@ -15,8 +15,8 @@
             <%= link_to monthly_dredd_accountings_path(date: Time.current.strftime('%-m/%Y')), class: "text-black metrics-value" do %>
               UAH <%= earnings_from_manual_orders_for_current_month.sum(&:total_price) %>
             <% end %>
-          <% else %>  
-            <%= t('.empty_gig_time_activity') %>
+          <% else %> 
+            -
           <% end %>
         </div>
       </div>

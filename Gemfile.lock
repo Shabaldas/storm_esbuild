@@ -650,7 +650,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   telegram-bot-ruby
-  timecop (~> 0.9.6)
+  timecop
   turbo-rails
   tzinfo-data
   web-console

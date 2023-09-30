@@ -9,6 +9,9 @@ module Dredd
     def monthly
       return if params['date'].blank?
 
+      @costs = Cost.all
+      @cost = Cost.new
+
       parsed_date = Date.strptime(params['date'], '%m/%Y')
       @formated_date = parsed_date.strftime('%B %Y')
       @earnings_from_selected_month = earnings_from_manual_orders[params['date']]
