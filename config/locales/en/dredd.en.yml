@@ -1,5 +1,17 @@
 en:
   dredd:
+    accountings:
+      accountings_this_month: "Accountings this month"
+      accountings_for_previous_months: "Accountings for previous months"
+      costs: "Costs"
+      monthly:
+        order: "Order"
+        earning_label: "Earning"
+        costs: "Costs"
+        empty_costs: "Costs are empty"
+        empty_orders: "Orders are empty"
+        accounting_month_title: "Accounting for %{date}"
+        back: "Back"
     dashboard:
       user_count: "Users count"
       manual_orders: "Manual Orders"
@@ -24,6 +36,7 @@ en:
       comment: "Comment"
       total_price: "Price"
       deadline: "Deadline"
+      actions: "Actions"
     manual_orders:
       please_input: "Please input"
       first_name: "First name "
@@ -31,6 +44,7 @@ en:
       phone_number: "Phone number"
       app_contact: "Application contact"
       email: "email"
+      modeller: "Modeller"
       price_for_modeling: "Price for modeling"
       price_for_printing: "Price for printing"
       count: "Count"
@@ -42,6 +56,7 @@ en:
       status: "Status"
       save: "Save"
       deadline: "Deadline"
+      end_date: "End date"
       comment: "Comment"
       destroy: "DESTROY"
       edit: "Edit"
@@ -83,6 +98,15 @@ en:
       category_description: "Category description:"
       children: "Children:"
       parent: "Parent:"
+    printing_orders:
+      edit_printing_order: "Edit 3D Printing Order"
+      files: "Attached Files"
+    rendering_orders:
+      edit_rendering_order: "Edit 3D Rendering Order"
+      files: "Attached Files"
+    modeling_orders:
+      edit_modeling_order: "Edit 3D Modeleing Order"
+      files: "Attached Files"
     products:
       product_category: "Product Category"
       base_price: "Base Price"
@@ -101,6 +125,23 @@ en:
       create_new_product: "Create New Product"
       main_picture: "MAIN PICTURE"
       product_category_big: "PRODUCT CATEGORY"
+    portfolios:
+      id: "ID"
+      name: "NAME"
+      status: "STATUS"
+      created_at: "CREATED AT"
+      actions: "ACTIONS"
+      main_picture: "MAIN PICTURE"
+      new_portfolio: "New Portfolio"
+      edit_portfolio: "Edit Portfolio"
+      create_new_portfolio: "Create New Portfolio"
+      create_portfolio: "Create Portfolio"
+      category_name: "Category name"
+      created_by_machine: "Created by machine"
+      description: "Description"
+      portfolio_type: "Portfolio type"
+      tags: "Tags"
+      save: "Save"
     users:
       admins: ADMINS
       id: "ID"
@@ -144,3 +185,5 @@ en:
       time_for_fix: "Time for fix"
       remove_printer_maintenance: "Remove printer maintenance"
       add_printer_maintenance: "Add printer maintenance"
+      portfolios: "Portfolios"
+      accounts: "Accounts"

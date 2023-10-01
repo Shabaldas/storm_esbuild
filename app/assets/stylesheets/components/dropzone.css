@@ -115,11 +115,13 @@
 
   & .dz-remove {
     @apply absolute flex items-center justify-center top-0 right-0 w-8 h-8 bg-danger hover:bg-link-hover rounded-none;
+    z-index: 999;
   }
 
   & .dz-remove::after {
     @apply inline-block h-6 w-5 ;
-    content: url("$package_path/images/remove-white.svg");
+    z-index: 999;
+    content: url("icons_svg/remove-white.svg");
   }
 }
 
@@ -169,4 +171,11 @@
 
 .dropzone.inverted .dz-details {
   @apply text-white;
+}
+
+.icon-file {
+  background: url('shop_img/file_svg.svg');
+  height: 20px;
+  width: 20px;
+  display: block;
 }

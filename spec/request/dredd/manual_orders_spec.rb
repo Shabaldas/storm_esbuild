@@ -46,6 +46,7 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('Phone number')
       expect(response.body).to include('Application contact')
       expect(response.body).to include('Email')
+      expect(response.body).to include('Modeller')
       expect(response.body).to include('Price for modeling')
       expect(response.body).to include('Price for printing')
       expect(response.body).to include('Quality')
@@ -72,6 +73,7 @@ describe '/dredd/manual_orders', type: :request do
             phone_number: '0673646509',
             email: 'john@gmail.com',
             app_contact: 'viber',
+            modeller: 'Anton',
             price_for_modeling: '100',
             price_for_printing: '200',
             count: '2',
@@ -93,6 +95,7 @@ describe '/dredd/manual_orders', type: :request do
       expect(manual_order.phone_number).to eq('0673646509')
       expect(manual_order.email).to eq('john@gmail.com')
       expect(manual_order.app_contact).to eq('viber')
+      expect(manual_order.modeller).to eq('Anton')
       expect(manual_order.price_for_modeling.to_s).to eq('100.0')
       expect(manual_order.price_for_printing.to_s).to eq('200.0')
       expect(manual_order.count).to eq(2)
@@ -112,7 +115,8 @@ describe '/dredd/manual_orders', type: :request do
       create(:manual_order,
              first_name: 'John', last_name: 'Doe', total_price: 500,
              phone_number: '0673646509', email: '3d.storm.des@gmail.com',
-             quality: '0.1mm', infill: '50%',
+             quality: '0.1mm', infill: '50%', print_color: 'Natural',
+             price_for_modeling: '50', price_for_printing: '150', end_date: nil,
              print_material: 'ABS', app_contact: 'viber', comment: 'Comment')
     end
 
@@ -124,6 +128,7 @@ describe '/dredd/manual_orders', type: :request do
           phone_number: '+380673646509',
           email: '3d.storm.des@gmail.com',
           app_contact: 'telegram',
+          modeller: 'Andriy',
           price_for_modeling: '100',
           price_for_printing: '200',
           count: '2',
@@ -133,7 +138,8 @@ describe '/dredd/manual_orders', type: :request do
           prepaid_expense: '200',
           print_color: 'White',
           print_material: 'PLA',
-          comment: 'New comment'
+          comment: 'New comment',
+          end_date: DateTime.now + 1.day
         }
       }
     end
@@ -148,13 +154,15 @@ describe '/dredd/manual_orders', type: :request do
           .and change(manual_order, :comment).from('Comment').to('New comment')
           .and change(manual_order, :total_price).from(500.0).to(600.0)
           .and change(manual_order, :print_material).from('ABS').to('PLA')
-          .and change(manual_order, :print_color).from(nil).to('White')
+          .and change(manual_order, :print_color).from('Natural').to('White')
           .and change(manual_order, :prepaid_expense).from(nil).to(200.0)
-          .and change(manual_order, :price_for_printing).from(nil).to(200.0)
-          .and change(manual_order, :price_for_modeling).from(nil).to(100.0)
+          .and change(manual_order, :modeller).from(nil).to('Andriy')
+          .and change(manual_order, :price_for_modeling).from(50).to(100.0)
+          .and change(manual_order, :price_for_printing).from(150).to(200.0)
           .and change(manual_order, :quality).from('0.1mm').to('0.2mm')
           .and change(manual_order, :infill).from('50%').to('100%')
           .and change(manual_order, :count).from(nil).to(2)
+          .and change(manual_order, :end_date).from(nil).to(DateTime.now + 1.day)
 
       expect(manual_order.full_name).to eq('John Doe')
       expect(response).to redirect_to(dredd_manual_orders_path)

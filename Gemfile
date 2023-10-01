@@ -5,11 +5,13 @@ ruby '3.2.2'
 
 gem 'active_link_to'
 gem 'ancestry'
-gem 'anyway_config', '~> 2.0'
+gem 'anyway_config', '~> 2.5'
 gem 'aws-sdk-s3', require: false
+gem 'active_storage_validations'
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-sidekiq', group: :development
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'cssbundling-rails'
 gem 'dotenv-rails', '~> 2.7'
@@ -34,11 +36,19 @@ gem 'ransack', '~> 3.2', '>= 3.2.1'
 gem 'rails', '~> 7.0.6'
 gem 'rails-i18n'
 gem 'redis', '~> 4.0'
+gem "sidekiq-cron"
+gem "redis-namespace"
+gem 'sidekiq', '~> 7.0.0'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'simple_form'
 gem 'sentry-ruby'
 gem 'sentry-rails'
+gem "sentry-sidekiq"
+gem "sentry-delayed_job"
+gem "sentry-resque"
+gem "sentry-opentelemetry"
+gem "telegram-bot-ruby"
 gem 'turbo-rails'
 
 gem 'ed25519', '>= 1.2', '< 2.0'
@@ -76,6 +86,7 @@ end
 group :development do
   gem 'spring'
   gem 'web-console'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do

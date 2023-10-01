@@ -31,18 +31,24 @@ describe Dredd::ProductHelper do
     end
   end
 
-  describe '#classes_for_flash' do
-    delegate :classes_for_flash, to: :helper
+  describe '#backgroud_color_for_flash' do
+    delegate :backgroud_color_for_flash, to: :helper
 
     context 'when flash type is error' do
       it 'returns bg-danger' do
-        expect(classes_for_flash(:error)).to eq('bg-danger')
+        expect(backgroud_color_for_flash(:error)).to eq('EEB3AF')
       end
     end
 
-    context 'when flash type is not error' do
+    context 'when flash type is info' do
       it 'returns bg-primary' do
-        expect(classes_for_flash(:notice)).to eq('bg-primary')
+        expect(backgroud_color_for_flash(:info)).to eq('ABD9E3')
+      end
+    end
+
+    context 'when flash type is notice' do
+      it 'returns bg-primary' do
+        expect(backgroud_color_for_flash(:notice)).to eq('9CD697')
       end
     end
   end

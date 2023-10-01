@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class PrintingOrdersController < ApplicationController
-  def printing
+  def index
     @printing_order = PrintingOrder.new
+    @printing_portfolios = Portfolio.printing.active.with_attached_main_picture
   end
 
   def create
@@ -11,10 +12,10 @@ class PrintingOrdersController < ApplicationController
     if @printing_order.save
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to root_path }
+        format.html { redirect_to printing_orders_path }
       end
     else
-      render :new
+      render :index
     end
   end
 

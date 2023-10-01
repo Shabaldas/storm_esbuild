@@ -2,13 +2,15 @@
 
 class ManualOrder < ApplicationRecord
   PRINTING_COLORS = [
-    'Black', 'White', 'Transparent', 'Natural', 'Orange', 'Grey'
+    'Black', 'White', 'Grey', 'Transparent', 'Blue,', 'Yellow', 'Violet', 'Natural', 'Orange'
   ].freeze
+
+  MODELLERS = ['Andriy', 'Anton', 'Dima', 'Taras (hutsul)'].freeze
 
   before_create :set_print_code
 
   enum app_contact: { google: 0, viber: 1, whatsapp: 2, instagram: 3, messenger: 4, telegram: 5 }
-  enum status: { not_done: 0, done: 1 }
+  enum status: { unpaid: 0, paid: 1 }
 
   validates :first_name, :total_price, presence: true
   validates :phone_number, phone: true, allow_blank: true

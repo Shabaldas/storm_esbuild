@@ -1,5 +1,17 @@
 uk:
   dredd:
+    accountings:
+      accountings_this_month: "Бухагалтерія цього місяця"
+      accountings_for_previous_months: "Бухагалтерія за попередні місяці"
+      costs: "Витрати"
+      monthly:
+        order: "Замовлення"
+        earning_label: "Заробіток"
+        costs: "Витрати"
+        empty_costs: "Витрати відсутні"
+        empty_orders: "Замовлення відсутні"
+        accounting_month_title: "Бухгалтерія за %{date}"
+        back: "Назад"
     dashboard:
       user_count: "Кількість користувачів"
       manual_orders: "Ручні замовлення"
@@ -24,6 +36,7 @@ uk:
       comment: "Коментар"
       total_price: "Ціна"
       deadline: "Термін"
+      actions: "Дії"
     manual_orders:
       please_input: "Будь ласка, введіть"
       first_name: "Ім'я"
@@ -31,6 +44,7 @@ uk:
       phone_number: "Номер телефону"
       app_contact: "Контакт застосунку"
       email: "Електронна пошта"
+      modeller: "Моделлер"
       price_for_modeling: "Вартість моделювання"
       price_for_printing: "Вартість друку"
       count: "Кількість"
@@ -42,6 +56,7 @@ uk:
       status: "Статус"
       save: "Зберегти"
       deadline: "Термін"
+      end_date: "Дата закінчення"
       comment: "Коментар"
       destroy: "ВИДАЛИТИ"
       edit: "Редагувати"
@@ -83,6 +98,15 @@ uk:
       category_name: "Назва категорії:"
       category_description: "Опис категорії:"
       children: "Діти:"
+    printing_orders:
+      edit_printing_order: "Редагувати замовлення 3D друку"
+      files: "Прикріплені файли"
+    rendering_orders:
+      edit_printing_order: "Редагувати замовлення 3D рендерингу"
+      files: "Прикріплені файли"
+    modeling_orders:
+      edit_printing_order: "Редагувати замовлення 3D моделювання"
+      files: "Прикріплені файли"
     products:
       product_category: "Категорія продукту"
       base_price: "Базова ціна"
@@ -101,6 +125,23 @@ uk:
       new_product: "Новий продукт"
       create_new_product: "Створити новий продукт"
       product_category_big: "КАТЕГОРІЯ ПРОДУКТУ"
+    portfolios:
+      id: "ІД"
+      name: "Ім'я"
+      status: "Статус"
+      created_at: "СТВОРЕНО О"
+      actions: "ДІЇ"
+      main_picture: "ГОЛОВНА КАРТИНКА"
+      new_portfolio: "Нове Портфоліо"
+      edit_portfolio: "Редаагувати Портфоліо"
+      create_new_portfolio: "Створити Нове Портфоліо"
+      create_portfolio: "Створити Портфоліо"
+      category_name: "Категорія"
+      created_by_machine: "Створено на (програмі)"
+      description: "Опис"
+      portfolio_type: "Тип портфоліо"
+      tags: "Теги"
+      save: "Зберегти"
     users:
       admins: "Адміністратори"
       id: "ІД"
@@ -144,3 +185,5 @@ uk:
       time_for_fix: "Час для вирішення"
       remove_printer_maintenance: "Видалити обслуговування принтера"
       add_printer_maintenance: "Додати обслуговування принтера"
+      portfolios: "Портфоліо"
+      accountings: "Бухгалтерія"

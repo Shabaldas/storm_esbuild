@@ -7,6 +7,7 @@ Sentry.init do |config|
   # We recommend adjusting this value in production.
   config.traces_sample_rate = 1.0
   config.environment = 'production'
+  config.enabled_environments = ['production']
   # or
   config.traces_sampler = lambda do |_context|
     true

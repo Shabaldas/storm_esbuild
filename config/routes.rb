@@ -1,7 +1,15 @@
 # rubocop:disable Metrics/BlockLength
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root 'static_pages#home'
   namespace :dredd do
+    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+      username == SidekiqConfig.new.username && password == SidekiqConfig.new.password
+    end
+
+    mount Sidekiq::Web => '/sidekiq'
+
     get '/', to: 'dashboard#index', as: :dashboard
     resources :products, except: [:update]
     resources :product_categories, except: [:update]
@@ -13,6 +21,10 @@ Rails.application.routes.draw do
     resources :printing_orders, except: [:new, :show]
     resources :users, except: [:show, :destroy]
     resources :printers, except: :show
+    resources :portfolios, except: :show
+    resources :accountings, only: :index do
+      get :monthly, on: :collection
+    end
   end
 
   put 'locales/:locale', to: 'locales#update', as: :locale,

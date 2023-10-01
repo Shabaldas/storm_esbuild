@@ -19,9 +19,13 @@ describe '/static_pages/home', type: :request do
 
     context 'when user is logged in' do
       let(:user) { create(:user, :admin) }
+      let(:telegram_api_double) { instance_double(Telegram::Bot::Api) }
+      let(:phone_number) { '1234567890' }
 
       before do
         login_as(user, scope: :user)
+        allow(Telegram::Bot::Api).to receive(:new).and_return(telegram_api_double)
+        allow(telegram_api_double).to receive(:call)
       end
 
       it 'display home page' do
@@ -38,78 +42,19 @@ describe '/static_pages/home', type: :request do
     end
   end
 
-  describe 'GET /static_pages/printing' do
-    let(:user) { create(:user, :admin) }
-
-    before do
-      login_as(user, scope: :user)
-    end
-
-    context 'when user is not logined' do
-      it 'display printing page' do
-        get printing_path
-
-        expect(response).to be_successful
-        expect(response.body).to include('Printing')
-        expect(response.body).to include(printing_path)
-        expect(response.body).to include('Service')
-        expect(response.body).to include('FDM')
-        expect(response.body).to include('SLA')
-        expect(response.body).to include('DLP')
-        expect(response.body).to include('Price')
-        expect(response.body).to include('Quantity')
-        expect(response.body).to include('Layer height')
-      end
-    end
-  end
-
-  describe 'GET /static_pages/rendering' do
-    let(:user) { create(:user, :admin) }
-
-    before do
-      login_as(user, scope: :user)
-    end
-
-    context 'when user is not logined' do
-      it 'display rendering page' do
-        get rendering_path
-
-        expect(response).to be_successful
-        expect(response.body).to include('Rendering')
-        expect(response.body).to include(rendering_path)
-        expect(response.body).to include('Service')
-      end
-    end
-  end
-
-  describe 'GET /static_pages/modeling' do
-    let(:user) { create(:user, :admin) }
-
-    before do
-      login_as(user, scope: :user)
-    end
-
-    context 'when user is not logined' do
-      it 'display modeling page' do
-        get modeling_path
-
-        expect(response).to be_successful
-        expect(response.body).to include('Modeling')
-        expect(response.body).to include(modeling_path)
-        expect(response.body).to include('Service')
-      end
-    end
-  end
-
   describe 'POST /static_pages/feedback' do
     context 'when valid params' do
       let(:stubed_request) do
         stub_request(:post, /api.telegram.org/)
           .and_return(status: 200, body: '', headers: {})
       end
+      let(:telegram_api_double) { instance_double(Telegram::Bot::Api) }
+      let(:phone_number) { '+380673646509' }
 
       before do
         stubed_request
+        allow(Telegram::Bot::Api).to receive(:new).and_return(telegram_api_double)
+        allow(telegram_api_double).to receive(:call)
       end
 
       context 'when user is not logged in' do

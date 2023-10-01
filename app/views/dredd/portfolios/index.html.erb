@@ -1,0 +1,22 @@
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <table>
+    <thead class="text-gray-700 bg-gray-50">
+      <tr class="text-base">
+        <th class="px-6 py-3" scope="col"><%= t("dredd.portfolios.id") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.portfolios.name") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.portfolios.main_picture") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.portfolios.status") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.portfolios.portfolio_type") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.portfolios.created_at") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.portfolios.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "dredd/portfolios/portfolio", collection: @portfolios %>
+    </tbody>
+  </table>
+  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  <footer class="pt-6">
+    <%= link_to t("dredd.portfolios.create_new_portfolio"), new_dredd_portfolio_path, class: "button w-80" %>
+  </footer>
+</div>

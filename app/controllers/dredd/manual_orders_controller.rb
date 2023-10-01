@@ -5,8 +5,8 @@ module Dredd
     before_action :set_manual_order, only: [:edit, :update, :destroy]
 
     def index
-      @q = ManualOrder.order(print_code: :asc).ransack(params[:q])
-      @pagy, @manual_orders = pagy(@q.result(distinct: true), items: 20)
+      @q = ManualOrder.order(print_code: :desc).ransack(params[:q])
+      @pagy, @manual_orders = pagy(@q.result(distinct: true), items: 30)
     end
 
     def new
@@ -19,7 +19,7 @@ module Dredd
       @manual_order = ManualOrder.new(manual_order_params)
 
       if @manual_order.save
-        redirect_to dredd_manual_orders_path, notice: 'Manual order was successfully created' # rubocop:disable Rails/I18nLocaleTexts
+        redirect_to dredd_manual_orders_path, notice: { text: 'Manual order was successfully created', icon: 'success_icon' }
       else
         render :new, status: :unprocessable_entity
       end
@@ -27,23 +27,23 @@ module Dredd
 
     def update
       if @manual_order.update(manual_order_params)
-        redirect_to dredd_manual_orders_path, notice: 'Manual Order was successfully updated.' # rubocop:disable Rails/I18nLocaleTexts
+        redirect_to dredd_manual_orders_path, notice: { text: 'Manual Order was successfully updated.', icon: 'success_icon' }
       else
         render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
-      @manual_order.destroy
-      redirect_to dredd_manual_orders_path, notice: 'Manual Order was successfully destroyed.' # rubocop:disable Rails/I18nLocaleTexts
+      @manual_order.destroy!
+      redirect_to dredd_manual_orders_path, error: { text: 'Manual Order was successfully destroyed.', icon: 'attention' }
     end
 
     private
 
     def manual_order_params
       params.require(:manual_order).permit(:print_code, :first_name, :last_name, :email, :phone_number, :app_contact, :count,
-                                           :price_for_modeling, :price_for_printing, :prepaid_expense, :status, :total_price, :comment,
-                                           :print_material, :print_color, :deadline, :printing_time_for_one_item, :quality, :infill)
+                                           :price_for_modeling, :price_for_printing, :modeller, :prepaid_expense, :status, :total_price, :comment,
+                                           :print_material, :print_color, :deadline, :printing_time_for_one_item, :quality, :infill, :end_date)
     end
 
     def set_manual_order

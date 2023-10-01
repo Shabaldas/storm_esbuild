@@ -28,4 +28,14 @@ describe ApplicationHelper do
       end
     end
   end
+
+  describe '#order_status_icon' do
+    delegate :order_status_icon, to: :helper
+
+    let!(:manual_order) { create(:manual_order, status: :paid) }
+
+    it 'returns done icon' do
+      expect(order_status_icon(manual_order)).to eq('done_icon')
+    end
+  end
 end

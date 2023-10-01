@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_14_210810) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_155428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,6 +71,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_210810) do
     t.index ["token"], name: "index_carts_on_token", unique: true
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "english_name", null: false
+    t.string "ukrainian_name", null: false
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "feedback_calls", force: :cascade do |t|
     t.string "phone_number", null: false
     t.boolean "processed", default: false
@@ -100,6 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_210810) do
     t.datetime "updated_at", null: false
     t.string "quality"
     t.string "infill"
+    t.string "modeller"
+    t.date "end_date"
   end
 
   create_table "modeling_orders", force: :cascade do |t|
@@ -140,6 +150,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_210810) do
     t.decimal "subtotal", precision: 8, scale: 2
     t.decimal "total", precision: 8, scale: 2
     t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.string "name"
+    t.string "category_name"
+    t.integer "order"
+    t.string "description"
+    t.integer "status", default: 0
+    t.integer "portfolio_type", default: 0
+    t.string "tags"
+    t.string "created_by_machine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

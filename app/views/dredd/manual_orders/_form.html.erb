@@ -31,6 +31,10 @@
         <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input") %>
       </div>
       <div class="form-group">
+        <%= form.label t("dredd.manual_orders.modeller"), class: "form-label" %>
+        <%= form.select :modeller, ManualOrder::MODELLERS, { include_blank: t("dredd.manual_orders.select") } %>
+      </div>
+      <div class="form-group">
         <%= form.label t("dredd.manual_orders.price_for_printing"), class: "form-label" %>
         <%= form.text_field :price_for_printing, placeholder: t("dredd.manual_orders.please_input") %>
       </div>
@@ -69,9 +73,13 @@
       <div class="form-group form-toggle">
         <%= form.label t("dredd.manual_orders.status"), class: "form-label" %>
         <label class="toggle-switch ml-3">
-          <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "done", "not_done") %>
+          <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "paid", "unpaid") %>
           <span class="slider"></span>
         </label>
+      </div>
+      <div class="form-group">
+         <%= form.label t("dredd.manual_orders.end_date"), class: "form-label" %>
+         <%= form.date_field :end_date %>
       </div>
       <div class="form-group">
          <%= form.label t("dredd.manual_orders.deadline"), class: "form-label" %>
