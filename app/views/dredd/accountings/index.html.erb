@@ -11,12 +11,12 @@
           <%= t('dredd.accountings.monthly.earning_label') %>
         </div>
         <div class="metrics-value">
-          <% if earnings_from_manual_orders_for_current_month.present? %>
-            <%= link_to monthly_dredd_accountings_path(date: Time.current.strftime('%-m/%Y')), class: "text-black metrics-value" do %>
-              UAH <%= earnings_from_manual_orders_for_current_month.sum(&:total_price) %>
+          <%= link_to monthly_dredd_accountings_path(date: Time.current.strftime('%-m/%Y')), class: "text-black metrics-value" do %>
+            <% if earnings_from_manual_orders_for_current_month.present? %>
+                UAH <%= earnings_from_manual_orders_for_current_month.sum(&:total_price) %>
+            <% else %> 
+              -
             <% end %>
-          <% else %> 
-            -
           <% end %>
         </div>
       </div>
@@ -25,7 +25,13 @@
           <%= t('dredd.accountings.costs') %>
         </div>
         <div class="metrics-value">
-          -
+          <%= link_to monthly_dredd_accountings_path(date: Time.current.strftime('%-m/%Y')), class: "text-black metrics-value" do %>
+            <% if costs_from_all_users_for_current_month.present? %>
+                UAH <%= costs_from_all_users_for_current_month.sum(&:amount) %>
+            <% else %> 
+              -
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

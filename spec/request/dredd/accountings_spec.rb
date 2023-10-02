@@ -5,7 +5,7 @@ describe '/dredd/accountings', type: :request do
     login_as(user, scope: :user)
   end
 
-  describe 'GET /' do
+  describe 'GET /dredd/accountings/index' do
     it 'display general accounting page' do
       get dredd_accountings_path
 
@@ -61,7 +61,7 @@ describe '/dredd/accountings', type: :request do
     end
   end
 
-  describe 'GET /workers/accountings/monthly' do
+  describe 'GET /dredd/accountings/monthly' do
     context 'when data present' do
       let(:freezed_time) { Time.utc(2023, 10, 1, 10, 0, 0) }
 
@@ -87,7 +87,7 @@ describe '/dredd/accountings', type: :request do
 
     context 'when data empty' do
       it 'display message for empty information and general information' do
-        get monthly_dredd_accountings_path
+        get monthly_dredd_accountings_path(params: { date: [1.month.ago.month, 1.month.ago.year].join('/') })
 
         expect(response).to be_successful
         expect(response.body).to include('Orders are empty')

@@ -1,0 +1,13 @@
+<%= form_with(model: [:dredd, @cost], local: true, class: "mb-7") do |form| %>
+  <div class="mb-5">
+     <div class="flex">
+      <%= form.text_field :name, value: current_user.first_name, placeholder: "Name", class: "inline-block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-1/6" %>
+      <%= form.number_field :amount, step: :any, placeholder: "Amount", class: "inline-block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-1/6" %>
+      <%= form.date_field :date, value: @formated_date.strftime('%Y-%m-%d'), class: "inline-block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-1/6" %>
+    </div>
+    
+    <%= form.text_area :description, placeholder: "Add description", class: "inline-block shadow rounded-md border border-gray-200 outline-none px-3 py-2 h-20 mt-2 w-1/2" %>
+    <%= form.hidden_field :month_date, value: params['date'] %>
+    <%= form.submit "Save", class: "py-2 button w-1/2" %>
+  </div>
+<% end %>

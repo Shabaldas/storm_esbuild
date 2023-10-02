@@ -3,6 +3,5 @@
 class Cost < ApplicationRecord
   belongs_to :user
 
-  validates :name, presence: true
-  validates :amount, presence: true
+  validates :name, :date, :amount, presence: true
 end
