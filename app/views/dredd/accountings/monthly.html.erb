@@ -9,7 +9,7 @@
             <%= t('.back') %>
           </div>
         <% end %>
-        <%= t('.accounting_month_title', date: @formated_date) %>
+        <%= t('.accounting_month_title', date: @formated_date.strftime('%B %Y')) %>
       </h1>
     </div>
 
@@ -21,7 +21,7 @@
         <div class="metrics-value">
           <% if @earnings_from_selected_month.present? %>
             UAH <%= @earnings_from_selected_month.sum(&:total_price) %>
-          <% else %>  
+          <% else %>
             <%= t('.empty_orders') %>
           <% end %>
         </div>
@@ -31,7 +31,11 @@
           <%= t('.costs') %>
         </div>
         <div class="metrics-value">
-          <%= t('.empty_costs') %>
+          <% if @costs_from_selected_month.present? %>
+            UAH <%= @costs_from_selected_month.sum(&:amount) %>
+          <% else %>
+            <%= t('.empty_costs') %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -53,14 +57,15 @@
             <% @earnings_from_selected_month.each do |earning| %>
               <div class="list-item-content card mb-3">
                 <div class="list-item-header">
-                  <div class="list-item-title">
+                  <div class="space-y-4">
                     <%= earning.print_code %>
-                    <div class="meta-info">
-                      <span>
+                    </br>
+                    <div class="space-y-4">
+                      <span class="break-keep text-gray-800">
                         <%= earning.full_name %>
                       </span>
                       |
-                      <span>
+                      <span class="break-keep text-gray-500">
                         <%= earning.comment %>
                       </span>
                       <p>
@@ -75,7 +80,6 @@
                   </div>
                 </div>
               </div>
-
             <% end %>
           <% else %>
             <p class="p-1"><%= t('.empty_orders') %></p>
@@ -92,7 +96,14 @@
           </div>
         </div>
         <div class="list-spacing list-capped-width">
-          <p class="p-1"><%= t('.empty_costs') %></p>
+          <%= render partial: "dredd/costs/form" %>
+          <% if @costs_from_selected_month.present? %>
+            <% @costs_from_selected_month.each do |cost| %>
+              <%= render partial: "cost", locals: { cost: cost } %>
+            <% end %>
+          <% else %>
+            <p class="p-1"><%= t('.empty_costs') %></p>
+          <% end %>
         </div>
       </div>
     </div>

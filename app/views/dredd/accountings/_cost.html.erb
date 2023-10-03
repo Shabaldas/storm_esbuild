@@ -1,0 +1,31 @@
+<div class="flex w-1/2">
+  <div class="list-item-content card mb-3 ">
+    <div class="list-item-header">
+      <div class="space-y-4">
+        <span class="text-heading-4 text-icon-xs">
+          <%= cost.name %>
+        </span>
+        <div class="break-all space-y-2">
+          <span class="break-keep text-gray-500">
+            <%= cost.description %>
+          </span>
+          <p>
+            <%= l(cost.date, format: :date_only) %>
+          </p>
+        </div>
+      </div>
+      <div class="list-item-status">
+        <span class="payout">
+          UAH <%= cost.amount %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= button_to dredd_cost_path(cost, params: { month_date: params[:date] } ), data: { turbo_stream: true,  "turbo-method": :delete }, method: :delete, class: "text-black pt-6" do %> 
+      <div class="bg-danger p-1.5 rounded-2xl text-black">
+        DESTROY
+      </div>
+    <% end %>
+  </div>
+</div>
