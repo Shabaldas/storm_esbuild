@@ -162,6 +162,8 @@ en:
       rendering_orders: "Rendering Orders"
       printing_orders: "Printing Orders"
       printers: "Printers"
+      portfolios: "Portfolios"
+      accountings: "Accountings"
     printers:
       actions: "ACTIONS"
       printer_code: "Printer code"
@@ -185,5 +187,3 @@ en:
       time_for_fix: "Time for fix"
       remove_printer_maintenance: "Remove printer maintenance"
       add_printer_maintenance: "Add printer maintenance"
-      portfolios: "Portfolios"
-      accountings: "Accountings"
