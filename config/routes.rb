@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :rendering_orders, except: [:new, :show]
     resources :printing_orders, except: [:new, :show]
     resources :users, except: [:show, :destroy]
+    resources :printers, except: :show
     resources :portfolios, except: :show
     resources :costs, only: [:create, :destroy]
     resources :accountings, only: :index do

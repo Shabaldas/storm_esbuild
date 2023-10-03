@@ -27,7 +27,7 @@ uk:
       created_at: "СТВОРЕНО"
       actions: "ДІЇ"
       called: "ПЕРЕДЗВОНЕНО"
-    3d_orders: 
+    3d_orders:
       id: "ID"
       full_name: "Повне ім'я"
       phone_number: "Phone number"
@@ -142,7 +142,7 @@ uk:
       portfolio_type: "Тип портфоліо"
       tags: "Теги"
       save: "Зберегти"
-    users:  
+    users:
       admins: "Адміністратори"
       id: "ІД"
       full_name: "ПОВНЕ ІМ'Я"
@@ -161,6 +161,29 @@ uk:
       modeling_orders: "Замовлення моделювання "
       rendering_orders: "Замовлення рендер"
       printing_orders: "Замовлення 3D друк"
+      printers: "Принтери"
+    printers:
+      actions: "Дії"
+      printer_code: "Код принтера"
+      firm: "Фірма"
+      model: "Модель"
+      printing_technology: "Технологія друку"
+      state: "Стан"
+      type_mechanic: "Тип механізму"
+      table_size: "Розмір столу"
+      price_for_printer: "Ціна за принтер"
+      bought: "Придбано"
+      comment: "Коментар"
+      by_for_upgrade: "Купити для оновлення"
+      created_at: "Створено"
+      create_new_printer: "Додати новий принтер"
+      cre_printer: "Додати принтер"
+      edit: "Редагувати"
+      new_printer: "Новий принтер"
+      problem: "Проблема"
+      problem_find: "Знайдено проблему"
+      time_for_fix: "Час для вирішення"
+      remove_printer_maintenance: "Видалити обслуговування принтера"
+      add_printer_maintenance: "Додати обслуговування принтера"
       portfolios: "Портфоліо"
       accountings: "Бухгалтерія"
-  
