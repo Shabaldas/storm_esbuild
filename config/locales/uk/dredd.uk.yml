@@ -162,6 +162,8 @@ uk:
       rendering_orders: "Замовлення рендер"
       printing_orders: "Замовлення 3D друк"
       printers: "Принтери"
+      portfolios: "Портфоліо"
+      accountings: "Бухгалтерія"
     printers:
       actions: "Дії"
       printer_code: "Код принтера"
@@ -185,5 +187,3 @@ uk:
       time_for_fix: "Час для вирішення"
       remove_printer_maintenance: "Видалити обслуговування принтера"
       add_printer_maintenance: "Додати обслуговування принтера"
-      portfolios: "Портфоліо"
-      accountings: "Бухгалтерія"
