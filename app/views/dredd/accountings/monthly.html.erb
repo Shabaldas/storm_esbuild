@@ -57,14 +57,15 @@
             <% @earnings_from_selected_month.each do |earning| %>
               <div class="list-item-content card mb-3">
                 <div class="list-item-header">
-                  <div class="list-item-title">
+                  <div class="space-y-4">
                     <%= earning.print_code %>
-                    <div class="meta-info">
-                      <span>
+                    </br>
+                    <div class="space-y-4">
+                      <span class="break-keep text-gray-800">
                         <%= earning.full_name %>
                       </span>
                       |
-                      <span>
+                      <span class="break-keep text-gray-500">
                         <%= earning.comment %>
                       </span>
                       <p>
@@ -97,27 +98,8 @@
         <div class="list-spacing list-capped-width">
           <%= render partial: "dredd/costs/form" %>
           <% if @costs_from_selected_month.present? %>
-             <% @costs_from_selected_month.each do |cost| %>
-              <div class="list-item-content card mb-3">
-                <div class="list-item-header">
-                  <div class="list-item-title">
-                    <%= cost.name %>
-                    <div class="meta-info">
-                      <span>
-                        <%= cost.description %>
-                      </span>
-                      <p>
-                        <%= l(cost.date, format: :date_only) %>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="list-item-status">
-                    <span class="payout">
-                      UAH <%= cost.amount %>
-                    </span>
-                  </div>
-                </div>
-              </div>
+            <% @costs_from_selected_month.each do |cost| %>
+              <%= render partial: "cost", locals: { cost: cost } %>
             <% end %>
           <% else %>
             <p class="p-1"><%= t('.empty_costs') %></p>

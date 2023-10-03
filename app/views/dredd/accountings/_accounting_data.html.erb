@@ -6,10 +6,12 @@
         <% month, year = accounting_date.split('/') %>
         <%= link_to "#{Date::ABBR_MONTHNAMES[month.to_i]} #{year}", monthly_dredd_accountings_path(date: accounting_date), class: 'mr-4 text-black' %>
       </div>
-
-      <div class="list-item-status">
+      <div class="list-item-status space-x-5">
         <span class="payout">
-          UAH <%= earning %>
+         <%= t('dredd.accountings.monthly.earning_label') %>: UAH <%= earning %>
+        </span>
+        <span class="payout">
+          <%= t('dredd.accountings.costs') %>: UAH <%= cost %>
         </span>
       </div>
     </div>
