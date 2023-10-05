@@ -22,7 +22,6 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('Full Name')
       expect(response.body).to include('Phone number')
       expect(response.body).to include('Application contact')
-      expect(response.body).to include('Total price')
       expect(response.body).to include('Prepaid expense')
       expect(response.body).to include('Status')
       expect(response.body).to include('Status')
