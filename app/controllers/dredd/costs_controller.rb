@@ -17,7 +17,13 @@ module Dredd
 
     def destroy
       @cost.destroy!
-      redirect_to monthly_dredd_accountings_path(date: params[:month_date]), info: { text: 'Cost deleted', icon: 'success_icon' }
+
+      respond_to do |format|
+        format.html do
+          redirect_to monthly_dredd_accountings_path(date: params[:month_date]), info: { text: 'Cost was successfully destroyed.', icon: 'success_icon' }
+        end
+        format.turbo_stream { flash.now[:info] = { text: 'Cost was successfully destroyed.', icon: 'success_icon' }.stringify_keys }
+      end
     end
 
     private
