@@ -13,8 +13,13 @@
         </p>
       </div>
     </div>
-    <div class="w-4/6 order-1 md:order-2 flex justify-end">
-      <%= image_tag("print_img/arm_rendering.svg") %>
+    <div class="w-4/6 order-1 md:order-2 flex justify-end" data-controller="loading">
+      <div class="spinner">
+        <%= render partial: "spinner" %>
+      </div>
+      <div class="image-container hidden">
+        <%= image_tag("print_img/arm_rendering.svg") %>
+      </div>
     </div>
   </div>
   <% if @rendering_portfolios.present? %>

@@ -72,3 +72,6 @@ application.register("carousel", CarouselController);
 
 import LightboxController from "./lightbox_controller";
 application.register("lightbox", LightboxController);
+
+import LoadingController from "./loading_controller";
+application.register("loading", LoadingController);
