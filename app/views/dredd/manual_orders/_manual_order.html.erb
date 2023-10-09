@@ -7,6 +7,15 @@
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order&.full_name %>
+      <% if manual_order&.comment.present? %>
+        <div class="text-gray-500 w-[500px]">
+          |
+          </br>
+          <p class="truncate text-gray-500">
+            <%= manual_order&.comment %>
+          </p>
+        </div>
+      <% end %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
@@ -19,15 +28,15 @@
       <%= image_tag("partials_img/#{app_icon_contact(manual_order.app_contact)}.png", class: "w-1/2") %>
     <% end %>
   </td>
-  <%# <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row"> %>
-    <%#= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
-      <%#= manual_order.total_price %>
-    <%# end %>
-  <%# </td> %>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <span class="text-black blurred">
+      <%= manual_order.total_price %>
+    </span>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <span class="text-black blurred">
       <%= manual_order.prepaid_expense %>
-    <% end %>
+    </span>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to edit_dredd_manual_order_path(manual_order) do %>
