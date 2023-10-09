@@ -3,7 +3,12 @@
 class ModelingOrdersController < ApplicationController
   def index
     @modeling_order = ModelingOrder.new
-    @modeling_portfolios = Portfolio.modeling.active.active.with_attached_main_picture
+    @modeling_portfolios = Portfolio.modeling.active
+  end
+
+  def lazy_index
+    @modeling_order = ModelingOrder.new
+    @modeling_portfolios = Portfolio.modeling.active.with_attached_main_picture
   end
 
   def create

@@ -7,8 +7,31 @@ describe '/modeling_orders', type: :request do
     end
 
     context 'when user is not logined' do
-      it 'display modeling page' do
+      include_context 'when placeholders present'
+
+      it 'display placeholder modeling page' do
         get modeling_path
+
+        expect(response).to be_successful
+        expect(response.body).not_to include('Service')
+        expect(response.body).to include(modeling_path)
+        expect(response.body).to include(title_placeholder)
+        expect(response.body).to include(long_placeholder)
+        expect(response.body).not_to include(big_picture_placeholder)
+      end
+    end
+  end
+
+  describe 'GET /modeling_orders/lazy_index' do
+    let(:user) { create(:user, :admin) }
+
+    before do
+      login_as(user, scope: :user)
+    end
+
+    context 'when user is not logined' do
+      it 'display modeling page' do
+        get modeling_lazy_index_path
 
         expect(response).to be_successful
         expect(response.body).to include('Modeling')
@@ -35,7 +58,7 @@ describe '/modeling_orders', type: :request do
       end
 
       it 'display modeling page with modeling portfolio' do
-        get modeling_path
+        get modeling_lazy_index_path
 
         expect(response).to be_successful
         expect(response.body).not_to include(printing_portfolio_active.name)
