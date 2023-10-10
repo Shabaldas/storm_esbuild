@@ -24,7 +24,7 @@ jobs:
           POSTGRES_PASSWORD: password
         
       firefox:
-        image: selenium/firefox
+        image: selenium/standalone-chrome
         ports:
           - 4444:4444
     env:
