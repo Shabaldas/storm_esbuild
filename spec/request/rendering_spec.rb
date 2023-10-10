@@ -1,8 +1,31 @@
 describe '/rendering_orders', type: :request do
   describe 'GET /rendering_orders/index' do
+    let(:user) { create(:user, :admin) }
+
+    before do
+      login_as(user, scope: :user)
+    end
+
     context 'when user is not logined' do
-      it 'display rendering page' do
+      include_context 'when placeholders present'
+
+      it 'display placeholder rendering page' do
         get rendering_path
+
+        expect(response).to be_successful
+        expect(response.body).not_to include('Service')
+        expect(response.body).to include(modeling_path)
+        expect(response.body).to include(title_placeholder)
+        expect(response.body).to include(long_placeholder)
+        expect(response.body).not_to include(big_picture_placeholder)
+      end
+    end
+  end
+
+  describe 'GET /rendering_orders/lazy' do
+    context 'when user is not logined' do
+      it 'display lazy rendering page' do
+        get rendering_lazy_path
 
         expect(response).to be_successful
         expect(response.body).to include('Rendering')
@@ -29,7 +52,7 @@ describe '/rendering_orders', type: :request do
       end
 
       it 'display rendering page with rendering portfolio' do
-        get rendering_path
+        get rendering_lazy_path
 
         expect(response).to be_successful
         expect(response.body).not_to include(printing_portfolio_active.name)

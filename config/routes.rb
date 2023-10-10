@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   get 'printing', to: 'printing_orders#index'
   get 'rendering', to: 'rendering_orders#index'
+  get 'rendering/lazy', to: 'rendering_orders#lazy'
   get 'modeling', to: 'modeling_orders#index'
   get 'modeling/lazy_index', to: 'modeling_orders#lazy_index'
   get 'calculator', to: 'print_models#new', as: :calculator
