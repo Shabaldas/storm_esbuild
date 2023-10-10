@@ -20,7 +20,6 @@ class RenderingOrdersController < ApplicationController
   end
 
   def lazy
-    sleep 10
     @rendering_order = RenderingOrder.new
     @rendering_portfolios = Portfolio.rendering.active.active.with_attached_main_picture
   end
