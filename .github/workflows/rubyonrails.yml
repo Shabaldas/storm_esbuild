@@ -22,6 +22,11 @@ jobs:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
+        
+      firefox:
+        image: selenium/firefox
+        ports:
+          - 4444:4444
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
