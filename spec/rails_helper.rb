@@ -65,6 +65,7 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  config.include Rails.application.routes.url_helpers
   config.include ActiveStorageValidations::Matchers
   config.include Warden::Test::Helpers, type: :request
   config.include Warden::Test::Helpers, type: :feature
@@ -96,6 +97,11 @@ RSpec.configure do |config|
     end
   end
 
+  WebMock.allow_net_connect!(net_http_connect_on_start: true)
+
+  Capybara.register_driver :firefox do |mode|
+    Capybara::Selenium::Driver.new mode, browser: :remote, desired_capabilities: :firefox
+  end
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
