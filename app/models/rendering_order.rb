@@ -30,6 +30,6 @@ class RenderingOrder < ApplicationRecord
     plain_text = "<b> Hello admins! </b> Someone create Rendering order. \n" \
                  "Check our admin <a href='https://3dstorm.com.ua/dredd/rendering_orders'> Rendering order</a> page and connect wit a client."
     api = ::Telegram::Bot::Api.new(TelegramConfig.token)
-    api.call('sendMessage', chat_id: TelegramConfig.chat_id, text: plain_text, reply_to_message_id: 4, parse_mode: 'HTML')
+    api.call('sendMessage', chat_id: TelegramConfig.chat_id, text: plain_text, reply_to_message_id: 253, parse_mode: 'HTML')
   end
 end

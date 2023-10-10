@@ -1,11 +1,16 @@
-<%= turbo_frame_tag :rendering_info, src: rendering_lazy_path, loading: :lazy do %>  
+<%= turbo_frame_tag :rendering_info do %>
   <div class="w-full max-w-screen-2xl mx-auto px-7 md:px-16 lg:px-24">
     <div class="flex flex-col screen-height mt-[68px] md:flex-row items-center justify-center md:justify-between">
       <div class="w-full md:w-3/6 order-2 md:order-1">
         <div class="mt-12 text-center md:text-left md:mt-0">
-          <%= render "shared/title_placeholder" %>
+          <p class="text-base md:text-lg uppercase text-gray-100">
+            <%= t("static_pages.home.services") %>
+          </p>
+          <h1 class="text-3xl lg:text-heading-1 text-dark-blue capitalize">
+            <%= t("static_pages.home.3drendering") %>
+          </h1>
           <p class="w-full md:max-w-[472px] mt-6 md:mt-10 text-dark-blue">
-            <%= render "shared/long_placeholder" %>
+            <%= t("static_pages.rendering.3drendering_description") %>        
           </p>
         </div>
       </div>
@@ -17,9 +22,12 @@
       <div class="mt-20 md:mt-14 mb-20 md:mb-[154px] overflow-hidden">
         <div class="flex flex-col items-start sm:flex-row sm:items-end justify-between sm:mb-10 mb-6">
           <div>
-            <p class="text-lg text-gray-100 font-medium uppercase w-72">
-              <%= render "shared/title_placeholder" %>
+            <p class="text-lg text-gray-100 font-medium uppercase">
+              <%= t("static_pages.home.3drendering") %> <%= t("static_pages.home.portfolio") %>
             </p>
+            <h2 class="text-3xl lg:text-heading-1 text-dark-blue">
+              <%= t("static_pages.home.our_latest_projects") %>
+            </h2>
           </div>
           <div class="hidden sm:flex gap-4 ">
             <div class="swiper-button-prev" style="color:#1f2937" tabindex="-1" aria-label="Previous sli" id="acc_btn" data-active="false" id="1" rols="swiper-wrapper-dec5216f065e46c3" aria-disabled="true">
@@ -35,16 +43,15 @@
           </div>
         </div>
         <div data-controller="carousel" class="swiper-container">
-          <%= render partial: "shared/big_picture_placeholder" %>
+          <div class="swiper-wrapper" data-controller="lightbox">
+            <% @rendering_portfolios.each do |portfolio| %>
+              <%= render partial: "shared/portfolio", locals: { portfolio: portfolio } %>
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>
-    <div class="items-center max-w-[1029px] mb-20 md:px-8 mx-auto rounded-[20px] w-full">
-      <div class="items-center">
-        <%#= render partial: "shared/big_picture_placeholder" %>
-      </div>
-    </div>
     <%= render partial: "shared/upload_form", locals: { model: @rendering_order, order_name: "rendering", image_icon: "file_svg" } %>
     <%= turbo_frame_tag "rendering-modal" %>
   </div>
-<% end %>
+ <% end %>
