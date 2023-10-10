@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  get 'static_pages/home_lazy', to: 'static_pages#home_lazy'
   get 'printing', to: 'printing_orders#index'
   get 'rendering', to: 'rendering_orders#index'
   get 'rendering/lazy', to: 'rendering_orders#lazy'

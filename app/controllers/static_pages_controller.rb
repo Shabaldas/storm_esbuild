@@ -5,6 +5,10 @@ class StaticPagesController < ApplicationController
     @feedback_call = FeedbackCall.new
   end
 
+  def home_lazy
+    @feedback_call = FeedbackCall.new
+  end
+
   def save_phone_number
     @feedback_call = FeedbackCall.new(feedback_call_params)
 
