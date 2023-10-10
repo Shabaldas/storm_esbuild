@@ -1,5 +1,34 @@
 describe '/printing_orders', type: :request do
-  describe 'GET /static_pages/index' do
+  describe 'GET /modeling_orders/index' do
+    let(:user) { create(:user, :admin) }
+
+    before do
+      login_as(user, scope: :user)
+    end
+
+    context 'when user is not logined' do
+      include_context 'when placeholders present'
+
+      it 'display printing page' do
+        get printing_path
+
+        expect(response).to be_successful
+        expect(response.body).to include('Printing')
+        expect(response.body).not_to include('FDM')
+        expect(response.body).not_to include('SLA')
+        expect(response.body).not_to include('DLP')
+        expect(response.body).not_to include('Price')
+        expect(response.body).not_to include('Quantity')
+        expect(response.body).not_to include('Layer height')
+        expect(response.body).to include(printing_path)
+        expect(response.body).to include(title_placeholder)
+        expect(response.body).to include(long_placeholder)
+        expect(response.body).to include(big_picture_placeholder)
+      end
+    end
+  end
+
+  describe 'GET /modeling_orders/lazy' do
     let(:user) { create(:user, :admin) }
 
     before do
@@ -8,12 +37,10 @@ describe '/printing_orders', type: :request do
 
     context 'when user is not logined' do
       it 'display printing page' do
-        get printing_path
+        get printing_lazy_path
 
         expect(response).to be_successful
         expect(response.body).to include('Printing')
-        expect(response.body).to include(printing_path)
-        expect(response.body).to include('Service')
         expect(response.body).to include('FDM')
         expect(response.body).to include('SLA')
         expect(response.body).to include('DLP')
@@ -41,7 +68,8 @@ describe '/printing_orders', type: :request do
       end
 
       it 'display printing page with printing portfolio' do
-        get printing_path
+        get printing_lazy_path
+
         expect(response).to be_successful
         expect(response.body).to include(printing_portfolio_active.name)
         expect(response.body).not_to include(printing_portfolio_inactive.name)

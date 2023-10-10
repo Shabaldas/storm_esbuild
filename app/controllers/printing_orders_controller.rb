@@ -3,7 +3,7 @@
 class PrintingOrdersController < ApplicationController
   def index
     @printing_order = PrintingOrder.new
-    @printing_portfolios = Portfolio.printing.active.with_attached_main_picture
+    @printing_portfolios = Portfolio.printing.active
   end
 
   def create
@@ -17,6 +17,11 @@ class PrintingOrdersController < ApplicationController
     else
       render :index
     end
+  end
+
+  def lazy
+    @printing_order = PrintingOrder.new
+    @printing_portfolios = Portfolio.printing.active.with_attached_main_picture
   end
 
   private
