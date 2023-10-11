@@ -53,8 +53,8 @@ jobs:
         run: |
           bin/rails test:prepare
           bin/rails db:test:prepare
-          bundle exec rspec
-
+          bin/rails "parallel:spec[spec\/features]"
+          
       - name: Linter Check
         run: bundle exec rubocop
         # Code Climate
