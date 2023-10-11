@@ -22,7 +22,7 @@ describe '/modeling_orders', type: :request do
     end
   end
 
-  describe 'GET /modeling_orders/lazy_index' do
+  describe 'GET /modeling_orders/lazy' do
     let(:user) { create(:user, :admin) }
 
     before do
@@ -31,7 +31,7 @@ describe '/modeling_orders', type: :request do
 
     context 'when user is not logined' do
       it 'display modeling page' do
-        get modeling_lazy_index_path
+        get modeling_lazy_path
 
         expect(response).to be_successful
         expect(response.body).to include('Modeling')
@@ -58,7 +58,7 @@ describe '/modeling_orders', type: :request do
       end
 
       it 'display modeling page with modeling portfolio' do
-        get modeling_lazy_index_path
+        get modeling_lazy_path
 
         expect(response).to be_successful
         expect(response.body).not_to include(printing_portfolio_active.name)

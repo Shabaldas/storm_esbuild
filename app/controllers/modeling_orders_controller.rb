@@ -6,11 +6,6 @@ class ModelingOrdersController < ApplicationController
     @modeling_portfolios = Portfolio.modeling.active
   end
 
-  def lazy_index
-    @modeling_order = ModelingOrder.new
-    @modeling_portfolios = Portfolio.modeling.active.with_attached_main_picture
-  end
-
   def create
     @modeling_order = ModelingOrder.new(modeling_order_params)
 
@@ -22,6 +17,11 @@ class ModelingOrdersController < ApplicationController
     else
       render :index
     end
+  end
+
+  def lazy
+    @modeling_order = ModelingOrder.new
+    @modeling_portfolios = Portfolio.modeling.active.with_attached_main_picture
   end
 
   private
