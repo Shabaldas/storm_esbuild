@@ -22,6 +22,10 @@ jobs:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
@@ -34,9 +38,15 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Install Selenium
+      - name: Run yarn commands
         run: |
-          sudo gem install selenium-webdriver
+          yarn install
+          yarn build
+          yarn build:css
+
+      # - name: Install Selenium
+      #   run: |
+      #     sudo gem install selenium-webdriver
 
       - name: Install chrome Headless
         run: |
