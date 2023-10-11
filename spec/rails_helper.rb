@@ -38,7 +38,7 @@ require 'pundit/rspec'
 require 'sidekiq/testing'
 require 'capybara/rails'
 require 'capybara/rspec'
-require 'support/capybara'
+# require 'support/capybara'
 
 Sidekiq::Testing.fake!
 ActiveJob::Base.queue_adapter = :test
@@ -102,6 +102,30 @@ RSpec.configure do |config|
   end
 
   WebMock.allow_net_connect!(net_http_connect_on_start: true)
+
+  Capybara.register_driver :headless_chrome do |app|
+    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+        chromeOptions: { args: %w[--headless --disable-gpu] },
+        'goog:loggingPrefs': {
+            browser: 'ALL'
+        }
+      )
+  
+    options = ::Selenium::WebDriver::Chrome::Options.new
+  
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--window-size=1400,1400')
+  
+    Capybara::Selenium::Driver.new(
+        app,
+        browser: :chrome,
+        desired_capabilities: capabilities,
+        options: options
+      )
+  end
+  
+  Capybara.default_driver = :headless_chrome
 
   # Capybara.register_driver :firefox do |mode|
   #   Capybara::Selenium::Driver.new mode, browser: :remote, desired_capabilities: :firefox

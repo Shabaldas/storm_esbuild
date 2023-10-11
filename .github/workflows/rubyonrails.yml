@@ -72,6 +72,9 @@ jobs:
         run: |
           bin/rails test:prepare
           bin/rails db:test:prepare
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hut &
+          sudo Xvfb -ac :99 -screen 0 1280/1024/24 > /dev/null 2>&1 & # optional
           bundle exec rspec
 
       - name: Linter Check
