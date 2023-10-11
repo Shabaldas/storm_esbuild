@@ -74,6 +74,10 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include FactoryBot::Syntax::Methods
   config.fixture_path = "#{Rails.root}/spec/fixtures" # rubocop:disable Rails/FilePath
+  
+  config.before(:each, type: :feature) do
+    driven_by :selenium_chrome_headless
+  end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -118,12 +122,6 @@ RSpec.configure do |config|
     end
   
     Capybara::Selenium::Driver.new(app, **{ browser: :chrome, options_key => browser_options })
-  end
-  
-  RSpec.configure do |config|
-    config.before(:each, type: :system) do
-      driven_by :selenium_chrome_headless
-    end
   end
   
   # You can uncomment this line to turn off ActiveRecord support entirely.

@@ -44,9 +44,9 @@ jobs:
           yarn build
           yarn build:css
 
-      # - name: Install Selenium
-      #   run: |
-      #     sudo gem install selenium-webdriver
+      - name: Install Selenium
+        run: |
+          sudo gem install selenium-webdriver
 
       - name: Install chrome Headless
         run: |
