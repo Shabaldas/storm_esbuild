@@ -74,6 +74,12 @@ en:
       edit_manual_order: "Edit manual order"
       quality: "Quality"
       infill: "Infill"
+      workflow: "Workflow"
+      workflow_status: 
+        nothing: "Nothing"
+        modeling: "Modeling"
+        printing: "Printing"
+        done: "Finished"
     orders:
       edit: "EDIT"
       full_name: "FULL NAME"

@@ -114,8 +114,8 @@ describe '/dredd/manual_orders', type: :request do
       create(:manual_order,
              first_name: 'John', last_name: 'Doe', total_price: 500,
              phone_number: '0673646509', email: '3d.storm.des@gmail.com',
-             quality: '0.1mm', infill: '50%', print_color: 'Natural',
-             price_for_modeling: '50', price_for_printing: '150', end_date: nil,
+             quality: '0.1mm', infill: '50%', print_color: 'Natural', prepaid_expense: nil,
+             price_for_modeling: '50', price_for_printing: '150', end_date: nil, workflow_status: 'modeling',
              print_material: 'ABS', app_contact: 'viber', comment: 'Comment')
     end
 
@@ -135,6 +135,7 @@ describe '/dredd/manual_orders', type: :request do
           infill: '100%',
           total_price: '600',
           prepaid_expense: '200',
+          workflow_status: 'printing',
           print_color: 'White',
           print_material: 'PLA',
           comment: 'New comment',
@@ -155,6 +156,7 @@ describe '/dredd/manual_orders', type: :request do
           .and change(manual_order, :print_material).from('ABS').to('PLA')
           .and change(manual_order, :print_color).from('Natural').to('White')
           .and change(manual_order, :prepaid_expense).from(nil).to(200.0)
+          .and change(manual_order, :workflow_status).from('modeling').to('printing')
           .and change(manual_order, :modeller).from(nil).to('Andriy')
           .and change(manual_order, :price_for_modeling).from(50).to(100.0)
           .and change(manual_order, :price_for_printing).from(150).to(200.0)

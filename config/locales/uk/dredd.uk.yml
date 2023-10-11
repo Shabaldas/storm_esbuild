@@ -74,6 +74,12 @@ uk:
       edit_manual_order: "Редагувати ручне замовлення"
       quality: "Якість друку"
       infill: "Заповнення"
+      workflow: "Робочий процес"
+      workflow_status: 
+        nothing: "Нічого не зроблено"
+        modeling: "Спроектовано"
+        printing: "Роздруковано"
+        done: "Завершено"
     orders:
       edit: "РЕДАГУВАТИ"
       full_name: "ПОВНЕ ІМ'Я"
