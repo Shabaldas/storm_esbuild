@@ -1,4 +1,4 @@
-<div class="flex w-1/2">
+<%= turbo_frame_tag cost, class: "flex w-1/2" do %>
   <div class="list-item-content card mb-3 ">
     <div class="list-item-header">
       <div class="space-y-4">
@@ -16,16 +16,18 @@
       </div>
       <div class="list-item-status">
         <span class="payout">
+          <%# ADD MONEY GEM %>
           UAH <%= cost.amount %>
         </span>
       </div>
     </div>
   </div>
   <div>
-    <%= button_to dredd_cost_path(cost, params: { month_date: params[:date] } ), data: { turbo_stream: true,  "turbo-method": :delete }, method: :delete, class: "text-black pt-6" do %> 
+    <%= button_to dredd_cost_path(cost, params: { month_date: params[:date] } ), data: { turbo_confirm: "Are you sure?" }, method: :delete, class: "text-black pt-6" do %> 
       <div class="bg-danger p-1.5 rounded-2xl text-black">
+        <%# MOVE TO I18N%>
         DESTROY
       </div>
     <% end %>
   </div>
-</div>
+<% end %>
