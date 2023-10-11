@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_29_170413) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -121,6 +121,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_170413) do
     t.string "infill"
     t.string "modeller"
     t.date "end_date"
+    t.integer "workflow_status", default: 0
   end
 
   create_table "modeling_orders", force: :cascade do |t|
