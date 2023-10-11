@@ -120,11 +120,11 @@ RSpec.configure do |config|
     Capybara::Selenium::Driver.new(app, **{ browser: :chrome, options_key => browser_options })
   end
   
-  RSpec.configure do |config|
-    config.before(:each, type: :feature) do
-      driven_by :selenium_chrome_headless
-    end
-  end
+  # RSpec.configure do |config|
+  #   config.before(:each, type: :feature) do
+  #     driven_by :selenium_chrome_headless
+  #   end
+  # end
   
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
