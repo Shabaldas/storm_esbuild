@@ -22,9 +22,9 @@ jobs:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
-        
-      firefox:
-        image: selenium/standalone-chrome
+       
+      selenium:
+        image: selenium/standalone-chrome:3.141.59
         ports:
           - 4444:4444
     env:
