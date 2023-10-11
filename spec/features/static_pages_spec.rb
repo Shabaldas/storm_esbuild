@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '/static_pages/home', type: :feature, js: true do
+describe '/static_pages/home', type: :feature do
   describe 'GET /static_pages/home' do
     it 'shows the static pages' do
       visit root_path
