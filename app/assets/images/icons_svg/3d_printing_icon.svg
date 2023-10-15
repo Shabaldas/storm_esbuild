@@ -1,26 +1,12 @@
-<svg width="52" height="74" viewBox="0 0 52 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_4474_133)">
-<path d="M26 0L26 20" stroke="#C6C6C6" stroke-width="2" stroke-dasharray="12 6"/>
-<path d="M6 50L6 10" stroke="#C6C6C6" stroke-width="2" stroke-dasharray="12 6"/>
-<path d="M46 50L46 10" stroke="#C6C6C6" stroke-width="2" stroke-dasharray="12 6"/>
-<path d="M16 36L6 31L26 21L46 31L36 36" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
-<path d="M36 36V48L26 53L16 48V36" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
-<path d="M36 48L26 43V31" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
-<path d="M26 31V43L16 48" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
-<path d="M26 52V64" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
-<path d="M36 36L26 31L16 35.9054" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
-<path d="M6 31V54L26 64L46 54V31" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
-</g>
-<defs>
-<filter id="filter0_d_4474_133" x="0.5" y="0" width="51" height="73.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_4474_133"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_4474_133" result="shape"/>
-</filter>
-</defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="66" viewBox="0 0 44 66" fill="none">
+  <path d="M22 0L22 20" stroke="#C6C6C6" stroke-width="2" stroke-dasharray="12 6"/>
+  <path d="M2 50L2 10" stroke="#C6C6C6" stroke-width="2" stroke-dasharray="12 6"/>
+  <path d="M42 50L42 10" stroke="#C6C6C6" stroke-width="2" stroke-dasharray="12 6"/>
+  <path d="M12 36L2 31L22 21L42 31L32 36" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M32 36V48L22 53L12 48V36" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M32 48L22 43V31" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M22 31V43L12 48" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M22 52V64" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M32 36L22 31L12 35.9054" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M2 31V54L22 64L42 54V31" stroke="#F1C232" stroke-width="3" stroke-linejoin="round"/>
 </svg>
