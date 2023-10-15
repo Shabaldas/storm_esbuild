@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/globalize/globalize
+  revision: 27b69064b87ec6bf8bd7d09a0c289977089b43e6
+  specs:
+    globalize (6.2.1)
+      activemodel (>= 4.2, < 7.2)
+      activerecord (>= 4.2, < 7.2)
+      request_store (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -59,6 +68,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (7.0.6)
       activesupport (= 7.0.6)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (7.0.6)
       activemodel (= 7.0.6)
       activesupport (= 7.0.6)
@@ -402,6 +415,8 @@ GEM
     redis-namespace (1.11.0)
       redis (>= 4)
     regexp_parser (2.7.0)
+    request_store (1.5.1)
+      rack (>= 1.4)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -581,6 +596,7 @@ PLATFORMS
 DEPENDENCIES
   active_link_to
   active_storage_validations
+  activemodel-serializers-xml
   ancestry
   anyway_config (~> 2.5)
   awesome_print
@@ -606,6 +622,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   foreman
+  globalize!
   grape
   grape-entity
   grape_on_rails_routes
