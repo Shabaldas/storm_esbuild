@@ -38,7 +38,7 @@ gem 'rails-i18n'
 gem 'redis', '~> 4.0'
 gem "sidekiq-cron"
 gem "redis-namespace"
-gem 'sidekiq', '~> 7.0.0'
+gem 'sidekiq', '~> 7.1.6'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'simple_form'
