@@ -27,7 +27,7 @@ module Dredd
 
     def update
       if @manual_order.update(manual_order_params)
-        redirect_to dredd_manual_orders_path, notice: { text: 'Manual Order was successfully updated.', icon: 'success_icon' }
+        redirect_to edit_dredd_manual_order_path(@manual_order), notice: { text: 'Manual Order was successfully updated.', icon: 'success_icon' }
       else
         render :edit, status: :unprocessable_entity
       end

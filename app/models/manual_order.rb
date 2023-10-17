@@ -7,12 +7,16 @@ class ManualOrder < ApplicationRecord
 
   MODELLERS = ['Andriy', 'Anton', 'Dima', 'Taras (hutsul)'].freeze
 
+  # callbacks
   before_create :set_print_code
+  before_update :update_end_date
 
+  # enums
   enum app_contact: { google: 0, viber: 1, whatsapp: 2, instagram: 3, messenger: 4, telegram: 5 }
   enum status: { unpaid: 0, paid: 1 }
-  enum workflow_status: { nothing: 0, modeling: 1, printing: 2, done: 3 }
+  enum workflow_status: { nothing: 0, modeling: 1, printing: 2, call_cleint: 3, done: 4 }
 
+  # validations
   validates :first_name, :total_price, presence: true
   validates :phone_number, phone: true, allow_blank: true
 
@@ -21,6 +25,10 @@ class ManualOrder < ApplicationRecord
   end
 
   private
+
+  def update_end_date
+    self.end_date = Time.zone.now if paid? && status_changed?
+  end
 
   def set_print_code
     last_order = ManualOrder.order('id DESC').first

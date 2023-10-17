@@ -113,7 +113,7 @@ describe '/dredd/manual_orders', type: :request do
     let!(:manual_order) do
       create(:manual_order,
              first_name: 'John', last_name: 'Doe', total_price: 500,
-             phone_number: '0673646509', email: '3d.storm.des@gmail.com',
+             phone_number: '0673646509', email: '3d.storm.des@gmail.com', status: 'unpaid',
              quality: '0.1mm', infill: '50%', print_color: 'Natural', prepaid_expense: nil,
              price_for_modeling: '50', price_for_printing: '150', end_date: nil, workflow_status: 'modeling',
              print_material: 'ABS', app_contact: 'viber', comment: 'Comment')
@@ -135,6 +135,7 @@ describe '/dredd/manual_orders', type: :request do
           infill: '100%',
           total_price: '600',
           prepaid_expense: '200',
+          status: 'unpaid',
           workflow_status: 'printing',
           print_color: 'White',
           print_material: 'PLA',
@@ -166,7 +167,7 @@ describe '/dredd/manual_orders', type: :request do
           .and change(manual_order, :end_date).from(nil).to(DateTime.now + 1.day)
 
       expect(manual_order.full_name).to eq('John Doe')
-      expect(response).to redirect_to(dredd_manual_orders_path)
+      expect(response).to redirect_to(edit_dredd_manual_order_path(manual_order))
       follow_redirect!
       expect(response.body).to include('Manual Order was successfully updated.')
     end
