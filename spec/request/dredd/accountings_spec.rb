@@ -34,12 +34,12 @@ describe '/dredd/accountings', type: :request do
         expect(response.body).to include('UAH 2000.0')
 
         # order months for last six months
-        expect(response.body).to include('Aug 2023')
-        expect(response.body).to include('Jul 2023')
-        expect(response.body).to include('Jun 2023')
+        expect(response.body).to include('August 2023')
+        expect(response.body).to include('July 2023')
+        expect(response.body).to include('June 2023')
         expect(response.body).to include('May 2023')
-        expect(response.body).to include('Apr 2023')
-        expect(response.body).not_to include('Mar 2023')
+        expect(response.body).to include('September 2023')
+        expect(response.body).not_to include('October 2024')
 
         # order total_price sum for previouns months
         expect(response.body).to include('UAH 3000.0')

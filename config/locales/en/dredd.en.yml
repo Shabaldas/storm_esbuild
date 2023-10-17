@@ -75,7 +75,7 @@ en:
       quality: "Quality"
       infill: "Infill"
       workflow: "Workflow"
-      workflow_status: 
+      workflow_status:
         nothing: "Nothing"
         modeling: "Modeling"
         call_cleint: "Call cleint"
@@ -194,3 +194,16 @@ en:
       time_for_fix: "Time for fix"
       remove_printer_maintenance: "Remove printer maintenance"
       add_printer_maintenance: "Add printer maintenance"
+    month_names:
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
