@@ -5,7 +5,8 @@ class ManualOrder < ApplicationRecord
     'Black', 'White', 'Grey', 'Transparent', 'Blue,', 'Yellow', 'Violet', 'Natural', 'Orange'
   ].freeze
 
-  MODELLERS = ['Andriy', 'Anton', 'Dima', 'Taras (hutsul)'].freeze
+  # associations
+  belongs_to :worker, optional: true
 
   # callbacks
   before_create :set_print_code

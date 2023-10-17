@@ -1,0 +1,14 @@
+<tr>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    #<%= worker.id %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= worker&.full_name %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= worker.nickname %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= l(worker.created_at, format: :long)  %>
+  </td>
+</tr>

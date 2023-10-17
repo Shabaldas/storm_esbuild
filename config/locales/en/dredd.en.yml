@@ -4,6 +4,7 @@ en:
       accountings_this_month: "Accountings this month"
       accountings_for_previous_months: "Accountings for previous months"
       costs: "Costs"
+      reward: "Reward"
       monthly:
         order: "Order"
         earning_label: "Earning"
@@ -156,6 +157,7 @@ en:
       phone: "PHONE"
       email: "EMAIL"
       customers: CUSTOMERS
+      workers: WORKERS
       created_at: "CREATED AT"
     header:
       admin_dashboard: "Admin Dashboard"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_17_212755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -119,9 +119,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
     t.datetime "updated_at", null: false
     t.string "quality"
     t.string "infill"
-    t.string "modeller"
     t.date "end_date"
     t.integer "workflow_status", default: 0
+    t.bigint "worker_id"
+    t.index ["worker_id"], name: "index_manual_orders_on_worker_id"
   end
 
   create_table "modeling_orders", force: :cascade do |t|
@@ -314,6 +315,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "nickname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_workers_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_item_option_values", "cart_items", on_delete: :cascade
@@ -321,6 +332,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "orders", on_delete: :cascade
   add_foreign_key "costs", "users"
+  add_foreign_key "manual_orders", "workers"
   add_foreign_key "option_values", "options", on_delete: :cascade
   add_foreign_key "print_model_attributes", "print_models", on_delete: :cascade
   add_foreign_key "product_option_values", "option_values", on_delete: :cascade
@@ -328,4 +340,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
   add_foreign_key "product_options", "options", on_delete: :cascade
   add_foreign_key "product_options", "products", on_delete: :cascade
   add_foreign_key "products", "product_categories", on_delete: :cascade
+  add_foreign_key "workers", "users"
 end
