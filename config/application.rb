@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'globalize'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -17,7 +18,7 @@ module StormEsbuild
     # rubocop:enable Rails/FilePath
     config.i18n.available_locales = [:en, :uk]
     config.i18n.default_locale = :uk
-    config.i18n.fallbacks = true
+    config.i18n.fallbacks = [I18n.default_locale]
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_15_125950) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,14 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
     t.bigint "order_id"
     t.index ["order_id"], name: "index_carts_on_order_id"
     t.index ["token"], name: "index_carts_on_token", unique: true
-  end
-
-  create_table "cities", force: :cascade do |t|
-    t.string "english_name", null: false
-    t.string "ukrainian_name", null: false
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "costs", force: :cascade do |t|
@@ -166,11 +158,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "portfolios", force: :cascade do |t|
+  create_table "portfolio_translations", force: :cascade do |t|
+    t.string "locale"
+    t.bigint "portfolio_id"
     t.string "name"
     t.string "category_name"
-    t.integer "order"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["locale"], name: "index_portfolio_translations_on_locale"
+    t.index ["portfolio_id"], name: "index_portfolio_translations_on_portfolio_id"
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer "order"
     t.integer "status", default: 0
     t.integer "portfolio_type", default: 0
     t.string "tags"

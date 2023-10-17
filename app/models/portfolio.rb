@@ -7,4 +7,6 @@ class Portfolio < ApplicationRecord
   enum portfolio_type: { modeling: 0, rendering: 1, printing: 2 }
 
   validates :name, :main_picture, presence: true
+
+  translates :name, :category_name, :description
 end
