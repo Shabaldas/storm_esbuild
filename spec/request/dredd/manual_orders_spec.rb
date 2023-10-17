@@ -63,6 +63,8 @@ describe '/dredd/manual_orders', type: :request do
   end
 
   describe 'POST /dredd/manual_orders' do
+    let!(:worker) { create(:worker) }
+
     it 'create a new manual order' do
       expect do
         post dredd_manual_orders_path, params: {
@@ -72,7 +74,7 @@ describe '/dredd/manual_orders', type: :request do
             phone_number: '0673646509',
             email: 'john@gmail.com',
             app_contact: 'viber',
-            modeller: 'Anton',
+            worker_id: worker.id,
             price_for_modeling: '100',
             price_for_printing: '200',
             count: '2',
@@ -94,7 +96,7 @@ describe '/dredd/manual_orders', type: :request do
       expect(manual_order.phone_number).to eq('0673646509')
       expect(manual_order.email).to eq('john@gmail.com')
       expect(manual_order.app_contact).to eq('viber')
-      expect(manual_order.modeller).to eq('Anton')
+      expect(manual_order.worker.full_name).to eq(worker.full_name)
       expect(manual_order.price_for_modeling.to_s).to eq('100.0')
       expect(manual_order.price_for_printing.to_s).to eq('200.0')
       expect(manual_order.count).to eq(2)
@@ -118,6 +120,7 @@ describe '/dredd/manual_orders', type: :request do
              price_for_modeling: '50', price_for_printing: '150', end_date: nil, workflow_status: 'modeling',
              print_material: 'ABS', app_contact: 'viber', comment: 'Comment')
     end
+    let!(:worker) { create(:worker) }
 
     let(:params) do
       {
@@ -127,7 +130,7 @@ describe '/dredd/manual_orders', type: :request do
           phone_number: '+380673646509',
           email: '3d.storm.des@gmail.com',
           app_contact: 'telegram',
-          modeller: 'Andriy',
+          worker_id: worker.id,
           price_for_modeling: '100',
           price_for_printing: '200',
           count: '2',
@@ -158,7 +161,7 @@ describe '/dredd/manual_orders', type: :request do
           .and change(manual_order, :print_color).from('Natural').to('White')
           .and change(manual_order, :prepaid_expense).from(nil).to(200.0)
           .and change(manual_order, :workflow_status).from('modeling').to('printing')
-          .and change(manual_order, :modeller).from(nil).to('Andriy')
+          .and change(manual_order, :worker_id).from(nil).to(worker.id)
           .and change(manual_order, :price_for_modeling).from(50).to(100.0)
           .and change(manual_order, :price_for_printing).from(150).to(200.0)
           .and change(manual_order, :quality).from('0.1mm').to('0.2mm')

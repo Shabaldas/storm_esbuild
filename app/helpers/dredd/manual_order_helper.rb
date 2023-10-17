@@ -33,5 +33,9 @@ module Dredd
         'success'
       end
     end
+
+    def workers_for_select
+      Worker.all.map { |worker| [worker.first_name, worker.id] }
+    end
   end
 end

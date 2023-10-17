@@ -4,6 +4,7 @@ uk:
       accountings_this_month: "Бухагалтерія цього місяця"
       accountings_for_previous_months: "Бухагалтерія за попередні місяці"
       costs: "Витрати"
+      reward: "Винагорода"
       monthly:
         order: "Замовлення"
         earning_label: "Заробіток"
@@ -156,6 +157,7 @@ uk:
       phone: "ТЕЛЕФОН"
       email: "ЕЛЕКТРОННА ПОШТА"
       customers: "Клієнти"
+      workers: "Працівники"
       created_at: "СТВОРЕНО О"
     header:
       admin_dashboard: "Панель адміністратора"
