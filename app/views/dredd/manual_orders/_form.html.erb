@@ -95,7 +95,7 @@
       <%= form.text_area :comment, placeholder: t("dredd.manual_orders.please_input"), class: "h-32 w-full p-2" %>
     </div>
     <div class="form-group">
-      <%= form.submit t("dredd.manual_orders.save"), class: "button w-full md:max-w-[212px]" %>
+      <%= form.submit t("dredd.manual_orders.save"), data: { turbo_confirm: t("dredd.manual_orders.save")+'?' }, class: "button w-full md:max-w-[212px]" %>
     </div>
   </div>
 <% end %>

@@ -78,6 +78,7 @@ en:
       workflow_status: 
         nothing: "Nothing"
         modeling: "Modeling"
+        call_cleint: "Call cleint"
         printing: "Printing"
         done: "Finished"
     orders:

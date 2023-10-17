@@ -1,6 +1,6 @@
 <div class="max-w-screen-2xl mt-24 px-7 w-full">
   <div class="w-full mx-auto flex flex-col lg:flex-row" data-controller="sidebar">
-    <div class="sidebar w-full h-auto max-w-[320px] flex-col shrink-0 lg:mr-6 fixed top-0 lg:relative z-40 lg:z-10 left-0 mb-0 lg:mb-36 transform -translate-x-full lg:translate-x-0 transition duration-700 ease-in-out" data-sidebar-target="sidebarContainer" data-expanded="1">
+    <div class="sidebar w-1/6 h-auto max-w-[320px] flex-col shrink-0 lg:mr-6 fixed top-0 lg:relative z-40 lg:z-10 left-0 mb-0 lg:mb-36 transform -translate-x-full lg:translate-x-0 transition duration-700 ease-in-out" data-sidebar-target="sidebarContainer" data-expanded="1">
       <div class="relative top-0 lg:sticky lg:top-[90px] h-screen lg:h-auto bg-white rounded-0 lg:rounded-3xl py-6 px-6 lg:px-8 text-zinc-500">
         <div>
           <%= link_to t("dredd.manual_orders.manual_order"), new_dredd_manual_order_path, class: "button" %>
@@ -33,7 +33,7 @@
       </div>
       </br>
     </div>
-    <table>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"">
       <thead class="text-gray-700 bg-gray-50">
         <tr class="text-base">
           <th class="px-6 py-3" scope="col"><%= sort_link(@q, :print_code, t("dredd.manual_orders.print_code"), class: "text-black") %></th>

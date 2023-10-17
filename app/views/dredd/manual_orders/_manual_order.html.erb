@@ -1,4 +1,4 @@
-<tr>
+<tr class="border-1 hover:bg-gray-50 dark:hover:bg-gray-200">
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black font-bold" do %>
       <%= manual_order.print_code %>
@@ -26,6 +26,7 @@
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= I18n.t "dredd.manual_orders.workflow_status.#{manual_order.workflow_status}" %>
+      <%= image_tag("partials_img/#{workflow_status_icon(manual_order.workflow_status)}.png", class: "h-12") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
