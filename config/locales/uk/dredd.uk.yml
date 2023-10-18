@@ -4,13 +4,17 @@ uk:
       accountings_this_month: "Бухагалтерія цього місяця"
       accountings_for_previous_months: "Бухагалтерія за попередні місяці"
       costs: "Витрати"
-      reward: "Винагорода"
+      rewards: "Винагороди"
+      profit: "Прибуток"
       monthly:
         order: "Замовлення"
         earning_label: "Заробіток"
         costs: "Витрати"
+        reward: "Винагороди"
+        profit: "Прибуток"
         empty_costs: "Витрати відсутні"
         empty_orders: "Замовлення відсутні"
+        empty_rewards: "Винагороди відсутні"
         accounting_month_title: "Бухгалтерія за %{date}"
         back: "Назад"
     dashboard:
