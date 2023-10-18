@@ -55,6 +55,7 @@ uk:
       select: "---Вибрати---"
       print_color: "Колір друку"
       status: "Статус"
+      need_to_call_client: "Зателефонувати клієнту"
       save: "Зберегти"
       deadline: "Термін"
       end_date: "Дата закінчення"
@@ -79,7 +80,7 @@ uk:
       workflow_status:
         nothing: "Нічого не зроблено"
         modeling: "Спроектовано"
-        call_cleint: "Зателефонувати клієнту"
+        called_cleint: "Повідомлено клієнту"
         printing: "Роздруковано"
         done: "Завершено"
     orders:

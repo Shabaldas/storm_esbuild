@@ -27,8 +27,8 @@ module Dredd
         '3d_modeling_icon'
       when :printing
         '3d_printing_icon'
-      when :call_cleint
-        'phone_icon'
+      when :called_cleint
+        'user'
       else
         'success'
       end

@@ -77,6 +77,13 @@
           <span class="slider"></span>
         </label>
       </div>
+      <div class="form-group form-toggle">
+        <%= form.label t("dredd.manual_orders.need_to_call_client"), class: "form-label" %>
+        <label class="toggle-switch ml-3">
+          <%= form.check_box(:need_to_call_client, { class: "ml-3", type: "checkbox" }, "true", "false") %>
+          <span class="slider"></span>
+        </label>
+      </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.workflow"), class: "form-label" %>
         <%= form.select :workflow_status, options_for_select(ManualOrder.workflow_statuses.keys.map {|k, v| [t("dredd.manual_orders.workflow_status.#{k}"), k] }, selected: form.object.workflow_status ) %>

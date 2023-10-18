@@ -39,13 +39,13 @@
           <th class="px-6 py-3" scope="col"><%= sort_link(@q, :print_code, t("dredd.manual_orders.print_code"), class: "text-black") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.full_name") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.phone_number") %></th>
+          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :need_to_call_client, t("dredd.manual_orders.need_to_call_client"), class: "text-black") %></th>
           <th class="px-6 py-3" scope="col"><%= sort_link(@q, :workflow_status, t("dredd.manual_orders.workflow"), class: "text-black") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.app_contact") %></th>
           <th class="px-6 py-3" scope="col"><%= sort_link(@q, :total_price, t("dredd.manual_orders.total_price"), class: "text-black")%></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.prepaid_expense") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.status") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.deadline") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.created_at") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.actions") %></th>
         </tr>
       </thead>
