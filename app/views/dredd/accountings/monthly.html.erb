@@ -138,9 +138,9 @@
           </div>
           <div class="list-spacing list-capped-width space-y-4">
             <% if @reward_workers_for_selected_month.present? %>
-              <% @reward_workers_for_selected_month.each do |worker_name, orders| %>
-                <% total_for_modeling = orders.sum(&:price_for_modeling) %>
-                <%= render partial: "reward_data", locals: { worker_name: worker_name, orders: orders, total_for_modeling: total_for_modeling } %>
+              <%# @reward_workers_for_selected_month.each do |worker_name, orders| %>
+                <%# total_for_modeling = orders.sum(&:price_for_modeling) %>
+                <%#= render partial: "reward_data", locals: { worker_name: worker_name, orders: orders, total_for_modeling: total_for_modeling } %>
               <% end %>
             <% else %>
               <p class="p-1"><%= t('.empty_rewards') %></p>
