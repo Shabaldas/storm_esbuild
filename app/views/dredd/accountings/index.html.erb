@@ -51,7 +51,7 @@
         <div class="metrics-value">
           <%= link_to monthly_dredd_accountings_path(date: Time.current.strftime('%-m/%Y')), class: "text-black metrics-value" do %>
             <% if monthly_worker_reward_for_current_month.present? %>
-                UAH <%= monthly_worker_reward_for_current_month&.values&.flatten&.sum(&:price_for_modeling) %>
+                UAH <%#= monthly_worker_reward_for_current_month&.values&.flatten&.sum(&:price_for_modeling) %>
             <% else %> 
               -
             <% end %>
