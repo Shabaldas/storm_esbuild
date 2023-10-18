@@ -52,7 +52,7 @@
         </div>
         <div class="metrics-value">
           <% if @reward_workers_for_selected_month.present? %>
-             UAH <%= @reward_workers_for_selected_month.values.flatten.sum(&:price_for_modeling) %>
+             UAH <%= @reward_workers_for_selected_month.values.flatten.map(&:price_for_modeling).compact.sum %>
           <% else %>
             <%= t('.empty_rewards') %>
           <% end %>
