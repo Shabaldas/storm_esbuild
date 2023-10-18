@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_17_212755) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_18_105307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -122,6 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_212755) do
     t.date "end_date"
     t.integer "workflow_status", default: 0
     t.bigint "worker_id"
+    t.boolean "need_to_call_client", default: false
     t.index ["worker_id"], name: "index_manual_orders_on_worker_id"
   end
 

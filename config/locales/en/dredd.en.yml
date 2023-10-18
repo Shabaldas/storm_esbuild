@@ -59,6 +59,7 @@ en:
       select: "---Select---"
       print_color: "Print color"
       status: "Status"
+      need_to_call_client: "Call client"
       save: "Save"
       deadline: "Deadline"
       end_date: "End date"
@@ -83,7 +84,7 @@ en:
       workflow_status:
         nothing: "Nothing"
         modeling: "Modeling"
-        call_cleint: "Call cleint"
+        called_cleint: "Called cleint"
         printing: "Printing"
         done: "Finished"
     orders:

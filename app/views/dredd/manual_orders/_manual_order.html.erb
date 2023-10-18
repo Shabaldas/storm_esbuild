@@ -25,6 +25,11 @@
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
+      <%= manual_order.need_to_call_client ? image_tag("partials_img/phone_icon.png") : '' %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= I18n.t "dredd.manual_orders.workflow_status.#{manual_order.workflow_status}" %>
       <%= image_tag("partials_img/#{workflow_status_icon(manual_order.workflow_status)}.png", class: "h-12") %>
     <% end %>
@@ -52,11 +57,6 @@
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
     <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
       <%= manual_order.deadline&.strftime("%F") %>
-    <% end %>
-  </td>
-  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
-      <%= l(manual_order.created_at, format: :long) %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">

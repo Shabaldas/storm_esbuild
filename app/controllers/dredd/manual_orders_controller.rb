@@ -5,7 +5,7 @@ module Dredd
     before_action :set_manual_order, only: [:edit, :update, :destroy]
 
     def index
-      @q = ManualOrder.order(print_code: :desc).ransack(params[:q])
+      @q = ManualOrder.order(status: :asc, print_code: :desc).ransack(params[:q])
       @pagy, @manual_orders = pagy(@q.result(distinct: true), items: 30)
     end
 
@@ -41,9 +41,11 @@ module Dredd
     private
 
     def manual_order_params
-      params.require(:manual_order).permit(:print_code, :first_name, :last_name, :email, :phone_number, :app_contact, :count, :workflow_status,
-                                           :price_for_modeling, :price_for_printing, :worker_id, :prepaid_expense, :status, :total_price, :comment,
-                                           :print_material, :print_color, :deadline, :printing_time_for_one_item, :quality, :infill, :end_date)
+      params.require(:manual_order).permit(:print_code, :first_name, :last_name, :email, :phone_number, :app_contact, :count,
+                                           :need_to_call_client, :price_for_modeling, :price_for_printing,
+                                           :prepaid_expense, :status, :total_price, :comment, :worker_id,
+                                           :print_material, :print_color, :deadline, :workflow_status,
+                                           :printing_time_for_one_item, :quality, :infill, :end_date)
     end
 
     def set_manual_order

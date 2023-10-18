@@ -25,7 +25,6 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('Prepaid expense')
       expect(response.body).to include('Status')
       expect(response.body).to include('Status')
-      expect(response.body).to include('Created At')
       expect(response.body).to include('Actions')
       expect(response.body).to include(new_dredd_manual_order_path)
       expect(response.body).to include(edit_dredd_manual_order_path(manual_order_first))
@@ -84,6 +83,7 @@ describe '/dredd/manual_orders', type: :request do
             print_material: 'PLA',
             comment: 'Just for fun',
             quality: '0.1mm',
+            need_to_call_client: true,
             infill: '50%',
             deadline: DateTime.now + 1.day
           }
@@ -106,6 +106,7 @@ describe '/dredd/manual_orders', type: :request do
       expect(manual_order.print_material).to eq('PLA')
       expect(manual_order.comment).to eq('Just for fun')
       expect(manual_order.quality).to eq('0.1mm')
+      expect(manual_order.need_to_call_client).to be(true)
       expect(manual_order.infill).to eq('50%')
       expect(manual_order.deadline).not_to be_nil
     end
@@ -114,7 +115,7 @@ describe '/dredd/manual_orders', type: :request do
   describe 'PUT /dredd/manual_orders/:id' do
     let!(:manual_order) do
       create(:manual_order,
-             first_name: 'John', last_name: 'Doe', total_price: 500,
+             first_name: 'John', last_name: 'Doe', total_price: 500, need_to_call_client: true,
              phone_number: '0673646509', email: '3d.storm.des@gmail.com', status: 'unpaid',
              quality: '0.1mm', infill: '50%', print_color: 'Natural', prepaid_expense: nil,
              price_for_modeling: '50', price_for_printing: '150', end_date: nil, workflow_status: 'modeling',
@@ -139,6 +140,7 @@ describe '/dredd/manual_orders', type: :request do
           total_price: '600',
           prepaid_expense: '200',
           status: 'unpaid',
+          need_to_call_client: false,
           workflow_status: 'printing',
           print_color: 'White',
           print_material: 'PLA',
@@ -165,6 +167,7 @@ describe '/dredd/manual_orders', type: :request do
           .and change(manual_order, :price_for_modeling).from(50).to(100.0)
           .and change(manual_order, :price_for_printing).from(150).to(200.0)
           .and change(manual_order, :quality).from('0.1mm').to('0.2mm')
+          .and change(manual_order, :need_to_call_client).from(true).to(false)
           .and change(manual_order, :infill).from('50%').to('100%')
           .and change(manual_order, :count).from(nil).to(2)
           .and change(manual_order, :end_date).from(nil).to(DateTime.now + 1.day)
