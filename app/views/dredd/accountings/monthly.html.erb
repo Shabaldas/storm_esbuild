@@ -19,7 +19,6 @@
           <%= t('.profit') %>
         </div>
         <div class="metrics-value">
-          UAH <%= profit(@earnings_from_selected_month&.sum(&:total_price), @costs_from_selected_month&.sum(&:amount), @reward_workers_for_selected_month&.values&.flatten&.sum(&:price_for_modeling) ) %>
         </div>
       </div>
       <div class="metrics-item">
@@ -52,7 +51,6 @@
         </div>
         <div class="metrics-value">
           <% if @reward_workers_for_selected_month.present? %>
-             UAH <%= @reward_workers_for_selected_month.values.flatten.sum(&:price_for_modeling) %>
           <% else %>
             <%= t('.empty_rewards') %>
           <% end %>
