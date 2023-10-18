@@ -19,7 +19,7 @@
           <%= t('.profit') %>
         </div>
         <div class="metrics-value">
-          UAH <%= profit(@earnings_from_selected_month&.sum(&:total_price), @costs_from_selected_month&.sum(&:amount), @reward_workers_for_selected_month&.values&.flatten&.map(&:price_for_modeling).compact.sum ) %>
+          UAH <%= profit(@earnings_from_selected_month&.sum(&:total_price), @costs_from_selected_month&.sum(&:amount), @reward_workers_for_selected_month&.values&.flatten&.map(&:price_for_modeling)&.compact&.sum ) %>
         </div>
       </div>
       <div class="metrics-item">
