@@ -8,6 +8,16 @@
     <div class="page-metrics">
       <div class="metrics-item">
         <div class="metrics-label">
+          <%= t('dredd.accountings.monthly.profit') %>
+        </div>
+        <div class="metrics-value">
+          <%= link_to monthly_dredd_accountings_path(date: Time.current.strftime('%-m/%Y')), class: "text-black metrics-value" do %>
+            UAH <%= profit(earnings_from_manual_orders_for_current_month&.sum(&:total_price), costs_from_all_users_for_current_month&.sum(&:amount), monthly_worker_reward_for_current_month&.values&.flatten&.sum(&:price_for_modeling) ) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="metrics-item">
+        <div class="metrics-label">
           <%= t('dredd.accountings.monthly.earning_label') %>
         </div>
         <div class="metrics-value">
@@ -28,6 +38,20 @@
           <%= link_to monthly_dredd_accountings_path(date: Time.current.strftime('%-m/%Y')), class: "text-black metrics-value" do %>
             <% if costs_from_all_users_for_current_month.present? %>
                 UAH <%= costs_from_all_users_for_current_month.sum(&:amount) %>
+            <% else %> 
+              -
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="metrics-item">
+        <div class="metrics-label">
+          <%= t('dredd.accountings.monthly.reward') %>
+        </div>
+        <div class="metrics-value">
+          <%= link_to monthly_dredd_accountings_path(date: Time.current.strftime('%-m/%Y')), class: "text-black metrics-value" do %>
+            <% if monthly_worker_reward_for_current_month.present? %>
+                UAH <%= monthly_worker_reward_for_current_month&.values&.flatten&.sum(&:price_for_modeling) %>
             <% else %> 
               -
             <% end %>

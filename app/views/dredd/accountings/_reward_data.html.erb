@@ -1,0 +1,29 @@
+<h4 class="flex items-center justify-between mt-7 text-icon-xs">
+  <div>
+    <%= worker_name %>
+  </div>
+  <div>
+    UAH <%= total_for_modeling %>
+  </div>
+</h4>
+<% orders.each do |order| %>
+  <div class="list-item-wrapper bill-detail-item">
+    <div class="list-item-content">
+      <div class="list-item-header">
+        <div class="list-item-title">
+          <%= order.print_code %>
+          <div class="meta-info">
+            <p>
+              <%= l(order.end_date, format: :date_only) %>
+            </p>
+          </div>
+        </div>
+        <div class="list-item-status">
+          <span class="payout">
+            UAH <%= order.price_for_modeling %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
