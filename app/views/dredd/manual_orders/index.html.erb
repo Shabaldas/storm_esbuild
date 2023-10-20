@@ -11,7 +11,7 @@
             Search
           </h4>
           <div data-controller="accordion">
-            <%= search_form_for(@q, url: dredd_manual_orders_path) do |f| %>
+            <%= search_form_for(@q, url: dredd_manual_orders_path, data: { turbo_frame: :results }) do |f| %>
               <div class="space-y-2">
                 <%= f.label :print_code_eq, t("dredd.manual_orders.status") %>
                 <%= f.select :status_eq, ManualOrder.statuses.to_a.map { |w| [w[0].humanize, w[1]] },
@@ -50,16 +50,16 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: "dredd/manual_orders/manual_order", collection: @manual_orders %>
+        <%= turbo_frame_tag 'results', target: '_top', data: { turbo_action: 'advance' } do %>
+          <div id="manual_orders"></div>
+          <%= turbo_frame_tag 'pagination',
+                      loading: :lazy,
+                      src: dredd_manual_orders_path(format: :turbo_stream, q: params[:q]) %>
+        <% end %>
       </tbody>
+       <div>
+          <%#= link_to t("dredd.manual_orders.manual_order"), new_dredd_manual_order_path, class: "button" %>
+        </div>
     </table>
-  </div>
-  <div class="flex justify-center w-full">
-    <div class="absolute p-6">
-      <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
-      <footer class="pt-6">
-        <%= link_to t("dredd.manual_orders.manual_order"), new_dredd_manual_order_path, class: "button w-80" %>
-      </footer>
-    </div>
   </div>
 </div>

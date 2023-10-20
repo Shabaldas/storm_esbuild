@@ -1,0 +1,12 @@
+<%= turbo_stream.append "manual_orders" do %>
+  <% @manual_orders.each do |manual_order| %>
+    <%= render partial: 'manual_order', locals: { manual_order: manual_order } %>
+  <% end %>
+<% end %>
+<% if @pagy.next.present? %>
+  <%= turbo_stream.replace "pagination" do %>
+    <%= turbo_frame_tag "pagination",
+                        src: dredd_manual_orders_path(page: @pagy.next, format: :turbo_stream),
+                        loading: :lazy %>
+  <% end %>
+<% end %>
