@@ -460,3 +460,18 @@ input[type="checkbox"] {
 .blurred:hover {
   filter: none;
 }
+
+
+.dz-max-files-reached {
+  pointer-events: none;
+  cursor: not-allowed;
+  background-image: linear-gradient(135deg,
+    #eee 10%,
+    #fff 10%,
+    #fff 50%,
+    #eee 50%,
+    #eee 60%,
+    #fff 60%,
+    #fff 100%) !important;
+  background-size: 0.5em 0.5em;
+}

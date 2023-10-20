@@ -70,6 +70,7 @@ en:
       full_name: "Full Name"
       created_at: "Created At"
       actions: "Actions"
+      link_to_model: "Link to Model"
       manual_order: "Create Manual Order"
       new_manual_order: "New Manual Order"
       client_contact: "Client Contacts"
