@@ -71,6 +71,7 @@ uk:
       created_at: "Створено о"
       actions: "Дії"
       manual_order: "Створити ручне замовлення"
+      link_to_model: "Посилання на модель"
       new_manual_order: "Нове ручне замовлення"
       client_contact: "Контакти клієнта"
       printing_information: "Інформація про друк"
