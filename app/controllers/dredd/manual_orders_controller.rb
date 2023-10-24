@@ -6,7 +6,7 @@ module Dredd
 
     def index
       @q = ManualOrder.order(status: :asc, print_code: :desc).ransack(params[:q]&.permit!)
-      @pagy, @manual_orders = pagy_countless(@q.result(distinct: true), items: 5)
+      @pagy, @manual_orders = pagy(@q.result(distinct: true), items: 20)
     end
 
     def new

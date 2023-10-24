@@ -15,7 +15,7 @@ describe '/dredd/manual_orders', type: :request do
     end
 
     it 'displays all manual orders' do
-      get dredd_manual_orders_path
+      get dredd_manual_orders_path, as: :turbo_stream
 
       expect(response).to be_successful
       expect(response.body).to include('Print Code')
@@ -26,10 +26,8 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('Status')
       expect(response.body).to include('Status')
       expect(response.body).to include('Actions')
-      expect(response.body).to include(new_dredd_manual_order_path)
       expect(response.body).to include(edit_dredd_manual_order_path(manual_order_first))
       expect(response.body).to include(edit_dredd_manual_order_path(manual_order_second))
-      expect(response.body).to include('Create Manual Order')
     end
   end
 

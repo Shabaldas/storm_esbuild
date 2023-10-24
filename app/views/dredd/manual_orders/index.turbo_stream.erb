@@ -1,12 +1,31 @@
 <%= turbo_stream.append "manual_orders" do %>
-  <% @manual_orders.each do |manual_order| %>
-    <%= render partial: 'manual_order', locals: { manual_order: manual_order } %>
-  <% end %>
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"">
+    <thead class="text-gray-700 bg-gray-50">
+      <tr class="text-base">
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.print_code") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.full_name") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.phone_number") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.need_to_call_client") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.workflow") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.app_contact") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.total_price") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.prepaid_expense") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.status") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.deadline") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @manual_orders.each do |manual_order| %>
+        <%= render partial: "manual_order", locals: { manual_order: manual_order } %>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 <% if @pagy.next.present? %>
   <%= turbo_stream.replace "pagination" do %>
     <%= turbo_frame_tag "pagination",
-                        src: dredd_manual_orders_path(page: @pagy.next, format: :turbo_stream),
+                        src: dredd_manual_orders_path(page: @pagy.next, q: params[:q], format: :turbo_stream),
                         loading: :lazy %>
   <% end %>
 <% end %>
