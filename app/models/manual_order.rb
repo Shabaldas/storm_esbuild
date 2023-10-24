@@ -2,7 +2,7 @@
 
 class ManualOrder < ApplicationRecord
   PRINTING_COLORS = [
-    'Black', 'White', 'Grey', 'Transparent', 'Blue,', 'Yellow', 'Violet', 'Natural', 'Orange'
+    'Black', 'White', 'Grey', 'Transparent', 'Blue', 'Yellow', 'Violet', 'Natural', 'Orange'
   ].freeze
 
   # associations
@@ -20,6 +20,7 @@ class ManualOrder < ApplicationRecord
   # validations
   validates :first_name, :total_price, presence: true
   validates :phone_number, phone: true, allow_blank: true
+  validates :worker_id, on: :update, presence: true
 
   def full_name
     "#{first_name} #{last_name}"

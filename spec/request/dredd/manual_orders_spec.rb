@@ -111,69 +111,105 @@ describe '/dredd/manual_orders', type: :request do
   end
 
   describe 'PUT /dredd/manual_orders/:id' do
-    let!(:manual_order) do
-      create(:manual_order,
-             first_name: 'John', last_name: 'Doe', total_price: 500, need_to_call_client: true,
-             phone_number: '0673646509', email: '3d.storm.des@gmail.com', status: 'unpaid',
-             quality: '0.1mm', infill: '50%', print_color: 'Natural', prepaid_expense: nil,
-             price_for_modeling: '50', price_for_printing: '150', end_date: nil, workflow_status: 'modeling',
-             print_material: 'ABS', app_contact: 'viber', comment: 'Comment')
-    end
-    let!(:worker) { create(:worker) }
+    context 'when valid params' do
+      context 'when modeller selected' do
+        let!(:manual_order) do
+          create(:manual_order,
+                 first_name: 'John', last_name: 'Doe', total_price: 500, need_to_call_client: true,
+                 phone_number: '0673646509', email: '3d.storm.des@gmail.com', status: 'unpaid',
+                 quality: '0.1mm', infill: '50%', print_color: 'Natural', prepaid_expense: nil,
+                 price_for_modeling: '50', price_for_printing: '150', end_date: nil, workflow_status: 'modeling',
+                 print_material: 'ABS', app_contact: 'viber', comment: 'Comment')
+        end
+        let!(:worker) { create(:worker) }
 
-    let(:params) do
-      {
-        manual_order: {
-          first_name: 'John',
-          last_name: 'Doe',
-          phone_number: '+380673646509',
-          email: '3d.storm.des@gmail.com',
-          app_contact: 'telegram',
-          worker_id: worker.id,
-          price_for_modeling: '100',
-          price_for_printing: '200',
-          count: '2',
-          quality: '0.2mm',
-          infill: '100%',
-          total_price: '600',
-          prepaid_expense: '200',
-          status: 'unpaid',
-          need_to_call_client: false,
-          workflow_status: 'printing',
-          print_color: 'White',
-          print_material: 'PLA',
-          comment: 'New comment',
-          end_date: DateTime.now + 1.day
+        let(:params) do
+          {
+            manual_order: {
+              first_name: 'John',
+              last_name: 'Doe',
+              phone_number: '+380673646509',
+              email: '3d.storm.des@gmail.com',
+              app_contact: 'telegram',
+              worker_id: worker.id,
+              price_for_modeling: '100',
+              price_for_printing: '200',
+              count: '2',
+              quality: '0.2mm',
+              infill: '100%',
+              total_price: '600',
+              prepaid_expense: '200',
+              status: 'unpaid',
+              need_to_call_client: false,
+              workflow_status: 'printing',
+              print_color: 'White',
+              print_material: 'PLA',
+              comment: 'New comment',
+              end_date: DateTime.now + 1.day
+            }
+          }
+        end
+
+        it 'update manual order' do
+          expect do
+            put(dredd_manual_order_path(manual_order), params:)
+            manual_order.reload
+          end.to change(ManualOrder, :count).by(0) # rubocop:disable RSpec/ChangeByZero
+              .and change(manual_order, :app_contact).from('viber').to('telegram')
+              .and change(manual_order, :phone_number).from('0673646509').to('+380673646509')
+              .and change(manual_order, :comment).from('Comment').to('New comment')
+              .and change(manual_order, :total_price).from(500.0).to(600.0)
+              .and change(manual_order, :print_material).from('ABS').to('PLA')
+              .and change(manual_order, :print_color).from('Natural').to('White')
+              .and change(manual_order, :prepaid_expense).from(nil).to(200.0)
+              .and change(manual_order, :workflow_status).from('modeling').to('printing')
+              .and change(manual_order, :worker_id).from(nil).to(worker.id)
+              .and change(manual_order, :price_for_modeling).from(50).to(100.0)
+              .and change(manual_order, :price_for_printing).from(150).to(200.0)
+              .and change(manual_order, :quality).from('0.1mm').to('0.2mm')
+              .and change(manual_order, :need_to_call_client).from(true).to(false)
+              .and change(manual_order, :infill).from('50%').to('100%')
+              .and change(manual_order, :count).from(nil).to(2)
+              .and change(manual_order, :end_date).from(nil).to(DateTime.now + 1.day)
+
+          expect(manual_order.full_name).to eq('John Doe')
+          expect(response).to redirect_to(edit_dredd_manual_order_path(manual_order))
+          follow_redirect!
+          expect(response.body).to include('Manual Order was successfully updated.')
+        end
+      end
+    end
+
+    context 'when invalid params' do
+      let!(:manual_order) do
+        create(:manual_order,
+               first_name: 'John', last_name: 'Doe', total_price: 500,
+               phone_number: '0673646509')
+      end
+
+      let(:params) do
+        {
+          manual_order: {
+            first_name: '',
+            last_name: 'Doe',
+            phone_number: '',
+            total_price: '',
+            email: '3d.storm.des@gmail.com',
+            app_contact: 'telegram'
+          }
         }
-      }
-    end
+      end
 
-    it 'update manual order' do
-      expect do
-        put(dredd_manual_order_path(manual_order), params:)
-        manual_order.reload
-      end.to change(ManualOrder, :count).by(0) # rubocop:disable RSpec/ChangeByZero
-          .and change(manual_order, :app_contact).from('viber').to('telegram')
-          .and change(manual_order, :phone_number).from('0673646509').to('+380673646509')
-          .and change(manual_order, :comment).from('Comment').to('New comment')
-          .and change(manual_order, :total_price).from(500.0).to(600.0)
-          .and change(manual_order, :print_material).from('ABS').to('PLA')
-          .and change(manual_order, :print_color).from('Natural').to('White')
-          .and change(manual_order, :prepaid_expense).from(nil).to(200.0)
-          .and change(manual_order, :workflow_status).from('modeling').to('printing')
-          .and change(manual_order, :worker_id).from(nil).to(worker.id)
-          .and change(manual_order, :price_for_modeling).from(50).to(100.0)
-          .and change(manual_order, :price_for_printing).from(150).to(200.0)
-          .and change(manual_order, :quality).from('0.1mm').to('0.2mm')
-          .and change(manual_order, :need_to_call_client).from(true).to(false)
-          .and change(manual_order, :infill).from('50%').to('100%')
-          .and change(manual_order, :count).from(nil).to(2)
-          .and change(manual_order, :end_date).from(nil).to(DateTime.now + 1.day)
+      it 'dispaly error for select modeller' do
+        expect do
+          put(dredd_manual_order_path(manual_order), params:)
+          manual_order.reload
+        end.to change(ManualOrder, :count).by(0) # rubocop:disable RSpec/ChangeByZero
 
-      expect(manual_order.full_name).to eq('John Doe')
-      expect(response).to redirect_to(edit_dredd_manual_order_path(manual_order))
-      follow_redirect!
-      expect(response.body).to include('Manual Order was successfully updated.')
+        expect(response.body).to include('Worker can&#39;t be blank')
+        expect(response.body).to include('First name can&#39;t be blank')
+        expect(response.body).to include('Total price can&#39;t be blank')
+      end
     end
   end
 
