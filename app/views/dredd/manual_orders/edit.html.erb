@@ -6,8 +6,9 @@
         <%= t('.back') %>
       </div>
     <% end %>
-    <div class="text-2xl font-medium">
-      <h2><%= t("dredd.manual_orders.edit") %><%= @manual_order.print_code %></h2>
+    <div class="flex font-medium space-x-3 text-2xl">
+      <h2><%= t("dredd.manual_orders.edit") %></h2>
+      <h2><%= @manual_order.print_code %></h2>
     </div>
     <%= render partial: 'form', locals: { manual_order: @manual_order } %>
   </div>
