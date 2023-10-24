@@ -11,7 +11,7 @@
             Search
           </h4>
           <div data-controller="accordion">
-            <%= search_form_for(@q, url: dredd_manual_orders_path) do |f| %>
+            <%= search_form_for(@q, url: dredd_manual_orders_path, data: { turbo_frame: :results }) do |f| %>
               <div class="space-y-2">
                 <%= f.label :print_code_eq, t("dredd.manual_orders.status") %>
                 <%= f.select :status_eq, ManualOrder.statuses.to_a.map { |w| [w[0].humanize, w[1]] },
@@ -34,32 +34,12 @@
       </br>
     </div>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"">
-      <thead class="text-gray-700 bg-gray-50">
-        <tr class="text-base">
-          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :print_code, t("dredd.manual_orders.print_code"), class: "text-black") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.full_name") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.phone_number") %></th>
-          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :need_to_call_client, t("dredd.manual_orders.need_to_call_client"), class: "text-black") %></th>
-          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :workflow_status, t("dredd.manual_orders.workflow"), class: "text-black") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.app_contact") %></th>
-          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :total_price, t("dredd.manual_orders.total_price"), class: "text-black")%></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.prepaid_expense") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.status") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.deadline") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.actions") %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render partial: "dredd/manual_orders/manual_order", collection: @manual_orders %>
-      </tbody>
-    </table>
-  </div>
-  <div class="flex justify-center w-full">
-    <div class="absolute p-6">
-      <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
-      <footer class="pt-6">
+    <%= turbo_frame_tag "results", target: '_top', data: { turbo_action: 'advance' } do %>
+      <%= turbo_frame_tag "manual_orders" %>
+      <%= turbo_frame_tag "pagination",
+                    loading: :lazy,
+                    src: dredd_manual_orders_path(format: :turbo_stream, q: params[:q]) %>
         <%= link_to t("dredd.manual_orders.manual_order"), new_dredd_manual_order_path, class: "button w-80" %>
-      </footer>
-    </div>
+    <% end %>
   </div>
 </div>

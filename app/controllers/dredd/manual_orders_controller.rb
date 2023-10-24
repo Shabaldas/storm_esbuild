@@ -5,8 +5,8 @@ module Dredd
     before_action :set_manual_order, only: [:edit, :update, :destroy]
 
     def index
-      @q = ManualOrder.order(status: :asc, print_code: :desc).ransack(params[:q])
-      @pagy, @manual_orders = pagy(@q.result(distinct: true), items: 30)
+      @q = ManualOrder.order(status: :asc, print_code: :desc).ransack(params[:q]&.permit!)
+      @pagy, @manual_orders = pagy(@q.result(distinct: true), items: 20)
     end
 
     def new
