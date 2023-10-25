@@ -1,10 +1,11 @@
-<%= render partial: "dredd/shared/errors", locals: { resource: @manual_order } %>
+<%#= render partial: "dredd/shared/errors", locals: { resource: @manual_order } %>
 <%= form_with model: [:dredd, @manual_order], class: "form-grid-single" do |form| %>
   <div class="form-grid-single w-10/12">
     <div class="flex space-x-4">
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.first_name"), class: "form-label" %>
         <%= form.text_field :first_name, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:first_name, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.last_name"), class: "form-label" %>
@@ -15,6 +16,7 @@
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.phone_number"), class: "form-label" %>
         <%= form.text_field :phone_number, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:phone_number, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.app_contact"), class: "form-label" %>
@@ -33,6 +35,7 @@
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.modeller"), class: "form-label" %>
         <%= form.select :worker_id, workers_for_select, { include_blank: t("dredd.manual_orders.select") } %>
+        <%= inline_error_for(:worker_id, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.price_for_printing"), class: "form-label" %>
@@ -49,6 +52,7 @@
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.total_price"), class: "form-label" %>
         <%= form.text_field :total_price, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:total_price, @manual_order) %>
       </div>
     </div>
     <div class="flex space-x-4">

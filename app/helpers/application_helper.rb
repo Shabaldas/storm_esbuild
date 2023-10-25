@@ -7,6 +7,17 @@ module ApplicationHelper
   MATERIALS = ['PLA', 'ABS', 'PET', 'PC', 'Nylon', 'Elastan', 'TPU', 'Phrozen Sonic Aqua 4k'].freeze
   QUALITY = [100, 200, 300].freeze
 
+  def inline_error_for(field, form_obj)
+    html = []
+    if form_obj.errors[field].any?
+      html << form_obj.errors[field].map do |msg|
+        tag.div(msg, class: 'text-red-400 text-xs m-0 p-0 text-right mb-2')
+      end
+    end
+    # binding.pry
+    html.join.html_safe
+  end
+
   def current_locale?(locale)
     I18n.locale == locale
   end
