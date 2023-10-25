@@ -34,8 +34,15 @@ module Dredd
     end
 
     def destroy
+      @manual_orders = ManualOrder.order(status: :asc, print_code: :desc)
       @manual_order.destroy!
-      redirect_to dredd_manual_orders_path, error: { text: 'Manual Order was successfully destroyed.', icon: 'attention' }
+
+      respond_to do |format|
+        format.html do
+          redirect_to dredd_manual_orders_path, info: { text: 'Manual Order was successfully destroyed.', icon: 'attention' }
+        end
+        format.turbo_stream { flash.now[:info] = { text: 'Manual Order was successfully destroyed.', icon: 'success_icon' }.stringify_keys }
+      end
     end
 
     private
