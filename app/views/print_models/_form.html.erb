@@ -9,7 +9,7 @@
     <%= f.input :weight, as: :hidden, input_html: { data: { calculator_target: "weightField" } } %>
     <%= f.input :volume, as: :hidden, input_html: { data: { calculator_target: "volumeField" } } %>
     <div class="w-full h-full max-w-screen-2xl mx-auto relative top-2 z-20" data-controller="upload-model">
-      <div class="block pb-14 mt-8 px-7 mt-8 overflow-hidden lg:mx-auto lg:flex lg:justify-between md:px-24" data-controller="sidebar">
+      <div class="block pb-14 mt-8 px-7 overflow-hidden lg:mx-auto lg:flex lg:justify-between md:px-24" data-controller="sidebar">
         <div class="w-full xl:w-2/3">
           
           <%= render partial: "upload_section", locals: { f: f } %>
@@ -45,7 +45,7 @@
                       </h5>
                       <div class="colors-wrapper">
                         <div class="flex-auto">
-                          <div id="staticColors" data-print-model-colors-target="color" class="w-full lg:w-4/6 flex items-center mt-3 space-x-4">
+                          <div id="staticColors" data-print-model-colors-target="color" class="w-full flex items-center mt-3 space-x-4">
                             <% ApplicationHelper::COLORS.each do |color| %>
                               <div class="w-8 h-8 cursor-pointer rounded-full border" 
                                     data-action="click->calculator#setColor" 
@@ -115,7 +115,7 @@
                         <%= t("calculator.settings.price_placeholder", price: "від ₴ 1") %>
                       </h4>
                     </div>
-                    <button class="w-full h-14 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer py-2 rounded w-full button w-full md:max-w-[212px]">
+                    <button class="w-full h-14 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer py-2 button md:max-w-[212px]">
                       <%= t("calculator.btns.order_print") %>
                     </button>
                   </div>
