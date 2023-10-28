@@ -88,7 +88,7 @@ en:
       confirm_password: "Confirm password"
       existing_password: "Enter an existing password"
       update: "Update"
-      back:  "Back"
+      back: "Back"
       email_or: "E-mail or phone number"
       edit:
         title: "Edit"
@@ -104,8 +104,10 @@ en:
         min: "characters minimum"
       new:
         title: "Sign up"
+        link: "Sign up"
         input: "Please input"
-        or: "or"
+        or: "Or continue with"
+        first_registration: "Don't have an account yet?"
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
@@ -117,6 +119,7 @@ en:
     sessions:
       new:
         login: "Log in"
+        link: "Log in"
         sign_google: "Sign in with Google"
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
