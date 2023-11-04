@@ -24,10 +24,6 @@
                 <%= f.password_field :password, autocomplete: "new-password", class: "", placeholder: t("devise.registrations.enter_password") %>
               </div>
               <div class="mt-5">
-                <%= f.label :password_confirmation , class: "text-sm text-metalic-grey"%>
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "",  placeholder: t("devise.registrations.confirm_password") %>
-              </div>
-              <div class="mt-5">
                 <%= f.submit t("devise.registrations.new.link"), class: "button w-full", data: { turbo: false } %>
               </div>
             </div>
@@ -35,27 +31,26 @@
               <p class="translate-y-[22px] bg-white px-2 text-sm text-metalic-grey"><%= t("devise.registrations.new.or") %></p>
               <div class="content-divider w-full"></div>
             </div>
+          <% end %>
 
-            <div class="flex items-center justify-between">
-              <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "login-with-google-btn w-full" do %>
-                <%= t("devise.sessions.new.sign_google") %>
-              <% end %>
-              <%# TODO: add register by facebook %>
-            </div>
-
-            <p class="mt-5 text-center">
-              <span class="text-sm text-metalic-grey">
-                Вже маєте акаунт?
-              </span>
-              <span>
-                <%- if controller_name != "sessions" %>
-                  <%= link_to t("devise.sessions.new.link"), new_session_path(resource_name), class: "text-sm font-medium text-blue-500" %><br/>
-                <% end %>
-              </span>
-            </p>
+          <div class="items-center justify-between">
+            <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "login-with-google-btn w-full" do %>
+              <%= t("devise.sessions.new.sign_google") %>
+            <% end %>
+            <%# TODO: add register by facebook %>
           </div>
-        <% end %>
 
+          <p class="mt-5 text-center">
+            <span class="text-sm text-metalic-grey">
+              <%= t("devise.registrations.new.already_have_an_account") %>
+            </span>
+            <span>
+              <% if controller_name != "sessions" %>
+                <%= link_to t("devise.sessions.new.link"), new_session_path(resource_name), class: "text-sm font-medium text-blue-500" %><br/>
+              <% end %>
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
