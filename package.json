@@ -17,7 +17,7 @@
     "stimulus-carousel": "^5.0.1",
     "stimulus-lightbox": "^3.2.0",
     "stimulus-rails-nested-form": "^4.1.0",
-    "swiper": "^10.2.0",
+    "swiper": "^11.0.4",
     "tailwindcss": "^3.3.3",
     "tailwindcss-stimulus-components": "^3.0.4",
     "three": "^0.153.0",
