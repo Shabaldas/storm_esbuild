@@ -5,7 +5,7 @@ module Dredd
     before_action :set_manual_order, only: [:edit, :update, :destroy]
 
     def index
-      @q = ManualOrder.order(status: :asc, print_code: :desc).ransack(params[:q]&.permit!)
+      @q = manual_orders_for_role
       @pagy, @manual_orders = pagy(@q.result(distinct: true), items: 20)
     end
 
@@ -57,6 +57,14 @@ module Dredd
 
     def set_manual_order
       @manual_order = ManualOrder.find(params[:id])
+    end
+
+    def manual_orders_for_role
+      if current_user.manager?
+        ManualOrder.unpaid.order(status: :asc, print_code: :desc).ransack(params[:q]&.permit!)
+      else
+        ManualOrder.order(status: :asc, print_code: :desc).ransack(params[:q]&.permit!)
+      end
     end
   end
 end

@@ -8,7 +8,7 @@
       </div>
       <div class="w-full mt-3 xl:mt-0 xl:w-1/6 xl:ml-32 text-zinc-400 leading-8 uppercase pt-1">
         <ul>
-          <% if policy(:admin).access? %>
+          <% if policy(:admin).admin_only_access? %>
             <li class="mt-4 md:mt-0">
               <%= link_to t('global.footer.calculator'), calculator_path, class: "text-white" %>
             </li>

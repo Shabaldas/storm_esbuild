@@ -12,8 +12,9 @@
           <%#= active_link_to t("dredd.header.products"), dredd_products_path, class: "text-black cursor-pointer pl-5" %>
           <%#= active_link_to t("dredd.header.product_categories"), dredd_product_categories_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.manual_orders"), dredd_manual_orders_path, class: "text-black cursor-pointer" %>
-          <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-black cursor-pointer" %>
-          
+          <% if policy(:admin).admin_only_access? %>
+            <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-black cursor-pointer" %>
+          <% end %>
           <%# INTERNAET ORDERS %>
           <div data-controller="dropdown" class="text-black cursor-pointer">
             <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="<%="active" if ("/modeling /rendering /printing").include?(request.fullpath) && request.fullpath.chars.count > 2 %>">
@@ -62,14 +63,18 @@
               data-transition-leave-to="opacity-0 scale-95"
             >
               <div class="space-y-4 w-[186px] rounded-2xl shadow border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
-                <div>
-                  <%= active_link_to t("dredd.header.users"), dredd_users_path, class: "text-black cursor-pointer" %>
-                </div>
+                <% if policy(:admin).admin_only_access? %>
+                  <div>
+                    <%= active_link_to t("dredd.header.users"), dredd_users_path, class: "text-black cursor-pointer" %>
+                  </div>
+                <% end %>
                 <div>
                   <%= active_link_to t("dredd.header.feedback_calls"), dredd_feedback_calls_path, class: "text-black cursor-pointer" %>
                 </div>
                 <div>
-                  <%= active_link_to t("dredd.header.printers"), dredd_printers_path, class: "text-black cursor-pointer" %>
+                  <% if policy(:admin).admin_only_access? %>
+                    <%= active_link_to t("dredd.header.printers"), dredd_printers_path, class: "text-black cursor-pointer" %>
+                  <% end %>
                 </div>
                 <div>
                   <%= active_link_to t("dredd.header.portfolios"), dredd_portfolios_path, class: "text-black cursor-pointer" %>
