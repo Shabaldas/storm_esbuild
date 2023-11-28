@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-  enum role: { customer: 0, admin: 1 }
+  enum role: { customer: 0, admin: 1, manager: 2 }
 
   def self.from_omniauth(access_token)
     user = User.where(email: access_token.info.email).first

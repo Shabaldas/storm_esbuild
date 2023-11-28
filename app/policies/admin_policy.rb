@@ -2,8 +2,14 @@
 
 class AdminPolicy < ApplicationPolicy
   def access?
-    return if user.nil?
+    return true if user&.admin? || user&.manager?
 
-    user.admin?
+    false
+  end
+
+  def admin_only_access?
+    return true if user&.admin?
+
+    false
   end
 end

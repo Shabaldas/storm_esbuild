@@ -3,14 +3,16 @@
 </br>
 <div class="main-content main-content-padding">
   <div class="">
-    <div class="card mb-5 metrics-item">
-      <%= link_to dredd_users_path do %>
-        <div class="metrics-value">
-          <%= @users_count %>
-        </div>
-        <div class="metrics-label"><%= t("dredd.dashboard.user_count") %></div>
-      <% end %>
-    </div>
+    <% if policy(:admin).admin_only_access? %>
+      <div class="card mb-5 metrics-item">
+        <%= link_to dredd_users_path do %>
+          <div class="metrics-value">
+            <%= @users_count %>
+          </div>
+          <div class="metrics-label"><%= t("dredd.dashboard.user_count") %></div>
+        <% end %>
+      </div>
+    <% end %>
     <div class="card mb-5 metrics-item">
       <%= link_to dredd_manual_orders_path do %>
         <div class="metrics-value">
