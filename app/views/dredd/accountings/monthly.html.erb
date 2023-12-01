@@ -9,7 +9,7 @@
             <%= t('.back') %>
           </div>
         <% end %>
-        <%= t('.accounting_month_title', date: @formated_date.strftime('%B %Y')) %>
+        <%= t('.accounting_month_title', date: "#{I18n.t('dredd.month_names')[@formated_date.month]}, #{@formated_date.year}") %>
       </h1>
     </div>
 
