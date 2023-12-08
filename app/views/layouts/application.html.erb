@@ -25,30 +25,30 @@
         gtag('config', 'G-QMC1QVF8BG');
       </script>
       
+
       <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          function loadGSI() {
-            const googleGSIClientElement = document.createElement('div');
-            googleGSIClientElement.setAttribute('id', 'g_id_onload');
-            googleGSIClientElement.setAttribute('data-client_id', '<%= Rails.application.credentials.dig(:google, :google_oauth_client_id) %>');
-            googleGSIClientElement.setAttribute('data-login_uri', '/users/auth/google_oauth2');
-            
-            const meta = document.querySelector('meta[name="csrf-token"]');
-            const freshToken = meta ? meta.content : '';
-            googleGSIClientElement.setAttribute('data-authenticity_token', freshToken);
+        function loadGSI() {
+          const googleGSIClientElement = document.createElement('div');
+          googleGSIClientElement.setAttribute('id', 'g_id_onload');
+          googleGSIClientElement.setAttribute('data-client_id', '<%= Rails.application.credentials.dig(:google, :google_oauth_client_id) %>');
+          googleGSIClientElement.setAttribute('data-login_uri', '/users/auth/google_oauth2');
+          
+          const meta = document.querySelector('meta[name="csrf-token"]');
+          const freshToken = meta ? meta.content : '';
+          googleGSIClientElement.setAttribute('data-authenticity_token', freshToken);
 
-            document.body.prepend(googleGSIClientElement);
+          document.body.prepend(googleGSIClientElement);
+          const googleGSIClientScript = document.createElement('script');
+          googleGSIClientScript.setAttribute('src', 'https://accounts.google.com/gsi/client');
+          googleGSIClientScript.setAttribute('async', 'async');
+          googleGSIClientScript.setAttribute('defer', 'defer');
 
-            const googleGSIClientScript = document.createElement('script');
-            googleGSIClientScript.setAttribute('src', 'https://accounts.google.com/gsi/client');
-            googleGSIClientScript.setAttribute('async', 'async');
-            googleGSIClientScript.setAttribute('defer', 'defer');
+          document.body.appendChild(googleGSIClientScript);
+        }
 
-            document.body.appendChild(googleGSIClientScript);
-          }
-
+        if (!window.pageConfig.isCurrentUser) {
           loadGSI();
-        });
+        }
       </script>
 
       <%= render('shared/google_one_tap_login') %>
