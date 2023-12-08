@@ -46,9 +46,7 @@
           document.body.appendChild(googleGSIClientScript);
         }
 
-        if (!window.pageConfig.isCurrentUser) {
-          loadGSI();
-        }
+        loadGSI();
       </script>
 
       <%= render('shared/google_one_tap_login') %>
