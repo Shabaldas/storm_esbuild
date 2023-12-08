@@ -24,10 +24,13 @@
 
         gtag('config', 'G-QMC1QVF8BG');
       </script>
-      
+    </head>
 
+    <body class="bg-light-grey">
+      <%= google_analytics_tag_body_script %>
       <script>
         function loadGSI() {
+
           const googleGSIClientElement = document.createElement('div');
           googleGSIClientElement.setAttribute('id', 'g_id_onload');
           googleGSIClientElement.setAttribute('data-client_id', '<%= Rails.application.credentials.dig(:google, :google_oauth_client_id) %>');
@@ -36,7 +39,6 @@
           const meta = document.querySelector('meta[name="csrf-token"]');
           const freshToken = meta ? meta.content : '';
           googleGSIClientElement.setAttribute('data-authenticity_token', freshToken);
-
           document.body.prepend(googleGSIClientElement);
           const googleGSIClientScript = document.createElement('script');
           googleGSIClientScript.setAttribute('src', 'https://accounts.google.com/gsi/client');
@@ -48,12 +50,7 @@
 
         loadGSI();
       </script>
-
       <%= render('shared/google_one_tap_login') %>
-    </head>
-
-    <body class="bg-light-grey">
-      <%= google_analytics_tag_body_script %>
       <%= render 'shared/header' %>
       <div class="content">
         <%= yield %>
