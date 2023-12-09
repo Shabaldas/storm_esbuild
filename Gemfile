@@ -8,6 +8,7 @@ gem 'ancestry'
 gem 'anyway_config', '~> 2.5'
 gem 'aws-sdk-s3', require: false
 gem 'active_storage_validations'
+gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
