@@ -1,8 +1,7 @@
-
 describe 'dredd/costs', type: :request do
   let(:user) { create(:user, :admin) }
-  let(:valid_params) { { cost: { name: 'Test Cost', description: 'Test Description', amount: 100, date: Date.today } } }
-  let(:invalid_params) { { cost: { name: '', description: 'Test Description', amount: 100, date: Date.today } } }
+  let(:valid_params) { { cost: { name: 'Test Cost', description: 'Test Description', amount: 100, date: Time.zone.today } } }
+  let(:invalid_params) { { cost: { name: '', description: 'Test Description', amount: 100, date: Time.zone.today } } }
 
   before do
     login_as(user, scope: :user)
