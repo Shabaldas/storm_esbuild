@@ -52,7 +52,8 @@ module Dredd
                                            :need_to_call_client, :price_for_modeling, :price_for_printing,
                                            :prepaid_expense, :status, :total_price, :comment, :worker_id,
                                            :print_material, :print_color, :deadline, :workflow_status,
-                                           :printing_time_for_one_item, :quality, :infill, :end_date)
+                                           :printing_time_for_one_item, :quality, :infill, :end_date,
+                                           :individual_entrepreneur_accountings)
     end
 
     def set_manual_order

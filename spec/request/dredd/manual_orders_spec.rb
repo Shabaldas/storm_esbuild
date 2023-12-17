@@ -55,6 +55,7 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('Print color')
       expect(response.body).to include('Deadline')
       expect(response.body).to include('Comment')
+      expect(response.body).to include('FOP accounting')
       expect(response.body).to include('Save')
     end
   end
@@ -83,7 +84,8 @@ describe '/dredd/manual_orders', type: :request do
             quality: '0.1mm',
             need_to_call_client: true,
             infill: '50%',
-            deadline: DateTime.now + 1.day
+            deadline: DateTime.now + 1.day,
+            individual_entrepreneur_accountings: true
           }
         }
       end.to change(ManualOrder, :count).by(1)
@@ -107,6 +109,7 @@ describe '/dredd/manual_orders', type: :request do
       expect(manual_order.need_to_call_client).to be(true)
       expect(manual_order.infill).to eq('50%')
       expect(manual_order.deadline).not_to be_nil
+      expect(manual_order.individual_entrepreneur_accountings).to be(true)
     end
   end
 
@@ -119,7 +122,7 @@ describe '/dredd/manual_orders', type: :request do
                  phone_number: '0673646509', email: '3d.storm.des@gmail.com', status: 'unpaid',
                  quality: '0.1mm', infill: '50%', print_color: 'Natural', prepaid_expense: nil,
                  price_for_modeling: '50', price_for_printing: '150', end_date: nil, workflow_status: 'modeling',
-                 print_material: 'ABS', app_contact: 'viber', comment: 'Comment')
+                 print_material: 'ABS', app_contact: 'viber', comment: 'Comment', individual_entrepreneur_accountings: true)
         end
         let!(:worker) { create(:worker) }
 
@@ -132,6 +135,7 @@ describe '/dredd/manual_orders', type: :request do
               email: '3d.storm.des@gmail.com',
               app_contact: 'telegram',
               worker_id: worker.id,
+              individual_entrepreneur_accountings: false,
               price_for_modeling: '100',
               price_for_printing: '200',
               count: '2',
@@ -171,6 +175,7 @@ describe '/dredd/manual_orders', type: :request do
               .and change(manual_order, :infill).from('50%').to('100%')
               .and change(manual_order, :count).from(nil).to(2)
               .and change(manual_order, :end_date).from(nil).to(DateTime.now + 1.day)
+              .and change(manual_order, :individual_entrepreneur_accountings).from(true).to(false)
 
           expect(manual_order.full_name).to eq('John Doe')
           expect(response).to redirect_to(edit_dredd_manual_order_path(manual_order))

@@ -82,6 +82,7 @@ uk:
       quality: "Якість друку"
       infill: "Заповнення"
       workflow: "Робочий процес"
+      individual_entrepreneur_accountings: "ФОП замовлення"
       workflow_status:
         nothing: "Нічого не зроблено"
         modeling: "Спроектовано"
