@@ -11,9 +11,12 @@ module Dredd
 
     def new
       @manual_order = ManualOrder.new
+      @manual_order.build_manual_order_invoice(manual_order: @manual_order)
     end
 
-    def edit; end
+    def edit
+      @manual_order.build_manual_order_invoice(manual_order: @manual_order)
+    end
 
     def create
       @manual_order = ManualOrder.new(manual_order_params)
@@ -53,7 +56,12 @@ module Dredd
                                            :prepaid_expense, :status, :total_price, :comment, :worker_id,
                                            :print_material, :print_color, :deadline, :workflow_status,
                                            :printing_time_for_one_item, :quality, :infill, :end_date,
-                                           :individual_entrepreneur_accountings)
+                                           :individual_entrepreneur_accountings,
+                                           manual_order_invoice_attributes: [
+                                            :id, :subtotal, :taxes, :discounts, :grand_total, :_destroy,
+                                            { manual_order_line_items_attributes: [:id, :product_id, :quantity, :price, :_destroy]}
+                                          ]
+                                           )
     end
 
     def set_manual_order

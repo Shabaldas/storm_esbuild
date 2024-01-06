@@ -303,6 +303,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
+    numbers_and_words (0.11.12)
+      i18n (<= 2)
     oauth2 (1.4.9)
       faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
@@ -621,6 +623,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
+  numbers_and_words
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pagy (~> 6.0)

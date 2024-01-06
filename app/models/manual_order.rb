@@ -7,6 +7,7 @@ class ManualOrder < ApplicationRecord
 
   # associations
   belongs_to :worker, optional: true
+  has_one :manual_order_invoice, dependent: :destroy
 
   # callbacks
   before_create :set_print_code

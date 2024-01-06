@@ -2,11 +2,13 @@ en:
   time:
     formats:
       date_only: "%Y-%m-%d"
+      custom_datetime: "%d.%m.%Y"
       default: "%d %b %Y %I:%M %p"
       short: "%b %Y"
   date:
     formats:
       date_only: "%Y-%m-%d"
+      custom_datetime: "%d.%m.%Y"
       short: "%b %Y"
   global:
     error_message:

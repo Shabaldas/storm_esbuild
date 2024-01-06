@@ -1,0 +1,20 @@
+<%#= raw ap f.object.new_record? %>
+<div class="nested-form-wrapper" data-new-record="<%= f.object&.new_record? ? f.object.manual_order_invoice&.manual_order_line_items : ManualOrderLineItem.new  %>">
+  <div class="flex space-x-5"> 
+    <div class="form-group">
+      <%= f.label 'Item', class: "form-label" %>
+      <%= f.text_field :item, class: "w-[700px]" %>
+    </div>  
+    <div class="form-group">
+      <%= f.label 'Count', class: "form-label" %>
+      <%= f.text_field :count, class: "" %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Price', class: "form-label" %>
+      <%= f.text_field :price, class: "" %>
+    </div>
+  </div>
+
+  <button type="button" data-action="nested-form#remove">Видалити</button>
+  <%= f.hidden_field :_destroy %>
+</div>
