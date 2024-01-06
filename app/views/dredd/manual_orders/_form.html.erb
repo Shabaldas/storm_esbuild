@@ -109,8 +109,30 @@
       <%= form.label t("dredd.manual_orders.comment"), class: "form-label" %>
       <%= form.text_area :comment, placeholder: t("dredd.manual_orders.please_input"), class: "h-32 w-full p-2" %>
     </div>
+    
+    <div data-controller="toggler nested-form" data-nested-form-wrapper-selector-value='.nested-form-wrapper'>
+      <label>Ввести позиції</label>
+      <input data-action="input->toggler#toggle" data-target="toggler.input" type="checkbox">
+      <div data-target="toggler.hideme" id="stuff_to_hide">
+        <%= form.fields_for :manual_order_invoice do |invoice| %>
+          <template data-nested-form-target="template">
+            <%= invoice.fields_for :manual_order_line_item, ManualOrderLineItem.new, child_index: 'NEW_RECORD' do |invoice_item| %>
+              <%= render "invoice_items", f: invoice_item %>
+            <% end %>
+          </template>
+          <%= invoice.fields_for :manual_order_line_item do |invoice_item| %>
+            <%= render "invoice_items", f: invoice_item %>
+          <% end %>
+          <div data-nested-form-target="target"></div>
+          <button type="button" data-action="nested-form#add">Додати позиції</button>
+        <% end %>
+      </div>
+    </div>
     <div class="form-group">
       <%= form.submit t("dredd.manual_orders.save"), class: "button w-full md:max-w-[212px]" %>
     </div>
+    <% if @manual_order.persisted? %>
+      <%= render partial: "dredd/shared/invoice_template", locals: { manual_order: @manual_order } %>
+    <% end %>
   </div>
 <% end %>

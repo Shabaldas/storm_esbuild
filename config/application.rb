@@ -15,7 +15,7 @@ module StormEsbuild
     # rubocop:disable Rails/FilePath
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     # rubocop:enable Rails/FilePath
-    config.i18n.available_locales = [:en, :uk]
+    config.i18n.available_locales = [:en, :uk, :ua]
     config.i18n.default_locale = :uk
     config.i18n.fallbacks = true
 

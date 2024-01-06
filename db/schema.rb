@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_17_175655) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_24_231927) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -87,6 +87,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_17_175655) do
     t.boolean "processed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "manual_order_invoices", force: :cascade do |t|
+    t.bigint "manual_order_id", null: false
+    t.string "invoice_number"
+    t.date "date_of_issue"
+    t.date "due_date"
+    t.decimal "subtotal"
+    t.decimal "taxes"
+    t.decimal "discounts"
+    t.decimal "grand_total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manual_order_id"], name: "index_manual_order_invoices_on_manual_order_id"
+  end
+
+  create_table "manual_order_line_items", force: :cascade do |t|
+    t.bigint "manual_order_invoice_id", null: false
+    t.string "item"
+    t.integer "count"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manual_order_invoice_id"], name: "index_manual_order_line_items_on_manual_order_invoice_id"
   end
 
   create_table "manual_orders", force: :cascade do |t|
@@ -326,6 +350,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_17_175655) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "orders", on_delete: :cascade
   add_foreign_key "costs", "users"
+  add_foreign_key "manual_order_invoices", "manual_orders"
+  add_foreign_key "manual_order_line_items", "manual_order_invoices"
   add_foreign_key "manual_orders", "workers"
   add_foreign_key "option_values", "options", on_delete: :cascade
   add_foreign_key "print_model_attributes", "print_models", on_delete: :cascade

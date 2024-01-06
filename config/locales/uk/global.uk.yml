@@ -2,10 +2,12 @@ uk:
   time:
     formats:
       date_only: "%Y-%m-%d"
+      custom_datetime: "%d.%m.%Y"
       default: "%d %b %Y %I:%M %p"
       short: "%b %Y"
   date:
     formats:
+      custom_datetime: "%d.%m.%Y"
       date_only: "%Y-%m-%d"
       short: "%b %Y"
   global:
