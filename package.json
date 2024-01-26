@@ -13,7 +13,7 @@
     "dropzone": "^6.0.0-beta.2",
     "esbuild": "^0.17.10",
     "lightgallery": "^2.7.1",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.33",
     "stimulus-carousel": "^5.0.1",
     "stimulus-lightbox": "^3.2.0",
     "stimulus-rails-nested-form": "^4.1.0",
