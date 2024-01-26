@@ -74,7 +74,7 @@
           </template>
 
           <%= secondary_option.fields_for :product_option_values do |product_option_values_form| %>
-            <%= render "product_option_size_values_formproduct_option_size_values_form", f: product_option_values_form %>
+            <%= render "product_option_size_values_form", f: product_option_values_form %>
           <% end %>
 
           <div data-nested-form-target="target"></div>

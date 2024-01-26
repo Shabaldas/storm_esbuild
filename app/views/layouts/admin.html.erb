@@ -11,6 +11,7 @@
 
     <%= google_analytics_head_script %>
     <%= google_analytics_tag_head_script %>
+    <%= canonical_tag -%>
     <%= favicon_link_tag asset_path('partials_img/favicon.png') %>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMC1QVF8BG"></script>
@@ -27,7 +28,7 @@
     <%= google_analytics_tag_body_script %>
 
     <div class="content">
-      <div class="fixed flex items-center mt-16 py-3 right-5 rounded-2xl w-80">
+      <div id="flash" class="fixed flex items-center mt-16 py-3 right-5 rounded-2xl w-80">
         <%= render "dredd/shared/flash" %>
       </div>
       <%= render 'dredd/header' %>

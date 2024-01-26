@@ -8,7 +8,7 @@
       </div>
       <div class="w-full mt-3 xl:mt-0 xl:w-1/6 xl:ml-32 text-zinc-400 leading-8 uppercase pt-1">
         <ul>
-          <% if policy(:admin).access? %>
+          <% if policy(:admin).admin_only_access? %>
             <li class="mt-4 md:mt-0">
               <%= link_to t('global.footer.calculator'), calculator_path, class: "text-white" %>
             </li>
@@ -16,18 +16,19 @@
         </ul>
       </div>
       <div class="w-full mt-8 xl:mt-0 xl:w-1/6 text-white leading-8">
-        <h4 class="text-zinc-400 uppercase">  <%= t('global.footer.contacts') %> </h4>
+        <h4 class="text-zinc uppercase mb-3.5">
+          <%= t('global.footer.contacts') %>
+        </h4>
         <p><%= t('global.footer.phone_number') %></p>
-        <a href = "mailto: 3d.storm.des@gmail.com" class="text-white">3d.storm.des@gmail.com</a>
+        <a href="mailto: 3d.storm.des@gmail.com" class="text-white">3d.storm.des@gmail.com</a>
       </div>
       <div class="w-full mt-8 xl:mt-0 xl:w-1/6 text-white leading-8">
-        <h4 class="text-zinc-400 uppercase"><%= t('global.footer.address') %></h4>
+        <h4 class="text-zinc uppercase mb-3.5"><%= t('global.footer.address') %></h4>
         <p class="w-80"><%= t('global.footer.street') %></p>
         <p><%= t('global.footer.city') %></p>
       </div>
     </div>
-    <div
-      class="flex justify-between items-center text-zinc-400 border-t border-gray-500 pt-6">
+    <div class="flex justify-between items-center text-zinc-400 border-t border-gray-500 pt-6">
       <%= "© #{Time.zone.now.year}" + t('global.footer.law') %>
       <div class="w-12 flex justify-between">
         <%= link_to "https://www.facebook.com/3D.Storm.des", class: "w-2.5 h-5", target: :blank do %>

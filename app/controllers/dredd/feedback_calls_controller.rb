@@ -10,14 +10,14 @@ module Dredd
       feedback_call = FeedbackCall.find(params[:id])
       feedback_call.toggle!(:processed) # rubocop:disable Rails/SkipsModelValidations
 
-      redirect_to dredd_feedback_calls_path, notice: 'Feedback call was successfully updated.' # rubocop:disable Rails/I18nLocaleTexts
+      redirect_to dredd_feedback_calls_path, notice: { text: 'Feedback call was successfully updated.', icon: 'success_icon' }
     end
 
     def destroy
       feedback_call = FeedbackCall.find(params[:id])
       feedback_call.destroy!
 
-      redirect_to dredd_feedback_calls_path, notice: 'Feedback call was successfully destroyed.' # rubocop:disable Rails/I18nLocaleTexts
+      redirect_to dredd_feedback_calls_path, error: { text: 'Feedback call was successfully destroyed.', icon: 'attention' }
     end
   end
 end

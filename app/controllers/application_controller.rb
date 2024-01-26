@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   rescue_from Pundit::NotAuthorizedError do |error|
-    redirect_to root_path, alert: pundit_error_message(error)
+    redirect_to root_path, error: { text: pundit_error_message(error), icon: 'attention' }
   end
 
   def pundit_error_message(error)

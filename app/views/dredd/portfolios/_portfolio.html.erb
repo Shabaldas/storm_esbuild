@@ -1,0 +1,43 @@
+<tr>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to edit_dredd_portfolio_path(portfolio), class: "text-black" do %>
+      <%= portfolio.id %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to edit_dredd_portfolio_path(portfolio), class: "text-black" do %>
+      <%= portfolio.name %>
+    <% end %>
+  </td>
+  <td class="flex font-medium justify-center py-4 whitespace-nowrap" scope="row">
+    <% if portfolio.main_picture.attached? %>
+      <%= link_to edit_dredd_portfolio_path(portfolio), class: "text-black" do %>
+        <%= image_tag(portfolio.main_picture, style: "height: 5rem;") %>
+      <% end %>
+    <% end %>
+  </td>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to edit_dredd_portfolio_path(portfolio), class: "text-black" do %>
+      <%= portfolio.status %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to edit_dredd_portfolio_path(portfolio), class: "text-black" do %>
+      <%= portfolio.portfolio_type %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to edit_dredd_portfolio_path(portfolio), class: "text-black" do %>
+      <%= portfolio.created_at.strftime("%F") %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap space-x-4 flex" scope="row">
+    <%= link_to edit_dredd_portfolio_path(portfolio), class: "text-black bg-primary p-1.5 rounded-2xl text-black" do %>
+      <%= t("dredd.orders.edit") %>
+    <% end %>
+    <%= button_to dredd_portfolio_path(portfolio), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
+      <%= t("dredd.manual_orders.destroy") %>
+    <% end %>
+  </td>
+</tr>

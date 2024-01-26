@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -71,6 +71,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
     t.index ["token"], name: "index_carts_on_token", unique: true
   end
 
+  create_table "costs", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.decimal "amount"
+    t.date "date"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_costs_on_user_id"
+  end
+
   create_table "feedback_calls", force: :cascade do |t|
     t.string "phone_number", null: false
     t.boolean "processed", default: false
@@ -100,6 +111,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
     t.datetime "updated_at", null: false
     t.string "quality"
     t.string "infill"
+    t.date "end_date"
+    t.integer "workflow_status", default: 0
+    t.bigint "worker_id"
+    t.boolean "need_to_call_client", default: false
+    t.boolean "individual_entrepreneur_accountings", default: false
+    t.index ["worker_id"], name: "index_manual_orders_on_worker_id"
   end
 
   create_table "modeling_orders", force: :cascade do |t|
@@ -144,6 +161,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "portfolios", force: :cascade do |t|
+    t.string "name"
+    t.string "category_name"
+    t.integer "order"
+    t.string "description"
+    t.integer "status", default: 0
+    t.integer "portfolio_type", default: 0
+    t.string "tags"
+    t.string "created_by_machine"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "print_model_attributes", force: :cascade do |t|
     t.bigint "print_model_id"
     t.string "color"
@@ -161,6 +191,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
     t.string "size"
     t.float "weight"
     t.float "volume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "printer_maintenances", force: :cascade do |t|
+    t.bigint "printer_id", null: false
+    t.string "problem", null: false
+    t.datetime "problem_find"
+    t.string "time_for_fix"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["printer_id"], name: "index_printer_maintenances_on_printer_id"
+  end
+
+  create_table "printers", force: :cascade do |t|
+    t.string "printer_code"
+    t.string "firm"
+    t.string "model"
+    t.integer "printing_technology", default: 0
+    t.integer "state", default: 0
+    t.integer "type_mechanic", default: 0
+    t.string "table_size"
+    t.decimal "price_for_printer", precision: 8, scale: 2, default: "0.0"
+    t.datetime "bought"
+    t.string "comment"
+    t.string "by_for_upgrade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -253,12 +309,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "nickname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_workers_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_item_option_values", "cart_items", on_delete: :cascade
   add_foreign_key "cart_item_option_values", "product_option_values", on_delete: :cascade
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "orders", on_delete: :cascade
+  add_foreign_key "costs", "users"
+  add_foreign_key "manual_orders", "workers"
   add_foreign_key "option_values", "options", on_delete: :cascade
   add_foreign_key "print_model_attributes", "print_models", on_delete: :cascade
   add_foreign_key "product_option_values", "option_values", on_delete: :cascade
@@ -266,4 +334,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_130947) do
   add_foreign_key "product_options", "options", on_delete: :cascade
   add_foreign_key "product_options", "products", on_delete: :cascade
   add_foreign_key "products", "product_categories", on_delete: :cascade
+  add_foreign_key "workers", "users"
 end

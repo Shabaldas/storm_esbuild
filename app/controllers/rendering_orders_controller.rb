@@ -3,6 +3,7 @@
 class RenderingOrdersController < ApplicationController
   def index
     @rendering_order = RenderingOrder.new
+    @rendering_portfolios = Portfolio.rendering.active
   end
 
   def create
@@ -16,6 +17,11 @@ class RenderingOrdersController < ApplicationController
     else
       render :index
     end
+  end
+
+  def lazy
+    @rendering_order = RenderingOrder.new
+    @rendering_portfolios = Portfolio.rendering.active.active.with_attached_main_picture
   end
 
   private

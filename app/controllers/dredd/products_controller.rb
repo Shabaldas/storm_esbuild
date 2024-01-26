@@ -22,7 +22,7 @@ module Dredd
       @product = Product.new(product_params)
 
       if @product.save
-        redirect_to dredd_products_path, notice: 'Product was successfully created.' # rubocop:disable Rails/I18nLocaleTexts
+        redirect_to dredd_products_path, notice: { text: 'Product was successfully created.', icon: 'success_icon' }
       else
         render :new, status: :unprocessable_entity
       end
@@ -30,7 +30,7 @@ module Dredd
 
     def destroy
       @product.destroy
-      redirect_to dredd_products_path, notice: 'Product was successfully destroyed.' # rubocop:disable Rails/I18nLocaleTexts
+      redirect_to dredd_products_path, error: { text: 'Product was successfully destroyed.', icon: 'attention' }
     end
 
     private
