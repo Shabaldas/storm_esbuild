@@ -38,7 +38,6 @@ require 'pundit/rspec'
 require 'sidekiq/testing'
 require 'capybara/rails'
 require 'capybara/rspec'
-# require 'support/capybara'
 
 Sidekiq::Testing.fake!
 ActiveJob::Base.queue_adapter = :test
@@ -105,53 +104,28 @@ RSpec.configure do |config|
 
   Capybara.register_driver :headless_chrome do |app|
     capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-        chromeOptions: { args: %w[--headless --disable-gpu] },
-        'goog:loggingPrefs': {
-            browser: 'ALL'
-        }
-      )
-  
-    options = ::Selenium::WebDriver::Chrome::Options.new
-  
+      chromeOptions: { args: ['--headless', '--disable-gpu'] },
+      'goog:loggingPrefs': {
+        browser: 'ALL'
+      }
+    )
+
+    options = Selenium::WebDriver::Chrome::Options.new
+
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--window-size=1400,1400')
-  
+
     Capybara::Selenium::Driver.new(
-        app,
-        browser: :chrome,
-        desired_capabilities: capabilities,
-        options: options
-      )
+      app,
+      browser: :chrome,
+      desired_capabilities: capabilities,
+      options:
+    )
   end
-  
+
   Capybara.default_driver = :headless_chrome
 
-  # Capybara.register_driver :firefox do |mode|
-  #   Capybara::Selenium::Driver.new mode, browser: :remote, desired_capabilities: :firefox
-  # end
-
-  # Capybara.register_driver :selenium_chrome_headless do |app|
-  #   version = Capybara::Selenium::Driver.load_selenium
-  #   options_key = Capybara::Selenium::Driver::CAPS_VERSION.satisfied_by?(version) ? :capabilities : :options
-  #   browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
-  #     opts.add_argument("--headless")
-  #     opts.add_argument("--disable-gpu") if Gem.win_platform?
-  #     # Workaround https://bugs.chromium.org/p/chromedriver/issues/detail?id=2650&q=load&sort=-id&colspec=ID%20Status%20Pri%20Owner%20Summary
-  #     opts.add_argument("--disable-site-isolation-trials")
-  #     opts.add_preference("download.default_directory", Capybara.save_path)
-  #     opts.add_preference(:download, default_directory: Capybara.save_path)
-  #   end
-  
-  #   Capybara::Selenium::Driver.new(app, **{ browser: :chrome, options_key => browser_options })
-  # end
-  
-  # RSpec.configure do |config|
-  #   config.before(:each, type: :system) do
-  #     driven_by :selenium_chrome_headless
-  #   end
-  # end
-  
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 

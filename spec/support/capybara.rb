@@ -1,22 +1,22 @@
-is_ci = ENV.fetch('IS_CI', false)
+require 'capybara-screenshot/rspec'
+require 'webdrivers/chromedriver'
 
-Capybara.register_driver :headless_chrome do |app|
-  options = Selenium::WebDriver::Chrome::Options.new(
-    args: %w[headless no-sandbox disable-gpu disable-dev-shm-usage],
-    binary: '/usr/bin/google-chrome'
-  )
+Capybara.default_max_wait_time = 5
+
+Capybara.javascript_driver = :chrome_resized
+
+Capybara.register_driver :chrome_resized do |app|
+  args = ['no-sandbox', 'window-size=1366,2000']
+  headed_mode = ENV.fetch('HEADED', false) == 'true'
+  args << 'headless' unless headed_mode
 
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
-    options:
+    options: Selenium::WebDriver::Chrome::Options.new(args:)
   )
 end
 
-RSpec.configure do |config|
-  if is_ci
-    config.before(:each, type: :system) do
-      driven_by :headless_chrome
-    end
-  end
+Capybara::Screenshot.register_driver :chrome_resized do |driver, path|
+  driver.browser.save_screenshot(path)
 end

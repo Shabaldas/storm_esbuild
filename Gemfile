@@ -93,6 +93,7 @@ group :test do
   gem 'database_cleaner-active_record'
   gem 'timecop'
   gem 'simplecov', require: false
+  gem 'capybara-screenshot'
   gem 'capybara'
   gem 'codeclimate-test-reporter', '~> 0.4.8'
   gem 'selenium-webdriver'
