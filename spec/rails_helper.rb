@@ -36,6 +36,9 @@ require 'database_cleaner/active_record'
 require 'active_storage_validations/matchers'
 require 'pundit/rspec'
 require 'sidekiq/testing'
+require 'capybara/rails'
+require 'capybara/rspec'
+
 Sidekiq::Testing.fake!
 ActiveJob::Base.queue_adapter = :test
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -65,6 +68,7 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  config.include Rails.application.routes.url_helpers
   config.include ActiveStorageValidations::Matchers
   config.include Warden::Test::Helpers, type: :request
   config.include Warden::Test::Helpers, type: :feature
@@ -95,6 +99,32 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  WebMock.allow_net_connect!(net_http_connect_on_start: true)
+
+  # Capybara.register_driver :headless_chrome do |app|
+  #   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+  #     chromeOptions: { args: ['--headless', '--disable-gpu'] },
+  #     'goog:loggingPrefs': {
+  #       browser: 'ALL'
+  #     }
+  #   )
+
+  #   options = Selenium::WebDriver::Chrome::Options.new
+
+  #   options.add_argument('--headless')
+  #   options.add_argument('--no-sandbox')
+  #   options.add_argument('--window-size=1400,1400')
+
+  #   Capybara::Selenium::Driver.new(
+  #     app,
+  #     browser: :chrome,
+  #     desired_capabilities: capabilities,
+  #     options:
+  #   )
+  # end
+
+  # Capybara.default_driver = :headless_chrome
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
