@@ -102,29 +102,29 @@ RSpec.configure do |config|
 
   WebMock.allow_net_connect!(net_http_connect_on_start: true)
 
-  Capybara.register_driver :headless_chrome do |app|
-    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-      chromeOptions: { args: ['--headless', '--disable-gpu'] },
-      'goog:loggingPrefs': {
-        browser: 'ALL'
-      }
-    )
+  # Capybara.register_driver :headless_chrome do |app|
+  #   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+  #     chromeOptions: { args: ['--headless', '--disable-gpu'] },
+  #     'goog:loggingPrefs': {
+  #       browser: 'ALL'
+  #     }
+  #   )
 
-    options = Selenium::WebDriver::Chrome::Options.new
+  #   options = Selenium::WebDriver::Chrome::Options.new
 
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--window-size=1400,1400')
+  #   options.add_argument('--headless')
+  #   options.add_argument('--no-sandbox')
+  #   options.add_argument('--window-size=1400,1400')
 
-    Capybara::Selenium::Driver.new(
-      app,
-      browser: :chrome,
-      desired_capabilities: capabilities,
-      options:
-    )
-  end
+  #   Capybara::Selenium::Driver.new(
+  #     app,
+  #     browser: :chrome,
+  #     desired_capabilities: capabilities,
+  #     options:
+  #   )
+  # end
 
-  Capybara.default_driver = :headless_chrome
+  # Capybara.default_driver = :headless_chrome
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
