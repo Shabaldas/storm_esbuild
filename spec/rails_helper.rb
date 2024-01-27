@@ -36,8 +36,8 @@ require 'database_cleaner/active_record'
 require 'active_storage_validations/matchers'
 require 'pundit/rspec'
 require 'sidekiq/testing'
-# require 'capybara/rails'
-# require 'capybara/rspec'
+require 'capybara/rails'
+require 'capybara/rspec'
 
 Sidekiq::Testing.fake!
 ActiveJob::Base.queue_adapter = :test
@@ -100,7 +100,7 @@ RSpec.configure do |config|
     end
   end
 
-  # WebMock.allow_net_connect!(net_http_connect_on_start: true)
+  WebMock.allow_net_connect!(net_http_connect_on_start: true)
 
   # Capybara.register_driver :headless_chrome do |app|
   #   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
