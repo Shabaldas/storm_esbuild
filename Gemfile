@@ -5,12 +5,14 @@ ruby '3.2.2'
 
 gem 'active_link_to'
 gem 'ancestry'
-gem 'anyway_config', '~> 2.5'
+gem 'anyway_config', '~> 2.6'
 gem 'aws-sdk-s3', require: false
 gem 'active_storage_validations'
+gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-sidekiq', group: :development
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'cssbundling-rails'
 gem 'dotenv-rails', '~> 2.7'
@@ -28,7 +30,7 @@ gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
-gem 'pagy', '~> 6.0'
+gem 'pagy', '~> 6.4'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 6.3'
 gem 'pundit', '~> 2.2'
@@ -37,11 +39,19 @@ gem 'ransack', '~> 3.2', '>= 3.2.1'
 gem 'rails', '~> 7.0.6'
 gem 'rails-i18n'
 gem 'redis', '~> 4.0'
+gem "sidekiq-cron"
+gem "redis-namespace"
+gem 'sidekiq', '~> 7.0.0'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'simple_form'
 gem 'sentry-ruby'
 gem 'sentry-rails'
+gem "sentry-sidekiq"
+gem "sentry-delayed_job"
+gem "sentry-resque"
+gem "sentry-opentelemetry"
+gem "telegram-bot-ruby"
 gem 'turbo-rails'
 
 gem 'ed25519', '>= 1.2', '< 2.0'
@@ -58,7 +68,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'bullet'
+  gem 'bullet', '~> 7.1.5'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
@@ -73,17 +83,17 @@ group :development, :test do
   gem 'rubocop-rspec'
   gem 'shoulda-matchers'
   gem 'webmock'
-  gem 'bullet'
 end
 
 group :development do
   gem 'spring'
   gem 'web-console'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do
   gem 'database_cleaner-active_record'
-  gem 'timecop', '~> 0.9.6'
+  gem 'timecop'
   gem 'simplecov', require: false
   gem 'capybara'
   gem 'codeclimate-test-reporter', '~> 0.4.8'

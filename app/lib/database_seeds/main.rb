@@ -8,6 +8,8 @@ module DatabaseSeeds
       DatabaseSeeds::Dummy::ProductsSeed.new.execute
       DatabaseSeeds::Dummy::OptionsSeed.new.execute
       DatabaseSeeds::Dummy::ProductOptionsSeed.new.execute
+      DatabaseSeeds::Dummy::ManualOrdersSeed.new.execute
+      DatabaseSeeds::Dummy::WorkersSeed.new.execute
 
       # Real
       DatabaseSeeds::Real::CitiesSeed.new.execute_frankivsk_region_cities

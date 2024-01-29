@@ -1,0 +1,14 @@
+<% return if current_user %>
+
+<%= javascript_include_tag('https://accounts.google.com/gsi/client', async: true, defer: true) %>
+
+<div id="g_id_onload" data-client_id="<%= Rails.application.credentials.dig(:google, :google_oauth_client_id) %>" data-login_uri="/users/auth/google_oauth2"></div>
+
+<script>
+  (function() {
+    const meta = document.querySelector('meta[name="csrf-token"]');
+    const freshToken = meta ? meta.content : '';
+    const googleOneTapLogin = document.querySelector('#g_id_onload');
+    googleOneTapLogin.setAttribute('data-authenticity_token', freshToken);
+  })();
+</script>

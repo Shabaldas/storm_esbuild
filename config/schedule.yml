@@ -1,0 +1,3 @@
+my_first_job:
+  cron: '0 */12 * * *'   # Runs once every 12 hours
+  class: "TestJob"

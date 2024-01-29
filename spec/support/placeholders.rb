@@ -1,0 +1,67 @@
+shared_context 'when placeholders present' do
+  let(:title_placeholder) do
+    <<~HTML
+      <div class="lazy-animation">
+        <div class="space-y-3 pb-3">
+          <div class="grid grid-cols-4">
+            <div class="h-4 bg-stone-300 col-span-1"></div>
+          </div>
+        </div>
+        <div class="flex space-x-4">
+          <div class="rounded-full bg-stone-300 h-14 w-14"></div>
+          <div class="flex-1 space-y-6 py-1">
+            <div class="space-y-3">
+              <div class="grid grid-cols-3 gap-4">
+                <div class="h-5 bg-stone-300 col-span-2"></div>
+                <div class="h-5 bg-stone-300 col-span-1"></div>
+              </div>
+              <div class="h-3 bg-stone-300"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    HTML
+  end
+
+  let(:long_placeholder) do
+    <<~HTML
+      <div class="space-y-3 lazy-animation">
+        <div class="grid grid-cols-8 gap-3">
+          <div class="h-4 bg-stone-300 col-span-4"></div>
+          <div class="h-4 bg-stone-300 col-span-1"></div>
+          <div class="h-4 bg-stone-300 col-span-2"></div>
+          <div class="h-4 bg-stone-300 col-span-1"></div>
+        </div>
+        <div class="grid grid-cols-7 gap-4">
+          <div class="h-4 bg-stone-300 col-span-3"></div>
+          <div class="h-4 bg-stone-300 col-span-2"></div>
+          <div class="h-4 bg-stone-300 col-span-1"></div>
+        </div>
+        <div class="grid grid-cols-8 gap-3">
+          <div class="h-4 bg-stone-300 col-span-3"></div>
+          <div class="h-4 bg-stone-300 col-span-2"></div>
+          <div class="h-4 bg-stone-300 col-span-1"></div>
+          <div class="h-4 bg-stone-300 col-span-2"></div>
+        </div>
+        <div class="grid grid-cols-7 gap-4">
+          <div class="h-4 bg-stone-300 col-span-2"></div>
+          <div class="h-4 bg-stone-300 col-span-3"></div>
+          <div class="h-4 bg-stone-300 col-span-1"></div>
+        </div>
+      </div>
+    HTML
+  end
+
+  let(:big_picture_placeholder) do
+    <<~HTML
+      <div class="wrapper lazy-animation">
+        <div class="flex items-center justify-center h-[544px] mb-4 bg-stone-300 rounded-3xl dark:bg-stone-300">
+          <svg class="w-20 h-20 dark:text-stone-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+            <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z"/>
+            <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"/>
+          </svg>
+        </div>
+      </div>
+    HTML
+  end
+end

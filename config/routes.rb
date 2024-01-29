@@ -1,7 +1,15 @@
 # rubocop:disable Metrics/BlockLength
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root 'static_pages#home'
   namespace :dredd do
+    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+      username == SidekiqConfig.new.username && password == SidekiqConfig.new.password
+    end
+
+    mount Sidekiq::Web => '/sidekiq'
+
     get '/', to: 'dashboard#index', as: :dashboard
     resources :products, except: [:update]
     resources :product_categories, except: [:update]
@@ -12,6 +20,12 @@ Rails.application.routes.draw do
     resources :rendering_orders, except: [:new, :show]
     resources :printing_orders, except: [:new, :show]
     resources :users, except: [:show, :destroy]
+    resources :printers, except: :show
+    resources :portfolios, except: :show
+    resources :costs, only: [:create, :destroy]
+    resources :accountings, only: :index do
+      get :monthly, on: :collection
+    end
   end
 
   put 'locales/:locale', to: 'locales#update', as: :locale,
@@ -22,10 +36,13 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  get 'static_pages/home_lazy', to: 'static_pages#home_lazy'
   get 'printing', to: 'printing_orders#index'
   get '3d_printing_city/:city', to: 'printing_orders#printing_in_your_city', as: 'printing_city'
   get 'rendering', to: 'rendering_orders#index'
+  get 'rendering/lazy', to: 'rendering_orders#lazy'
   get 'modeling', to: 'modeling_orders#index'
+  get 'modeling/lazy_index', to: 'modeling_orders#lazy_index'
   get 'calculator', to: 'print_models#new', as: :calculator
   get 'checkout', to: 'orders#checkout', as: :checkout
 

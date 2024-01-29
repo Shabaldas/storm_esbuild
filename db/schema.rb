@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -69,6 +69,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.bigint "order_id"
     t.index ["order_id"], name: "index_carts_on_order_id"
     t.index ["token"], name: "index_carts_on_token", unique: true
+  end
+
+  create_table "costs", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.decimal "amount"
+    t.date "date"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_costs_on_user_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -108,6 +119,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.datetime "updated_at", null: false
     t.string "quality"
     t.string "infill"
+    t.date "end_date"
+    t.integer "workflow_status", default: 0
+    t.bigint "worker_id"
+    t.boolean "need_to_call_client", default: false
+    t.boolean "individual_entrepreneur_accountings", default: false
+    t.index ["worker_id"], name: "index_manual_orders_on_worker_id"
   end
 
   create_table "modeling_orders", force: :cascade do |t|
@@ -148,6 +165,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.decimal "subtotal", precision: 8, scale: 2
     t.decimal "total", precision: 8, scale: 2
     t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.string "name"
+    t.string "category_name"
+    t.integer "order"
+    t.string "description"
+    t.integer "status", default: 0
+    t.integer "portfolio_type", default: 0
+    t.string "tags"
+    t.string "created_by_machine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -287,12 +317,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "nickname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_workers_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_item_option_values", "cart_items", on_delete: :cascade
   add_foreign_key "cart_item_option_values", "product_option_values", on_delete: :cascade
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "orders", on_delete: :cascade
+  add_foreign_key "costs", "users"
+  add_foreign_key "manual_orders", "workers"
   add_foreign_key "option_values", "options", on_delete: :cascade
   add_foreign_key "print_model_attributes", "print_models", on_delete: :cascade
   add_foreign_key "product_option_values", "option_values", on_delete: :cascade
@@ -300,4 +342,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
   add_foreign_key "product_options", "options", on_delete: :cascade
   add_foreign_key "product_options", "products", on_delete: :cascade
   add_foreign_key "products", "product_categories", on_delete: :cascade
+  add_foreign_key "workers", "users"
 end
