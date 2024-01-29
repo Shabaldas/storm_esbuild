@@ -2,4 +2,6 @@
 
 class City < ApplicationRecord
   validates :english_name, :ukrainian_name, presence: true
+
+  scope :active, -> { where(active: true) }
 end

@@ -193,6 +193,7 @@ GEM
     faraday-net_http (2.0.2)
     ffi (1.15.5)
     foreman (0.87.2)
+    fuzzy_match (2.1.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     grape (1.7.0)
@@ -521,6 +522,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   foreman
+  fuzzy_match
   grape
   grape-entity
   grape_on_rails_routes
