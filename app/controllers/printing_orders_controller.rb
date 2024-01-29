@@ -21,8 +21,6 @@ class PrintingOrdersController < ApplicationController
   def printing_in_your_city
     @city = params[:city]
     @printing_order = PrintingOrder.new
-
-    # params
   end
 
   private
