@@ -900,10 +900,10 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
-three@^0.153.0:
-  version "0.153.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.153.0.tgz#d8f2aab7b49ae4ac947fd0e24cebec11378758f0"
-  integrity sha512-OCP2/uQR6GcDpSLnJt/3a4mdS0kNWcbfUXIwLoEMgLzEUIVIYsSDwskpmOii/AkDM+BBwrl6+CKgrjX9+E2aWg==
+three@^0.160.1:
+  version "0.160.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.160.1.tgz#61fe2907312e8604b1f64187f58e047503847413"
+  integrity sha512-Bgl2wPJypDOZ1stAxwfWAcJ0WQf7QzlptsxkjYiURPz+n5k4RBDLsq+6f9Y75TYxn6aHLcWz+JNmwTOXWrQTBQ==
 
 to-regex-range@^5.0.1:
   version "5.0.1"
