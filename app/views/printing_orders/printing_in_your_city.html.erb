@@ -17,15 +17,21 @@
         </p>
         <% if I18n.locale == :en %>
           <p class="w-full md:max-w-[472px] mt-6 md:mt-10 text-dark-blue">
-            Ми здійснюємо доставку роздрукованих моделей по всій Україні, в тому числі доставляємо замовлення у <%= @city.english_name %>.
+            <%= t("static_pages.printing.3dprinting_description_in_your_city") %> <%= @city.english_name %>.
           </p>
         <% else %>
           <p class="w-full md:max-w-[472px] mt-6 md:mt-10 text-dark-blue">
-            Ми здійснюємо доставку роздрукованих моделей по всій Україні, в тому числі доставляємо замовлення у <%= @city.ukrainian_name %>.
+            <%= t("static_pages.printing.3dprinting_description_in_your_city") %> <%= @city.ukrainian_name %>.
           </p>
         <% end %>
       </div>
-      <button class="button w-full mx-auto md:mx-0 sm:w-56 mt-6">Order print</button>
+      <a 
+        href="#scroll-to-order-print"
+        data-controller="scroll-to"
+        class="button w-full mx-auto md:mx-0 sm:w-56 mt-6"
+        >
+        <%= t("static_pages.custom_buttons.order_3d_print") %>
+      </a>
     </div>
    
     <div class="w-4/6 order-1 md:order-2 flex justify-end">
@@ -58,6 +64,8 @@
     <%= render partial: "static_pages/printing/sla_tab" %>
     <%= render partial: "static_pages/printing/dlp_tab" %>
   </div>
-  <%= render partial: "shared/upload_form", locals: { model: @printing_order, order_name: "printing", image_icon: "stl_and_obj" } %>
-  <%= turbo_frame_tag "printing-modal" %>
+  <div id="scroll-to-order-print">
+    <%= render partial: "shared/upload_form", locals: { model: @printing_order, order_name: "printing", image_icon: "stl_and_obj" } %>
+    <%= turbo_frame_tag "printing-modal" %>
+  </div>
 </div>
