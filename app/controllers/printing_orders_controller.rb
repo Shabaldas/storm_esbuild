@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PrintingOrdersController < ApplicationController
+  include CitiesDetector
+
   def index
     @printing_order = PrintingOrder.new
     @printing_portfolios = Portfolio.printing.active.with_attached_main_picture
@@ -17,6 +19,12 @@ class PrintingOrdersController < ApplicationController
     else
       render :index
     end
+  end
+
+  def printing_in_your_city
+    detect_city(params[:city])
+
+    @printing_order = PrintingOrder.new
   end
 
   private

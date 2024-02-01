@@ -222,6 +222,7 @@ GEM
     fugit (1.8.1)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
+    fuzzy_match (2.1.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     grape (1.7.0)
@@ -614,6 +615,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   foreman
+  fuzzy_match
   grape
   grape-entity
   grape_on_rails_routes
