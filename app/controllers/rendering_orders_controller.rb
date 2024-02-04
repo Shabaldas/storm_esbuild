@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class RenderingOrdersController < ApplicationController
+  include CitiesDetector
+
   def index
     @rendering_order = RenderingOrder.new
     @rendering_portfolios = Portfolio.rendering.active
@@ -22,6 +24,12 @@ class RenderingOrdersController < ApplicationController
   def lazy
     @rendering_order = RenderingOrder.new
     @rendering_portfolios = Portfolio.rendering.active.active.with_attached_main_picture
+  end
+
+  def rendering_in_your_city
+    detect_city(params[:city])
+
+    @rendering_order = RenderingOrder.new
   end
 
   private
