@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -71,14 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.index ["token"], name: "index_carts_on_token", unique: true
   end
 
-  create_table "cities", force: :cascade do |t|
-    t.string "english_name", null: false
-    t.string "ukrainian_name", null: false
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "costs", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -88,6 +80,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_costs_on_user_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "english_name", null: false
+    t.string "ukrainian_name", null: false
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "feedback_calls", force: :cascade do |t|
