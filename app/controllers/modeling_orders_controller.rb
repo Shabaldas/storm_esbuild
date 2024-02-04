@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ModelingOrdersController < ApplicationController
+  include CitiesDetector
+
   def index
     @modeling_order = ModelingOrder.new
     @modeling_portfolios = Portfolio.modeling.active
@@ -22,6 +24,12 @@ class ModelingOrdersController < ApplicationController
     else
       render :index
     end
+  end
+
+  def modeling_in_your_city
+    detect_city(params[:city])
+
+    @modeling_order = ModelingOrder.new
   end
 
   private

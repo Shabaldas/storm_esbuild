@@ -77,3 +77,4 @@ en:
       dropzone_message: "Click to upload a files or drag and drop up to 150 MB. Max file size for one attachment up to 25 MB."
     custom_buttons:
       order_3d_print: "Order 3D printing"
+      order_modeling: "Order 3D modeling"
