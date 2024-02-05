@@ -3,10 +3,11 @@
 class RenderingOrdersController < ApplicationController
   include CitiesDetector
 
-  def index
-    @rendering_order = RenderingOrder.new
-    @rendering_portfolios = Portfolio.rendering.active
-  end
+  before_action :define_static_variables, only: [:index, :lazy, :rendering_in_your_city]
+
+  def index; end
+
+  def lazy; end
 
   def create
     @rendering_order = RenderingOrder.new(rendering_order_params)
@@ -21,15 +22,13 @@ class RenderingOrdersController < ApplicationController
     end
   end
 
-  def lazy
-    @rendering_order = RenderingOrder.new
-    @rendering_portfolios = Portfolio.rendering.active.active.with_attached_main_picture
-  end
-
   def rendering_in_your_city
     detect_city(params[:city])
+  end
 
+  def define_static_variables
     @rendering_order = RenderingOrder.new
+    @rendering_portfolios = Portfolio.rendering.active.with_attached_main_picture
   end
 
   private
