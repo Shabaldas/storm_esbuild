@@ -80,3 +80,4 @@ uk:
     custom_buttons:
       order_3d_print: "Замовити 3D друк"
       order_modeling: "Замовити 3D моделювання"
+      order_rendering: "Замовити 3D рендеринг"

@@ -3,15 +3,11 @@
 class ModelingOrdersController < ApplicationController
   include CitiesDetector
 
-  def index
-    @modeling_order = ModelingOrder.new
-    @modeling_portfolios = Portfolio.modeling.active
-  end
+  before_action :define_static_variables, only: [:index, :lazy_index, :modeling_in_your_city]
 
-  def lazy_index
-    @modeling_order = ModelingOrder.new
-    @modeling_portfolios = Portfolio.modeling.active.with_attached_main_picture
-  end
+  def index; end
+
+  def lazy_index; end
 
   def create
     @modeling_order = ModelingOrder.new(modeling_order_params)
@@ -28,8 +24,11 @@ class ModelingOrdersController < ApplicationController
 
   def modeling_in_your_city
     detect_city(params[:city])
+  end
 
+  def define_static_variables
     @modeling_order = ModelingOrder.new
+    @modeling_portfolios = Portfolio.modeling.active.with_attached_main_picture
   end
 
   private

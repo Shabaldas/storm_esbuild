@@ -78,3 +78,4 @@ en:
     custom_buttons:
       order_3d_print: "Order 3D printing"
       order_modeling: "Order 3D modeling"
+      order_rendering: "Order 3D rendering"
