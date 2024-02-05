@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get 'rendering/lazy', to: 'rendering_orders#lazy'
   get 'modeling', to: 'modeling_orders#index'
   get 'modeling/lazy_index', to: 'modeling_orders#lazy_index'
+  get '3d_modeling/:city', to: 'modeling_orders#modeling_in_your_city', as: 'modeling_city'
   get 'calculator', to: 'print_models#new', as: :calculator
   get 'checkout', to: 'orders#checkout', as: :checkout
 
