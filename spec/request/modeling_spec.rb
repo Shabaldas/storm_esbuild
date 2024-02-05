@@ -125,4 +125,15 @@ describe '/modeling_orders', type: :request do
       end
     end
   end
+
+  describe 'GET /modeling_orders/modeling_in_your_city' do
+    let!(:city) { create(:city, english_name: 'Lviv', ukrainian_name: 'Львів') }
+
+    it 'redirect to printing page with city name' do
+      get printing_city_path('львів')
+
+      expect(response).to be_successful
+      expect(response.body).to include(city.english_name)
+    end
+  end
 end
