@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   }
 
   get 'static_pages/home_lazy', to: 'static_pages#home_lazy'
+  get '/sitemap.xml', to: 'static_pages#sitemap'
   get 'printing', to: 'printing_orders#index'
   get '3d_printing_city/:city', to: 'printing_orders#printing_in_your_city', as: 'printing_city'
   get 'rendering', to: 'rendering_orders#index'

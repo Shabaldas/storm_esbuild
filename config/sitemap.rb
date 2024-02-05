@@ -7,27 +7,27 @@ SitemapGenerator::Sitemap.create do
   add '/modeling', changefreq: 'weekly', priority: 0.9
 
   City.find_each do |city|
-    add printing_city_path(city.english_name.downcase), lastmod: city.updated_at
+    add printing_city_path(city.english_name.downcase), lastmod: city.updated_at, priority: 0.8
   end
 
   City.find_each do |city|
-    add rendering_city_path(city.english_name.downcase), lastmod: city.updated_at
+    add rendering_city_path(city.english_name.downcase), lastmod: city.updated_at, priority: 0.7
   end
 
   City.find_each do |city|
-    add modeling_city_path(city.english_name.downcase), lastmod: city.updated_at
+    add modeling_city_path(city.english_name.downcase), lastmod: city.updated_at, priority: 0.7
   end
 
   City.find_each do |city|
-    add printing_city_path(city.ukrainian_name.downcase), lastmod: city.updated_at
+    add printing_city_path(city.ukrainian_name.downcase), lastmod: city.updated_at, priority: 0.8
   end
 
   City.find_each do |city|
-    add rendering_city_path(city.ukrainian_name.downcase), lastmod: city.updated_at
+    add rendering_city_path(city.ukrainian_name.downcase), lastmod: city.updated_at, priority: 0.7
   end
 
   City.find_each do |city|
-    add modeling_city_path(city.ukrainian_name.downcase), lastmod: city.updated_at
+    add modeling_city_path(city.ukrainian_name.downcase), lastmod: city.updated_at, priority: 0.7
   end
   
   # Put links creation logic here.
