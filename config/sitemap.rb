@@ -8,30 +8,13 @@ SitemapGenerator::Sitemap.create do
 
   City.find_each do |city|
     add printing_city_path(city.english_name.downcase), lastmod: city.updated_at, priority: 0.8
-  end
-
-  City.find_each do |city|
-    add rendering_city_path(city.english_name.downcase), lastmod: city.updated_at, priority: 0.7
-  end
-
-  City.find_each do |city|
-    add modeling_city_path(city.english_name.downcase), lastmod: city.updated_at, priority: 0.7
-  end
-
-  City.find_each do |city|
     add printing_city_path(city.ukrainian_name.downcase), lastmod: city.updated_at, priority: 0.8
-  end
-
-  City.find_each do |city|
+    add rendering_city_path(city.english_name.downcase), lastmod: city.updated_at, priority: 0.7
     add rendering_city_path(city.ukrainian_name.downcase), lastmod: city.updated_at, priority: 0.7
-  end
-
-  City.find_each do |city|
+    add modeling_city_path(city.english_name.downcase), lastmod: city.updated_at, priority: 0.7
     add modeling_city_path(city.ukrainian_name.downcase), lastmod: city.updated_at, priority: 0.7
   end
-  
-  # Put links creation logic here.
-  #
+
   # The root path '/' and sitemap index file are added automatically for you.
   # Links are added to the Sitemap in the order they are specified.
   #
