@@ -7,9 +7,13 @@
         </p>
         <h1 class="text-3xl lg:text-heading-1 text-dark-blue capitalize">
           <% if I18n.locale == :en %>
-            <%= t("static_pages.home.3dmodeling") %> <%= @city.english_name %>
+            <%= t("static_pages.home.3dmodeling") %>
+            <br/>
+            <%= @city.english_name %>
           <% else %>
-            <%= t("static_pages.home.3dmodeling") %> <%= @city.ukrainian_name %>
+            <%= t("static_pages.home.3dmodeling") %>
+            <br/>
+            <%= @city.ukrainian_name %>
           <% end %>
         </h1>
         <p class="w-full md:max-w-[472px] mt-6 md:mt-10 text-dark-blue">
