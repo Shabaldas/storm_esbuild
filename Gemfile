@@ -44,6 +44,7 @@ gem 'sidekiq', '~> 7.0.0'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'simple_form'
+gem 'sitemap_generator'
 gem 'sentry-ruby'
 gem 'sentry-rails'
 gem "sentry-sidekiq"

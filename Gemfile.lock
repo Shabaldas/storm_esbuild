@@ -523,6 +523,8 @@ GEM
       rack (~> 2.2, >= 2.2.4)
       rack-protection (= 3.0.6)
       tilt (~> 2.0)
+    sitemap_generator (6.3.0)
+      builder (~> 3.0)
     spring (4.1.1)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -656,6 +658,7 @@ DEPENDENCIES
   sidekiq-cron
   simple_form
   simplecov
+  sitemap_generator
   spring
   sprockets-rails
   stimulus-rails
