@@ -796,6 +796,11 @@ ssr-window@^4.0.0, ssr-window@^4.0.2:
   resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.2.tgz#dc6b3ee37be86ac0e3ddc60030f7b3bc9b8553be"
   integrity sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==
 
+stimulus-animated-number@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/stimulus-animated-number/-/stimulus-animated-number-4.1.0.tgz#2966c541c265ba483e69c64c0faf2702fada8f61"
+  integrity sha512-lq0o4nrD6EgY2bXxMKQ6WgdGKZpOdyAILsdIUEfFklCI8VenpxrP/PxOiXfS5vl+8KoJNtFweVv2o4TTpFG21A==
+
 stimulus-carousel@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/stimulus-carousel/-/stimulus-carousel-5.0.1.tgz#87306f7619ea64a8c36258f6f90f2989089c848d"

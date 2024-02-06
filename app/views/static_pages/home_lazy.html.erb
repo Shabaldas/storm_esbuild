@@ -33,10 +33,15 @@
         <div class="w-16 h-16 lg:w-24 lg:h-24 absolute top-5 right-5 lg:right-1">
           <%= image_tag("icons_svg/3d_modeling_icon.svg") %>
         </div>
-        <div class="absolute bottom-4 left-6">
-          <span class="text-sm text-gray-100 uppercase">
-            <%= t("static_pages.home.projects") %>
-          </span>
+        <div class="absolute bottom-4 left-6 text-gray-100 uppercase">
+          <span class="text-sm text-gray-100 uppercase" 
+            data-controller="animated-number"
+            data-animated-number-lazy-threshold-value="0.4"
+            data-animated-number-start-value="50"
+            data-animated-number-end-value="500"
+            data-animated-number-duration-value="3000"
+          >
+          </span><%= t("static_pages.home.plus_projects") %>
           <h4 class="mt-[8px] text-[22px] text-dark-blue font-medium leading-[22px] normal-case">
             <%= t("static_pages.home.modeling") %>
           </h4>
@@ -48,10 +53,15 @@
         <div class="w-16 h-16 lg:w-24 lg:h-24 absolute top-5 right-1 lg:-right-7 ">
           <%= image_tag("icons_svg/3d_printing_icon.svg") %>
         </div>
-        <div class="absolute bottom-4 left-6">
-          <span class="text-sm text-gray-100 uppercase">
-            <%= t("static_pages.home.print_projects") %>
-          </span>
+        <div class="absolute bottom-4 left-6 text-gray-100 uppercase">
+          <span class="text-sm text-gray-100 uppercase" 
+            data-controller="animated-number"
+            data-animated-number-lazy-threshold-value="0.4"
+            data-animated-number-start-value="100"
+            data-animated-number-end-value="800"
+            data-animated-number-duration-value="3000"
+          >
+          </span><%= t("static_pages.home.plus_projects") %>
           <h4 class="mt-[8px] text-[22px] text-dark-blue font-medium leading-[22px] normal-case">
             <%= t("static_pages.home.3dprinting") %>
           </h4>
@@ -63,10 +73,15 @@
         <div class="w-16 h-16 lg:w-24 lg:h-24 absolute top-8 right-5 lg:right-1 ">
           <%= image_tag("icons_svg/3d_rendering_icon.svg") %>
         </div>
-        <div class="absolute bottom-4 left-6">
-          <span class="text-sm text-gray-100 uppercase">
-            <%= t("static_pages.home.render_projects") %>
-          </span>
+        <div class="absolute bottom-4 left-6 text-gray-100 uppercase">
+          <span class="text-sm text-gray-100 uppercase" 
+            data-controller="animated-number"
+            data-animated-number-lazy-threshold-value="0.4"
+            data-animated-number-start-value="0"
+            data-animated-number-end-value="50"
+            data-animated-number-duration-value="3000"
+          >
+          </span><%= t("static_pages.home.plus_projects") %>
           <h4 class="mt-[8px] text-[22px] text-dark-blue font-medium leading-[22px] normal-case">
             <%= t("static_pages.home.rendering") %>
           </h4>
