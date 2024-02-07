@@ -4,7 +4,7 @@ module GoogleAnalyticsHelper
   def google_analytics_head_script
     return unless Rails.env.production?
 
-    javascript_tag nonce: true do
+    @google_analytics_head_script ||= javascript_tag nonce: true do
       <<-JAVASCRIPT.html_safe
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -18,7 +18,7 @@ module GoogleAnalyticsHelper
   def google_analytics_tag_head_script
     return unless Rails.env.production?
 
-    javascript_tag nonce: true do
+    @google_analytics_tag_head_script ||= javascript_tag nonce: true do
       <<-JAVASCRIPT.html_safe
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
