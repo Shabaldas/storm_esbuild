@@ -6,8 +6,8 @@
 
     <div class="flex w-1/2 justify-between h-full">
       <div class="w-24">
-        <%= link_to root_path do %>
-          <%= image_tag("icons_svg/logo.svg", class: "mt-3.5") %>
+        <%= link_to Rails.env.development? ? root_path : 'https://3dstorm.com.ua/' do %>
+          <%= image_tag("icons_svg/logo.svg", class: "mt-3.5", alt: "3d-storm-logo") %>
         <% end %>
       </div>
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
