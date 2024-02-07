@@ -11,7 +11,7 @@
       </div>
       <div class="w-full lg:w-4/5 mx-auto lg:pr-12">
         <picture>
-          <%= image_tag("home_img/3d_print.svg") %>
+          <%= image_tag("home_img/3d_print.svg", alt: "3d-printer-image") %>
         </picture>
       </div>
     </div>
@@ -20,7 +20,7 @@
         <%= t("static_pages.home.scroll_down") %>
       </h4>
       <div class="absolute w-[12px] bottom-4">
-        <%= image_tag("home_img/arrow.png") %>
+        <%= image_tag("home_img/arrow.png", alt: "arrow") %>
       </div>
     </div>
     <div class="w-full lg:w-2/4 mt-[72px] mb-[72px] md:mb-[136px] mx-auto text-gray-100 text-center">
@@ -33,7 +33,7 @@
     <%= link_to modeling_path, class:"w-full lg:w-1/3 h-32 md:h-48 lg:h-64 block rounded-3xl bg-white relative shadow-gray-300 hover:outline hover:outline-yellow-500 transition duration-300 ease-in-out" do %>
       <div>
         <div class="w-16 h-16 lg:w-24 lg:h-24 absolute top-5 right-5 lg:right-1">
-          <%= image_tag("icons_svg/3d_modeling_icon.svg") %>
+          <%= image_tag("icons_svg/3d_modeling_icon.svg", alt: "3d-modeling-icon") %>
         </div>
         <div class="absolute bottom-4 left-6 text-gray-100 uppercase">
           <span class="text-sm text-gray-100 uppercase" 
@@ -53,7 +53,7 @@
     <%= link_to printing_path, class:"w-full lg:w-1/3 h-32 md:h-48 lg:h-64 block rounded-3xl bg-white relative shadow-gray-300 hover:outline hover:outline-yellow-500 transition duration-300 ease-in-out" do %>
       <div>
         <div class="w-16 h-16 lg:w-24 lg:h-24 absolute top-5 right-1 lg:-right-7 ">
-          <%= image_tag("icons_svg/3d_printing_icon.svg") %>
+          <%= image_tag("icons_svg/3d_printing_icon.svg", alt: "3d-printing-icon") %>
         </div>
         <div class="absolute bottom-4 left-6 text-gray-100 uppercase">
           <span class="text-sm text-gray-100 uppercase" 
@@ -73,7 +73,7 @@
     <%= link_to rendering_path, class:"w-full lg:w-1/3 h-32 md:h-48 lg:h-64 block rounded-3xl bg-white relative shadow-gray-300 hover:outline hover:outline-yellow-500 transition duration-300 ease-in-out" do %>
       <div>
         <div class="w-16 h-16 lg:w-24 lg:h-24 absolute top-8 right-5 lg:right-1 ">
-          <%= image_tag("icons_svg/3d_rendering_icon.svg") %>
+          <%= image_tag("icons_svg/3d_rendering_icon.svg", alt: "3d-rendering-icon") %>
         </div>
         <div class="absolute bottom-4 left-6 text-gray-100 uppercase">
           <span class="text-sm text-gray-100 uppercase" 
@@ -107,19 +107,19 @@
         </p>
         <div class="flex flex-col items-start justify-start">
           <div class="w-1/6 flex items-center mt-3">
-            <%= image_tag("home_img/low.png") %>
+            <%= image_tag("home_img/low.png", alt: "low-icon") %>
             <h4 class="ml-[18px] text-zinc text-lg md:text-2xl normal-case">
               <%= t("static_pages.home.low") %>
             </h4>
           </div>
           <div class="w-1/6 flex items-center mt-8">
-            <%= image_tag("home_img/middle.png") %>
+            <%= image_tag("home_img/middle.png", alt: "middle-icon") %>
             <h4 class="ml-[18px] text-zinc text-lg md:text-2xl normal-case">
               <%= t("static_pages.home.medium") %>
             </h4>
           </div>
           <div class="w-1/6 flex items-center mt-8">
-            <%= image_tag("home_img/high.png") %>
+            <%= image_tag("home_img/high.png", alt: "high-icon") %>
             <h4 class="ml-[18px] text-zinc text-lg md:text-2xl normal-case">
               <%= t("static_pages.home.high") %>
             </h4>
@@ -127,7 +127,7 @@
         </div>
       </div>
       <div class="absolute bottom-0 md:-bottom-12 -right-24 md:right-0">
-        <%= image_tag("home_img/conveyor.png") %>
+        <%= image_tag("home_img/conveyor.png", alt: "conveyor-icon") %>
       </div>
     </div>
   <% end %>
@@ -144,43 +144,43 @@
     <div class="carousel-grid">
       <ul class="carousel-list">
         <li class="carousel-item">
-          <%= link_to "https://stoliari.com", target: "_blank" do %>
+          <%= link_to "https://stoliari.com", target: :blank do %>
             <%= image_tag("partners/stoliari.svg", alt: "Stoliari") %>
           <% end %>
         </li>
 
         <li class="carousel-item">
-          <%= link_to "https://www.instagram.com/3d_lab16", target: "_blank" do %>
+          <%= link_to "https://www.instagram.com/3d_lab16", target: :blank do %>
             <%= image_tag("partners/3dlab.svg", alt: "3dlab") %>
           <% end %>
         </li>
 
         <li class="carousel-item">
-          <%= link_to "https://www.blackmark.ua/ua/", target: "_blank" do %>
+          <%= link_to "https://www.blackmark.ua/ua/", target: :blank do %>
             <%= image_tag("partners/black_mark.svg", alt: "Black Mark") %>
           <% end %>
         </li>
 
         <li class="carousel-item">
-          <%= link_to "https://www.rc.if.ua", target: "_blank" do %>
+          <%= link_to "https://www.rc.if.ua", target: :blank do %>
             <%= image_tag("partners/rc.svg", alt: "RC") %>
           <% end %>
         </li>
 
         <li class="carousel-item">
-          <%= link_to "https://www.instagram.com/sebco.space", target: "_blank" do %>
+          <%= link_to "https://www.instagram.com/sebco.space", target: :blank do %>
             <%= image_tag("partners/sebco.svg", alt: "Sebco") %>
           <% end %>
         </li>
 
         <li class="carousel-item">
-          <%= link_to " https://www.pps.com.ua", target: "_blank" do %>
+          <%= link_to " https://www.pps.com.ua", target: :blank do %>
             <%= image_tag("partners/pps.svg", alt: "PPC") %>
           <% end %>
         </li>
 
         <li class="carousel-item">
-          <%= link_to "https://sygnis.pl", target: "_blank" do %>
+          <%= link_to "https://sygnis.pl", target: :blank do %>
             <%= image_tag("partners/sygnis.svg", alt: "Sygnis") %>
           <% end %>
         </li>
@@ -190,12 +190,12 @@
         </li>
 
         <li class="carousel-item">
-          <%= link_to "https://stoliari.com", target: "_blank" do %>
+          <%= link_to "https://stoliari.com", target: :blank do %>
             <%= image_tag("partners/stoliari.svg", alt: "Stoliari") %>
           <% end %>
         </li>
         <li class="carousel-item">
-          <%= link_to "https://www.instagram.com/3d_lab16", target: "_blank" do %>
+          <%= link_to "https://www.instagram.com/3d_lab16", target: :blank do %>
             <%= image_tag("partners/3dlab.svg", alt: "3dlab") %>
           <% end %>
         </li>
@@ -205,25 +205,25 @@
         </li>
 
         <li class="carousel-item">
-          <%= link_to "https://www.rc.if.ua", target: "_blank" do %>
+          <%= link_to "https://www.rc.if.ua", target: :blank do %>
             <%= image_tag("partners/rc.svg", alt: "RC") %>
           <% end %>
         </li>
 
         <li class="carousel-item">
-          <%= link_to "https://www.instagram.com/sebco.space", target: "_blank" do %>
+          <%= link_to "https://www.instagram.com/sebco.space", target: :blank do %>
             <%= image_tag("partners/sebco.svg", alt: "Sebco") %>
           <% end %>
         </li>
 
         <li class="carousel-item">
-          <%= link_to " https://www.pps.com.ua", target: "_blank" do %>
+          <%= link_to " https://www.pps.com.ua", target: :blank do %>
             <%= image_tag("partners/pps.svg", alt: "PPC") %>
           <% end %>
         </li>
 
         <li class="carousel-item">
-          <%= link_to "https://sygnis.pl", target: "_blank" do %>
+          <%= link_to "https://sygnis.pl", target: :blank do %>
             <%= image_tag("partners/sygnis.svg", alt: "Sygnis") %>
           <% end %>
         </li>
