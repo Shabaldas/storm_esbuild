@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= turbo_refreshes_with method: :replace, scroll: :preserve %>
 
     <%= google_analytics_head_script %>
     <%#= google_analytics_tag_head_script %>
