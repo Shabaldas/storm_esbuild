@@ -52,7 +52,7 @@ gem "sentry-delayed_job"
 gem "sentry-resque"
 gem "sentry-opentelemetry"
 gem "telegram-bot-ruby"
-gem 'turbo-rails'
+gem 'turbo-rails', '~> 2.0.0'
 
 gem 'ed25519', '>= 1.2', '< 2.0'
 gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
