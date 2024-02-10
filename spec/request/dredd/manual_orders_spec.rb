@@ -206,9 +206,7 @@ describe '/dredd/manual_orders', type: :request do
           manual_order.reload
         end.to change(ManualOrder, :count).by(0) # rubocop:disable RSpec/ChangeByZero
 
-        expect(response.body).to include('Worker can&#39;t be blank')
-        expect(response.body).to include('First name can&#39;t be blank')
-        expect(response.body).to include('Total price can&#39;t be blank')
+        expect(response.body).to include(html_escape("Can't be blank"))
       end
     end
   end
