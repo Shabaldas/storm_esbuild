@@ -158,14 +158,15 @@ uk:
       tags: "Теги"
       save: "Зберегти"
     users:
-      admins: "Адміністратори"
+      admins: "АДІНІСТРАТОРИ"
       id: "ІД"
       full_name: "ПОВНЕ ІМ'Я"
       phone: "ТЕЛЕФОН"
       email: "ЕЛЕКТРОННА ПОШТА"
-      customers: "Клієнти"
-      workers: "Працівники"
+      customers: "КЛІЄНТИ"
+      workers: "ПРАЦІВНИКИ"
       created_at: "СТВОРЕНО О"
+      nickname: "ПСЕВДНІМ"
     header:
       admin_dashboard: "Панель адміністратора"
       products: "Продукти"
@@ -180,6 +181,8 @@ uk:
       printers: "Принтери"
       portfolios: "Портфоліо"
       accountings: "Бухгалтерія"
+      administer_pages: "Адміністрування сторінок"
+      workers: "Працівники"
     printers:
       actions: "Дії"
       printer_code: "Код принтера"

@@ -166,6 +166,7 @@ en:
       customers: CUSTOMERS
       workers: WORKERS
       created_at: "CREATED AT"
+      nickname: "NICKNAME"
     header:
       admin_dashboard: "Admin Dashboard"
       products: "Products"
@@ -180,6 +181,8 @@ en:
       printers: "Printers"
       portfolios: "Portfolios"
       accountings: "Accountings"
+      administer_pages: "Administer Pages"
+      workers: "Workers"
     printers:
       actions: "ACTIONS"
       printer_code: "Printer code"
@@ -216,3 +219,5 @@ en:
       - October
       - November
       - December
+    workers:
+      workers: "Workers"
