@@ -221,3 +221,6 @@ en:
       - December
     workers:
       workers: "Workers"
+      first_name: "First Name"
+      last_name: "Last Name"
+      nickname: "Nickname"

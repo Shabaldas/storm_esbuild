@@ -1,21 +1,23 @@
-<br/>
-<br/>
-<br/>
-<h1><%= t("dredd.workers.workers") %></h1>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.users.id") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.users.full_name") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.users.nickname") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.users.created_at") %></th>
-          <%= turbo_frame_tag "workers" do %>
-            <%= render @workers %>
-          <% end %>
-
-  <%= turbo_frame_tag Worker.new %>
-
-  <div class="">
-    <%= link_to "New worker",
-        new_dredd_worker_path,
-        class: "",
-        data: { turbo_frame: dom_id(Worker.new) } %>
+<div class="container mx-auto mt-16">
+  <h1><%= t("dredd.workers.workers") %></h1>
+  <div class="min-w-full bg-white border border-gray-300">
+    <div class="py-2 px-4 border-b"><%= t("dredd.users.id") %>
+      <%= t("dredd.users.full_name") %>
+      <%= t("dredd.users.nickname") %>
+      <%= t("dredd.users.created_at") %>
+    </div>
   </div>
-  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+    <%= turbo_frame_tag "workers" do %>
+      <%= render @workers %>
+    <% end %>
+
+    <%= turbo_frame_tag Worker.new %>
+
+    <div class="">
+      <%= link_to "New worker",
+          new_dredd_worker_path,
+          class: "",
+          data: { turbo_frame: dom_id(Worker.new) } %>
+    </div>
+    <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+</div>

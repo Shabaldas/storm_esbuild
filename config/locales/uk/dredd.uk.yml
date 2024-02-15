@@ -219,3 +219,8 @@ uk:
       - Жовтень
       - Листопад
       - Грудень
+    workers:
+      workers: "Робітники"
+      first_name: "Ім'я"
+      last_name: "Прізвище"
+      nickname: "Псевдонім"
