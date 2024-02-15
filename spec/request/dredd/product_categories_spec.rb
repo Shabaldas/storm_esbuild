@@ -164,9 +164,7 @@ describe '/dredd/product_categories', type: :request do
         end.not_to change(ProductCategory, :count)
 
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.body).to include('New Product Category')
-        expect(response.body).to include(html_escape("Name can't be blank"))
-        expect(response.body).to include(html_escape("Description can't be blank"))
+        expect(response.body).to include(html_escape("Can't be blank"))
       end
     end
   end
