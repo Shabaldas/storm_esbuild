@@ -1,18 +1,40 @@
-<%= turbo_frame_tag worker do  %>
-  <div class="grid grid-cols-4 text-center">
-    <div class="py-2 px-4 border-b"><%= worker.id %></div>
-    <div class="py-2 px-4 border-b"><%= worker&.full_name %></div>
-    <div class="py-2 px-4 border-b"><%= worker.nickname %></div>
-    <div class="py-2 px-4 border-b"><%= l(worker.created_at, format: :long)  %></div>
-    <div class="py-2 px-4 border-b"><%= button_to "Delete",
-                                        dredd_worker_path(worker),
-                                        method: :delete,
-                                        data: { turbo_confirm: 'Are you sure?' },
-                                        remote: true,
-                                        class: "button w-full md:max-w-[212px] py-2 px-4 border-b" %></div>
-    <div class="py-2 px-4 border-b"><%= link_to "Edit",
-                                        edit_dredd_worker_path(worker),
-                                        class: "button w-full md:max-w-[212px] py-2 px-4 border-b" %>
-                                        <br/></div>
+<%= turbo_frame_tag worker do %>
+  <div class="flex flex-row items-center justify-between border-b border-b-1 border-solid border-gray-500">
+    <p class="w-1/6 px-4 py-3">
+      <%= worker.id %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= worker&.first_name %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= worker&.last_name %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= worker.nickname %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= l(worker.created_at, format: :long) %>
+    </p>
+      <% if action_name !="show" %>
+        <div class="w-1/6 px-4 py-3">
+          <%= button_to dredd_worker_path(worker), method: :delete, data: { turbo_confirm: t("devise.registrations.edit.sure") }, remote:
+            true, form_class: "inline-block" do %>
+              <svg class="inline-block w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                </path>
+              </svg>
+            <% end %>
+              <%= link_to edit_dredd_worker_path(worker) do %>
+                <svg class="inline-block w-6 h-6 ml-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                  </path>
+                </svg>
+              <% end %>
+        </div>
+      <% end %>
   </div>
 <% end %>

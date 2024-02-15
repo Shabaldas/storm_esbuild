@@ -19,10 +19,14 @@ module Dredd
       @worker.user_id = current_user.id if worker_params[:user_id].blank?
 
       if @worker.save
-        respond_to do |format|
-          format.html { redirect_to dredd_workers_path, notice: 'Worker was successfully created.' }
-          format.turbo_stream
-        end
+        flash.now[:notice] = 'Worker was successfully created.'
+        render turbo_stream: [
+          turbo_stream.prepend('workers', @worker),
+          turbo_stream.replace('form_worker',
+                               partial: 'form',
+                               locals: { worker: Worker.new }),
+          turbo_stream.update('notice', partial: 'layouts/flash')
+        ]
       else
         render :new, status: :unprocessable_entity
       end
@@ -30,7 +34,11 @@ module Dredd
 
     def update
       if @worker.update(worker_params)
-        redirect_to dredd_workers_path, notice: 'Worker was successfully updated.'
+        flash.now[:notice] = 'Worker was successfully updated.'
+        render turbo_stream: [
+          turbo_stream.replace(@worker, @worker),
+          turbo_stream.update('notice', partial: 'layouts/flash')
+        ]
       else
         render :edit, status: :unprocessable_entity
       end
@@ -38,10 +46,11 @@ module Dredd
 
     def destroy
       @worker.destroy
-      respond_to do |format|
-        format.html { redirect_to dredd_workers_path, notice: 'Worker was successfully destroyed.' }
-        format.turbo_stream
-      end
+      flash.now[:notice] = 'Worker was successfully destroyed.'
+      render turbo_stream: [
+        turbo_stream.remove(@worker),
+        turbo_stream.update('notice', partial: 'layouts/flash')
+      ]
     end
 
     private

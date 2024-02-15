@@ -167,6 +167,7 @@ uk:
       workers: "ПРАЦІВНИКИ"
       created_at: "СТВОРЕНО О"
       nickname: "ПСЕВДНІМ"
+      actions: "ДІЇ"
     header:
       admin_dashboard: "Панель адміністратора"
       products: "Продукти"

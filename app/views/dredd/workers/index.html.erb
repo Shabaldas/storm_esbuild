@@ -1,26 +1,40 @@
-<div class="container mx-auto mt-16">
-  <h1><%= t("dredd.workers.workers") %></h1>
-  <div class="min-w-full bg-white border border-gray-300">
-    <div class="grid grid-cols-6 text-center font-bold">
-      <div class="py-2 px-4 border-b"><%= t("dredd.users.id") %></div>
-      <div class="py-2 px-4 border-b"><%= t("dredd.users.full_name") %></div>
-      <div class="py-2 px-4 border-b"><%= t("dredd.users.nickname") %></div>
-      <div class="py-2 px-4 border-b"><%= t("dredd.users.created_at") %></div>
-      <div class="py-2 px-4 border-b"><%= t("dredd.users.delete") %></div>
-      <div class="py-2 px-4 border-b"><%= t("dredd.users.edit") %></div>
-    </div>
-    <%= turbo_frame_tag "workers" do %>
-    <%= render @workers %>
-    <% end %>
+<div class="w-full max-w-screen-3xl mx-auto px-7 md:px-16 lg:px-24 mt-20">
+  <div id="notice">
+    <%= render partial: "layouts/flash" %>
   </div>
-
-    <%= turbo_frame_tag Worker.new %>
-
-    <div class="">
-      <%= link_to "New worker",
-          new_dredd_worker_path,
-          class: "button w-full md:max-w-[212px]",
-          data: { turbo_frame: dom_id(Worker.new) } %>
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">
+      <%= t("dredd.workers.workers") %>
+    </h1>
+  </div>
+  <div class="mt-4 overflow-x-auto">
+    <div class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-1 border-solid rounded">
+      <%= pagy_nav(@pagy).html_safe if @pagy.pages> 1 %>
+        <div class="flex flex-row items-center justify-between text-xs text-gray-700 uppercase border-b-1 border-solid">
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.id") %>
+          </p>
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.first_name") %>
+          </p>
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.last_name") %>
+          </p>
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.nickname") %>
+          </p>
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.created_at") %>
+          </p>
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.actions") %>
+          </p>
+        </div>
+        <%= turbo_frame_tag "new-dredd-worker-form" , src: new_dredd_worker_path %>
+          <div id="workers" class="border-b">
+            <%= render @workers %>
+          </div>
     </div>
-    <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  </div>
+  <%= pagy_nav(@pagy).html_safe if @pagy.pages> 1 %>
 </div>

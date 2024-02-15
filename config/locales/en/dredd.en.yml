@@ -167,6 +167,7 @@ en:
       workers: WORKERS
       created_at: "CREATED AT"
       nickname: "NICKNAME"
+      actions: "ACTIONS"
     header:
       admin_dashboard: "Admin Dashboard"
       products: "Products"
