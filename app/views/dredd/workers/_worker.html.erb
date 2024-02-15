@@ -1,14 +1,18 @@
 <%= turbo_frame_tag worker do  %>
-  <%= worker.id %>
-  <%= worker&.full_name %>
-  <%= worker.nickname %>
-  <%= l(worker.created_at, format: :long)  %>
-  <%= button_to "Delete",
-  dredd_worker_path(worker),
-  method: :delete,
-  class: "btn btn--light" %>
-  <%= link_to "Edit",
-              edit_dredd_worker_path(worker),
-              class: "btn btn--light" %>
-              <br/>
+  <div class="grid grid-cols-4 text-center">
+    <div class="py-2 px-4 border-b"><%= worker.id %></div>
+    <div class="py-2 px-4 border-b"><%= worker&.full_name %></div>
+    <div class="py-2 px-4 border-b"><%= worker.nickname %></div>
+    <div class="py-2 px-4 border-b"><%= l(worker.created_at, format: :long)  %></div>
+    <div class="py-2 px-4 border-b"><%= button_to "Delete",
+                                        dredd_worker_path(worker),
+                                        method: :delete,
+                                        data: { turbo_confirm: 'Are you sure?' },
+                                        remote: true,
+                                        class: "button w-full md:max-w-[212px] py-2 px-4 border-b" %></div>
+    <div class="py-2 px-4 border-b"><%= link_to "Edit",
+                                        edit_dredd_worker_path(worker),
+                                        class: "button w-full md:max-w-[212px] py-2 px-4 border-b" %>
+                                        <br/></div>
+  </div>
 <% end %>

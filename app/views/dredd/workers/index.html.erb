@@ -1,22 +1,25 @@
 <div class="container mx-auto mt-16">
   <h1><%= t("dredd.workers.workers") %></h1>
   <div class="min-w-full bg-white border border-gray-300">
-    <div class="py-2 px-4 border-b"><%= t("dredd.users.id") %>
-      <%= t("dredd.users.full_name") %>
-      <%= t("dredd.users.nickname") %>
-      <%= t("dredd.users.created_at") %>
+    <div class="grid grid-cols-6 text-center font-bold">
+      <div class="py-2 px-4 border-b"><%= t("dredd.users.id") %></div>
+      <div class="py-2 px-4 border-b"><%= t("dredd.users.full_name") %></div>
+      <div class="py-2 px-4 border-b"><%= t("dredd.users.nickname") %></div>
+      <div class="py-2 px-4 border-b"><%= t("dredd.users.created_at") %></div>
+      <div class="py-2 px-4 border-b"><%= t("dredd.users.delete") %></div>
+      <div class="py-2 px-4 border-b"><%= t("dredd.users.edit") %></div>
     </div>
-  </div>
     <%= turbo_frame_tag "workers" do %>
-      <%= render @workers %>
+    <%= render @workers %>
     <% end %>
+  </div>
 
     <%= turbo_frame_tag Worker.new %>
 
     <div class="">
       <%= link_to "New worker",
           new_dredd_worker_path,
-          class: "",
+          class: "button w-full md:max-w-[212px]",
           data: { turbo_frame: dom_id(Worker.new) } %>
     </div>
     <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>

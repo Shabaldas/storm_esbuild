@@ -20,22 +20,5 @@
       </td>
     </tbody>
   </table>
-
-  <h1><%= t("dredd.users.workers") %></h1>
-  <table>
-    <thead class="text-gray-700 bg-gray-50">
-      <tr class="text-base">
-        <th class="px-6 py-3" scope="col"><%= t("dredd.users.id") %></th>
-        <th class="px-6 py-3" scope="col"><%= t("dredd.users.full_name") %></th>
-        <th class="px-6 py-3" scope="col"><%= t("dredd.users.nickname") %></th>
-        <th class="px-6 py-3" scope="col"><%= t("dredd.users.created_at") %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <td>
-        <%= render partial: "dredd/users/worker", collection: @workers %>
-      </td>
-    </tbody>
-  </table>
   <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
 </div>
