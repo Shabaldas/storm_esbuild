@@ -12,12 +12,15 @@ module Dredd
       @worker = Worker.new
     end
 
+    def edit; end
+
     def create
       @worker = Worker.new(worker_params)
+      @worker.user_id = current_user.id if worker_params[:user_id].blank?
 
       if @worker.save
         respond_to do |format|
-          format.html { redirect_to dredd_workers_path, notice: "Worker was successfully created." }
+          format.html { redirect_to dredd_workers_path, notice: 'Worker was successfully created.' }
           format.turbo_stream
         end
       else
@@ -25,11 +28,9 @@ module Dredd
       end
     end
 
-    def edit;end
-
     def update
       if @worker.update(worker_params)
-        redirect_to dredd_workers_path, notice: "Worker was successfully updated."
+        redirect_to dredd_workers_path, notice: 'Worker was successfully updated.'
       else
         render :edit, status: :unprocessable_entity
       end
@@ -38,7 +39,7 @@ module Dredd
     def destroy
       @worker.destroy
       respond_to do |format|
-        format.html { redirect_to dredd_workers_path, notice: "Worker was successfully destroyed." }
+        format.html { redirect_to dredd_workers_path, notice: 'Worker was successfully destroyed.' }
         format.turbo_stream
       end
     end

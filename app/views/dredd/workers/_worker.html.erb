@@ -1,16 +1,14 @@
 <%= turbo_frame_tag worker do  %>
-  <tr>
-    <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-      #<%= worker.id %>
-    </td>
-    <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-      <%= worker&.full_name %>
-    </td>
-    <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-      <%= worker.nickname %>
-    </td>
-    <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-      <%= l(worker.created_at, format: :long)  %>
-    </td>
-  </tr>
+  <%= worker.id %>
+  <%= worker&.full_name %>
+  <%= worker.nickname %>
+  <%= l(worker.created_at, format: :long)  %>
+  <%= button_to "Delete",
+  dredd_worker_path(worker),
+  method: :delete,
+  class: "btn btn--light" %>
+  <%= link_to "Edit",
+              edit_dredd_worker_path(worker),
+              class: "btn btn--light" %>
+              <br/>
 <% end %>
