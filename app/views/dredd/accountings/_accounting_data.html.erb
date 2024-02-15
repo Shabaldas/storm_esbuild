@@ -4,7 +4,8 @@
       <div class="list-item-title">
         <% accounting_date, earning, cost, reward = accounting %>
         <% month, year = accounting_date.split('/') %>
-        <%= link_to "#{I18n.t('dredd.month_names')[month.to_i]} #{year}", monthly_dredd_accountings_path(date: accounting_date), class: 'mr-4 text-black' %>
+        <% current_month =  month.to_i - 1 %>
+        <%= link_to "#{I18n.t('dredd.month_names')[current_month]} #{year}", monthly_dredd_accountings_path(date: accounting_date), class: 'mr-4 text-black' %>
       </div>
       <div class="list-item-status space-x-5">
         <%= link_to monthly_dredd_accountings_path(date: accounting_date), class: 'mr-4 text-black' do %>

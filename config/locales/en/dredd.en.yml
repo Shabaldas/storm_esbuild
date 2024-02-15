@@ -82,6 +82,7 @@ en:
       quality: "Quality"
       infill: "Infill"
       workflow: "Workflow"
+      individual_entrepreneur_accountings: "FOP accounting"
       workflow_status:
         nothing: "Nothing"
         modeling: "Modeling"

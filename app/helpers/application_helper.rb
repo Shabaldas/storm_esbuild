@@ -22,12 +22,12 @@ module ApplicationHelper
   def locale_switcher(locale, flag_path)
     if current_locale?(locale)
       content_tag(:div, class: 'flex w-6 h-6 p-0 justify-center items-center cursor-not-allowed') do
-        image_tag(flag_path, class: ('opacity-40' if current_locale?(locale)).to_s)
+        image_tag(flag_path, alt: "#{locale}-language-switch-icon", class: ('opacity-40' if current_locale?(locale)).to_s)
       end
     else
-      button_to locale_path(locale), method: :put, data: { turbo: false }, class: 'pt-1' do
+      button_to locale_path(locale), method: :put, data: { turbo: false }, class: 'pt-1', name: "#{locale}-language-switch" do
         content_tag(:div, class: 'flex w-6 h-6 p-0 justify-center items-center') do
-          image_tag(flag_path, class: ('opacity-40' if current_locale?(locale)).to_s)
+          image_tag(flag_path, alt: "#{locale}-language-switch-icon", class: ('opacity-40' if current_locale?(locale)).to_s)
         end
       end
     end

@@ -19,11 +19,11 @@ export default class extends Controller {
     this.material = null
     this.quality = null
     this.pricePerGram = {
-      pla: { 100: 5, 200: 4, 300: 3.5 },
-      abs: { 100: 5, 200: 4, 300: 3.5 },
-      pet: { 100: 4.5, 200: 4, 300: 3.5 },
-      nylon: { 100: 10, 200: 8, 300: 7 },
-      elastan: { 100: 10, 200: 8, 300: 7 }
+      pla: { 100: 7.5, 200: 6.5, 300: 5.5 },
+      abs: { 100: 7.5, 200: 6.5, 300: 5.5 },
+      pet: { 100: 7.5, 200: 6.5, 300: 5.5 },
+      nylon: { 100: 10, 200: 9, 300: 8 },
+      elastan: { 100: 14, 200: 12, 300: 10 }
     }
     this.containerWidth = this.uploadContainerTarget.clientWidth
     this.containerHeight = this.uploadContainerTarget.clientHeight

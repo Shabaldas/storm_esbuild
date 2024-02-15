@@ -1,0 +1,106 @@
+<div class="w-full max-w-screen-2xl mx-auto px-7 md:px-16 lg:px-24">
+  <div class="flex flex-col screen-height mt-[68px] md:flex-row items-center justify-center md:justify-between">
+    <div class="w-full md:w-3/6 order-2 md:order-1">
+      <div class="mt-12 text-center md:text-left md:mt-0">
+        <p class="text-base md:text-lg uppercase text-gray-100">
+          <%= t("static_pages.home.services") %>
+        </p>
+        <h1 class="text-3xl lg:text-heading-1 text-dark-blue">
+          <% if I18n.locale == :en %>
+            <%= t("static_pages.home.3dprinting") %>
+            <br/>
+            <%= @city.english_name %>
+          <% else %>
+            <%= t("static_pages.home.3dprinting") %>
+            <br/>
+            <%= @city.ukrainian_name %>
+          <% end %>
+        </h1>
+        <p class="w-full md:max-w-[472px] mt-6 md:mt-10 text-dark-blue">
+          <%= t("static_pages.printing.3dprinting_description") %>
+        </p>
+        <% if I18n.locale == :en %>
+          <p class="w-full md:max-w-[472px] mt-6 md:mt-10 text-dark-blue">
+            <%= t("static_pages.printing.3dprinting_description_in_your_city") %>
+            <%= @city.english_name %>.
+          </p>
+        <% else %>
+          <p class="w-full md:max-w-[472px] mt-6 md:mt-10 text-dark-blue">
+            <%= t("static_pages.printing.3dprinting_description_in_your_city") %>
+            <%= @city.ukrainian_name %>.
+          </p>
+        <% end %>
+      </div>
+      <a href="#scroll-to-order-print" data-controller="scroll-to" class="button w-full mx-auto md:mx-0 sm:w-56 mt-6">
+        <%= t("static_pages.custom_buttons.order_3d_print") %>
+      </a>
+    </div>
+
+    <div class="w-4/6 order-1 md:order-2 flex justify-end">
+      <%= image_tag("print_img/arm_printing.svg") %>
+    </div>
+  </div>
+
+  <div data-controller="tabs" data-tabs-active-tab="bg-dark-blue opacity-100 rounded-[24px] text-white" class="relative pt-6 pb-6 md:pb-8 px-6 md:px-8 my-20 md:mt-[108px] md:mb-[154px] rounded-[30px] overflow-hidden bg-yellow-300">
+    <p class="absolute bottom-3 right-6 md:right-8 text-sm text-dark-blue"></p>
+    <ul class="flex items-center">
+      <li class="tab py-1.5 px-5 border-2 border-solid border-dark-blue rounded-full cursor-pointer" data-tabs-target="tab" data-action="click->tabs#change">
+        <a class="bg-none no-underline font-base text-dark-blue font-medium" href="#">
+          FDM
+        </a>
+      </li>
+      <li class="tab py-1.5 px-5 border-2 border-solid border-dark-blue ml-2 rounded-full cursor-pointer" data-tabs-target="tab" data-action="click->tabs#change">
+        <a class="bg-none no-underline font-base text-dark-blue font-medium" href="#">
+          SLA
+        </a>
+      </li>
+      <li class="tab py-1.5 px-5 border-2 border-solid border-dark-blue ml-2 rounded-full cursor-pointer" data-tabs-target="tab" data-action="click->tabs#change">
+        <a class="bg-none no-underline font-base text-dark-blue font-medium" href="#">
+          DLP
+        </a>
+      </li>
+    </ul>
+    <hr class="h-[2px] mt-4 md:mt-[22px] mb-5 md:mb-6 border-0 bg-dark-blue"/>
+    <%= render partial: "static_pages/printing/fdm_tab" %>
+    <%= render partial: "static_pages/printing/sla_tab" %>
+    <%= render partial: "static_pages/printing/dlp_tab" %>
+  </div>
+  <% if @printing_portfolios.present? %>
+    <div class="mt-20 md:mt-14 mb-20 md:mb-[154px] overflow-hidden">
+      <div class="flex flex-col items-start sm:flex-row sm:items-end justify-between sm:mb-10 mb-6">
+        <div>
+          <p class="text-lg text-gray-100 font-medium uppercase">
+            <%= t("static_pages.home.3dprinting") %>
+            <%= t("static_pages.home.portfolio") %>
+          </p>
+          <h2 class="text-3xl lg:text-heading-1 text-dark-blue">
+            <%= t("static_pages.home.our_latest_projects") %>
+          </h2>
+        </div>
+        <div class="hidden sm:flex gap-4 ">
+          <div class="swiper-button-prev" style="color:#1f2937" tabindex="-1" aria-label="Previous sli" id="acc_btn" data-active="false" id="1" rols="swiper-wrapper-dec5216f065e46c3" aria-disabled="true">
+            <div class="w-6 h-6 sm:w-12 sm:h-12 flex justify-center items-center rounded-full">
+              <%= image_tag("icons_svg/arrow-thin-left.svg", class:"w-3 h-3 sm:w-6 sm:h-6 -ml-0.5 sm:-ml-1") %>
+            </div>
+          </div>
+          <div class="swiper-button-next" style="color:#1f2937" tabindex="0" aria-label="Next slide" id="acc_btn" data-active="false" id="1" rols="swiper-wrapper-dec5216f065e46c3" aria-disabled="false">
+            <div class="w-6 h-6 sm:w-12 sm:h-12 flex justify-center items-center rounded-full">
+              <%= image_tag("icons_svg/arrow-thin-right.svg", class:"w-3 h-3 sm:w-6 sm:h-6 ml-0.5 sm:ml-1") %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-controller="carousel" class="swiper-container">
+        <div class="swiper-wrapper" data-controller="lightbox">
+          <% @printing_portfolios.each do |portfolio| %>
+            <%= render partial: "shared/portfolio", locals: { portfolio: portfolio } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div id="scroll-to-order-print">
+    <%= render partial: "shared/upload_form", locals: { model: @printing_order, order_name: "printing", image_icon: "stl_and_obj" } %>
+    <%= turbo_frame_tag "printing-modal" %>
+  </div>
+</div>

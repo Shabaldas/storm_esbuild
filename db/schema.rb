@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_18_105307) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_105307) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -82,6 +82,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_105307) do
     t.index ["user_id"], name: "index_costs_on_user_id"
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "english_name", null: false
+    t.string "ukrainian_name", null: false
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "feedback_calls", force: :cascade do |t|
     t.string "phone_number", null: false
     t.boolean "processed", default: false
@@ -115,6 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_105307) do
     t.integer "workflow_status", default: 0
     t.bigint "worker_id"
     t.boolean "need_to_call_client", default: false
+    t.boolean "individual_entrepreneur_accountings", default: false
     t.index ["worker_id"], name: "index_manual_orders_on_worker_id"
   end
 

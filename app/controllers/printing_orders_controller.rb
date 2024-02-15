@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class PrintingOrdersController < ApplicationController
-  def index
-    @printing_order = PrintingOrder.new
-    @printing_portfolios = Portfolio.printing.active.with_attached_main_picture
-  end
+  include CitiesDetector
+
+  before_action :define_static_variables, only: [:index, :printing_in_your_city]
+
+  def index; end
 
   def create
     @printing_order = PrintingOrder.new(printing_order_params)
@@ -19,7 +20,16 @@ class PrintingOrdersController < ApplicationController
     end
   end
 
+  def printing_in_your_city
+    detect_city(params[:city])
+  end
+
   private
+
+  def define_static_variables
+    @printing_order = PrintingOrder.new
+    @printing_portfolios = Portfolio.printing.active.with_attached_main_picture
+  end
 
   def printing_order_params
     params.require(:printing_order).permit(:first_name, :last_name, :email, :phone_number, :link_to_model, :comment, files: [])

@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
 class ModelingOrdersController < ApplicationController
-  def index
-    @modeling_order = ModelingOrder.new
-    @modeling_portfolios = Portfolio.modeling.active
-  end
+  include CitiesDetector
 
-  def lazy_index
-    @modeling_order = ModelingOrder.new
-    @modeling_portfolios = Portfolio.modeling.active.with_attached_main_picture
-  end
+  before_action :define_static_variables, only: [:index, :lazy_index, :modeling_in_your_city]
+
+  def index; end
+
+  def lazy_index; end
 
   def create
     @modeling_order = ModelingOrder.new(modeling_order_params)
@@ -22,6 +20,15 @@ class ModelingOrdersController < ApplicationController
     else
       render :index
     end
+  end
+
+  def modeling_in_your_city
+    detect_city(params[:city])
+  end
+
+  def define_static_variables
+    @modeling_order = ModelingOrder.new
+    @modeling_portfolios = Portfolio.modeling.active.with_attached_main_picture
   end
 
   private

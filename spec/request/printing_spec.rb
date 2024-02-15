@@ -139,4 +139,16 @@ describe '/printing_orders', type: :request do
       end
     end
   end
+
+  describe 'GET /printing_orders/printing_in_your_city' do
+    let!(:city) { create(:city, english_name: 'Ivano-Frankivsk', ukrainian_name: 'Івано-Франківськ') }
+
+    it 'redirect to printing page with city name' do
+      get printing_city_path('івано')
+
+      expect(response).to be_successful
+      expect(response.body).to include(city.english_name)
+      expect(response.body).to include('We provide delivery of 3D printed models across Ukraine')
+    end
+  end
 end

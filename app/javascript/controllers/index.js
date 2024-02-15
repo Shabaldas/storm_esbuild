@@ -72,3 +72,9 @@ application.register("carousel", CarouselController);
 
 import LightboxController from "./lightbox_controller";
 application.register("lightbox", LightboxController);
+
+import ScrollToController from "./scroll_to_controller";
+application.register("scroll-to", ScrollToController);
+
+import AnimatedNumber from 'stimulus-animated-number'
+application.register('animated-number', AnimatedNumber)

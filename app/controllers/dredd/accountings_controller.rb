@@ -64,7 +64,7 @@ module Dredd
         last_six_months.map do |month|
           total_earnings = (earnings_from_manual_orders[month] || []).sum(&:total_price)
           total_costs = (costs_from_all_users[month] || []).sum(&:amount)
-          total_reward = (monthly_worker_reward[month] || {}).values.flatten.sum(&:price_for_modeling)
+          total_reward = (monthly_worker_reward[month] || {}).values.flatten.map(&:price_for_modeling)&.compact&.sum
           [month, total_earnings, total_costs, total_reward]
         end
     end

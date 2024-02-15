@@ -1,0 +1,27 @@
+<%= turbo_stream.remove @manual_order %>
+<%= turbo_stream.update "manual_orders" do %>
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"">
+    <thead class="text-gray-700 bg-gray-50">
+      <tr class="text-base">
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.print_code") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.full_name") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.phone_number") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.need_to_call_client") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.workflow") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.app_contact") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.total_price") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.prepaid_expense") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.status") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.deadline") %></th>
+        <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @manual_orders.each do |manual_order| %>
+        <%= render partial: "manual_order", locals: { manual_order: manual_order } %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= turbo_stream.prepend "flash", partial: "dredd/shared/flash" %>

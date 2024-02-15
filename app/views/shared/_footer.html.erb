@@ -2,13 +2,13 @@
   <div class="w-full max-w-screen-2xl mx-auto px-7 xl:px-24">
     <div class="block mx-auto text-center xl:text-left xl:flex xl:justify-between xl:items-center py-16">
       <div class="w-40 mx-auto xl:mx-0">
-        <%= link_to root_path do %>
-          <%= image_tag("icons_svg/logo_footer.svg") %>
+        <%= link_to Rails.env.development? ? root_path : 'https://3dstorm.com.ua/' do %>
+          <%= image_tag("icons_svg/logo_footer.svg", alt: "3d-storm-logo") %>
         <% end %>
       </div>
       <div class="w-full mt-3 xl:mt-0 xl:w-1/6 xl:ml-32 text-zinc-400 leading-8 uppercase pt-1">
         <ul>
-          <% if policy(:admin).access? %>
+          <% if policy(:admin).admin_only_access? %>
             <li class="mt-4 md:mt-0">
               <%= link_to t('global.footer.calculator'), calculator_path, class: "text-white" %>
             </li>
@@ -31,11 +31,11 @@
     <div class="flex justify-between items-center text-zinc-400 border-t border-gray-500 pt-6">
       <%= "© #{Time.zone.now.year}" + t('global.footer.law') %>
       <div class="w-12 flex justify-between">
-        <%= link_to "https://www.facebook.com/3D.Storm.des", class: "w-2.5 h-5", target: :blank do %>
-          <%= image_tag("icons_svg/facebook.svg") %>
+        <%= link_to "https://www.facebook.com/3D.Storm.des", class: "w-2.5 h-5", target: :blank, name: "facebook" do %>
+          <%= image_tag("icons_svg/facebook.svg", alt: "facebook-icon") %>
         <% end %>
-        <%= link_to "https://www.instagram.com/3d.storm.des/", class: "w-5 h-5", target: :blank do %>
-          <%= image_tag("icons_svg/instagram.svg") %>
+        <%= link_to "https://www.instagram.com/3d.storm.des/", class: "w-5 h-5", target: :blank, name: "instagram" do %>
+          <%= image_tag("icons_svg/instagram.svg", alt: "instagram-icon") %>
         <% end %>
       </div>
     </div>
