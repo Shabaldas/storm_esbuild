@@ -7,6 +7,14 @@ module ApplicationHelper
   MATERIALS = ['PLA', 'ABS', 'PET', 'PC', 'Nylon', 'Elastan', 'TPU', 'Phrozen Sonic Aqua 4k'].freeze
   QUALITY = [100, 200, 300].freeze
 
+  def inline_error_for(field, form_obj)
+    return ''.html_safe unless form_obj.errors[field].any?
+
+    html = []
+    html << tag.div(form_obj.errors[field][0].capitalize, class: 'text-red-400 text-xs m-0 p-0 text-left mb-2')
+    html.join.html_safe
+  end
+
   def current_locale?(locale)
     I18n.locale == locale
   end

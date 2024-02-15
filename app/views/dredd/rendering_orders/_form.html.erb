@@ -1,28 +1,32 @@
-<%= render partial: "dredd/shared/errors", locals: { resource: @rendering_order } %>
 <%= form_with model: [:dredd, @rendering_order], class: "form-grid-single" do |form| %>
    <div class="form-grid-single w-10/12">
     <div class="flex space-x-4">
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.first_name"), class: "form-label" %>
         <%= form.text_field :first_name, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:first_name, @rendering_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.last_name"), class: "form-label" %>
         <%= form.text_field :last_name, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:last_name, @rendering_order) %>
       </div>
     </div>
     <div class="flex space-x-4">
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.phone_number"), class: "form-label" %>
         <%= form.text_field :phone_number, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:phone_number, @rendering_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.email"), class: "form-label" %>
         <%= form.text_field :email, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:email, @rendering_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.total_price"), class: "form-label" %>
         <%= form.text_field :total_price, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:total_price, @rendering_order) %>
       </div>
     </div>
     <div class="flex space-x-4">
@@ -66,10 +70,12 @@
     <div class="form-group">
       <%= form.label t("dredd.manual_orders.link_to_model"), class: "form-label" %>
       <%= form.text_field :link_to_model, class: "dz-max-files-reached" %>
+      <%= inline_error_for(:link_to_model, @rendering_order) %>
     </div>
     <div class="form-group">
       <%= form.label t("dredd.manual_orders.comment"), class: "form-label" %>
       <%= form.text_area :comment, class: "h-32 w-full p-2" %>
+      <%= inline_error_for(:comment, @rendering_order) %>
     </div>
     <div class="form-group">
       <%= form.submit t("dredd.manual_orders.save"), class: "button w-full md:max-w-[212px] dz-max-files-reached" %>

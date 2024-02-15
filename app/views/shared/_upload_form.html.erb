@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "upload-form" do %>
-  <%= form_with model: [model], class: "w-full max-w-[1029px] mx-auto bg-white py-6 px-6 md:px-8 rounded-[20px] flex flex-col lg:flex-row items-center justify-between mb-20 md:mb-[154px]" do |form| %>  
+  <%= form_with model: [model], class: "w-full max-w-[1029px] mx-auto bg-white py-6 px-6 md:px-8 rounded-[20px] flex flex-col lg:flex-row items-center justify-between mb-20 md:mb-[154px]" do |form| %>
     <div class="w-full lg:w-1/2 order-2 lg:order-1 mt-6 lg:mt-0">
       <div class="flex items-center">
         <%= image_tag("icons_svg/settings.svg", class:'mr-1.5', alt: "settings-icon") %>
@@ -8,25 +8,26 @@
         </span>
       </div>
       <div class="w-full flex flex-col">
-        <div class="pt-6">
-          <%= render partial: "dredd/shared/errors", locals: { resource: model } %>
-        </div>
         <div class="w-full sm:max-w-[470px]">
           <div class="mt-7 w-full sm:max-w-[470px]">
             <%= form.label t("static_pages.upload_form.full_name"), class: "text-sm text-metalic-grey" %>
-            <%= form.text_field :first_name, required: "required", placeholder: t("static_pages.upload_form.please_input") %>
+            <%= form.text_field :first_name, placeholder: t("static_pages.upload_form.please_input") %>
+            <%= inline_error_for(:first_name, model) %>
           </div>
           <div class="mt-7 w-full sm:max-w-[470px]">
             <%= form.label t("static_pages.upload_form.mobile_phone"), class: "text-sm text-metalic-grey" %>
-            <%= form.text_field :phone_number, type: "tel", required: "required", placeholder: "+38 (096) 640 40 50" %>
+            <%= form.text_field :phone_number, type: "tel", placeholder: "+38 (096) 640 40 50" %>
+            <%= inline_error_for(:phone_number, model) %>
           </div>
           <div class="mt-7 w-full sm:max-w-[470px]">
             <%= form.label t("static_pages.upload_form.email"), class: "text-sm text-metalic-grey" %>
             <%= form.text_field :email, placeholder: "example@email.com" %>
+            <%= inline_error_for(:email, model) %>
           </div>
           <div class="mt-7 w-full sm:max-w-[470px]">
             <%= form.label t("static_pages.upload_form.link"), class: "text-sm text-metalic-grey" %>
             <%= form.text_field :link_to_model, placeholder: t("static_pages.upload_form.please_input") %>
+            <%= inline_error_for(:link_to_model, model) %>
           </div>
           <span class="flex justify-end p-1 text-[10px] text-metalic-grey">
             <%= t("static_pages.upload_form.link_message") %>
@@ -34,6 +35,7 @@
           <div class="mt-7 w-full sm:max-w-[470px]">
             <%= form.label t("static_pages.upload_form.comment"), class: "text-sm text-metalic-grey" %>
             <%= form.text_area :comment, placeholder: t("static_pages.upload_form.comment_placeholder"), class: "w-full h-24" %>
+            <%= inline_error_for(:comment, model) %>
           </div>
         </div>
         <%= form.submit t('static_pages.upload_form.order'), class: "button w-full mx-auto sm:mx-0 sm:w-56 mt-8" %>
@@ -57,6 +59,7 @@
           </div>       
         </div>
       </div>
+      <%= inline_error_for(:files, model) %>
     </div>
+    <% end %>
   <% end %>
-<% end %>
