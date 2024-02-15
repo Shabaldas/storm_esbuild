@@ -111,7 +111,6 @@ describe '/dredd/portfolios', type: :request do
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.body).to include('New Portfolio')
         expect(response.body).to include(html_escape("Can't be blank"))
-        expect(response.body).to include(html_escape("Can't be blank"))
       end
     end
   end
@@ -159,7 +158,6 @@ describe '/dredd/portfolios', type: :request do
 
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.body).to include('Edit Portfolio')
-        expect(response.body).to include(html_escape("Can't be blank"))
         expect(response.body).to include(html_escape("Can't be blank"))
       end
     end
