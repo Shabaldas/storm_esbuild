@@ -5,7 +5,7 @@ module Dredd
     before_action :set_worker, only: [:edit, :update, :destroy]
 
     def index
-      @pagy, @workers = pagy(Worker.all, items: 20)
+      @pagy, @workers = pagy(Worker.includes(:manual_orders).order(created_at: :asc), items: 20)
     end
 
     def new
@@ -16,16 +16,15 @@ module Dredd
 
     def create
       @worker = Worker.new(worker_params)
-      @worker.user_id = current_user.id if worker_params[:user_id].blank?
 
       if @worker.save
-        flash.now[:notice] = 'Worker was successfully created.'
+        flash.now[:notice] = { text: 'Worker was successfully created.', icon: 'success_icon' }.stringify_keys
         render turbo_stream: [
           turbo_stream.prepend('workers', @worker),
           turbo_stream.replace('form_worker',
                                partial: 'form',
                                locals: { worker: Worker.new }),
-          turbo_stream.update('notice', partial: 'layouts/flash')
+          turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
         ]
       else
         render :new, status: :unprocessable_entity
@@ -34,10 +33,10 @@ module Dredd
 
     def update
       if @worker.update(worker_params)
-        flash.now[:notice] = 'Worker was successfully updated.'
+        flash.now[:notice] = { text: 'Worker was successfully updated.', icon: 'success_icon' }.stringify_keys
         render turbo_stream: [
           turbo_stream.replace(@worker, @worker),
-          turbo_stream.update('notice', partial: 'layouts/flash')
+          turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
         ]
       else
         render :edit, status: :unprocessable_entity
@@ -49,7 +48,7 @@ module Dredd
       flash.now[:notice] = 'Worker was successfully destroyed.'
       render turbo_stream: [
         turbo_stream.remove(@worker),
-        turbo_stream.update('notice', partial: 'layouts/flash')
+        turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
       ]
     end
 

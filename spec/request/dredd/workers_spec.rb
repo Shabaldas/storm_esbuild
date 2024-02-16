@@ -38,7 +38,7 @@ describe '/dredd/workers', type: :request do
             last_name: 'Pupkin',
             nickname: 'Vasa 111'
           }
-        }
+        }, as: :turbo_stream
       end.to change(Worker, :count).by(1)
       worker = Worker.last
       expect(worker.first_name).to eq('Vasa')
@@ -74,20 +74,17 @@ describe '/dredd/workers', type: :request do
 
     it 'update worker' do
       expect do
-        put(dredd_worker_path(worker), params:)
+        put(dredd_worker_path(worker), params: params, as: :turbo_stream )
         worker.reload
       end.to change(Worker, :count).by(0) # rubocop:disable RSpec/ChangeByZero
           .and change(worker, :last_name).from(worker.last_name).to('Pupkin')
           .and change(worker, :nickname).from(worker.nickname).to('Vasa 111')
-      worker = Worker.last
-      expect(worker.last_name).to eq('Pupkin')
-      expect(worker.nickname).to eq('Vasa 111')
       expect(response.body).to include('Worker was successfully updated.')
     end
   end
 
   describe 'DELETE /dredd/workers/:id' do
-    let(:worker) { create(:worker, user_id: user.id) }
+    let(:worker) { create(:worker) }
 
     before do
       worker
@@ -95,7 +92,7 @@ describe '/dredd/workers', type: :request do
 
     it 'deletes the workers' do
       expect do
-        delete dredd_worker_path(worker)
+        delete dredd_worker_path(worker), as: :turbo_stream
       end.to change(Worker, :count).by(-1)
       expect(response.body).to include('Worker was successfully destroyed.')
     end
