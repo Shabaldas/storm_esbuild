@@ -45,7 +45,7 @@ module Dredd
 
     def destroy
       @worker.destroy
-      flash.now[:notice] = 'Worker was successfully destroyed.'
+      lash.now[:notice] = { text: 'Worker was successfully destroyed.', icon: 'attention' }.stringify_keys
       render turbo_stream: [
         turbo_stream.remove(@worker),
         turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
