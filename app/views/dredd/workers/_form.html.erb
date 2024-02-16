@@ -1,0 +1,21 @@
+<%= form_with model: [:dredd, worker], id: dom_id(worker, "form" ) do |form| %>
+  <div class="flex flex-row items-center justify-between text-xs text-gray-700 uppercase border-b-1 border-solid">
+    <div class="w-1/6 px-4 py-3"></div>
+    <div class="w-1/6 px-4 py-3">
+      <%= form.text_field :first_name, placeholder: t("dredd.manual_orders.please_input"), class:"text-sm" %>
+      <%= inline_error_for(:first_name, @worker) %>
+    </div>
+    <div class="w-1/6 px-4 py-3">
+      <%= form.text_field :last_name, placeholder: t("dredd.manual_orders.please_input"), class:"text-sm" %>
+      <%= inline_error_for(:last_name, @worker) %>
+    </div>
+    <div class="w-1/6 px-4 py-3">
+      <%= form.text_field :nickname, placeholder: t("dredd.manual_orders.please_input"), class:"text-sm" %>
+      <%= inline_error_for(:nickname, @worker) %>
+    </div>
+    <div class="w-1/6 px-4 py-3"></div>
+    <div class="w-1/6 px-4 py-3">
+      <%= form.submit t("dredd.manual_orders.save"), class: "button w-full md:max-w-[212px]" %>
+    </div>
+  </div>
+  <% end %>

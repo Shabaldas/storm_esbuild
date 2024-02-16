@@ -61,7 +61,7 @@
   </td>
   <% if policy(:admin).admin_only_access? %>
     <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-      <%= button_to dredd_manual_order_path(manual_order), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
+      <%= button_to dredd_manual_order_path(manual_order), method: :delete, data: { turbo_confirm: t("devise.registrations.edit.sure") }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
         <%= t("dredd.manual_orders.destroy") %>
       <% end %>
     </td>

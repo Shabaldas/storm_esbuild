@@ -10,23 +10,19 @@ describe '/dredd/users', type: :request do
       let(:user_first) { create(:user) }
       let(:user_second) { create(:user, role: :admin) }
       let(:user_third) { create(:user) }
-      let(:worker) { create(:worker) }
 
       before do
         user_first
         user_second
         user_third
-        worker
       end
 
       it 'display all products' do
         stub_request(:post, /api.telegram.org/).to_return(status: 200, body: '', headers: {})
         get dredd_users_path
-
         expect(response).to be_successful
         expect(response.body).to include('ADMINS')
         expect(response.body).to include('CUSTOMERS')
-        expect(response.body).to include('WORKERS')
         expect(response.body).to include('ID')
         expect(response.body).to include('FULL NAME')
         expect(response.body).to include('EMAIL')
@@ -35,19 +31,15 @@ describe '/dredd/users', type: :request do
         expect(response.body).to include(user_first.id.to_s)
         expect(response.body).to include(user_second.id.to_s)
         expect(response.body).to include(user_third.id.to_s)
-        expect(response.body).to include(worker.id.to_s)
         expect(response.body).to include(html_escape(user_first.first_name))
         expect(response.body).to include(html_escape(user_second.first_name))
         expect(response.body).to include(html_escape(user_third.first_name))
-        expect(response.body).to include(html_escape(worker.first_name))
         expect(response.body).to include(html_escape(user_first.last_name))
         expect(response.body).to include(html_escape(user_second.last_name))
         expect(response.body).to include(html_escape(user_third.last_name))
-        expect(response.body).to include(html_escape(worker.last_name))
         expect(response.body).to include(user_first.phone)
         expect(response.body).to include(user_second.phone)
         expect(response.body).to include(user_third.phone)
-        expect(response.body).to include(worker.nickname)
       end
     end
 

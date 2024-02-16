@@ -1,0 +1,30 @@
+<%= turbo_frame_tag worker do %>
+  <div class="flex flex-row items-center justify-between border-b border-b-1 border-solid border-gray-500">
+    <p class="w-1/6 px-4 py-3">
+      <%= worker.id %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= worker&.first_name %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= worker&.last_name %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= worker.nickname %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= l(worker.created_at, format: :long) %>
+    </p>
+      <div class="w-1/6 px-4 py-5 flex space-x-4">
+        <% if worker.manual_orders.blank? %>
+          <%= button_to dredd_worker_path(worker), method: :delete, data: { turbo_confirm: t("devise.registrations.edit.sure") }, remote:
+            true, form_class: "inline-block" do %>
+              <%= image_tag("icons_svg/delete_icon.svg") %>
+          <% end %>
+        <% end %>
+        <%= link_to edit_dredd_worker_path(worker) do %>
+          <%= image_tag("icons_svg/edit_icon.svg") %>
+        <% end %>
+      </div>
+  </div>
+<% end %>
