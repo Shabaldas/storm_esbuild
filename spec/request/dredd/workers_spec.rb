@@ -74,7 +74,7 @@ describe '/dredd/workers', type: :request do
 
     it 'update worker' do
       expect do
-        put(dredd_worker_path(worker), params: params, as: :turbo_stream )
+        put(dredd_worker_path(worker), params:, as: :turbo_stream)
         worker.reload
       end.to change(Worker, :count).by(0) # rubocop:disable RSpec/ChangeByZero
           .and change(worker, :last_name).from(worker.last_name).to('Pupkin')

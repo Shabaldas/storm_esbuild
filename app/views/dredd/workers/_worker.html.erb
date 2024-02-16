@@ -15,7 +15,7 @@
     <p class="w-1/6 px-4 py-3">
       <%= l(worker.created_at, format: :long) %>
     </p>
-      <div class="w-1/6 px-4 py-5 flex">
+      <div class="w-1/6 px-4 py-5 flex space-x-4">
         <% if worker.manual_orders.blank? %>
           <%= button_to dredd_worker_path(worker), method: :delete, data: { turbo_confirm: t("devise.registrations.edit.sure") }, remote:
             true, form_class: "inline-block" do %>
