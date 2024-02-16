@@ -22,7 +22,7 @@ FOR MACOS USER
   ```
   ### Run the servers locally
   change your username and password for postgresuser in ```.env``` file
-  push 
+  push
   ```bash
   bin/rails server -p 3000
   yarn build:css --watch
@@ -38,6 +38,12 @@ FOR MACOS USER
   bundle exec rails c
 
   DatabaseSeeds::Main.new.execute
+  ```
+
+### CHECK MAilER TEMPLATE
+  ```
+  foreman start
+  go to url ``` http://localhost:3000/rails/mailers/user_mailer```
   ```
 
 ### IF SOMETHING WENT WRONG
