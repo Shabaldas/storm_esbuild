@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :printers, except: :show
     resources :portfolios, except: :show
     resources :costs, only: [:create, :destroy]
+    resources :workers, except: [:show]
     resources :accountings, only: :index do
       get :monthly, on: :collection
     end

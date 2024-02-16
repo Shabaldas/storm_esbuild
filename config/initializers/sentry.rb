@@ -9,7 +9,7 @@ Sentry.init do |config|
   config.environment = 'production'
   config.enabled_environments = ['production']
   # or
-  config.traces_sampler = lambda do |_context|
-    true
-  end
+  # config.traces_sampler = lambda do |_context|
+  #   true
+  # end
 end
