@@ -40,11 +40,6 @@ FOR MACOS USER
   DatabaseSeeds::Main.new.execute
   ```
 
-### CHECK MAilER TEMPLATE
-  ```
-  foreman start
-  go to url ``` http://localhost:3000/rails/mailers/user_mailer```
-  ```
 
 ### IF SOMETHING WENT WRONG
   1. Reset Database
