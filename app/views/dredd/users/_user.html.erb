@@ -1,17 +1,30 @@
-<tr>
-  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    #<%= user.id %>
-  </td>
-  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= user&.full_name %>
-  </td>
-  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= user.phone %>
-  </td>
-  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= user.email %>
-  </td>
-  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= l(user.created_at, format: :long)  %>
-  </td>
-</tr>
+<%= turbo_frame_tag user do %>
+  <div class="flex flex-row items-center justify-between border-b border-b-1 border-solid border-gray-500">
+    <p class="w-1/8 px-4 py-3">
+      <%= user.id %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= user&.first_name %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= user&.last_name %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= user.phone %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= user.email %>
+    </p>
+    <p class="w-1/6 px-4 py-3">
+      <%= l(user.created_at, format: :long) %>
+    </p>
+      <div class="w-1/8 px-4 py-5 flex space-x-4">
+        <%= link_to edit_dredd_user_path(user) do %>
+          <%= image_tag("icons_svg/edit_icon.svg") %>
+        <% end %>
+        <%= link_to dredd_user_path(user), data: { turbo_frame: "_top" } do %>
+          <%= image_tag("icons_svg/show.svg") %>
+        <% end %>
+      </div>
+  </div>
+<% end %>

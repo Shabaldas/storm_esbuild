@@ -1,7 +1,7 @@
 <header class="w-full h-16 fixed z-30 bg-light-grey">
  <div class="card-gradient flex items-center justify-between mx-auto px-7 w-full">
     <div class="flex w-1/2 justify-between">
-      <span class="text-2xl text-black"><%= t("dredd.header.admin_dashboard") %></span>
+      <span class="text-2xl text-black"><%= t("dredd.header.admin_dashboard").html_safe %></span>
       <div class="w-24">
         <%= link_to dredd_dashboard_path do %>
           <%= image_tag("icons_svg/logo.svg", class: "pt-2") %>

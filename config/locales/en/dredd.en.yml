@@ -158,18 +158,20 @@ en:
       tags: "Tags"
       save: "Save"
     users:
-      admins: ADMINS
+      admins: "ADMINS"
+      admin: "admin"
       id: "ID"
       full_name: "FULL NAME"
       phone: "PHONE"
       email: "EMAIL"
-      customers: CUSTOMERS
-      workers: WORKERS
+      customers: "CUSTOMERS"
+      customer: "customer"
+      workers: WORKERS"
       created_at: "CREATED AT"
       nickname: "NICKNAME"
       actions: "ACTIONS"
     header:
-      admin_dashboard: "Admin Dashboard"
+      admin_dashboard: "Admin <br> Dashboard"
       products: "Products"
       product_categories: "Product Categories"
       feedback_calls: "Feedback Calls"

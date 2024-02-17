@@ -159,11 +159,13 @@ uk:
       save: "Зберегти"
     users:
       admins: "АДІНІСТРАТОРИ"
+      admin: "адмін"
       id: "ІД"
       full_name: "ПОВНЕ ІМ'Я"
       phone: "ТЕЛЕФОН"
       email: "ЕЛЕКТРОННА ПОШТА"
       customers: "КЛІЄНТИ"
+      customers: "клієнт"
       workers: "ПРАЦІВНИКИ"
       created_at: "СТВОРЕНО О"
       nickname: "ПСЕВДНІМ"
