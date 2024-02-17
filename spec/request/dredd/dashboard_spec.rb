@@ -31,7 +31,7 @@ describe '/dredd', type: :request do
       get dredd_dashboard_path
 
       expect(response).to be_successful
-      expect(response.body).to include('Admin Dashboard')
+      expect(response.body).to include('Admin <br> Dashboard')
       expect(response.body).to include('Feedback Calls')
       expect(response.body).to include('Manual Orders')
       expect(response.body).to include('Printing Orders')

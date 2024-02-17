@@ -165,7 +165,7 @@ en:
       phone: "PHONE"
       email: "EMAIL"
       customers: "CUSTOMERS"
-      customer: "customer"
+      customer: "Customer"
       workers: WORKERS"
       created_at: "CREATED AT"
       nickname: "NICKNAME"

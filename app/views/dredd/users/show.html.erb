@@ -8,7 +8,7 @@
       <h3 class="pb-6 text-5xl"><%= @user.full_name %></h3>
       <div class="p-3 text-2xl"><%= @user.phone %></div>
       <div class="p-6 text-2xl"><%= @user.email %></div>
-      <div class="p-6 text-2xl"><%= @user.role.camelcase %></div>
+      <div class="p-6 text-2xl"><%= t("dredd.users.#{@user.role}") %></div>
       <div class="p-2 text-2xl"><%= link_to 'Back', dredd_users_path, class: "button w-80 mx-auto" %></div>
     </div>
   </div>

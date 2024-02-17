@@ -31,7 +31,7 @@ module Dredd
     end
 
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :role, :phone, :provider)
+      params.require(:user).permit(:first_name, :last_name, :phone)
     end
   end
 end
