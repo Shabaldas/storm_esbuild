@@ -171,7 +171,7 @@ en:
       nickname: "NICKNAME"
       actions: "ACTIONS"
     header:
-      admin_dashboard: "Admin <br> Dashboard"
+      admin_dashboard: "Admin \n Dashboard"
       products: "Products"
       product_categories: "Product Categories"
       feedback_calls: "Feedback Calls"

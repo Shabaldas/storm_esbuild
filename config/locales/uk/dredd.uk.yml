@@ -171,7 +171,7 @@ uk:
       nickname: "ПСЕВДНІМ"
       actions: "ДІЇ"
     header:
-      admin_dashboard: "Панель адміністратора"
+      admin_dashboard: "Панель \n адміністратора"
       products: "Продукти"
       product_categories: "Категорії продуктів"
       feedback_calls: "Виклики зворотного зв'язку"

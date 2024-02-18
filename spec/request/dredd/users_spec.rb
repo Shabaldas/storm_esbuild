@@ -68,8 +68,6 @@ describe '/dredd/users', type: :request do
   end
 
   describe 'PUT /dredd/user/:id' do
-    let!(:user_first) { create(:user) }
-
     let(:params) do
       {
         user: {
@@ -81,11 +79,11 @@ describe '/dredd/users', type: :request do
 
     it 'update user' do
       expect do
-        put(dredd_user_path(user_first), params:, as: :turbo_stream)
-        user_first.reload
+        put(dredd_user_path(user), params:, as: :turbo_stream)
+        user.reload
       end.to change(User, :count).by(0) # rubocop:disable RSpec/ChangeByZero
-          .and change(user_first, :first_name).from(user_first.first_name).to('Pupkin')
-          .and change(user_first, :last_name).from(user_first.last_name).to('Vasa')
+          .and change(user, :first_name).from(user.first_name).to('Pupkin')
+          .and change(user, :last_name).from(user.last_name).to('Vasa')
       expect(response.body).to include('User was successfully updated.')
     end
   end
