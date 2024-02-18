@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   enum role: { customer: 0, admin: 1, manager: 2 }
 
-  before_update :validate_names_presence
+  validates :first_name, :last_name, presence: true, on: :update
 
   def self.from_omniauth(access_token)
     user = User.where(email: access_token.info.email).first
@@ -27,15 +27,5 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
-  end
-
-  private
-
-  def validate_names_presence
-    return unless first_name.blank? || last_name.blank?
-
-    errors.add(:first_name, :blank) if first_name.blank?
-    errors.add(:last_name, :blank) if last_name.blank?
-    throw(:abort)
   end
 end
