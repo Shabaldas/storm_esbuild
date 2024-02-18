@@ -9,7 +9,6 @@
         <div class="max-w-[397px] mx-auto">
           <h2 class="text-[22px] font-medium"><%= t("devise.passwords.edit.title") %></h2>
           <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
             <%= f.hidden_field :reset_password_token %>
             <div class="mt-5">
               <%= f.label :password, t("devise.passwords.edit.label"), class:"text-sm" %>
@@ -19,11 +18,13 @@
                     characters minimum)</em>
                 <% end %>
                 <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+                <%= inline_error_for(:password, resource) %>
               </div>
             </div>
             <div class="mt-5">
             <%= f.label :password_confirmation,  t("devise.passwords.edit.labelsecond"), class:"text-sm" %>
               <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              <%= inline_error_for(:password_confirmation, resource) %>
             </div>
             <div class="mt-5">
               <%= f.submit t("devise.passwords.edit.button"), class: "button w-full", data: { turbo: false } %>
