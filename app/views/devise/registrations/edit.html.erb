@@ -41,6 +41,24 @@
         </div>
         <div class="w-full field mt-1 md:mt-5">
           <div class="mt-1">
+            <%= f.label :first_name, t("devise.registrations.first_name"), class:"text-sm" %>
+          </div>
+          <div class="mt-1">
+            <%= f.text_field :first_name, placeholder: t("devise.registrations.new.input") %>
+            <%= inline_error_for(:first_name, resource) %>
+          </div>
+        </div>
+        <div class="w-full field mt-1 md:mt-5">
+          <div class="mt-1">
+            <%= f.label :last_name, t("devise.registrations.last_name"), class:"text-sm" %>
+          </div>
+          <div class="mt-1">
+            <%= f.text_field :last_name, placeholder: t("devise.registrations.new.input") %>
+            <%= inline_error_for(:last_name, resource) %>
+          </div>
+        </div>
+        <div class="w-full field mt-1 md:mt-5">
+          <div class="mt-1">
             <%= f.label :current_password, class: "text-sm" %>
             <i class="text-xs"><%= t("devise.registrations.edit.confirm") %></i>
           </div>
