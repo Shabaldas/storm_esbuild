@@ -56,7 +56,7 @@ describe Carts::CartItemsController do
 
         expect(cart.cart_items.first.cartable).to eq(cart.reload.cart_items.last.cartable)
         expect(cart.cart_items.count).to eq(3)
-        expect(cart.total_price).to eq(100)  # product_option_value_first * 3 + product_option_value_secon * 2  + product_option_value_third * 1
+        expect(cart.total_price).to eq(100) # product_option_value_first * 3 + product_option_value_secon * 2  + product_option_value_third * 1
       end
     end
   end

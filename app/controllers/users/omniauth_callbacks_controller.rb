@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  def facebook
+    handle_auth('Facebook')
+  end
+
   def google_oauth2
     handle_auth('Google')
   end
+
+  private
 
   def handle_auth(kind)
     @user = User.from_omniauth(request.env['omniauth.auth'])

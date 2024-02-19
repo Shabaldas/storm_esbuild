@@ -37,7 +37,9 @@
             <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "login-with-google-btn w-full" do %>
               <%= t("devise.sessions.new.sign_google") %>
             <% end %>
-            <%# TODO: add register by facebook %>
+            <%= button_to user_facebook_omniauth_authorize_path, method: :post, class: "login-with-google-btn w-full" do %>
+              facebook
+            <% end %>
           </div>
 
           <p class="mt-5 text-center">

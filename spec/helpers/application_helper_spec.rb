@@ -17,7 +17,7 @@ describe ApplicationHelper do
       end
 
       it 'returns a div element and en locale will be disabled' do
-        expect(locale_switcher(:en, 'icons_svg/english_flag.svg')).not_to have_button(
+        expect(locale_switcher(:en, 'icons_svg/english_flag.svg')).to have_no_button(
           type: 'submit',
           class: 'pt-1'
         )
