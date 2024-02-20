@@ -7,7 +7,7 @@
       <%= t("dredd.user_profile.personal_data") %>
     </div>
     <div class="absolute left-[50%] ml-2 text-gray-800 text-base font-medium -mt-5">
-      <%= link_to t("dredd.user_profile.change"), edit_profile_path(current_user), class: "button w-24" %>
+      <%= link_to t("dredd.user_profile.change"), edit_personal_data_path(current_user), class: "button w-24" %>
     </div>
   </div>
   <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
@@ -56,7 +56,7 @@
         <%= t("dredd.user_profile.password") %>
       </div>
       <div class="absolute left-[50%] ml-2 text-gray-800 text-base font-medium -mt-5 ">
-        <%= link_to t("dredd.user_profile.change"), personal_data_path(current_user), class: "button w-24" %>
+        <%= link_to t("dredd.user_profile.change"), edit_password_path(current_user), class: "button w-24" %>
       </div>
     </div>
     <div class="mt-2 w-full h-px bg-gray-400"></div>

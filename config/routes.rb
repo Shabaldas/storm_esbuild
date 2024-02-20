@@ -37,8 +37,12 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resources :profiles, only: [:show, :edit, :update]
-  get 'personal_data/:id', to: 'profiles#personal_data', as: 'personal_data'
+  resources :profiles, only: :show
+  get 'personal_data/:id', to: 'profiles#edit_personal_data', as: 'edit_personal_data'
+  get 'password/:id', to: 'profiles#edit_password', as: 'edit_password'
+  put 'personal_data/:id', to: 'profiles#update_personal_data', as: 'update_personal_data'
+  put 'password/:id', to: 'profiles#update_password', as: 'update_password'
+
 
   get 'static_pages/home_lazy', to: 'static_pages#home_lazy'
   get '/sitemap.xml', to: 'static_pages#sitemap'

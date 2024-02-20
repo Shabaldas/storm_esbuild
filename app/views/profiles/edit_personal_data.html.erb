@@ -1,7 +1,7 @@
 
 <%= turbo_frame_tag @user do %>
   <h1 class="title">Edit to-do</h1>
-  <%= form_with model: [@user], url: profile_path do |f| %>
+  <%= form_with model: [@user], url: update_personal_data_path do |f| %>
     <div class="grid grid-cols-2 gap-4 text-sm">
       <div class="p-4 text-sm">
         <div>
