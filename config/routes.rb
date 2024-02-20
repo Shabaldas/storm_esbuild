@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  resources :profiles, only: [:show, :edit, :update]
+
   get 'static_pages/home_lazy', to: 'static_pages#home_lazy'
   get '/sitemap.xml', to: 'static_pages#sitemap'
   get 'printing', to: 'printing_orders#index'

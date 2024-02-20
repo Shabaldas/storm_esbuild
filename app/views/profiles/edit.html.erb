@@ -1,0 +1,28 @@
+
+<%= turbo_frame_tag @user do %>
+  <h1 class="title">Edit to-do</h1>
+  <%#= form_for(user_profile_path(@user)) do |f| %>
+  <%= form_with model: [@user], url: profile_path do |f| %>
+    <div class="flex flex-col lg:flex-row lg:justify-between items-center space-x-4">
+      <div class="w-full lg:w-3/5">
+        <div>
+          <%= f.label :first_name, "First name" %>
+        </div>
+        <div class="mt-1">
+          <%= f.text_field :first_name, class: "w-full rounded", placeholder: "Enter your first name" %>
+        </div>
+      </div>
+
+      <div class="w-full lg:w-3/5">
+        <div>
+          <%= f.label :last_name, "Last name" %>
+        </div>
+        <div class="mt-1">
+          <%= f.text_field :last_name, class: "w-full rounded", placeholder: "Enter your first name" %>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit 'yes' %>
+  <% end %>
+<% end %>

@@ -53,6 +53,9 @@
             <div class="w-[146px] lg:w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
               <% if user_signed_in? %>
                 <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
+                  <%= link_to 'Profile', profile_path(current_user.id), class: "text-black" %>
+                </p>
+                <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
                   <%= link_to t('global.header.my_cabinet'), edit_user_registration_path, class: "text-black" %>
                 </p>
                 <hr/>
