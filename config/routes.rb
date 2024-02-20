@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   }
 
   resources :profiles, only: [:show, :edit, :update]
+  get 'personal_data/:id', to: 'profiles#personal_data', as: 'personal_data'
 
   get 'static_pages/home_lazy', to: 'static_pages#home_lazy'
   get '/sitemap.xml', to: 'static_pages#sitemap'

@@ -12,16 +12,17 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true, on: :update
 
   def self.from_omniauth(access_token)
-    user = User.where(email: access_token.info.email).first
-    user ||= User.create(
-      email: access_token.info.email,
-      password: Devise.friendly_token[0, 20]
-    )
-    user.first_name = access_token.info.name
-    user.uid = access_token.uid
-    user.provider = access_token.provider
-    user.save
+    user = User.find_or_initialize_by(email: access_token.info.email) do |u|
+      u.password = Devise.friendly_token[0, 20] if u.new_record?
+      u.assign_attributes(
+        first_name: access_token.info.first_name,
+        last_name: access_token.info.last_name,
+        uid: access_token.uid,
+        provider: access_token.provider
+      )
+    end
 
+    user.save if user.new_record?
     user
   end
 

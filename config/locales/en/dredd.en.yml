@@ -227,3 +227,9 @@ en:
       first_name: "First Name"
       last_name: "Last Name"
       nickname: "Nickname"
+    user_profile:
+      password: "Password"
+      personal_data: "Personal data"
+      personal_password: "Personal password"
+      change: "Change"
+      placeholder: "Enter your: %{field}!"

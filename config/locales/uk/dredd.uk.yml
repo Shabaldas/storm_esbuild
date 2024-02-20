@@ -227,3 +227,9 @@ uk:
       first_name: "Ім'я"
       last_name: "Прізвище"
       nickname: "Псевдонім"
+    user_profile:
+      password: "Пароль"
+      personal_data: "Персональні дані"
+      personal_password: "Персональний пароль"
+      change: "Змінити"
+      placeholder: "Введіть будь ласка ваш: %{field}!"

@@ -33,6 +33,7 @@ en:
       sign_in: "Sign in"
       edit_profile: "Edit Profile"
       log_out: "Log Out"
+      profile: "Profile"
     footer:
       calculator: "Calculator"
       contacts: "Contacts"
@@ -41,4 +42,3 @@ en:
       street: "st. Ukrainian Victory, 23"
       city: "Ivano-Frankivsk"
       law: " All right reserved"
-      
