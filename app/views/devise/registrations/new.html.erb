@@ -9,19 +9,21 @@
         <div class="max-w-[397px] mx-auto">
           <h2 class="text-[22px] font-medium"><%= t("devise.registrations.new.title") %></h2>
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
             <div class="mt-5">
               <div>
                 <%= f.label :first_name, t("devise.registrations.first_name"), class: "text-sm text-metalic-grey" %>
                 <%= f.text_field :first_name, placeholder: t("devise.registrations.new.input") %>
+                <%= inline_error_for(:first_name, resource) %>
               </div>
               <div class="mt-5">
                 <%= f.label :email, t("devise.registrations.email"), class: "text-sm text-metalic-grey" %>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email",  placeholder: "example@email.com" %>
+                <%= inline_error_for(:email, resource) %>
               </div>
               <div class="mt-5">
                 <%= f.label :password ,class: "text-sm text-metalic-grey"%>
                 <%= f.password_field :password, autocomplete: "new-password", class: "", placeholder: t("devise.registrations.enter_password") %>
+                <%= inline_error_for(:password, resource) %>
               </div>
               <div class="mt-5">
                 <%= f.submit t("devise.registrations.new.link"), class: "button w-full", data: { turbo: false } %>
