@@ -1,0 +1,7 @@
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <div class="mt-9">
+    <%= turbo_frame_tag @user do  %>
+      <%= render "form", user: @user %>
+    <% end %>
+  </div>
+</div>

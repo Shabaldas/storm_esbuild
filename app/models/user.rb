@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   enum role: { customer: 0, admin: 1, manager: 2 }
 
+  validates :first_name, :last_name, presence: true, on: :update
+
   def self.from_omniauth(access_token)
     user = User.where(email: access_token.info.email).first
     user ||= User.create(
