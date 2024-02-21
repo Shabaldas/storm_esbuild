@@ -12,15 +12,15 @@ class ProfilesController < ApplicationController
   end
 
   def update_password
-    bypass_sign_in(@user) if @user.update(user_params)
     handle_update_action('edit_password')
   end
 
   private
 
   def handle_update_action(edit_partial)
-    flash.now[:notice] = { text: 'User was successfully updated.', icon: 'success_icon' }.stringify_keys
     if @user.update(user_params)
+      flash.now[:notice] = { text: 'User was successfully updated.', icon: 'success_icon' }.stringify_keys
+      bypass_sign_in(@user) if edit_partial == 'edit_password'
       render turbo_stream: [
         turbo_stream.replace('profile_page', partial: 'profiles/form', locals: { user: @user }),
         turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
