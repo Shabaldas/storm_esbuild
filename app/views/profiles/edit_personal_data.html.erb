@@ -1,50 +1,67 @@
 <%= turbo_frame_tag "edit_personal_data" do %>
-  <h1 class="title"> <%= t("dredd.manual_orders.edit") %> </h1>
   <%= form_with model: [@user], url: update_personal_data_path, html: { method: :put } do |f| %>
-    <div class="grid grid-cols-2 gap-4 text-sm">
-      <div class="p-4 text-sm">
-        <div>
+    <div class="block md:flex items-center justify-between mt-6">
+      <div class="flex items-center">
+        <div class="w-6 h-6">
+          <%= image_tag("partials_img/user.png") %>
+        </div>
+        <div class="ml-2 text-dark-grey text-base font-medium">
+          <%= t("dredd.user_profile.personal_data") %>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-2 mt-4 md:mt-0">
+        <%= f.submit t("dredd.manual_orders.save"),
+          class: "w-full md:w-[100px] h-8 flex items-center justify-center px-4 py-1.5 bg-primary uppercase text-sm text-metalic-grey font-semibold rounded-lg border-0"
+          %>
+
+          <%= link_to t("dredd.user_profile.cancel"), profile_path,
+            class: "md:w-[100px] h-8 flex items-center justify-center px-4 py-1.5 bg-transparent uppercase text-sm text-metalic-grey font-semibold border-2 border-solid border-metalic-grey rounded-lg"
+            %>
+      </div>
+    </div>
+    <div class="mt-3 mb-2 w-full h-px bg-gray-400"></div>
+    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+      <div>
+        <div class="text-xs text-metalic-grey">
           <%= t("dredd.manual_orders.first_name") %>
         </div>
-        <div class="mt-1 w-full rounded text-xl font-bold">
-          <%= f.text_field :first_name, class: "w-full rounded", placeholder: t("dredd.user_profile.placeholder_first_name") %>
-          <%= inline_error_for(:first_name, @user) %>
+        <div class="mt-1 w-full text-base font-medium">
+          <%= f.text_field :first_name, class: "w-full rounded" , placeholder:
+            t("dredd.user_profile.placeholder_first_name") %>
+            <%= inline_error_for(:first_name, @user) %>
         </div>
       </div>
 
-      <div class="p-4 text-sm">
-        <div>
+      <div>
+        <div class="text-xs text-metalic-grey">
           <%= t("dredd.manual_orders.last_name") %>
         </div>
-        <div class="mt-1 w-full rounded text-xl font-bold">
-          <%= f.text_field :last_name, class: "w-full rounded", placeholder: t("dredd.user_profile.placeholder_last_name") %>
-          <%= inline_error_for(:last_name, @user) %>
-          <%= inline_error_for(:last_name, @user) %>
+        <div class="mt-1 w-full text-base font-medium">
+          <%= f.text_field :last_name, class: "w-full rounded" , placeholder:
+            t("dredd.user_profile.placeholder_last_name") %>
+            <%= inline_error_for(:last_name, @user) %>
+              <%= inline_error_for(:last_name, @user) %>
         </div>
       </div>
 
-      <div class="p-4 text-sm">
-        <div>
+      <div>
+        <div class="text-xs text-metalic-grey">
           <%= t("dredd.manual_orders.email") %>
         </div>
-        <div class="mt-1 w-full rounded text-xl font-bold">
-          <%= f.text_field :email, class: "w-full rounded", placeholder: t("dredd.user_profile.placeholder_email") %>
-          <%= inline_error_for(:email, @user) %>
+        <div class="mt-1 w-full text-base font-medium">
+          <%= f.text_field :email, class: "w-full rounded" , placeholder: t("dredd.user_profile.placeholder_email") %>
+            <%= inline_error_for(:email, @user) %>
         </div>
       </div>
 
-      <div class="p-4 text-sm">
-        <div>
+      <div>
+        <div class="text-xs text-metalic-grey">
           <%= t("dredd.manual_orders.phone") %>
         </div>
-        <div class="mt-1 w-full rounded text-xl font-bold">
-          <%= f.phone_field :phone, class: "w-full rounded", placeholder: t("dredd.user_profile.placeholder_phone") %>
-          <%= inline_error_for(:phone, @user) %>
+        <div class="mt-1 w-full text-base font-medium">
+          <%= f.phone_field :phone, class: "w-full rounded" , placeholder: t("dredd.user_profile.placeholder_phone") %>
+            <%= inline_error_for(:phone, @user) %>
         </div>
       </div>
-
-    <%= f.submit 'yes' , class: 'button ml-2' %>
-
-    <%= link_to t("dredd.user_profile.cancel"), profile_path, class: 'button ml-2' %>
-  <% end %>
-<% end %>
+      <% end %>
+        <% end %>
