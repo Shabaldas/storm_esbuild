@@ -1,4 +1,4 @@
-<%= turbo_frame_tag @user do %>
+<%= turbo_frame_tag "new" do %>
   <div class="flex items-center mt-8">
     <div class="w-6 h-6">
       <%= image_tag("partials_img/user.png") %>
@@ -6,8 +6,9 @@
     <div class="ml-2 text-gray-800 text-base font-medium">
       <%= t("dredd.user_profile.personal_data") %>
     </div>
+    <%= turbo_frame_tag "edit_personal_data" do %>
     <div class="absolute left-[50%] ml-2 text-gray-800 text-base font-medium -mt-5">
-      <%= link_to t("dredd.user_profile.change"), edit_personal_data_path(current_user), class: "button w-24" %>
+      <%= link_to t("dredd.user_profile.change"), edit_personal_data_path(current_user), data: { turbo_frame: "edit_personal_data" }, class: "button w-24" %>
     </div>
   </div>
   <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
@@ -73,4 +74,5 @@
       </div>
     </div>
   </div>
-<% end %>
+  <% end %>
+  <% end %>

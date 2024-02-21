@@ -9,17 +9,11 @@ class ProfilesController < ApplicationController
 
   def update_personal_data
     flash.now[:notice] = { text: 'User was successfully updated.', icon: 'success_icon' }.stringify_keys
-    if @user.update(user_params)
+    @user.update(user_params)
       render turbo_stream: [
-        turbo_stream.replace(@user, partial: 'profiles/form', locals: { user: @user }),
+        turbo_stream.replace("new", partial: 'profiles/form', locals: { user: @user }),
         turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
       ]
-    else
-      # render(
-      #   user_params[:password].present? ? :personal_data : :edit,
-      #   status: :unprocessable_entity
-      # )
-    end
   end
 
   def update_password

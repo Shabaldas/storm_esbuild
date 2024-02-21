@@ -38,10 +38,11 @@ Rails.application.routes.draw do
   }
 
   resources :profiles, only: :show
-  get 'personal_data/:id', to: 'profiles#edit_personal_data', as: 'edit_personal_data'
-  get 'password/:id', to: 'profiles#edit_password', as: 'edit_password'
-  put 'personal_data/:id', to: 'profiles#update_personal_data', as: 'update_personal_data'
-  put 'password/:id', to: 'profiles#update_password', as: 'update_password'
+  get 'edit_personal_data/:id', to: 'profiles#edit_personal_data', as: 'edit_personal_data'
+  get 'edit_password/:id', to: 'profiles#edit_password', as: 'edit_password'
+  put 'update_personal_data/:id', to: 'profiles#update_personal_data', as: 'update_personal_data'
+  put 'update_password/:id', to: 'profiles#update_password', as: 'update_password'
+
 
 
   get 'static_pages/home_lazy', to: 'static_pages#home_lazy'
