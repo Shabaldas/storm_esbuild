@@ -56,7 +56,7 @@ describe '/profiles', type: :request do
       }
     end
 
-    it 'update user personal data' do
+    it 'update user password' do
       expect do
         patch(update_password_path(user), params:, as: :turbo_stream)
         user.reload
@@ -64,7 +64,7 @@ describe '/profiles', type: :request do
       expect(response.body).to include('User was successfully updated.')
     end
 
-    it 'not update user personal data' do
+    it 'not update user password' do
       expect do
         patch(update_password_path(user), params: params_invalid, as: :turbo_stream)
         user.reload
