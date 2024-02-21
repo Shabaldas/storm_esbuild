@@ -8,31 +8,27 @@ class ProfilesController < ApplicationController
   def edit_password; end
 
   def update_personal_data
-    flash.now[:notice] = { text: 'User was successfully updated.', icon: 'success_icon' }.stringify_keys
-    @user.update(user_params)
-      render turbo_stream: [
-        turbo_stream.replace("new", partial: 'profiles/form', locals: { user: @user }),
-        turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
-      ]
+    handle_update_action('edit_personal_data')
   end
 
   def update_password
-    flash.now[:notice] = { text: 'User was successfully updated.', icon: 'success_icon' }.stringify_keys
-    if @user.update(user_params)
-      bypass_sign_in(@user)
-      render turbo_stream: [
-        turbo_stream.replace(@user, partial: 'profiles/form', locals: { user: @user }),
-        turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
-      ]
-    else
-      # render(
-      #   user_params[:password].present? ? :personal_data : :edit,
-      #   status: :unprocessable_entity
-      # )
-    end
+    bypass_sign_in(@user) if @user.update(user_params)
+    handle_update_action('edit_password')
   end
 
   private
+
+  def handle_update_action(edit_partial)
+    flash.now[:notice] = { text: 'User was successfully updated.', icon: 'success_icon' }.stringify_keys
+    if @user.update(user_params)
+      render turbo_stream: [
+        turbo_stream.replace('profile_page', partial: 'profiles/form', locals: { user: @user }),
+        turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
+      ]
+    else
+      render edit_partial, status: :unprocessable_entity
+    end
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :phone, :email, :password, :password_confirmation)
