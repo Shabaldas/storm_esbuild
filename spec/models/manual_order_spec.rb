@@ -7,6 +7,7 @@ RSpec.describe ManualOrder do
 
   describe 'associations' do
     it { is_expected.to belong_to(:worker).optional }
+    it { is_expected.to belong_to(:client).optional }
   end
 
   describe 'validations' do

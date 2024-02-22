@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_22_070121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
+    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
-    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -71,6 +71,27 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.index ["token"], name: "index_carts_on_token", unique: true
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "english_name", null: false
+    t.string "ukrainian_name", null: false
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["first_name"], name: "index_clients_on_first_name"
+    t.index ["last_name", "first_name"], name: "index_clients_on_last_name_and_first_name"
+    t.index ["last_name"], name: "index_clients_on_last_name"
+    t.index ["phone_number"], name: "index_clients_on_phone_number", unique: true
+  end
+
   create_table "costs", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -80,14 +101,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_costs_on_user_id"
-  end
-
-  create_table "cities", force: :cascade do |t|
-    t.string "english_name", null: false
-    t.string "ukrainian_name", null: false
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "feedback_calls", force: :cascade do |t|
@@ -124,6 +137,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
     t.bigint "worker_id"
     t.boolean "need_to_call_client", default: false
     t.boolean "individual_entrepreneur_accountings", default: false
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_manual_orders_on_client_id"
     t.index ["worker_id"], name: "index_manual_orders_on_worker_id"
   end
 
@@ -334,6 +349,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_164926) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "orders", on_delete: :cascade
   add_foreign_key "costs", "users"
+  add_foreign_key "manual_orders", "clients"
   add_foreign_key "manual_orders", "workers"
   add_foreign_key "option_values", "options", on_delete: :cascade
   add_foreign_key "print_model_attributes", "print_models", on_delete: :cascade

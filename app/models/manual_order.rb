@@ -7,6 +7,7 @@ class ManualOrder < ApplicationRecord
 
   # associations
   belongs_to :worker, optional: true
+  belongs_to :client, optional: true
 
   # callbacks
   before_create :set_print_code
