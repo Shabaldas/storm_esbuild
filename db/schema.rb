@@ -86,6 +86,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_22_070121) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["first_name"], name: "index_clients_on_first_name", unique: true
+    t.index ["last_name"], name: "index_clients_on_last_name", unique: true
+    t.index ["phone_number"], name: "index_clients_on_phone_number", unique: true
   end
 
   create_table "costs", force: :cascade do |t|
