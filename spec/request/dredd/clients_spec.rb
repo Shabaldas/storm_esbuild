@@ -24,6 +24,7 @@ describe '/dredd/clients', type: :request do
         expect(response.body).to include('ID')
         expect(response.body).to include('FIRST NAME')
         expect(response.body).to include('LAST NAME')
+        expect(response.body).to include('NICKNAME')
         expect(response.body).to include('EMAIL')
         expect(response.body).to include('PHONE')
         expect(response.body).to include('CREATED AT')
@@ -62,6 +63,7 @@ describe '/dredd/clients', type: :request do
       expect(response.body).to include(client.last_name)
       expect(response.body).to include(client.email)
       expect(response.body).to include(client.phone_number)
+      expect(response.body).to include(client.nickname)
     end
   end
 
