@@ -28,6 +28,7 @@
         </p>
       </div>
       <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+      <%= turbo_frame_tag "new-dredd-client-form" , src: new_dredd_client_path %>
       <div id="clients" class="border-b">
         <%= render partial: "dredd/clients/client", collection: @clients %>
       </div>

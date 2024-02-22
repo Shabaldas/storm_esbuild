@@ -22,7 +22,7 @@
                 <%= f.select :workflow_status_eq, ManualOrder.workflow_statuses.to_a.map { |w| [t("dredd.manual_orders.workflow_status.#{w[0]}"), w[1]] },
                                                                       { :include_blank => true }
                 %>
-                
+
                 <%= f.label :individual_entrepreneur_accountings, t("dredd.manual_orders.individual_entrepreneur_accountings") %>
                 <%= f.select :individual_entrepreneur_accountings_eq, [['Yes', true], ['No', false]], { :include_blank => true }
                 %>

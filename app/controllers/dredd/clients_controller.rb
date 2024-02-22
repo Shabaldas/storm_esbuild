@@ -9,7 +9,29 @@ module Dredd
     end
 
     def show; end
+
+    def new
+      @client = Client.new
+    end
+
     def edit; end
+
+    def create
+      @client = Client.new(client_params)
+
+      if @client.save
+        flash.now[:notice] = { text: 'Client was successfully created.', icon: 'success_icon' }.stringify_keys
+        render turbo_stream: [
+          turbo_stream.prepend('clients', @client),
+          turbo_stream.replace('form_client',
+                               partial: 'form',
+                               locals: { client: Client.new }),
+          turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
+        ]
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
 
     def update
       if @client.update(client_params)

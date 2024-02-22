@@ -54,6 +54,37 @@ describe '/dredd/clients', type: :request do
     end
   end
 
+  describe 'POST /dredd/clients' do
+    it 'create a new client' do
+      expect do
+        post dredd_clients_path, params: {
+          client: {
+            first_name: 'Vasa',
+            last_name: 'Pupkin',
+            nickname: 'Vasa 111'
+          }
+        }, as: :turbo_stream
+      end.to change(Client, :count).by(1)
+      client = Client.last
+      expect(client.first_name).to eq('Vasa')
+      expect(client.last_name).to eq('Pupkin')
+      expect(client.nickname).to eq('Vasa 111')
+    end
+
+    it 'error when create a new client' do
+      expect do
+        post dredd_clients_path, params: {
+          client: {
+            last_name: 'Pupkin',
+            nickname: 'Vasa 111'
+          }
+        }
+      end.not_to change(Client, :count)
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response.body).to include('Can&#39;t be blank')
+    end
+  end
+
   describe 'GET /dredd/client/:id' do
     it 'display the client' do
       get dredd_client_path(client)
