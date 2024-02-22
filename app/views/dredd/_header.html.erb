@@ -13,6 +13,7 @@
           <%#= active_link_to t("dredd.header.product_categories"), dredd_product_categories_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.manual_orders"), dredd_manual_orders_path, class: "text-black cursor-pointer" %>
           <% if policy(:admin).admin_only_access? %>
+          <%= active_link_to t("dredd.header.clients"), dredd_clients_path, class: "text-black cursor-pointer" %>
             <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-black cursor-pointer" %>
           <% end %>
           <%# INTERNAET ORDERS %>
