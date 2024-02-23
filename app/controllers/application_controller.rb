@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include Pagy::Backend
+  add_flash_types :info, :error, :notice
 
   before_action :set_locale
 
