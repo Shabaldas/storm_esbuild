@@ -42,6 +42,9 @@
           <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "login-with-google-btn w-full" do %>
             <%= t("devise.sessions.new.sign_google") %>
           <% end %>
+          <%= button_to user_facebook_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "login-with-google-btn w-full" do %>
+            facebook
+          <% end %>
           <p class="mt-5 text-center">
             <span class="text-sm text-metalic-grey">
               <%= t("devise.registrations.new.first_registration")%>

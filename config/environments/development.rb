@@ -1,6 +1,8 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.hosts << "d5e8-62-122-202-80.ngrok-free.app"
+  config.web_console.whitelisted_ips = '62.122.202.80'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
