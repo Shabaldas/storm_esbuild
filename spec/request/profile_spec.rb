@@ -1,19 +1,36 @@
 describe '/profiles', type: :request do
-  let(:user) { create(:user, :admin) }
+  let(:user) { create(:user) }
 
   before do
     login_as(user, scope: :user)
   end
 
   describe 'GET /profiles/:id' do
-    it 'display the user' do
-      get profile_path(user)
+    context 'when user is current user' do
+      it 'display the user' do
+        get profile_path(user)
 
-      expect(response).to be_successful
-      expect(response.body).to include(user.first_name)
-      expect(response.body).to include(user.last_name)
-      expect(response.body).to include(user.email)
-      expect(response.body).to include(user.phone)
+        expect(response).to be_successful
+        expect(response.body).to include(user.first_name)
+        expect(response.body).to include(user.last_name)
+        expect(response.body).to include(user.email)
+        expect(response.body).to include(user.phone)
+      end
+    end
+
+    context 'when user is not current user' do
+      let!(:user_second) { create(:user) }
+
+      before do
+        login_as(user_second, scope: :user)
+      end
+
+      it 'redirect to root path' do
+        get profile_path(user)
+        expect(response).to redirect_to(root_path)
+        follow_redirect!
+        expect(response.body).to include('You are not authorized to access this page.')
+      end
     end
   end
 
@@ -47,6 +64,7 @@ describe '/profiles', type: :request do
         }
       }
     end
+
     let(:params_invalid) do
       {
         user: {

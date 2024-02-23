@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProfilesController < ApplicationController
+  before_action :authorize_user
   before_action :set_user, only: [:edit_personal_data, :edit_password, :show, :update_personal_data, :update_password]
 
   def show; end
@@ -35,6 +36,12 @@ class ProfilesController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User&.find(params[:id])
+  end
+
+  def authorize_user
+    set_user
+
+    authorize @user, :access?
   end
 end
