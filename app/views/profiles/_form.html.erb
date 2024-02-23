@@ -1,0 +1,86 @@
+<%= turbo_frame_tag "profile_page" do %>
+  <%= turbo_frame_tag "edit_personal_data" do %>
+    <div class="flex items-center justify-between mt-6">
+      <div class="flex items-center h-8">
+        <div class="w-6 h-6">
+          <%= image_tag("partials_img/user.png") %>
+        </div>
+        <div class="ml-2 text-dark-grey text-base font-medium">
+          <%= t("dredd.user_profile.personal_data") %>
+        </div>
+      </div>
+      <div>
+        <%= link_to t("dredd.user_profile.change"), edit_personal_data_path(current_user), data: {
+          turbo_frame: "edit_personal_data" },
+          class: "w-[100px] h-8 px-4 py-1.5 bg-transparent uppercase text-sm text-metalic-grey font-semibold border-2 border-solid border-metalic-grey rounded-lg"
+          %>
+      </div>
+    </div>
+    <div class="mt-3 mb-2 w-full h-px bg-gray-400"></div>
+    <div class="mt-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <div class="text-xs text-metalic-grey">
+            <%= t("dredd.manual_orders.first_name") %>
+          </div>
+          <div class="mt-1 w-full text-base font-medium">
+            <%= current_user.first_name %>
+          </div>
+        </div>
+        <div>
+          <div class="text-xs text-metalic-grey">
+            <%= t("dredd.manual_orders.last_name") %>
+          </div>
+          <div class="mt-1 w-full text-base font-medium">
+            <%= current_user.last_name %>
+          </div>
+        </div>
+        <div>
+          <div class="text-xs text-metalic-grey">
+            <%= t("dredd.manual_orders.email") %>
+          </div>
+          <div class="mt-1 w-full text-base font-medium">
+            <%= current_user.email %>
+          </div>
+        </div>
+        <div>
+          <div class="text-xs text-metalic-grey">
+            <%= t("dredd.manual_orders.phone_number") %>
+          </div>
+          <div class="mt-1 w-full text-base font-medium">
+            <%= current_user.phone %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+      <%= turbo_frame_tag "edit_password" do %>
+        <div>
+          <div class="h-8 flex items-center justify-between mt-12">
+            <div class="flex items-center">
+              <div class="w-6 h-6">
+                <%= image_tag("partials_img/lock.png") %>
+              </div>
+              <div class="ml-2 text-dark-grey text-base font-medium">
+                <%= t("dredd.user_profile.password") %>
+              </div>
+            </div>
+            <div>
+              <%= link_to t("dredd.user_profile.change"), edit_password_path(current_user), data: {
+                turbo_frame: "edit_password" },
+                class: "w-[100px] h-8 px-4 py-1.5 bg-transparent uppercase text-sm text-metalic-grey font-semibold border-2 border-solid border-metalic-grey rounded-lg"
+                %>
+            </div>
+          </div>
+          <div class="mt-3 mb-2 w-full h-px bg-gray-400"></div>
+          <div class="grid grid-cols-1 gap-2 mb-16">
+            <div class="text-xs text-metalic-grey">
+              <%= t("dredd.user_profile.personal_password") %>
+            </div>
+            <div class="mt-1 w-full text-base font-medium">
+              ********
+            </div>
+          </div>
+        </div>
+        <% end %>
+          <% end %>

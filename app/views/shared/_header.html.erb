@@ -1,8 +1,5 @@
 <header class="w-full fixed z-30 bg-light-grey">
   <div class="w-full h-16 relative max-w-screen-2xl mx-auto flex justify-between items-center px-7 xl:px-24">
-    <div class="absolute top-20 right-6 xl:right-24 w-[260px] md:w-[360px] z-50">
-      <%= render "dredd/shared/flash" %>
-    </div>
 
     <div class="flex w-1/2 justify-between h-full">
       <div class="w-24">
@@ -53,8 +50,13 @@
             <div class="w-[146px] lg:w-[186px] shadow rounded border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
               <% if user_signed_in? %>
                 <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
-                  <%= link_to t('global.header.my_cabinet'), edit_user_registration_path, class: "text-black" %>
+                  <%= link_to t('global.header.profile'), profile_path(current_user.id), class: "text-black" %>
                 </p>
+                <% if policy(:admin).access? %>
+                  <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
+                    <%= link_to t('global.header.my_cabinet'), edit_user_registration_path, class: "text-black" %>
+                  </p>
+                <% end %>
                 <hr/>
                 <div class="text-center cursor-pointer pt-2 pb-1">
                   <%= button_to t('global.header.log_out'), destroy_user_session_path, method: :delete, data: { trubo: false } %>
