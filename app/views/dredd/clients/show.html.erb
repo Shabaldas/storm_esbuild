@@ -1,0 +1,15 @@
+<div class="w-full h-screen relative">
+  <div class="w-full h-[450px] bg-gradient-to-r from-orange-300 via-purple-400 to-orange-300"></div>
+  <div class="absolute top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] w-[750px] h-[600px] rounded-3xl bg-white drop-shadow-xl">
+    <div class="w-48 h-48 rounded-full absolute -top-24 left-[50%] -translate-x-[50%] bg-gray-100 overflow-hidden">
+      <%= image_tag("dredd/user.png") %>
+    </div>
+    <div class="w-full mt-[100px] h-[500px] grid gap-4 place-content-center text-center">
+      <h3 class="pb-6 text-5xl"><%= @client.full_name %></h3>
+      <div class="p-3 text-2xl"><%= @client.nickname %></div>
+      <div class="p-3 text-2xl"><%= @client.phone_number %></div>
+      <div class="p-6 text-2xl"><%= @client.email %></div>
+      <div class="p-2 text-2xl"><%= link_to 'Back', dredd_clients_path, class: "button w-80 mx-auto" %></div>
+    </div>
+  </div>
+</div>

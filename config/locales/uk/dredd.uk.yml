@@ -164,12 +164,14 @@ uk:
       full_name: "ПОВНЕ ІМ'Я"
       phone: "ТЕЛЕФОН"
       email: "ЕЛЕКТРОННА ПОШТА"
-      customers: "КЛІЄНТИ"
+      customers: "КОРИСТУВАЧІ"
       customer: "Клієнт"
       workers: "ПРАЦІВНИКИ"
       created_at: "СТВОРЕНО О"
       nickname: "ПСЕВДНІМ"
       actions: "ДІЇ"
+      first_name: "ІМ'Я"
+      last_name: "ПРІЗВИЩЕ"
     header:
       admin_dashboard: "Панель \n адміністратора"
       products: "Продукти"
@@ -186,6 +188,7 @@ uk:
       accountings: "Бухгалтерія"
       administer_pages: "Адміністрування сторінок"
       workers: "Працівники"
+      clients: "Клієнти"
     printers:
       actions: "Дії"
       printer_code: "Код принтера"

@@ -170,6 +170,8 @@ en:
       created_at: "CREATED AT"
       nickname: "NICKNAME"
       actions: "ACTIONS"
+      first_name: "FIRST NAME"
+      last_name: "LAST NAME"
     header:
       admin_dashboard: "Admin \n Dashboard"
       products: "Products"
@@ -186,6 +188,7 @@ en:
       accountings: "Accountings"
       administer_pages: "Administer Pages"
       workers: "Workers"
+      clients: "Clients"
     printers:
       actions: "ACTIONS"
       printer_code: "Printer code"

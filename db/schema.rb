@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_22_070121) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_22_183208) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,9 +86,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_22_070121) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname"
     t.index ["first_name"], name: "index_clients_on_first_name"
     t.index ["last_name", "first_name"], name: "index_clients_on_last_name_and_first_name"
     t.index ["last_name"], name: "index_clients_on_last_name"
+    t.index ["nickname"], name: "index_clients_on_nickname"
     t.index ["phone_number"], name: "index_clients_on_phone_number", unique: true
   end
 
@@ -112,11 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_22_070121) do
 
   create_table "manual_orders", force: :cascade do |t|
     t.string "print_code"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
     t.integer "app_contact", default: 0
-    t.string "email"
     t.decimal "price_for_modeling", precision: 8, scale: 2
     t.decimal "price_for_printing", precision: 8, scale: 2
     t.integer "count"
@@ -137,6 +135,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_22_070121) do
     t.bigint "worker_id"
     t.boolean "need_to_call_client", default: false
     t.boolean "individual_entrepreneur_accountings", default: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone_number"
     t.bigint "client_id"
     t.index ["client_id"], name: "index_manual_orders_on_client_id"
     t.index ["worker_id"], name: "index_manual_orders_on_worker_id"
