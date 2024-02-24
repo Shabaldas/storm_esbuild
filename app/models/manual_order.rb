@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ManualOrder < ApplicationRecord
+  has_paper_trail
+
   PRINTING_COLORS = [
     'Black', 'White', 'Grey', 'Transparent', 'Blue', 'Yellow', 'Violet', 'Natural', 'Orange'
   ].freeze
