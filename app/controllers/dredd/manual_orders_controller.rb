@@ -5,8 +5,8 @@ module Dredd
     before_action :set_manual_order, only: [:edit, :update, :destroy]
 
     def index
-      @q = ManualOrder.order(status: :asc, print_code: :desc).ransack(params[:q]&.permit!)
-      @pagy, @manual_orders = pagy(@q.result(distinct: true), items: 20)
+      @q = ManualOrder.order(status: :asc, print_code: :desc).ransack(params[:q])
+      @pagy, @manual_orders = pagy(@q.result(distinct: true), items: 30)
     end
 
     def new
@@ -37,12 +37,7 @@ module Dredd
       @manual_orders = ManualOrder.order(status: :asc, print_code: :desc)
       @manual_order.destroy!
 
-      respond_to do |format|
-        format.html do
-          redirect_to dredd_manual_orders_path, info: { text: 'Manual Order was successfully destroyed.', icon: 'attention' }
-        end
-        format.turbo_stream { flash.now[:info] = { text: 'Manual Order was successfully destroyed.', icon: 'success_icon' }.stringify_keys }
-      end
+      redirect_to dredd_manual_orders_path, notice: { text: 'Manual Order was successfully destroyed.', icon: 'attention' }
     end
 
     private
