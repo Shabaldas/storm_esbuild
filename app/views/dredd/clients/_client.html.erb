@@ -21,13 +21,13 @@
     <p class="w-1/6 px-4 py-3">
       <%= l(client.created_at, format: :long) %>
     </p>
-      <div class="w-1/8 px-4 py-5 flex space-x-4">
-        <%= link_to edit_dredd_client_path(client) do %>
-          <%= image_tag("icons_svg/edit_icon.svg") %>
-        <% end %>
-        <%= link_to dredd_client_path(client), data: { turbo_frame: "_top" } do %>
-          <%= image_tag("icons_svg/show.svg") %>
-        <% end %>
-      </div>
+    <div class="w-1/8 px-4 py-5 flex space-x-4">
+      <%= link_to edit_dredd_client_path(client) do %>
+        <%= image_tag("icons_svg/edit_icon.svg") %>
+      <% end %>
+      <%= link_to dredd_client_path(client), data: { turbo_frame: "_top" } do %>
+        <%= image_tag("icons_svg/show.svg") %>
+      <% end %>
+    </div>
   </div>
 <% end %>

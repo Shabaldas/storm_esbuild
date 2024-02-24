@@ -6,7 +6,7 @@ module DatabaseSeeds
       def execute
         return if Rails.env.production?
 
-        5.times do
+        25.times do
           FactoryBot.create :client
         end
       end
