@@ -8,7 +8,7 @@
       <%= form.date_field :date, value: value&.strftime('%Y-%m-%d'), class: "inline-block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
     
-    <%= form.text_area :description, placeholder: "Add description", class: "inline-block shadow rounded-md border border-gray-200 outline-none px-3 py-2 h-20 mt-2 w-full" %>
+    <%= form.text_area :description, placeholder: "Add description", data: { controller: "textarea-autogrow" }, class: "inline-block shadow rounded-md border border-gray-200 outline-none px-3 py-2 h-20 mt-2 w-full" %>
     <%= form.hidden_field :month_date, value: params['date'] %>
     <%= form.submit "Save", class: "py-2 button w-full" %>
   </div>

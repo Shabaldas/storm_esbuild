@@ -78,3 +78,9 @@ application.register("scroll-to", ScrollToController);
 
 import AnimatedNumber from 'stimulus-animated-number'
 application.register('animated-number', AnimatedNumber)
+
+import PasswordVisibility from 'stimulus-password-visibility'
+application.register('password-visibility', PasswordVisibility)
+
+import TextareaAutogrow from 'stimulus-textarea-autogrow'
+application.register('textarea-autogrow', TextareaAutogrow)
