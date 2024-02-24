@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   put 'locales/:locale', to: 'locales#update', as: :locale,
                          constraints: { locale: /#{I18n.available_locales.join('|')}/ }
 
+  get '/users/edit', to: redirect('404')
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
