@@ -3,8 +3,8 @@ RSpec.describe DatabaseSeeds::Dummy::ClientsSeed do
     context 'when executing seed' do
       before { described_class.new.execute }
 
-      it 'creates 5 clients' do
-        expect(Client.count).to eq(5)
+      it 'creates 25 clients' do
+        expect(Client.count).to eq(25)
       end
     end
   end
