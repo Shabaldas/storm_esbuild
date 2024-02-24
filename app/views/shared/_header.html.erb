@@ -54,7 +54,7 @@
                 </p>
                 <% if policy(:admin).access? %>
                   <p class="text-center px-5 pt-2 pb-1 cursor-pointer">
-                    <%= link_to t('global.header.my_cabinet'), edit_user_registration_path, class: "text-black" %>
+                    <%= link_to t("dredd.header.admin_dashboard"), dredd_dashboard_path, class: "text-black" %>
                   </p>
                 <% end %>
                 <hr/>
