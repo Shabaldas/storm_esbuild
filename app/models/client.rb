@@ -6,7 +6,7 @@ class Client < ApplicationRecord
 
   # validations
   validates :first_name, presence: true
-  validates :phone_number, uniqueness: true
+  validates :phone_number, phone: true, uniqueness: true, allow_blank: true
 
   ransack_alias :name, [:first_name, :last_name]
 
