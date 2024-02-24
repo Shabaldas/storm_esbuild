@@ -15,7 +15,7 @@ describe '/dredd/manual_orders', type: :request do
     end
 
     it 'displays all manual orders' do
-      get dredd_manual_orders_path, as: :turbo_stream
+      get dredd_manual_orders_path
 
       expect(response).to be_successful
       expect(response.body).to include('Print Code')
