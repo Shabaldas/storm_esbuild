@@ -46,11 +46,11 @@
     </div>
     <div class="form-group">
       <%= form.label t("dredd.printers.comment"), class: "form-label" %>
-      <%= form.text_area :comment, placeholder: t("dredd.manual_orders.please_input"), class: "w-full form-control" %>
+      <%= form.text_area :comment, placeholder: t("dredd.manual_orders.please_input"), data: { controller: "textarea-autogrow" }, class: "w-full form-control" %>
     </div>
     <div class="form-group">
       <%= form.label t("dredd.printers.by_for_upgrade"), class: "form-label" %>
-      <%= form.text_area :by_for_upgrade, placeholder: t("dredd.manual_orders.please_input"), class: "w-full form-control" %>
+      <%= form.text_area :by_for_upgrade, placeholder: t("dredd.manual_orders.please_input"), data: { controller: "textarea-autogrow" }, class: "w-full form-control" %>
     </div>
 
     <div data-controller="nested-form" data-nested-form-wrapper-selector-value='.nested-form-wrapper'>
