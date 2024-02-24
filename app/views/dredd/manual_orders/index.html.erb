@@ -8,7 +8,7 @@
         </br>
         <div>
           <h4 class="text-lg normal-case text-gray-800 mb-4">
-            Search
+            <%= t("dredd.workers.search") %>
           </h4>
           <div data-controller="accordion">
             <%= search_form_for(@q, url: dredd_manual_orders_path, data: { turbo_frame: :results }) do |f| %>
@@ -37,7 +37,7 @@
       </div>
       </br>
     </div>
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <%= turbo_frame_tag "results", target: '_top', data: { turbo_action: 'advance' } do %>
       <%= turbo_frame_tag "manual_orders" %>
       <%= turbo_frame_tag "pagination",
