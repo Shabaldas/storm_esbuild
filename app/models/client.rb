@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Client < ApplicationRecord
+  has_paper_trail
   # associations
   has_many :manual_orders # rubocop:disable Rails/HasManyOrHasOneDependent
 
