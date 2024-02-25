@@ -12,18 +12,34 @@
             <%= f.hidden_field :reset_password_token %>
             <div class="mt-5">
               <%= f.label :password, t("devise.passwords.edit.label"), class:"text-sm" %>
-              <div>
+              <div class="relative" data-controller="password-visibility">
                 <% if @minimum_password_length %>
                   <em>(<%= @minimum_password_length %>
                     characters minimum)</em>
                 <% end %>
-                <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+                <%= f.password_field :password, data: { "password-visibility-target": "input"}, spellcheck: "false", autofocus: true, autocomplete: "new-password" , class:"pr-10" %>
+                <button type="button" data-action="password-visibility#toggle" class="absolute top-8 right-2">
+                  <span data-password-visibility-target="icon">
+                    <%= image_tag("icons_svg/eye_hide_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                  </span>
+                  <span data-password-visibility-target="icon" class="hidden">
+                    <%= image_tag("icons_svg/eye_show_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                  </span>
+                </button>
                 <%= inline_error_for(:password, resource) %>
               </div>
             </div>
-            <div class="mt-5">
+            <div class="relative mt-5" data-controller="password-visibility">
             <%= f.label :password_confirmation,  t("devise.passwords.edit.labelsecond"), class:"text-sm" %>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              <%= f.password_field :password_confirmation, data: { "password-visibility-target": "input"}, spellcheck: "false", autocomplete: "new-password", class:"pr-10" %>
+              <button type="button" data-action="password-visibility#toggle" class="absolute top-8 right-2">
+                <span data-password-visibility-target="icon">
+                  <%= image_tag("icons_svg/eye_hide_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                </span>
+                <span data-password-visibility-target="icon" class="hidden">
+                  <%= image_tag("icons_svg/eye_show_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                </span>
+              </button>
               <%= inline_error_for(:password_confirmation, resource) %>
             </div>
             <div class="mt-5">

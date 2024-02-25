@@ -20,9 +20,17 @@
                 <%= f.email_field :email, autofocus: true, autocomplete: "email",  placeholder: "example@email.com" %>
                 <%= inline_error_for(:email, resource) %>
               </div>
-              <div class="mt-5">
+              <div data-controller="password-visibility" class="relative mt-5">
                 <%= f.label :password ,class: "text-sm text-metalic-grey"%>
-                <%= f.password_field :password, autocomplete: "new-password", class: "", placeholder: t("devise.registrations.enter_password") %>
+                <%= f.password_field :password, data: { "password-visibility-target": "input"}, spellcheck: "false", autocomplete: "new-password", class: "pr-10", placeholder: t("devise.registrations.enter_password") %>
+                <button type="button" data-action="password-visibility#toggle" class="absolute top-8 right-2">
+                  <span data-password-visibility-target="icon">
+                    <%= image_tag("icons_svg/eye_hide_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                  </span>
+                  <span data-password-visibility-target="icon" class="hidden">
+                    <%= image_tag("icons_svg/eye_show_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                  </span>
+                </button>
                 <%= inline_error_for(:password, resource) %>
               </div>
               <div class="mt-5">
