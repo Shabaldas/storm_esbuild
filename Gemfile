@@ -38,7 +38,7 @@ gem 'phonelib'
 gem 'ransack', '~> 3.2', '>= 3.2.1'
 gem 'rails', '~> 7.0.6'
 gem 'rails-i18n'
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 5.1'
 gem "sidekiq-cron"
 gem "redis-namespace"
 gem 'sidekiq', '~> 7.0.0'
