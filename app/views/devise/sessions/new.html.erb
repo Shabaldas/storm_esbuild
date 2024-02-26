@@ -14,9 +14,17 @@
                 <%= f.label :email, t("devise.registrations.email"), class: "text-sm" %>
                 <%= f.email_field :email, autofocus: true, class: "w-full rounded", autocomplete: "email", placeholder: "example@email.com" %>
               </div>
-              <div class="mt-5">
+              <div class="relative mt-5" data-controller="password-visibility">
                 <%= f.label :password, class:"text-sm" %>
-                <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded", placeholder: t("devise.registrations.enter_password") %>
+                <%= f.password_field :password, data: { "password-visibility-target": "input"}, spellcheck: "false", autocomplete: "current-password", class: "w-full pr-10 rounded", placeholder: t("devise.registrations.enter_password") %>
+                <button type="button" data-action="password-visibility#toggle" class="absolute top-8 right-2">
+                  <span data-password-visibility-target="icon">
+                    <%= image_tag("icons_svg/eye_hide_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                  </span>
+                  <span data-password-visibility-target="icon" class="hidden">
+                    <%= image_tag("icons_svg/eye_show_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                  </span>
+                </button>
               </div>
               <div class="flex items-center justify-between mt-4">
                 <div class="flex items-center">
