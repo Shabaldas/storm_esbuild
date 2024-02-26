@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   resources :profiles, only: :show
   get 'edit_personal_data/:id', to: 'profiles#edit_personal_data', as: 'edit_personal_data'
-  get 'edit_password/:id', to: 'profiles#edit_password', as: 'edit_password'
+  get 'edit_profile_password/:id', to: 'profiles#edit_profile_password', as: 'edit_profile_password'
   put 'update_personal_data/:id', to: 'profiles#update_personal_data', as: 'update_personal_data'
   patch 'update_password/:id', to: 'profiles#update_password', as: 'update_password'
 

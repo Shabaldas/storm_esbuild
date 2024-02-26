@@ -54,7 +54,7 @@
       </div>
     </div>
     <% end %>
-    <%= turbo_frame_tag "edit_password" do %>
+    <%= turbo_frame_tag "edit_profile_password" do %>
       <div>
         <div class="h-8 flex items-center justify-between mt-12">
           <div class="flex items-center">
@@ -66,8 +66,8 @@
             </div>
           </div>
           <div>
-            <%= link_to t("dredd.user_profile.change"), edit_password_path(@user), data: {
-              turbo_frame: "edit_password" },
+            <%= link_to t("dredd.user_profile.change"), edit_profile_password_path(@user), data: {
+              turbo_frame: "edit_profile_password" },
               class: "w-[100px] h-8 px-4 py-1.5 bg-transparent uppercase text-sm text-metalic-grey font-semibold border-2 border-solid border-metalic-grey rounded-lg"
               %>
           </div>
