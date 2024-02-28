@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_24_113618) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_28_103330) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,7 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_24_113618) do
     t.index ["last_name", "first_name"], name: "index_clients_on_last_name_and_first_name"
     t.index ["last_name"], name: "index_clients_on_last_name"
     t.index ["nickname"], name: "index_clients_on_nickname"
-    t.index ["phone_number"], name: "index_clients_on_phone_number", unique: true
+    t.index ["phone_number"], name: "index_clients_on_phone_number"
   end
 
   create_table "costs", force: :cascade do |t|
