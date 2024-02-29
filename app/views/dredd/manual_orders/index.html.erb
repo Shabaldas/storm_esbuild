@@ -16,11 +16,6 @@
                 <%= f.label :fisrt_name, t("dredd.workers.first_last_full") %>
                 <%= f.search_field :first_name_or_last_name_or_full_name_cont, placeholder:
                     t("dredd.manual_orders.please_input") %>
-                <!-- <%= f.label :first_name, t("dredd.workers.first_name") %>
-                <%= f.search_field :first_name_cont, placeholder: t("dredd.manual_orders.please_input") %>
-
-                <%= f.label :last_name, t("dredd.workers.last_name") %>
-                <%= f.search_field :last_name_cont, placeholder: t("dredd.manual_orders.please_input") %> -->
 
                 <%= f.label :print_code_eq, t("dredd.manual_orders.status") %>
                 <%= f.select :status_eq, ManualOrder.statuses.to_a.map { |w| [w[0].humanize, w[1]] },
