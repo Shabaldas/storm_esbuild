@@ -231,6 +231,7 @@ uk:
       last_name: "Прізвище"
       nickname: "Псевдонім"
       search: "Пошук"
+      first_last_full: "Ім'я/Прізвище/Повне ім'я"
     user_profile:
       password: "Пароль"
       personal_data: "Персональні дані"

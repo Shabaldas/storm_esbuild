@@ -25,6 +25,15 @@ class ManualOrder < ApplicationRecord
   validates :phone_number, phone: true, allow_blank: true
   validates :worker_id, on: :update, presence: true
 
+  # for search
+  ransack_alias :name, [:first_name, :last_name]
+
+  ransacker :full_name do |parent|
+    Arel::Nodes::NamedFunction.new('CONCAT_WS', [
+                                     Arel::Nodes.build_quoted(' '), parent.table[:first_name], parent.table[:last_name]
+                                   ])
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end

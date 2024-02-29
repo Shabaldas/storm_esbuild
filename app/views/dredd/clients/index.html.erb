@@ -12,8 +12,8 @@
           <div data-controller="accordion">
             <%= search_form_for(@q, url: dredd_clients_path, data: { turbo_frame: :results }) do |f| %>
               <div class="space-y-2">
-                <%= f.label :fisrt_name, t("dredd.workers.first_name") %>
-                  <%= f.search_field :first_name_or_last_name_or_full_name_cont, placeholder:
+                <%= f.label :fisrt_name, t("dredd.workers.first_last_full") %>
+                <%= f.search_field :first_name_or_last_name_or_full_name_cont, placeholder:
                     t("dredd.manual_orders.please_input") %>
               </div>
               <div class="space-y-2">
