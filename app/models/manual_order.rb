@@ -34,6 +34,10 @@ class ManualOrder < ApplicationRecord
                                    ])
   end
 
+  ransacker :phone_number, formatter: proc { |v| v.downcase } do |parent|
+    parent.table[:phone_number]
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
