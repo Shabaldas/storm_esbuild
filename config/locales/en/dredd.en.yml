@@ -231,6 +231,7 @@ en:
       last_name: "Last Name"
       nickname: "Nickname"
       search: "Search"
+      first_last_full: "First Name/Last Name/Full Name"
     user_profile:
       password: "Password"
       personal_data: "Personal data"
