@@ -338,7 +338,7 @@ GEM
     opentelemetry-semantic_conventions (1.10.0)
       opentelemetry-api (~> 1.0)
     orm_adapter (0.5.0)
-    pagy (6.4.3)
+    pagy (7.0.8)
     paper_trail (15.1.0)
       activerecord (>= 6.1)
       request_store (~> 1.4)
@@ -632,7 +632,7 @@ DEPENDENCIES
   jsbundling-rails
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
-  pagy (~> 6.4)
+  pagy (~> 7.0)
   paper_trail (~> 15.1.0)
   pg (~> 1.5)
   phonelib
