@@ -46,6 +46,21 @@ module Dredd
       end
     end
 
+    def combine_clients
+      return if params[:client1_id].blank? || params[:client2_id].blank?
+
+      client1 = Client.find(params[:client1_id])
+      client2 = Client.find(params[:client2_id])
+
+      client2.manual_orders.each do |manual_order|
+        manual_order.update(client: client1)
+      end
+
+      client2.destroy!
+
+      redirect_to dredd_clients_path, status: :see_other, notice: { text: 'Clients successfully combined', icon: 'success_icon' }
+    end
+
     private
 
     def set_client

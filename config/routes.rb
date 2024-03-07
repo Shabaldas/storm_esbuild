@@ -30,7 +30,9 @@ Rails.application.routes.draw do
     resources :accountings, only: :index do
       get :monthly, on: :collection
     end
-    resources :clients, except: [:destroy]
+    resources :clients, except: [:destroy] do
+      post :combine_clients, on: :collection
+    end
   end
 
   put 'locales/:locale', to: 'locales#update', as: :locale,
