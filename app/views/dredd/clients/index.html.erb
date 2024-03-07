@@ -30,6 +30,22 @@
               </div>
               <% end %>
           </div>
+          </br>
+          
+          <h4 class="text-lg normal-case text-gray-800 mb-4">
+            Обєднати клієнтів
+          </h4>
+
+          <%= form_with(url: combine_clients_dredd_clients_path, method: :post) do |f| %>
+            <%= f.label :client1_id, "Client 1 ID який ЗАЛИШИТЬСЯ!!!" %>
+            <%= f.text_field :client1_id %>
+            
+            <%= f.label :client2_id, "Client 2 ID який ВИДАЛИТЬСЯ (DESTORYED)!!!" %>
+            <%= f.text_field :client2_id %>
+
+            <%= f.submit "Combine Clients", class: "button" %>
+          <% end %>
+
         </div>
       </div>
     </div>
