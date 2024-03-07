@@ -31,9 +31,9 @@ describe '/dredd/manual_orders', type: :request do
     end
   end
 
-  describe 'GET /dredd/manual_orders/new' do
+  describe 'GET /dredd/manual_orders/new_manual_order' do
     it 'display new manual order form' do
-      get new_dredd_manual_order_path
+      get new_manual_order_dredd_manual_orders_path
 
       expect(response).to be_successful
       expect(response.body).to include('New Manual Order')
@@ -42,6 +42,30 @@ describe '/dredd/manual_orders', type: :request do
       expect(response.body).to include('Phone number')
       expect(response.body).to include('Application contact')
       expect(response.body).to include('Email')
+      expect(response.body).to include('Modeller')
+      expect(response.body).to include('Price for modeling')
+      expect(response.body).to include('Price for printing')
+      expect(response.body).to include('Quality')
+      expect(response.body).to include('Infill')
+      expect(response.body).to include('Count')
+      expect(response.body).to include('Total price')
+      expect(response.body).to include('Status')
+      expect(response.body).to include('Prepaid expense')
+      expect(response.body).to include('Print material')
+      expect(response.body).to include('Print color')
+      expect(response.body).to include('Deadline')
+      expect(response.body).to include('Comment')
+      expect(response.body).to include('FOP accounting')
+      expect(response.body).to include('Save')
+    end
+  end
+
+  describe 'GET /dredd/manual_orders/new_manual_order_from_client_dredd_manual_orders_path' do
+    it 'display new manual order form' do
+      get new_manual_order_from_client_dredd_manual_orders_path
+
+      expect(response).to be_successful
+      expect(response.body).to include('Select client')
       expect(response.body).to include('Modeller')
       expect(response.body).to include('Price for modeling')
       expect(response.body).to include('Price for printing')

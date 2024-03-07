@@ -6,13 +6,15 @@ module Dredd
 
     def index
       @q = Client.left_joins(:manual_orders).group('clients.id')
-                 .order('COUNT(manual_orders.id) DESC')
-                 .ransack(params[:q]&.permit!)
+             .order('COUNT(manual_orders.id) DESC')
+             .ransack(params[:q]&.permit!)
 
       @pagy, @clients = pagy(@q.result, items: 20)
     end
 
-    def show; end
+    def show
+      @pagy, @manual_orders = pagy(@client.manual_orders.order(status: :desc), items: 20)
+    end
 
     def new
       @client = Client.new
@@ -47,6 +49,21 @@ module Dredd
       else
         render :edit, status: :unprocessable_entity
       end
+    end
+
+    def combine_clients
+      return if params[:client1_id].blank? || params[:client2_id].blank?
+
+      client1 = Client.find(params[:client1_id])
+      client2 = Client.find(params[:client2_id])
+
+      client2.manual_orders.each do |manual_order|
+        manual_order.update(client: client1)
+      end
+
+      client2.destroy!
+
+      redirect_to dredd_clients_path, status: :see_other, notice: { text: 'Clients successfully combined', icon: 'success_icon' }
     end
 
     private

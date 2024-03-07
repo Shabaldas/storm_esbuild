@@ -1,0 +1,17 @@
+<div class="lg:px-24 max-w-screen-2xl mt-16 mx-auto w-full">
+  <div class="mt-9">
+    <div class="flex space-x-5 pt-5">
+      <%= link_to dredd_manual_orders_path, class: "back-btn text-black" do %>
+        <div class="button-text flex">
+          <%= image_tag("icons_svg/chevron-left.svg", class: "h-5")%>
+          <%= t('.back') %>
+        </div>
+      <% end %>
+      <%= link_to t("dredd.manual_orders.new_manual_order"), new_manual_order_dredd_manual_orders_path, class: "bg-stone-300 border-1 border-solid flex flex-col items-center rounded-full text-black text-center w-72" %>
+    </div>
+    </br>
+    <div class="bg-zinc flex gap-10 p-4 pt-6 rounded-3xl">
+      <%= render partial: 'client_form', locals: { manual_order: @manual_order, form_type: 'old' } %>
+    </div>
+  </div>
+</div>

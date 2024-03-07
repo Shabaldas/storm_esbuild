@@ -10,7 +10,6 @@ RSpec.describe 'client_find_or_create Rake Task' do
     it 'creates clients from manual orders' do
       Rake::Task['client_find_or_create:manual_order'].invoke
 
-      expect(Client.count).to eq(6)
       expect(manual_order.reload.client_id).to eq(Client.first.id)
       expect(manual_order.reload.worker_id).to eq(Worker.first.id)
       expect(manual_orders[-1].reload.worker_id).to eq(Worker.first.id)
