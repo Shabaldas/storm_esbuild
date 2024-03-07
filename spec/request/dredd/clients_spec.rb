@@ -1,9 +1,11 @@
 describe '/dredd/clients', type: :request do
   let(:user) { create(:user, :admin) }
   let(:client) { create(:client) }
+  let(:manual_order) { create(:manual_order, client_id: client.id) }
 
   before do
     login_as(user, scope: :user)
+    manual_order
   end
 
   describe 'GET /dredd/clients' do
@@ -93,6 +95,7 @@ describe '/dredd/clients', type: :request do
       expect(response.body).to include(client.email)
       expect(response.body).to include(client.phone_number)
       expect(response.body).to include(client.nickname)
+      expect(response.body).to include(manual_order.print_code)
     end
   end
 
