@@ -28,9 +28,16 @@ module Dredd
         @manual_order.last_name = client&.last_name
         @manual_order.email = client&.email
         @manual_order.phone_number = client&.phone_number
+      else
+        @client = Client.new(first_name: manual_order_params[:first_name],
+                             last_name: manual_order_params[:last_name],
+                             email: manual_order_params[:email],
+                             phone_number: manual_order_params[:phone_number])
       end
 
       if @manual_order.save
+        @client.save if manual_order_params[:client_id].blank?
+
         redirect_to dredd_manual_orders_path, status: :see_other, notice: { text: 'Manual order was successfully created', icon: 'success_icon' }
       else
         return render :new_manual_order, status: :unprocessable_entity if params[:new_or_old] == 'new'
