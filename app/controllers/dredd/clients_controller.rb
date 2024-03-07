@@ -9,7 +9,7 @@ module Dredd
              .order('COUNT(manual_orders.id) DESC')
              .ransack(params[:q]&.permit!)
 
-      @pagy, @clients = pagy(@q.result, items: 20)
+      @pagy, @clients = pagy(@q.result, items: 30)
     end
 
     def show
