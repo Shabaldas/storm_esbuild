@@ -1,0 +1,12 @@
+<tr>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false }, class: "text-black font-bold" do %>
+      <%= manual_order.print_code %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap">
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false } do %>
+      <%= image_tag("partials_img/#{order_status_icon(manual_order)}.png", class: "h-8 w-8 w-10/12") %>
+    <% end %>
+  </td>
+</tr>
