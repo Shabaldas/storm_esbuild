@@ -25,6 +25,7 @@ uk:
       rendering_orders: "Замовлення рендер"
       printing_orders: "Замовлення 3D друк"
       feedback_call: "Новий дзвінок із зворотним зв'язком"
+      clients: "Клієнти"
     feedback_calls:
       id: "ID"
       phone_number: "НОМЕР ТЕЛЕФОНУ"

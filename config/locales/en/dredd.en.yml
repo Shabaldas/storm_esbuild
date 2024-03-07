@@ -25,6 +25,7 @@ en:
       rendering_orders: "Rendering Orders"
       printing_orders: "Printing Orders"
       feedback_call: "New feedback call"
+      clients: "Clients"
     feedback_calls:
       id: "ID"
       phone_number: "PHONE NUMBER"

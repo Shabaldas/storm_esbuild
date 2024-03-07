@@ -10,6 +10,7 @@ module Dredd
       @rendering_orders = RenderingOrder.all
       @printing_orders = PrintingOrder.all
       @new_feedback_calls = FeedbackCall.all
+      @clients_count = Client.count
     end
   end
 end

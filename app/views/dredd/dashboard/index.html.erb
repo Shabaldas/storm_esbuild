@@ -22,6 +22,14 @@
       <% end %>
     </div>
     <div class="card mb-5 metrics-item">
+      <%= link_to dredd_clients_path do %>
+        <div class="metrics-value">
+          <%= @clients_count %>
+        </div>
+        <div class="metrics-label"><%= t("dredd.dashboard.clients") %></div>
+      <% end %>
+    </div>
+    <div class="card mb-5 metrics-item">
       <%= link_to dredd_orders_path do %>
         <div class="metrics-value">
           <%= @shop_orders.count %>
