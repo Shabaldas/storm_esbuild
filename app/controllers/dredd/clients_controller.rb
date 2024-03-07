@@ -5,8 +5,11 @@ module Dredd
     before_action :set_client, only: [:edit, :update, :show]
 
     def index
-      @q = Client.order(created_at: :desc).ransack(params[:q]&.permit!)
-      @pagy, @clients = pagy(@q.result(distinct: true), items: 20)
+      @q = Client.left_joins(:manual_orders).group('clients.id')
+                 .order('COUNT(manual_orders.id) DESC')
+                 .ransack(params[:q]&.permit!)
+
+      @pagy, @clients = pagy(@q.result, items: 20)
     end
 
     def show; end
