@@ -15,7 +15,10 @@ Rails.application.routes.draw do
     resources :product_categories, except: [:update]
     resources :feedback_calls, only: [:index, :update, :destroy]
     resources :orders, only: [:index, :show]
-    resources :manual_orders, except: :show
+    resources :manual_orders, except: [:show, :new] do
+      get 'new_manual_order', to: 'manual_orders#new_manual_order', on: :collection
+      get 'new_manual_order_from_client', to: 'manual_orders#new_manual_order_from_client', on: :collection
+    end
     resources :modeling_orders, except: [:new, :show]
     resources :rendering_orders, except: [:new, :show]
     resources :printing_orders, except: [:new, :show]

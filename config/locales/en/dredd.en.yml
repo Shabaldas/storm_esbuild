@@ -43,6 +43,7 @@ en:
       deadline: "Deadline"
       actions: "Actions"
     manual_orders:
+      select_client: "Select client"
       please_input: "Please input"
       first_name: "First name "
       last_name: "Last name"
@@ -73,6 +74,7 @@ en:
       link_to_model: "Link to Model"
       manual_order: "Create Manual Order"
       new_manual_order: "New Manual Order"
+      new_manual_order_from_client: "New Manual Order from Client"
       client_contact: "Client Contacts"
       printing_information: "Printing Information"
       price_information: "Price Information"

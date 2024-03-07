@@ -3,7 +3,11 @@
     <div class="sidebar w-1/6 h-auto max-w-[320px] flex-col shrink-0 lg:mr-6 fixed top-0 lg:relative z-40 lg:z-10 left-0 mb-0 lg:mb-36 transform -translate-x-full lg:translate-x-0 transition duration-700 ease-in-out" data-sidebar-target="sidebarContainer" data-expanded="1">
       <div class="relative top-0 lg:sticky lg:top-[90px] h-screen lg:h-auto bg-white rounded-0 lg:rounded-3xl py-6 px-6 lg:px-8 text-zinc-500">
         <div>
-          <%= link_to t("dredd.manual_orders.manual_order"), new_dredd_manual_order_path, class: "button" %>
+          <%= link_to t("dredd.manual_orders.new_manual_order"), new_manual_order_dredd_manual_orders_path, class: "bg-stone-300 border-1 border-solid flex flex-col h-12 items-center rounded-lg text-black text-center" %>
+        </div>
+        </br>
+        <div>
+          <%= link_to t("dredd.manual_orders.new_manual_order_from_client"), new_manual_order_from_client_dredd_manual_orders_path, class: "bg-zinc border-1 border-solid flex flex-col h-12 items-center rounded-lg text-black text-center" %>
         </div>
         </br>
         <div>
@@ -70,8 +74,9 @@
   <div class="flex justify-center w-full">
     <div class="absolute p-6">
       <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
-      <footer class="pt-6">
-        <%= link_to t("dredd.manual_orders.manual_order"), new_dredd_manual_order_path, class: "button w-80" %>
+      <footer class="pt-6 flex space-x-5">
+        <%= link_to t("dredd.manual_orders.new_manual_order"), new_manual_order_dredd_manual_orders_path, class: "bg-stone-300 border-1 border-solid flex flex-col h-10 items-center rounded-full text-black text-center w-80" %>
+        <%= link_to t("dredd.manual_orders.new_manual_order_from_client"), new_manual_order_from_client_dredd_manual_orders_path, class: "bg-zinc border-1 border-solid flex flex-col h-10 items-center rounded-full text-black text-center w-80" %>
       </footer>
     </div>
   </div>

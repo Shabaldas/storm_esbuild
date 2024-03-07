@@ -10,6 +10,6 @@
       <h2><%= t("dredd.manual_orders.edit") %></h2>
       <h2><%= @manual_order.print_code %></h2>
     </div>
-    <%= render partial: 'form', locals: { manual_order: @manual_order } %>
+    <%= render partial: "form", locals: { manual_order: @manual_order, form_type: 'old' } %>
   </div>
 </div>

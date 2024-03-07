@@ -43,6 +43,7 @@ uk:
       deadline: "Термін"
       actions: "Дії"
     manual_orders:
+      select_client: "Виберіть клієнта"
       please_input: "Будь ласка, введіть"
       first_name: "Ім'я"
       last_name: "Прізвище"
@@ -73,6 +74,7 @@ uk:
       manual_order: "Створити ручне замовлення"
       link_to_model: "Посилання на модель"
       new_manual_order: "Нове ручне замовлення"
+      new_manual_order_from_client: "Нове замовлення на сонові клієнта"
       client_contact: "Контакти клієнта"
       printing_information: "Інформація про друк"
       price_information: "Інформація про ціну"
