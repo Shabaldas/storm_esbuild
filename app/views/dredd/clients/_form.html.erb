@@ -16,12 +16,7 @@
       <%= form.text_field :phone_number, placeholder: t("dredd.manual_orders.please_input"), class:"text-sm" %>
       <%= inline_error_for(:phone_number, @client) %>
     </div>
-    <div class="w-1/8 px-4 py-3">
-      <%= form.text_field :email, placeholder: t("dredd.manual_orders.please_input"), class:"text-sm" %>
-      <%= inline_error_for(:email, @client) %>
-    </div>
     <div class="w-1/8 px-4 py-3"></div>
-    <div class="w-1/6 px-4 py-3"></div>
     <div class="w-1/12 px-4 py-3">
       <%= form.submit t("dredd.manual_orders.save"), class: "button w-full md:max-w-[212px]" %>
     </div>
