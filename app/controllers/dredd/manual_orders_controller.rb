@@ -33,6 +33,7 @@ module Dredd
                              last_name: manual_order_params[:last_name],
                              email: manual_order_params[:email],
                              phone_number: manual_order_params[:phone_number])
+        @manual_order.client = @client
       end
 
       if @manual_order.save
