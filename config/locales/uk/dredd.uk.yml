@@ -23,6 +23,7 @@ uk:
       internet_orders: "Інтернет замовлення"
       modeling_orders: "Замовлення моделювання "
       rendering_orders: "Замовлення рендер"
+      scanning_orders: "Замовлення сканування"
       printing_orders: "Замовлення 3D друк"
       feedback_call: "Новий дзвінок із зворотним зв'язком"
       clients: "Клієнти"
@@ -120,10 +121,13 @@ uk:
       edit_printing_order: "Редагувати замовлення 3D друку"
       files: "Прикріплені файли"
     rendering_orders:
-      edit_printing_order: "Редагувати замовлення 3D рендерингу"
+      edit_rendering_order: "Редагувати замовлення 3D рендерингу"
+      files: "Прикріплені файли"
+    scanning_orders:
+      edit_scanning_order: "Редагувати замовлення 3D сканування"
       files: "Прикріплені файли"
     modeling_orders:
-      edit_printing_order: "Редагувати замовлення 3D моделювання"
+      edit_modeling_order: "Редагувати замовлення 3D моделювання"
       files: "Прикріплені файли"
     products:
       product_category: "Категорія продукту"
@@ -185,6 +189,7 @@ uk:
       internet_orders: "Інтернет-замовлення"
       modeling_orders: "Замовлення моделювання "
       rendering_orders: "Замовлення рендер"
+      scanning_orders: "Замовлення сканування"
       printing_orders: "Замовлення 3D друк"
       printers: "Принтери"
       portfolios: "Портфоліо"

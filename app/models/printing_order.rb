@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PrintingOrder < ApplicationRecord
+  has_paper_trail
   has_many_attached :files
 
   after_create_commit :send_telegram_message

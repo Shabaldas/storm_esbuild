@@ -10,12 +10,13 @@ en:
       3dprinting: "3D Printing"
       3dmodeling: "3D Modeling"
       3drendering: "3D Rendering"
+      3dscanning: "3D Scanning"
       print_ideas_html: "Let's Print Dreams, One Layer at a Time!"
       scroll_down: "Scroll down"
       prototyping: "Our expert team specializes in providing top-notch 3D prints that cater to all your requirements, be it for prototyping or production purposes. Equipped with state-of-the-art technology and software, we transform your ideas into tangible creations."
       modeling: "3D Modeling"
       plus_projects: "+ projects"
-      rendering: "3D Rendering"
+      scanning: "3D Scanning"
       print: "3D Print"
       portfolio: "portfolio"
       our_latest_projects: "Our Latest Projects"
@@ -31,6 +32,8 @@ en:
       services: "Service"
     rendering:
       3drendering_description: "Experience the magic of 3D rendering, where creativity meets reality. From architectural designs to product concepts, we offer a range of rendering solutions to suit your needs. Elevate your projects with high-quality images and animations that leave a lasting impact on your audience. Embrace the world of 3D rendering and unlock limitless possibilities for your visual content. Let our expertise transform your vision into a tangible and awe-inspiring reality."
+    scanning:
+      3dscanning_description: "Dive into the world of 3D scanning, where reality transforms into digital magic. Our cutting-edge technology enables us to capture the finest details of objects or even entire environments, turning them into virtual spaces for exploration and creativity. Whether preserving cultural treasures, creating digital counterparts for analysis, or innovatively developing products, our services deliver unparalleled accuracy and fidelity. Experience the power of 3D scanning and unlock new dimensions of possibility."
     modeling:
       3dmodeling_description: "Unleash the full potential of your imagination with 3D modeling. Our expert team crafts lifelike digital representations of your ideas, whether for architecture, products, characters, or more. Experience customization and precision as we transform your visions into reality, perfect for visualization or prototyping. Embrace the cutting-edge of design and innovation with our top-tier 3D modeling services."
     printing:

@@ -4,7 +4,7 @@ class Portfolio < ApplicationRecord
   has_one_attached :main_picture
 
   enum status: { inactive: 0, active: 1 }
-  enum portfolio_type: { modeling: 0, rendering: 1, printing: 2 }
+  enum portfolio_type: { modeling: 0, rendering: 1, printing: 2, scanning: 3 }
 
   validates :name, :main_picture, presence: true
 end

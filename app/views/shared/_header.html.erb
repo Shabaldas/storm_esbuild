@@ -21,6 +21,9 @@
           <li class="px-4">
             <%= active_link_to t('global.header.rendering'), rendering_path, class: "text-black cursor-pointer" %>
           </li>
+          <li class="px-4">
+            <%= active_link_to t('global.header.scanning'), scanning_path, class: "text-black cursor-pointer" %>
+          </li>
           <% if policy(:admin).admin_only_access? %>
             <li class="px-4">
               <%= active_link_to t('global.header.store'), products_path, class: "text-black cursor-pointer" %>
@@ -118,6 +121,9 @@
                       </li>
                       <li class="py-4">
                         <%= active_link_to t('global.header.rendering'), rendering_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                      </li>
+                      <li class="py-4">
+                        <%= active_link_to t('global.header.scanning'), scanning_path, class: "text-white text-lg font-medium cursor-pointer" %>
                       </li>
                       <% if policy(:admin).access? %>
                         <li class="py-4">
