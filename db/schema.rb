@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_28_103330) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_11_165553) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -303,6 +303,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_28_103330) do
   end
 
   create_table "rendering_orders", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "email"
+    t.string "link_to_model"
+    t.integer "status", default: 0
+    t.decimal "total_price", precision: 8, scale: 2
+    t.datetime "deadline"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scanning_orders", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"

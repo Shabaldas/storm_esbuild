@@ -44,6 +44,9 @@
                 <div>
                   <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-black cursor-pointer" %>
                 </div>
+                <div>
+                  <%= active_link_to t("dredd.header.scanning_orders"), dredd_scanning_orders_path, class: "text-black cursor-pointer" %>
+                </div>
               </div>
             </div>
           </div>
@@ -145,6 +148,9 @@
                   </li>
                   <li class="py-4">
                     <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.scanning_orders"), dredd_scanning_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
                   </li>
                   <li class="py-4">
                     <%= active_link_to t("dredd.header.portfolios"), dredd_portfolios_path, class: "text-white text-lg font-medium cursor-pointer" %>

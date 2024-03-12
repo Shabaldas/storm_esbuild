@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
     resources :modeling_orders, except: [:new, :show]
     resources :rendering_orders, except: [:new, :show]
+    resources :scanning_orders, except: [:new, :show]
     resources :printing_orders, except: [:new, :show]
     resources :users, except: [:destroy]
     resources :printers, except: :show
@@ -58,6 +59,8 @@ Rails.application.routes.draw do
   get 'rendering', to: 'rendering_orders#index'
   get '3d_rendering/:city', to: 'rendering_orders#rendering_in_your_city', as: 'rendering_city'
   get 'rendering/lazy', to: 'rendering_orders#lazy'
+  get 'scanning', to: 'scanning_orders#index'
+  get 'scanning/lazy', to: 'scanning_orders#lazy'
   get 'modeling', to: 'modeling_orders#index'
   get 'modeling/lazy_index', to: 'modeling_orders#lazy_index'
   get '3d_modeling/:city', to: 'modeling_orders#modeling_in_your_city', as: 'modeling_city'
@@ -76,6 +79,7 @@ Rails.application.routes.draw do
 
   resources :modeling_orders, only: :create
   resources :rendering_orders, only: :create
+  resources :scanning_orders, only: :create
   resources :printing_orders, only: :create
   resources :products, only: [:index, :show]
   resources :print_models, only: [] do

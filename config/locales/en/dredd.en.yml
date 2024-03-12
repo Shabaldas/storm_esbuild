@@ -23,6 +23,7 @@ en:
       internet_orders: "Internet Orders"
       modeling_orders: "Modeling Orders"
       rendering_orders: "Rendering Orders"
+      scanning_orders: "Scanning Orders"
       printing_orders: "Printing Orders"
       feedback_call: "New feedback call"
       clients: "Clients"
@@ -122,8 +123,11 @@ en:
     rendering_orders:
       edit_rendering_order: "Edit 3D Rendering Order"
       files: "Attached Files"
+    scanning_orders:
+      edit_scanning_order: "Edit 3D Scanning Order"
+      files: "Attached Files"
     modeling_orders:
-      edit_modeling_order: "Edit 3D Modeleing Order"
+      edit_modeling_order: "Edit 3D Modeling Order"
       files: "Attached Files"
     products:
       product_category: "Product Category"
@@ -185,6 +189,7 @@ en:
       internet_orders: "Internet Orders"
       modeling_orders: "Modeling Orders"
       rendering_orders: "Rendering Orders"
+      scanning_orders: "Scanning Orders"
       printing_orders: "Printing Orders"
       printers: "Printers"
       portfolios: "Portfolios"

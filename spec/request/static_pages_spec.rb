@@ -14,6 +14,7 @@ describe '/static_pages/home', type: :request do
         expect(response.body).to include(printing_path)
         expect(response.body).to include(modeling_path)
         expect(response.body).to include(rendering_path)
+        expect(response.body).to include(scanning_path)
         expect(response.body).to include('Do you have any questions?')
         expect(response.body).to include(save_phone_number_path)
         expect(response.body).to include(modeling_path)
@@ -65,6 +66,7 @@ describe '/static_pages/home', type: :request do
         expect(response.body).to include(printing_path)
         expect(response.body).to include(modeling_path)
         expect(response.body).to include(rendering_path)
+        expect(response.body).to include(scanning_path)
         expect(response.body).to include('Do you have any questions?')
         expect(response.body).to include(save_phone_number_path)
       end
