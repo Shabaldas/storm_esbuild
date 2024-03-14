@@ -2,6 +2,7 @@
 
 class ModelingOrdersController < ApplicationController
   include CitiesDetector
+  include Sanitizable
 
   before_action :define_static_variables, only: [:index, :lazy_index, :modeling_in_your_city]
 
@@ -10,7 +11,7 @@ class ModelingOrdersController < ApplicationController
   def lazy_index; end
 
   def create
-    @modeling_order = ModelingOrder.new(modeling_order_params)
+    @modeling_order = ModelingOrder.new(sanitize_and_merge_params(modeling_order_params, [:first_name, :last_name, :comment]))
 
     if @modeling_order.save
       respond_to do |format|

@@ -122,6 +122,27 @@ describe '/printing_orders', type: :request do
           expect(printing_order.link_to_model).to eq('https://www.thingiverse.com/thing:2789086')
         end
       end
+
+      context 'when form include XSS attack' do
+        it 'sanitize params' do
+          expect do
+            post printing_orders_path, params: {
+              printing_order: {
+                first_name: '<script>alert("XSS attack")</script>',
+                last_name: '<img src=x onerror=prompt() onclick=prompt()>',
+                phone_number: '+380673646510',
+                link_to_model: 'https://www.thingiverse.com/thing:2789086',
+                comment: '<script>alert("XSS attack")</script>'
+              }
+            }
+          end.to change(PrintingOrder, :count).by(1)
+
+          manual_order = PrintingOrder.last
+          expect(manual_order.first_name).to eq('alert("XSS attack")')
+          expect(manual_order.last_name).to eq('<img src="x">')
+          expect(manual_order.comment).to eq('alert("XSS attack")')
+        end
+      end
     end
 
     context 'when invalid data' do
