@@ -2,13 +2,14 @@
 
 class PrintingOrdersController < ApplicationController
   include CitiesDetector
+  include Sanitizable
 
   before_action :define_static_variables, only: [:index, :printing_in_your_city]
 
   def index; end
 
   def create
-    @printing_order = PrintingOrder.new(printing_order_params)
+    @printing_order = PrintingOrder.new(sanitize_and_merge_params(printing_order_params, [:first_name, :last_name, :comment]))
 
     if @printing_order.save
       respond_to do |format|

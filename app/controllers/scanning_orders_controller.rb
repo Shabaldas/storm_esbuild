@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ScanningOrdersController < ApplicationController
+  include Sanitizable
+
   before_action :define_static_variables, only: [:index, :lazy]
 
   def index; end
@@ -8,7 +10,7 @@ class ScanningOrdersController < ApplicationController
   def lazy; end
 
   def create
-    @scanning_order = ScanningOrder.new(scanning_order_params)
+    @scanning_order = ScanningOrder.new(sanitize_and_merge_params(scanning_order_params, [:first_name, :last_name, :comment]))
 
     if @scanning_order.save
       respond_to do |format|

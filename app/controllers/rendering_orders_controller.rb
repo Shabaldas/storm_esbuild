@@ -2,6 +2,7 @@
 
 class RenderingOrdersController < ApplicationController
   include CitiesDetector
+  include Sanitizable
 
   before_action :define_static_variables, only: [:index, :lazy, :rendering_in_your_city]
 
@@ -10,7 +11,7 @@ class RenderingOrdersController < ApplicationController
   def lazy; end
 
   def create
-    @rendering_order = RenderingOrder.new(rendering_order_params)
+    @rendering_order = RenderingOrder.new(sanitize_and_merge_params(rendering_order_params, [:first_name, :last_name, :comment]))
 
     if @rendering_order.save
       respond_to do |format|
