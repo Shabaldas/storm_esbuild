@@ -23,8 +23,16 @@
             <%= f.label :password, class: "text-sm" %>
             <i class="text-xs"><%= t("devise.registrations.edit.leave") %></i>
           </div>
-          <div class="mt-1">
-            <%= f.password_field :password, autocomplete: "new-password", class: "w-full rounded", placeholder: t("devise.registrations.new_password") %>
+          <div class="relative mt-1" data-controller="password-visibility">
+            <%= f.password_field :password, data: { "password-visibility-target": "input"}, spellcheck: "false", autocomplete: "new-password", class: "w-full pr-10 rounded", placeholder: t("devise.registrations.new_password") %>
+            <button type="button" data-action="password-visibility#toggle" class="absolute top-8 right-2">
+              <span data-password-visibility-target="icon">
+                <%= image_tag("icons_svg/eye_hide_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+              </span>
+              <span data-password-visibility-target="icon" class="hidden">
+                <%= image_tag("icons_svg/eye_show_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+              </span>
+            </button>
             <% if @minimum_password_length %>
               <em class="text-xs"><%= @minimum_password_length %>
                 <%= t("devise.registrations.edit.min") %></em>
@@ -35,8 +43,35 @@
           <div class="mt-1">
             <%= f.label :password_confirmation, class:"text-sm" %>
           </div>
+          <div class="relative mt-1" data-controller="password-visibility">
+          <%= f.password_field :password_confirmation, data: { "password-visibility-target": "input"}, spellcheck: "false", autocomplete: "new-password", placeholder: t("devise.passwords.edit.labelsecond"), class:"pr-10" %>
+            <button type="button" data-action="password-visibility#toggle" class="absolute top-8 right-2">
+              <span data-password-visibility-target="icon">
+                <%= image_tag("icons_svg/eye_hide_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+              </span>
+              <span data-password-visibility-target="icon" class="hidden">
+                <%= image_tag("icons_svg/eye_show_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+              </span>
+            </button>
+
+          </div>
+        </div>
+        <div class="w-full field mt-1 md:mt-5">
           <div class="mt-1">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: t("devise.passwords.edit.labelsecond") %>
+            <%= f.label :first_name, t("devise.registrations.first_name"), class:"text-sm" %>
+          </div>
+          <div class="mt-1">
+            <%= f.text_field :first_name, placeholder: t("devise.registrations.new.input") %>
+            <%= inline_error_for(:first_name, resource) %>
+          </div>
+        </div>
+        <div class="w-full field mt-1 md:mt-5">
+          <div class="mt-1">
+            <%= f.label :last_name, t("devise.registrations.last_name"), class:"text-sm" %>
+          </div>
+          <div class="mt-1">
+            <%= f.text_field :last_name, placeholder: t("devise.registrations.new.input") %>
+            <%= inline_error_for(:last_name, resource) %>
           </div>
         </div>
         <div class="w-full field mt-1 md:mt-5">

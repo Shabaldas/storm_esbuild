@@ -1,20 +1,22 @@
-<%= render partial: "dredd/shared/errors", locals: { resource: @manual_order } %>
 <%= form_with model: [:dredd, @manual_order], class: "form-grid-single" do |form| %>
-   <div class="form-grid-single w-10/12">
+  <div class="form-grid-single w-10/12">
     <div class="flex space-x-4">
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.first_name"), class: "form-label" %>
         <%= form.text_field :first_name, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:first_name, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.last_name"), class: "form-label" %>
         <%= form.text_field :last_name, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:last_name, @manual_order) %>
       </div>
     </div>
     <div class="flex space-x-4">
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.phone_number"), class: "form-label" %>
         <%= form.text_field :phone_number, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:phone_number, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.app_contact"), class: "form-label" %>
@@ -23,6 +25,7 @@
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.email"), class: "form-label" %>
         <%= form.text_field :email, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:email, @manual_order) %>
       </div>
     </div>
     <div class="flex space-x-4">
@@ -31,57 +34,95 @@
         <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input") %>
       </div>
       <div class="form-group">
+        <%= form.label t("dredd.manual_orders.modeller"), class: "form-label" %>
+        <%= form.select :worker_id, workers_for_select, { include_blank: t("dredd.manual_orders.select") } %>
+        <%= inline_error_for(:worker_id, @manual_order) %>
+      </div>
+      <div class="form-group">
         <%= form.label t("dredd.manual_orders.price_for_printing"), class: "form-label" %>
         <%= form.text_field :price_for_printing, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:price_for_printing, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.count"), class: "form-label" %>
         <%= form.text_field :count, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:count, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.prepaid_expense"), class: "form-label" %>
         <%= form.text_field :prepaid_expense, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:prepaid_expense, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.total_price"), class: "form-label" %>
         <%= form.text_field :total_price, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:total_price, @manual_order) %>
       </div>
     </div>
     <div class="flex space-x-4">
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.print_material"), class: "form-label" %>
         <%= form.select :print_material, ApplicationHelper::MATERIALS, { include_blank: t("dredd.manual_orders.select") } %>
+        <%= inline_error_for(:print_material, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.print_color"), class: "form-label" %>
         <%= form.select :print_color, ManualOrder::PRINTING_COLORS, { include_blank: t("dredd.manual_orders.select") } %>
+        <%= inline_error_for(:print_color, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.quality"), class: "form-label" %>
         <%= form.text_field :quality, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:quality, @manual_order) %>
       </div>
       <div class="form-group">
         <%= form.label t("dredd.manual_orders.infill"), class: "form-label" %>
         <%= form.text_field :infill, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:infill, @manual_order) %>
       </div>
     </div>
     <div class="flex space-x-4">
       <div class="form-group form-toggle">
         <%= form.label t("dredd.manual_orders.status"), class: "form-label" %>
         <label class="toggle-switch ml-3">
-          <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "done", "not_done") %>
+          <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "paid", "unpaid") %>
           <span class="slider"></span>
         </label>
+      </div>
+     
+      <div class="form-group form-toggle">
+        <%= form.label t("dredd.manual_orders.need_to_call_client"), class: "form-label" %>
+        <label class="toggle-switch ml-3">
+          <%= form.check_box(:need_to_call_client, { class: "ml-3", type: "checkbox" }, "true", "false") %>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.manual_orders.workflow"), class: "form-label" %>
+        <%= form.select :workflow_status, options_for_select(ManualOrder.workflow_statuses.keys.map {|k, v| [t("dredd.manual_orders.workflow_status.#{k}"), k] }, selected: form.object.workflow_status ) %>
+        <%= inline_error_for(:workflow_status, @manual_order) %>
+      </div>
+      <div class="form-group">
+         <%= form.label t("dredd.manual_orders.end_date"), class: "form-label" %>
+         <%= form.date_field :end_date %>
       </div>
       <div class="form-group">
          <%= form.label t("dredd.manual_orders.deadline"), class: "form-label" %>
          <%= form.date_field :deadline %>
       </div>
     </div>
+    <div class="form-group form-toggle">
+      <%= form.label t("dredd.manual_orders.individual_entrepreneur_accountings"), class: "form-label" %>
+      <label class="toggle-switch ml-3">
+        <%= form.check_box(:individual_entrepreneur_accountings, { class: "ml-3", type: "checkbox" }, "true", "false") %>
+        <span class="slider"></span>
+      </label>
+    </div>
     <div class="form-group">
       <%= form.label t("dredd.manual_orders.comment"), class: "form-label" %>
-      <%= form.text_area :comment, placeholder: t("dredd.manual_orders.please_input"), class: "h-32 w-full p-2" %>
+      <%= form.text_area :comment, placeholder: t("dredd.manual_orders.please_input"), data: { controller: "textarea-autogrow" }, class: "h-32 w-full p-2" %>
     </div>
+    <%= hidden_field_tag(:new_or_old, form_type) %>
     <div class="form-group">
       <%= form.submit t("dredd.manual_orders.save"), class: "button w-full md:max-w-[212px]" %>
     </div>

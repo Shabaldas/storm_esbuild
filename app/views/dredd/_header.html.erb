@@ -1,32 +1,177 @@
 <header class="w-full h-16 fixed z-30 bg-light-grey">
- <div class="flex items-center justify-between mx-auto px-7 w-full">
+ <div class="card-gradient flex items-center justify-between mx-auto px-7 w-full">
     <div class="flex w-1/2 justify-between">
-      <span class="text-2xl"><%= t("dredd.header.admin_dashboard") %></span>
+      <span class="text-2xl whitespace-pre-line text-black"><%= t("dredd.header.admin_dashboard") %></span>
       <div class="w-24">
         <%= link_to dredd_dashboard_path do %>
-          <%= image_tag("partials_img/logo.png") %>
+          <%= image_tag("icons_svg/logo.svg", class: "pt-2") %>
         <% end %>
       </div>
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
         <ul class="h-full flex flex-col lg:flex-row flex-initial justify-between items-center text-center tracking-wide space-x-4">
-          <%= active_link_to t("dredd.header.users"), dredd_users_path, class: "text-black cursor-pointer pl-5" %>
-          <%= active_link_to t("dredd.header.products"), dredd_products_path, class: "text-black cursor-pointer pl-5" %>
-          <%= active_link_to t("dredd.header.product_categories"), dredd_product_categories_path, class: "text-black cursor-pointer" %>
-          <%= active_link_to t("dredd.header.feedback_calls"), dredd_feedback_calls_path, class: "text-black cursor-pointer" %>
+          <%#= active_link_to t("dredd.header.products"), dredd_products_path, class: "text-black cursor-pointer pl-5" %>
+          <%#= active_link_to t("dredd.header.product_categories"), dredd_product_categories_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.manual_orders"), dredd_manual_orders_path, class: "text-black cursor-pointer" %>
-          <%= active_link_to t("dredd.header.internet_orders"), dredd_orders_path, class: "text-black cursor-pointer" %>
-          <%= active_link_to t("dredd.header.modeling_orders"), dredd_modeling_orders_path, class: "text-black cursor-pointer" %>
-          <%= active_link_to t("dredd.header.printing_orders"), dredd_printing_orders_path, class: "text-black cursor-pointer" %>
-          <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-black cursor-pointer" %>
+          <% if policy(:admin).admin_only_access? %>
+            <%= active_link_to t("dredd.header.clients"), dredd_clients_path, class: "text-black cursor-pointer" %>
+            <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-black cursor-pointer" %>
+          <% end %>
+          <%# INTERNAET ORDERS %>
+          <div data-controller="dropdown" class="text-black cursor-pointer">
+            <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="<%="active" if ("/modeling /rendering /printing").include?(request.fullpath) && request.fullpath.chars.count > 2 %>">
+              <div class="flex">
+                <%= t("dredd.header.internet_orders") %>
+              </div>
+            </button>
+            <div
+              data-dropdown-target="menu"
+              class="absolute top-10 -translate-x-[1%] hidden"
+              data-transition-enter-from="opacity-0 scale-95"
+              data-transition-enter-to="opacity-100 scale-100"
+              data-transition-leave-from="opacity-100 scale-100"
+              data-transition-leave-to="opacity-0 scale-95"
+            >
+              <div class="space-y-4 w-[186px] rounded-2xl shadow border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
+                <div>
+                  <%= active_link_to t("dredd.header.internet_orders"), dredd_orders_path,  data: { action: "dropdown#toggle" }, class: "text-black cursor-pointer" %>
+                </div>
+                <div>
+                  <%= active_link_to t("dredd.header.modeling_orders"), dredd_modeling_orders_path, class: "text-black cursor-pointer" %>
+                </div>
+                <div>
+                  <%= active_link_to t("dredd.header.printing_orders"), dredd_printing_orders_path, class: "text-black cursor-pointer" %>
+                </div>
+                <div>
+                  <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-black cursor-pointer" %>
+                </div>
+                <div>
+                  <%= active_link_to t("dredd.header.scanning_orders"), dredd_scanning_orders_path, class: "text-black cursor-pointer" %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <%# ADMINSTRATES %>
+          <div data-controller="dropdown" class="text-black cursor-pointer">
+            <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="<%="active" if ("/modeling /rendering /printing").include?(request.fullpath) && request.fullpath.chars.count > 2 %>">
+              <div class="flex">
+                <%= t("dredd.header.administer_pages") %>
+              </div>
+            </button>
+            <div
+              data-dropdown-target="menu"
+              class="absolute top-10 -translate-x-[1%] hidden"
+              data-transition-enter-from="opacity-0 scale-95"
+              data-transition-enter-to="opacity-100 scale-100"
+              data-transition-leave-from="opacity-100 scale-100"
+              data-transition-leave-to="opacity-0 scale-95"
+            >
+              <div class="space-y-4 w-[186px] rounded-2xl shadow border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
+                <% if policy(:admin).admin_only_access? %>
+                  <div>
+                    <%= active_link_to t("dredd.header.users"), dredd_users_path, class: "text-black cursor-pointer" %>
+                  </div>
+                  <div>
+                    <%= active_link_to t("dredd.header.workers"), dredd_workers_path, class: "text-black cursor-pointer" %>
+                  </div>
+                  <div>
+                    <%= active_link_to t("dredd.header.feedback_calls"), dredd_feedback_calls_path, class: "text-black cursor-pointer" %>
+                  </div>
+                  <div>
+                    <%= active_link_to t("dredd.header.printers"), dredd_printers_path, class: "text-black cursor-pointer" %>
+                  </div>
+                  <div>
+                    <%= active_link_to t("dredd.header.portfolios"), dredd_portfolios_path, class: "text-black cursor-pointer" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="inline-flex justify-center items-center gap-2.5">
+            <%= locale_switcher(I18n.available_locales.first, "icons_svg/english_flag.svg") %>
+            <div class="inline-flex justify-center items-center">
+              <span class="w-px h-4" style="background: var(--dark-blue, #2A343E);"></span>
+            </div>
+            <%= locale_switcher(I18n.available_locales.last, "icons_svg/ukraine_flag.svg") %>
+          </div>
         </ul>
       </nav>
-      <div class="inline-flex justify-center items-center gap-2.5" style="position: absolute;right: 0;">
-        <%= locale_switcher(I18n.available_locales.first, "icons_svg/english_flag.svg") %>
-        <div class="inline-flex justify-center items-center">
-          <span class="w-px h-4" style="background: var(--dark-blue, #2A343E);"></span>
+
+    </div>
+
+    <div data-controller="slideover" data-action="keydown.esc->modal#close" tabindex="-1">
+      <div id="sidebar-mobile">
+        <div data-slideover-target="overlay" class="fixed inset-0 flex lg:hidden z-40" data-transition-enter="transition ease-out duration-200" data-transition-enter-from="opacity-0" data-transition-enter-to="opacity-100" data-transition-leave="transition ease-in duration-150" data-transition-leave-from="opacity-100" data-transition-leave-to="opacity-0">
+          <div class="fixed inset-0">
+            <button class="absolute inset-0 bg-gray-500 opacity-75" data-action="slideover#toggle"></button>
+          </div>
+          <div data-slideover-target="menu" class="relative flex-1 flex lg:hidden flex-col max-w-xs w-full pt-5 pb-4 bg-dark-blue" data-transition-enter="transition ease-out duration-200" data-transition-enter-from="opacity-0 -translate-x-full" data-transition-enter-to="opacity-100 translate-x-0" data-transition-leave="transition ease-in duration-150" data-transition-leave-from="opacity-100 translate-x-0" data-transition-leave-to="opacity-0 -translate-x-full">
+            <div class="absolute top-[9px] right-2">
+              <button data-action="slideover#toggle" class="flex items-center justify-center h-12 w-12 rounded-full focus:outline-none focus:bg-gray-600" aria-label="Close sidebar">
+                <svg class="h-6 w-6 text-white" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="mt-5 flex-1 h-0 overflow-y-auto">
+              <nav class="pl-6 z-50">
+                <ul>
+                  <li class="py-4">
+                    <%= active_link_to t('global.header.head'), root_path, class: "text-white text-lg font-medium cursor-pointer", active: :exact %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.admin_dashboard"), dredd_dashboard_path, active: :exact, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.clients"), dredd_clients_path, active: :exact, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.feedback_calls"), dredd_feedback_calls_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.manual_orders"), dredd_manual_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.internet_orders"), dredd_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.modeling_orders"), dredd_modeling_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.printing_orders"), dredd_printing_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.scanning_orders"), dredd_scanning_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.portfolios"), dredd_portfolios_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.workers"), dredd_workers_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
         </div>
-        <%= locale_switcher(I18n.available_locales.last, "icons_svg/ukraine_flag.svg") %>
       </div>
+
+      <button class="block lg:hidden ml-8" data-action="click->slideover#toggle click@window->slideover#hide">
+        <div class="w-4">
+          <div class="w-full h-0.5 rounded-sm bg-gray-100"></div>
+          <div class="w-full h-0.5 rounded-sm bg-gray-100 my-1"></div>
+          <div class="w-full h-0.5 rounded-sm bg-gray-100 mt-1"></div>
+        </div>
+      </button>
     </div>
   </div>
 </header>

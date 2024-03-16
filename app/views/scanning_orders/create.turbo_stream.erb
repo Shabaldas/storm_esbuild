@@ -1,0 +1,6 @@
+<% if @scanning_order.errors.any? %>
+  <%= turbo_stream.replace("upload-form", partial: "shared/upload_form", locals: { model: @scanning_order } ) %>
+<% else %>
+  <%= turbo_stream.replace("upload-form", partial: "shared/upload_form", locals: { model: ScanningOrder.new, order_name: "scanning", image_icon: "picture-and-pdf" } ) %>
+  <%= turbo_stream.append("scanning-modal", partial: "shared/modal") %>
+<% end %>

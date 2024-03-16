@@ -1,52 +1,69 @@
-<tr>
+<tr class="border-1 hover:bg-gray-50 dark:hover:bg-gray-200">
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black font-bold" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false }, class: "text-black font-bold" do %>
       <%= manual_order.print_code %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
-      <%= manual_order&.full_name %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false }, class: "text-black" do %>
+      <%= manual_order&.client.present? ? ("#{manual_order.client&.full_name} | #{manual_order.client&.nickname}") : manual_order&.full_name %>
+      <% if manual_order&.comment.present? %>
+        <div class="text-gray-500 w-[500px]">
+          |
+          </br>
+          <p class="truncate text-gray-500">
+            <%= manual_order&.comment %>
+          </p>
+        </div>
+      <% end %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
-      <%= manual_order.phone_number %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false }, class: "text-black" do %>
+      <%= manual_order&.client.present? ? manual_order.client.phone_number : manual_order.phone_number %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order) do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false }, class: "text-black" do %>
+      <%= manual_order.need_to_call_client ? image_tag("partials_img/phone_icon.png") : '' %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false }, class: "text-black" do %>
+      <%= I18n.t "dredd.manual_orders.workflow_status.#{manual_order.workflow_status}" %>
+      <%= image_tag("partials_img/#{workflow_status_icon(manual_order.workflow_status)}.png", class: "h-12") %>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false } do %>
       <%= image_tag("partials_img/#{app_icon_contact(manual_order.app_contact)}.png", class: "w-1/2") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <span class="text-black blurred">
       <%= manual_order.total_price %>
-    <% end %>
+    </span>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <span class="text-black blurred">
       <%= manual_order.prepaid_expense %>
+    </span>
+  </td>
+  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false } do %>
+      <%= image_tag("partials_img/#{order_status_icon(manual_order)}.png", class: "h-8 w-8 w-10/12") %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order) do %>
-      <%= image_tag("partials_img/#{order_status_icon(manual_order)}.png", class: "w-10/12") %>
-    <% end %>
-  </td>
-  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false }, class: "text-black" do %>
       <%= manual_order.deadline&.strftime("%F") %>
     <% end %>
   </td>
-  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), class: "text-black" do %>
-      <%= l(manual_order.created_at, format: :long)  %>
-    <% end %>
-  </td>
-  <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= button_to dredd_manual_order_path(manual_order), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
-      <%= t("dredd.manual_orders.destroy") %>
-    <% end %>
-  </td>
+  <% if policy(:admin).admin_only_access? && manual_order.nothing? %>
+    <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+      <%= button_to dredd_manual_order_path(manual_order), method: :delete, data: { turbo_confirm: t("devise.registrations.edit.sure") }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
+        <%= t("dredd.manual_orders.destroy") %>
+      <% end %>
+    </td>
+  <% end %>
 </tr>

@@ -1,4 +1,13 @@
 en:
+  time:
+    formats:
+      date_only: "%Y-%m-%d"
+      default: "%d %b %Y %I:%M %p"
+      short: "%b %Y"
+  date:
+    formats:
+      date_only: "%Y-%m-%d"
+      short: "%b %Y"
   global:
     error_message:
       active_record_not_found: This page do not exist
@@ -19,11 +28,13 @@ en:
       printing: "Printing"
       modeling: "Modeling"
       rendering: "Rendering"
+      scanning: "Scanning"
       my_cabinet: "My cabinet"
       registration: "Registration"
       sign_in: "Sign in"
       edit_profile: "Edit Profile"
       log_out: "Log Out"
+      profile: "Profile"
     footer:
       calculator: "Calculator"
       contacts: "Contacts"
@@ -32,4 +43,3 @@ en:
       street: "st. Ukrainian Victory, 23"
       city: "Ivano-Frankivsk"
       law: " All right reserved"
-      

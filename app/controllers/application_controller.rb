@@ -5,9 +5,12 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
 
   before_action :set_locale
+  before_action :set_paper_trail_whodunnit
+
+  add_flash_types :info, :error, :notice
 
   rescue_from Pundit::NotAuthorizedError do |error|
-    redirect_to root_path, alert: pundit_error_message(error)
+    redirect_to root_path, error: { text: pundit_error_message(error), icon: 'attention' }
   end
 
   def pundit_error_message(error)

@@ -35,7 +35,7 @@
     <%= link_to edit_dredd_product_path(product), class: "text-black bg-primary p-1.5 rounded-2xl text-black" do %>
       <%= t("dredd.orders.edit") %>
     <% end %>
-    <%= button_to dredd_product_path(product), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
+    <%= button_to dredd_product_path(product), method: :delete, data: { turbo_confirm: t("devise.registrations.edit.sure") }, class: "text-black bg-danger p-1.5 rounded-2xl text-black" do %>
       <%= t("dredd.manual_orders.destroy") %>
     <% end %>
   </td>

@@ -1,91 +1,67 @@
-<div class="w-full max-w-screen-2xl mx-auto px-7 md:px-24 mt-9 mb-10 text-dark-grey">
-  <div class="w-full lg:w-4/6 mt-9">
-    <div class="text-2xl font-medium">
-      <h2><%= t("devise.registrations.new.title") %></h2>
+<div class="auth-wrapper">
+  <%= image_tag("auth_img/auth_bg.png", class:"hidden lg:block w-screen h-screen bg-cover bg-center absolute top-0 left-0 blur-sm") %>
+  <div class="w-full h-full lg:h-screen text-dark-grey relative z-20 flex flex-col lg:flex-row items-start lg:items-center  justify-center lg:justify-between">
+    <div class="w-full h-14 lg:w-6/12 lg:h-full relative">
+      <%= image_tag("icons_svg/3d_storm_large_logo.svg", class:"w-20 h-20 lg:w-28 lg:h-28 absolute -top-3 lg:-top-[10px] left-[50%] -translate-x-[50%] lg:translate-x-0 lg:top-[40%] lg:left-[48%]") %>
     </div>
-    <div class="flex items-center mt-8">
-      <div class="w-6 h-6 -mt-0.5">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/>
-        </svg>
-      </div>
-      <div class="ml-2 text-base font-medium">
-        <%= t('devise.registrations.personal_date') %>
-      </div>
-    </div>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-      <div class="title-divider"></div>
-      <div>
-        <div class="flex flex-col md:flex-row lg:justify-between items-center">
-          <div class="w-full lg:w-3/5">
-            <div class="mt-1">
-              <%= f.label :first_name, t("devise.registrations.first_name"), class: "text-sm" %>
+    <div class="w-full lg:w-6/12 flex items-center justify-center">
+      <div class="w-full lg:w-[397px] pt-4 px-4 pb-5 sm:pt-5 sm:px-[29px] sm:pb-8 bg-white rounded-none lg:rounded-[30px]">
+        <div class="max-w-[397px] mx-auto">
+          <h2 class="text-[22px] font-medium"><%= t("devise.registrations.new.title") %></h2>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="mt-5">
+              <div>
+                <%= f.label :first_name, t("devise.registrations.first_name"), class: "text-sm text-metalic-grey" %>
+                <%= f.text_field :first_name, placeholder: t("devise.registrations.new.input") %>
+                <%= inline_error_for(:first_name, resource) %>
+              </div>
+              <div class="mt-5">
+                <%= f.label :email, t("devise.registrations.email"), class: "text-sm text-metalic-grey" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",  placeholder: "example@email.com" %>
+                <%= inline_error_for(:email, resource) %>
+              </div>
+              <div data-controller="password-visibility" class="relative mt-5">
+                <%= f.label :password ,class: "text-sm text-metalic-grey"%>
+                <%= f.password_field :password, data: { "password-visibility-target": "input"}, spellcheck: "false", autocomplete: "new-password", class: "pr-10", placeholder: t("devise.registrations.enter_password") %>
+                <button type="button" data-action="password-visibility#toggle" class="absolute top-8 right-2">
+                  <span data-password-visibility-target="icon">
+                    <%= image_tag("icons_svg/eye_hide_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                  </span>
+                  <span data-password-visibility-target="icon" class="hidden">
+                    <%= image_tag("icons_svg/eye_show_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                  </span>
+                </button>
+                <%= inline_error_for(:password, resource) %>
+              </div>
+              <div class="mt-5">
+                <%= f.submit t("devise.registrations.new.link"), class: "button w-full", data: { turbo: false } %>
+              </div>
             </div>
-            <div class="mt-1">
-              <%= f.text_field :first_name, placeholder: t("devise.registrations.new.input") %>
+            <div class="flex flex-col items-center justify-center -mt-1">
+              <p class="translate-y-[22px] bg-white px-2 text-sm text-metalic-grey"><%= t("devise.registrations.new.or") %></p>
+              <div class="content-divider w-full"></div>
             </div>
+          <% end %>
+
+          <div class="items-center justify-between">
+            <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "login-with-google-btn w-full" do %>
+              <%= t("devise.sessions.new.sign_google") %>
+            <% end %>
+            <%# TODO: add register by facebook %>
           </div>
-          <div class="w-full lg:w-3/5 ml-0 md:ml-6 mt-1">
-            <div>
-              <%= f.label :last_name, t("devise.registrations.last_name"), class: "text-sm" %>
-            </div>
-            <div class="mt-1">
-              <%= f.text_field :last_name, placeholder: t("devise.registrations.new.input") %>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col md:flex-row lg:justify-between items-center mt-1 md:mt-5">
-          <div class="w-full lg:w-3/5">
-            <div class="mt-1">
-              <%= f.label :phone, t("devise.registrations.phone"), class: "text-sm" %>
-            </div>
-            <div class="mt-1">
-              <%= f.phone_field :phone, placeholder: "+38 (096) 640 40 50" %>
-            </div>
-          </div>
-          <div class="w-full lg:w-3/5 ml-0 md:ml-6">
-            <div class="mt-1">
-              <%= f.label :email, t("devise.registrations.email"), class: "text-sm" %>
-            </div>
-            <div class="mt-1">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email",  placeholder: "example@email.com" %>
-            </div>
-          </div>
-        </div>
-        <div class="flex items-center mt-12">
-          <div class="w-6 h-6 -mt-1">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
-            </svg>
-          </div>
-          <div class="ml-2 text-base font-medium">
-            <%= t("devise.registrations.password") %>
-          </div>
-        </div>
-        <div class="title-divider"></div>
-        <div class="flex flex-col md:flex-row lg:justify-between items-center">
-          <div class="w-full lg:w-3/5">
-            <div class="mt-1">
-              <%= f.label :password ,class: "text-sm"%>
-            </div>
-            <div class="mt-1 relative">
-              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: t("devise.registrations.enter_password") %>
-            </div>
-          </div>
-          <div class="w-full lg:w-3/5 ml-0 md:ml-6">
-            <div class="mt-1">
-              <%= f.label :password_confirmation , class: "text-sm"%>
-            </div>
-            <div class="mt-1 relative">
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control",  placeholder: t("devise.registrations.confirm_password") %>
-            </div>
-          </div>
-        </div>
-        <div class="mt-[32px]">
-          <%= f.submit t("devise.registrations.new.title"), class: "button w-full md:w-56", data: { turbo: false } %>
+
+          <p class="mt-5 text-center">
+            <span class="text-sm text-metalic-grey">
+              <%= t("devise.registrations.new.already_have_an_account") %>
+            </span>
+            <span>
+              <% if controller_name != "sessions" %>
+                <%= link_to t("devise.sessions.new.link"), new_session_path(resource_name), class: "text-sm font-medium text-blue-500" %><br/>
+              <% end %>
+            </span>
+          </p>
         </div>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>

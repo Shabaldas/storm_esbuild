@@ -5,24 +5,21 @@
         <p class="text-base md:text-lg uppercase text-gray-100">
           <%= t("static_pages.home.services") %>
         </p>
-        <h1 class="text-3xl lg:text-heading-1 text-dark-blue capitalize">
+        <h1 class="text-3xl lg:text-heading-1 text-dark-blue">
           <%= t("static_pages.home.3dprinting") %>
         </h1>
-        <p class="w-full md:max-w-[472px] mt-6 md:mt-10 text-dark-blue">
-          <%= t("static_pages.printing.3dprinting_description") %>        
+        <p class="w-full md:max-w-[500px] mt-6 md:mt-10 text-dark-blue">
+          <%= t("static_pages.printing.3dprinting_description") %>
         </p>
       </div>
     </div>
+
     <div class="w-4/6 order-1 md:order-2 flex justify-end">
-      <%= image_tag("print_img/arm_printing.png") %>
+      <%= image_tag("print_img/arm_printing.svg") %>
     </div>
   </div>
 
-  <div data-controller="tabs" data-tabs-active-tab="bg-dark-blue opacity-100 rounded-[24px] text-white" class="relative pt-6 pb-6 md:pb-8 px-6 md:px-8 my-20 md:mt-[108px] md:mb-[154px] rounded-[30px] overflow-hidden bg-yellow-300">
-    <p class="absolute bottom-3 right-6 md:right-8 text-sm text-dark-blue">
-      <%# TODO: uncoment when Vita fixed %>
-      <%#= t("static_pages.printing.minimum_price") %>
-    </p>
+  <div data-controller="tabs" data-tabs-active-tab="bg-dark-blue opacity-100 rounded-[24px] text-white" class="relative pt-6 pb-6 px-6 md:px-8 my-20 md:mt-[108px] md:mb-[154px] rounded-[30px] overflow-hidden bg-yellow-300">
     <ul class="flex items-center">
       <li class="tab py-1.5 px-5 border-2 border-solid border-dark-blue rounded-full cursor-pointer" data-tabs-target="tab" data-action="click->tabs#change">
         <a class="bg-none no-underline font-base text-dark-blue font-medium" href="#">
@@ -44,5 +41,44 @@
     <%= render partial: "static_pages/printing/fdm_tab" %>
     <%= render partial: "static_pages/printing/sla_tab" %>
     <%= render partial: "static_pages/printing/dlp_tab" %>
+    <p class="flex justify-end mt-2 text-sm text-dark-blue">
+      <%= t("static_pages.printing.minimum_price") %>
+    </p>
   </div>
+  <% if @printing_portfolios.present? %>
+    <div class="mt-20 md:mt-14 mb-20 md:mb-[154px] overflow-hidden">
+      <div class="flex flex-col items-start sm:flex-row sm:items-end justify-between sm:mb-10 mb-6">
+        <div>
+          <p class="text-lg text-gray-100 font-medium uppercase">
+            <%= t("static_pages.home.3dprinting") %>
+            <%= t("static_pages.home.portfolio") %>
+          </p>
+          <h2 class="text-3xl lg:text-heading-1 text-dark-blue">
+            <%= t("static_pages.home.our_latest_projects") %>
+          </h2>
+        </div>
+        <div class="hidden sm:flex gap-4 ">
+          <div class="swiper-button-prev" style="color:#1f2937" tabindex="-1" aria-label="Previous sli" id="acc_btn" data-active="false" id="1" rols="swiper-wrapper-dec5216f065e46c3" aria-disabled="true">
+            <div class="w-6 h-6 sm:w-12 sm:h-12 flex justify-center items-center rounded-full">
+              <%= image_tag("icons_svg/arrow-thin-left.svg", class:"w-3 h-3 sm:w-6 sm:h-6 -ml-0.5 sm:-ml-1") %>
+            </div>
+          </div>
+          <div class="swiper-button-next" style="color:#1f2937" tabindex="0" aria-label="Next slide" id="acc_btn" data-active="false" id="1" rols="swiper-wrapper-dec5216f065e46c3" aria-disabled="false">
+            <div class="w-6 h-6 sm:w-12 sm:h-12 flex justify-center items-center rounded-full">
+              <%= image_tag("icons_svg/arrow-thin-right.svg", class:"w-3 h-3 sm:w-6 sm:h-6 ml-0.5 sm:ml-1") %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-controller="carousel" class="swiper-container">
+        <div class="swiper-wrapper" data-controller="lightbox">
+          <% @printing_portfolios.each do |portfolio| %>
+            <%= render partial: "shared/portfolio", locals: { portfolio: portfolio } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= render partial: "shared/upload_form", locals: { model: @printing_order, order_name: "printing", image_icon: "stl_and_obj" } %>
+  <%= turbo_frame_tag "printing-modal" %>
 </div>

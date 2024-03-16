@@ -1,13 +1,32 @@
 uk:
   dredd:
+    accountings:
+      accountings_this_month: "Бухагалтерія цього місяця"
+      accountings_for_previous_months: "Бухагалтерія за попередні місяці"
+      costs: "Витрати"
+      rewards: "Винагороди"
+      profit: "Прибуток"
+      monthly:
+        order: "Замовлення"
+        earning_label: "Заробіток"
+        costs: "Витрати"
+        reward: "Винагороди"
+        profit: "Прибуток"
+        empty_costs: "Витрати відсутні"
+        empty_orders: "Замовлення відсутні"
+        empty_rewards: "Винагороди відсутні"
+        accounting_month_title: "Бухгалтерія за %{date}"
+        back: "Назад"
     dashboard:
       user_count: "Кількість користувачів"
       manual_orders: "Ручні замовлення"
       internet_orders: "Інтернет замовлення"
       modeling_orders: "Замовлення моделювання "
       rendering_orders: "Замовлення рендер"
+      scanning_orders: "Замовлення сканування"
       printing_orders: "Замовлення 3D друк"
       feedback_call: "Новий дзвінок із зворотним зв'язком"
+      clients: "Клієнти"
     feedback_calls:
       id: "ID"
       phone_number: "НОМЕР ТЕЛЕФОНУ"
@@ -15,7 +34,7 @@ uk:
       created_at: "СТВОРЕНО"
       actions: "ДІЇ"
       called: "ПЕРЕДЗВОНЕНО"
-    3d_orders: 
+    3d_orders:
       id: "ID"
       full_name: "Повне ім'я"
       phone_number: "Phone number"
@@ -24,13 +43,16 @@ uk:
       comment: "Коментар"
       total_price: "Ціна"
       deadline: "Термін"
+      actions: "Дії"
     manual_orders:
+      select_client: "Виберіть клієнта"
       please_input: "Будь ласка, введіть"
       first_name: "Ім'я"
       last_name: "Прізвище"
       phone_number: "Номер телефону"
       app_contact: "Контакт застосунку"
       email: "Електронна пошта"
+      modeller: "Моделлер"
       price_for_modeling: "Вартість моделювання"
       price_for_printing: "Вартість друку"
       count: "Кількість"
@@ -40,8 +62,10 @@ uk:
       select: "---Вибрати---"
       print_color: "Колір друку"
       status: "Статус"
+      need_to_call_client: "Зателефонувати клієнту"
       save: "Зберегти"
       deadline: "Термін"
+      end_date: "Дата закінчення"
       comment: "Коментар"
       destroy: "ВИДАЛИТИ"
       edit: "Редагувати"
@@ -50,7 +74,9 @@ uk:
       created_at: "Створено о"
       actions: "Дії"
       manual_order: "Створити ручне замовлення"
+      link_to_model: "Посилання на модель"
       new_manual_order: "Нове ручне замовлення"
+      new_manual_order_from_client: "Нове замовлення на основі клієнта"
       client_contact: "Контакти клієнта"
       printing_information: "Інформація про друк"
       price_information: "Інформація про ціну"
@@ -59,6 +85,14 @@ uk:
       edit_manual_order: "Редагувати ручне замовлення"
       quality: "Якість друку"
       infill: "Заповнення"
+      workflow: "Робочий процес"
+      individual_entrepreneur_accountings: "ФОП замовлення"
+      workflow_status:
+        nothing: "Нічого не зроблено"
+        modeling: "Спроектовано"
+        called_cleint: "Повідомлено клієнту"
+        printing: "Роздруковано"
+        done: "Завершено"
     orders:
       edit: "РЕДАГУВАТИ"
       full_name: "ПОВНЕ ІМ'Я"
@@ -83,6 +117,18 @@ uk:
       category_name: "Назва категорії:"
       category_description: "Опис категорії:"
       children: "Діти:"
+    printing_orders:
+      edit_printing_order: "Редагувати замовлення 3D друку"
+      files: "Прикріплені файли"
+    rendering_orders:
+      edit_rendering_order: "Редагувати замовлення 3D рендерингу"
+      files: "Прикріплені файли"
+    scanning_orders:
+      edit_scanning_order: "Редагувати замовлення 3D сканування"
+      files: "Прикріплені файли"
+    modeling_orders:
+      edit_modeling_order: "Редагувати замовлення 3D моделювання"
+      files: "Прикріплені файли"
     products:
       product_category: "Категорія продукту"
       base_price: "Базова ціна"
@@ -101,16 +147,40 @@ uk:
       new_product: "Новий продукт"
       create_new_product: "Створити новий продукт"
       product_category_big: "КАТЕГОРІЯ ПРОДУКТУ"
-    users:  
-      admins: "Адміністратори"
+    portfolios:
+      id: "ІД"
+      name: "Ім'я"
+      status: "Статус"
+      created_at: "СТВОРЕНО О"
+      actions: "ДІЇ"
+      main_picture: "ГОЛОВНА КАРТИНКА"
+      new_portfolio: "Нове Портфоліо"
+      edit_portfolio: "Редаагувати Портфоліо"
+      create_new_portfolio: "Створити Нове Портфоліо"
+      create_portfolio: "Створити Портфоліо"
+      category_name: "Категорія"
+      created_by_machine: "Створено на (програмі)"
+      description: "Опис"
+      portfolio_type: "Тип портфоліо"
+      tags: "Теги"
+      save: "Зберегти"
+    users:
+      admins: "АДІНІСТРАТОРИ"
+      admin: "Адмін"
       id: "ІД"
       full_name: "ПОВНЕ ІМ'Я"
       phone: "ТЕЛЕФОН"
       email: "ЕЛЕКТРОННА ПОШТА"
-      customers: "Клієнти"
+      customers: "КОРИСТУВАЧІ"
+      customer: "Клієнт"
+      workers: "ПРАЦІВНИКИ"
       created_at: "СТВОРЕНО О"
+      nickname: "ПСЕВДНІМ"
+      actions: "ДІЇ"
+      first_name: "ІМ'Я"
+      last_name: "ПРІЗВИЩЕ"
     header:
-      admin_dashboard: "Панель адміністратора"
+      admin_dashboard: "Панель \n адміністратора"
       products: "Продукти"
       product_categories: "Категорії продуктів"
       feedback_calls: "Виклики зворотного зв'язку"
@@ -119,4 +189,65 @@ uk:
       internet_orders: "Інтернет-замовлення"
       modeling_orders: "Замовлення моделювання "
       rendering_orders: "Замовлення рендер"
+      scanning_orders: "Замовлення сканування"
       printing_orders: "Замовлення 3D друк"
+      printers: "Принтери"
+      portfolios: "Портфоліо"
+      accountings: "Бухгалтерія"
+      administer_pages: "Адміністрування сторінок"
+      workers: "Працівники"
+      clients: "Клієнти"
+    printers:
+      actions: "Дії"
+      printer_code: "Код принтера"
+      firm: "Фірма"
+      model: "Модель"
+      printing_technology: "Технологія друку"
+      state: "Стан"
+      type_mechanic: "Тип механізму"
+      table_size: "Розмір столу"
+      price_for_printer: "Ціна за принтер"
+      bought: "Придбано"
+      comment: "Коментар"
+      by_for_upgrade: "Купити для оновлення"
+      created_at: "Створено"
+      create_new_printer: "Додати новий принтер"
+      cre_printer: "Додати принтер"
+      edit: "Редагувати"
+      new_printer: "Новий принтер"
+      problem: "Проблема"
+      problem_find: "Знайдено проблему"
+      time_for_fix: "Час для вирішення"
+      remove_printer_maintenance: "Видалити обслуговування принтера"
+      add_printer_maintenance: "Додати обслуговування принтера"
+    month_names:
+      - Січень
+      - Лютий
+      - Березень
+      - Квітень
+      - Травень
+      - Червень
+      - Липень
+      - Серпень
+      - Вересень
+      - Жовтень
+      - Листопад
+      - Грудень
+    workers:
+      workers: "Робітники"
+      first_name: "Ім'я"
+      last_name: "Прізвище"
+      nickname: "Псевдонім"
+      search: "Пошук"
+      first_last_full: "Ім'я/Прізвище/Повне ім'я"
+    user_profile:
+      password: "Пароль"
+      personal_data: "Персональні дані"
+      personal_password: "Персональний пароль"
+      change: "Змінити"
+      placeholder_first_name: "Введіть своє ім'я!"
+      placeholder_last_name: "Введіть своє прізвище!"
+      placeholder_email: "Введіть свій email!"
+      placeholder_phone: "Введіть свій номер телефону!"
+      cancel: "Скасувати"
+      hello: "Привіт"

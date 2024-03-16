@@ -1,8 +1,12 @@
 describe '/dredd', type: :request do
   let(:user) { create(:user, :admin) }
+  let(:telegram_api_double) { instance_double(Telegram::Bot::Api) }
+  let(:phone_number) { '1234567890' }
 
   before do
     login_as(user, scope: :user)
+    allow(Telegram::Bot::Api).to receive(:new).and_return(telegram_api_double)
+    allow(telegram_api_double).to receive(:call)
   end
 
   describe 'GET /dredd' do
@@ -27,9 +31,8 @@ describe '/dredd', type: :request do
       get dredd_dashboard_path
 
       expect(response).to be_successful
-      expect(response.body).to include('Admin Dashboard')
-      expect(response.body).to include('Products')
-      expect(response.body).to include('Product Categories')
+      expect(response.body).to include('Admin')
+      expect(response.body).to include('Dashboard')
       expect(response.body).to include('Feedback Calls')
       expect(response.body).to include('Manual Orders')
       expect(response.body).to include('Printing Orders')
@@ -38,6 +41,8 @@ describe '/dredd', type: :request do
       expect(response.body).to include('Internet Orders')
       expect(response.body).to include('Users count')
       expect(response.body).to include('New feedback call')
+      expect(response.body).to include('Portfolios')
+      expect(response.body).to include('Accountings')
     end
 
     context 'when user is not admin' do

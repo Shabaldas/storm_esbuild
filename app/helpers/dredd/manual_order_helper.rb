@@ -19,12 +19,23 @@ module Dredd
       end
     end
 
-    def order_status_icon(manual_order)
-      if manual_order.done?
-        'done_icon'
+    def workflow_status_icon(workflow_status)
+      case workflow_status.to_sym
+      when :nothing
+        'empty_basket'
+      when :modeling
+        '3d_modeling_icon'
+      when :printing
+        '3d_printing_icon'
+      when :called_cleint
+        'user'
       else
-        'not_done_icon'
+        'success'
       end
+    end
+
+    def workers_for_select
+      Worker.all.map { |worker| [worker.first_name, worker.id] }
     end
   end
 end

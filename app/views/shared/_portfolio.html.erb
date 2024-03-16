@@ -1,0 +1,24 @@
+<div class="swiper-slide w-full relative">
+  <%= link_to url_for(portfolio.main_picture), class: "lightbox-item w-10 h-10 flex items-center justify-center rounded-lg absolute top-4 right-4 sm:top-8 sm:right-8 bg-white z-20" do %>
+    <%= image_tag("icons_svg/arrows-pointing-out.svg", class:"w-9 h-9", alt: "arrows-pointing-out-icon") %>
+  <% end %>
+  <div class="w-full relative block h-full max-h-[560px] rounded-2xl sm:rounded-[30px] overflow-hidden">
+    <div>
+      <%= image_tag(portfolio.main_picture, class:"w-full h-[320px] md:h-[420px] lg:h-[560px] object-cover bg-center", alt: "portfolio-main-picture") %>
+    </div>
+  </div>
+  <div class="absolute top-0 left-0 w-full h-full flex justify-between items-end px-4 py-4 sm:px-8 sm:py-10 bg-gradient-to-t from-[#2A343E] rounded-2xl sm:rounded-[30px]">
+    <div>
+      <p class="text-sm leading-5 text-zinc">
+        <%= portfolio.category_name %>
+      </p>
+      <h4 class="text-lg sm:text-[22px] text-white normal-case leading-6">
+        <%= portfolio.name %>
+      </h4>
+    </div>
+    <div class="w-6 h-6 sm:w-10 sm:h-10"><%# TODD: UNCOMMENT LATER %>
+      <%#= portfolio.created_by_machine %>
+      <%#= image_tag("icons_svg/print-label.svg", class: "w-full") %>
+    </div>
+  </div>
+</div>

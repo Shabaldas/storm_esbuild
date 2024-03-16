@@ -1,0 +1,65 @@
+<%= form_with model: [:dredd, @portfolio], class: "form-grid-single" do |form| %>
+  <div class="form-grid-single w-1/2">
+    <div class="flex space-x-2">
+      <div class="form-group">
+        <%= form.label t("dredd.portfolios.name"), class: "form-label" %>
+        <%= form.text_field :name, placeholder: "Please input" %>
+        <%= inline_error_for(:name, @portfolio) %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.portfolios.category_name"), class: "form-label" %>
+        <%= form.text_field :category_name, placeholder: "Please input" %>
+        <%= inline_error_for(:category_name, @portfolio) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label t("dredd.portfolios.description"), class: "form-label" %>
+      <%= form.text_field :description, placeholder: "Please input" %>
+      <%= inline_error_for(:description, @portfolio) %>
+    </div>
+    <div class="form-group form-toggle">
+      <%= form.label t("dredd.portfolios.status"), class: "toggle-switch-label" %>
+      <label class="toggle-switch ml-3">
+        <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "active", "inactive") %>
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="flex space-x-2">
+      <div class="form-group">
+        <%= form.label t("dredd.portfolios.tags"), class: "form-label" %>
+        <%= form.text_field :tags, placeholder: t("dredd.manual_orders.please_input") %>
+        <%= inline_error_for(:tags, @portfolio) %>
+      </div>
+      <div class="form-group">
+        <%= form.label t("dredd.portfolios.created_by_machine"), class: "form-label" %>
+        <%= form.text_field :created_by_machine, placeholder: t("dredd.manual_orders.please_input")  %>
+        <%= inline_error_for(:created_by_machine, @portfolio) %>
+      </div>
+    </div>
+
+    <div class="flex space-x-4">
+      <div class="form-group">
+        <%= form.label t("dredd.portfolios.portfolio_type"), class: "form-label" %>
+        <%= form.select :portfolio_type, options_for_select(Portfolio.portfolio_types.keys.map {|k, v| [k.humanize.capitalize, k] }, selected: form.object.portfolio_type ) %>
+      </div>
+    </div>
+
+    <%= form.label t("dredd.portfolios.main_picture") %>
+    <% if form.object.main_picture.attached? %>
+      <%= image_tag(form.object.main_picture, class: "h-24 w-24 rounded-full") %>
+    <% end %>
+
+    <div data-controller="dropzone" class="form-group dropzone">
+      <%= form.file_field :main_picture, multiple: false, direct_upload: true, data: { dropzone_target: 'input' }, class: "hidden" %>
+      <div class="text-center">
+        <div class="dz-default dz-message">
+          <p class="dropzone-msg-desc text-xs pt-2"><%= t("static_pages.upload_form.dropzone_message") %></p>
+        </div>
+      </div>
+    </div>
+    <%= inline_error_for(:main_picture, @portfolio) %>
+    <div class="form-group">
+      <%= form.submit t("dredd.portfolios.save"), class: "button w-full md:max-w-[212px]" %>
+    </div>
+  </div>
+<% end %>

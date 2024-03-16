@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
+  has_paper_trail
+
   belongs_to :product_category
   has_one_attached :main_picture
   has_many :product_options, dependent: :destroy

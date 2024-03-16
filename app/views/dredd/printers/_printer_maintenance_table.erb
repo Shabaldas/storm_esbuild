@@ -1,0 +1,28 @@
+<table>
+  <thead class="text-gray-700 bg-gray-50">
+    <tr class="text-base">
+      <th class="px-6 py-3" scope="col"><%= t("dredd.printers.id") %></th>
+      <th class="px-6 py-3" scope="col"><%= t("dredd.printers.problem") %></th>
+      <th class="px-6 py-3" scope="col"><%= t("dredd.printers.problem_find") %></th>
+      <th class="px-6 py-3" scope="col"><%= t("dredd.printers.time_for_fix") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <td>
+      <tr>
+        <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+            <%= printer_maintenance.id %>
+        </td>
+        <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+            <%= printer_maintenance.problem %>
+        </td>
+        <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+            <%= printer_maintenance.problem_find %>
+        </td>
+        <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
+            <%= printer_maintenance.time_for_fix %>
+        </td>
+      </tr>
+    </td>
+  </tbody>
+</table>

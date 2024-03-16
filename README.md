@@ -22,7 +22,7 @@ FOR MACOS USER
   ```
   ### Run the servers locally
   change your username and password for postgresuser in ```.env``` file
-  push 
+  push
   ```bash
   bin/rails server -p 3000
   yarn build:css --watch
@@ -39,6 +39,7 @@ FOR MACOS USER
 
   DatabaseSeeds::Main.new.execute
   ```
+
 
 ### IF SOMETHING WENT WRONG
   1. Reset Database
