@@ -24,6 +24,7 @@ class ProfilesController < ApplicationController
       bypass_sign_in(@user) if edit_partial == 'edit_profile_password'
       render turbo_stream: [
         turbo_stream.replace('profile_page', partial: 'profiles/form', locals: { user: @user }),
+        turbo_stream.update('hello_user', partial: 'profiles/user_greetings', locals: { user: @user }),
         turbo_stream.prepend('flash', partial: 'dredd/shared/flash')
       ]
     else
