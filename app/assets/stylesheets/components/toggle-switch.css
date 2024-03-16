@@ -1,4 +1,3 @@
-
 .form-toggle {
   @apply flex flex-row items-center;
 }
@@ -15,16 +14,17 @@
   color: inherit;
 }
 
-.toggle-switch input, .translation-header-toggle input {
-  @apply invisible w-0 h-0; 
+.toggle-switch input,
+.translation-header-toggle input {
+  @apply invisible w-0 h-0;
 }
 
 .toggle-switch .slider {
-  @apply absolute top-0 left-0 right-0 bottom-0 cursor-pointer bg-gray-300 hover:outline hover:outline-hover-light transition-transform rounded-full;
+  @apply absolute top-0 left-0 right-0 bottom-0 cursor-pointer bg-gray-200 hover:outline hover:outline-hover-light transition-transform rounded-full;
 }
 
 .toggle-switch.disabled .slider {
-  @apply bg-pattern-disabled-bright bg-transparent border border-bordercolor hover:outline-none;
+  @apply bg-pattern-disabled-bright bg-transparent  hover:outline-none;
 
   &::before {
     @apply bg-bordercolor;
@@ -42,7 +42,7 @@
 }
 
 .toggle-switch input:checked + .slider {
-  @apply bg-primary;
+  @apply bg-blue-700;
 }
 
 .toggle-switch input:focus + .slider {
@@ -87,14 +87,15 @@
   transform: translateX(8px);
 }
 
-.form-toggle.sm, .form-toggle.vertical {
+.form-toggle.sm,
+.form-toggle.vertical {
   @apply items-center;
 }
 
 .form-toggle.vertical .toggle-switch {
   width: 12px;
   height: 20px;
-} 
+}
 
 .form-toggle.vertical .toggle-switch input:checked + .slider:before {
   -webkit-transform: translateY(-8px);
