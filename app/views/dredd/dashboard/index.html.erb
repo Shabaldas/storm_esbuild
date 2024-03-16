@@ -1,7 +1,10 @@
 </br>
-</br>
-</br>
 <div class="main-content main-content-padding">
+  <div class="text-2xl text-gray-800 font-medium">
+    <%= t("dredd.user_profile.hello") %>, <%= current_user.first_name %>! 👋
+  </div>
+  </br>
+  </br>
   <div class="">
     <% if policy(:admin).admin_only_access? %>
       <div class="card mb-5 metrics-item">
