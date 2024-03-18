@@ -70,19 +70,19 @@ group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'bullet', '~> 7.1.6'
-  gem 'database_cleaner'
-  gem 'factory_bot_rails'
-  gem 'faker'
+  gem 'database_cleaner', '~> 2.0.2'
+  gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'faker', '~> 3.2', '>= 3.2.3'
   gem 'pry-rails'
   gem 'rails-controller-testing'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 6.1.0'
   gem 'rspec_api_documentation'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
-  gem 'rubocop-faker'
-  gem 'rubocop-rails'
+  gem 'rubocop-faker', '~> 1.1'
+  gem 'rubocop-rails', '~> 2.14'
   gem 'rubocop-rspec'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 6.2'
   gem 'webmock'
 end
 
@@ -93,7 +93,7 @@ group :development do
 end
 
 group :test do
-  gem 'database_cleaner-active_record'
+  gem 'database_cleaner-active_record', '~> 2.1'
   gem 'timecop'
   gem 'simplecov', require: false
   gem 'capybara'
