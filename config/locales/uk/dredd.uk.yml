@@ -76,7 +76,7 @@ uk:
       manual_order: "Створити ручне замовлення"
       link_to_model: "Посилання на модель"
       new_manual_order: "Нове ручне замовлення"
-      new_manual_order_from_client: "Нове замовлення на сонові клієнта"
+      new_manual_order_from_client: "Нове замовлення на основі клієнта"
       client_contact: "Контакти клієнта"
       printing_information: "Інформація про друк"
       price_information: "Інформація про ціну"

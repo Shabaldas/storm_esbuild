@@ -2,14 +2,16 @@
   @apply w-full p-0 border-none bg-none rounded bg-transparent;
 }
 
-.form-select.error .ts-control, .multi-select.error .ts-control {
+.form-select.error .ts-control,
+.multi-select.error .ts-control {
   @apply border-danger;
 }
 
 /*///// Tom-Select theme https://tom-select.js.org /////*/
 
 .ts-control {
-  @apply relative overflow-hidden flex w-full justify-start items-stretch font-normal py-1.5 pl-4 rounded border bg-white focus:outline-none focus:ring-0 z-0;
+  height: 40px;
+  @apply bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full;
 }
 
 .ts-control input {
@@ -37,8 +39,10 @@
   margin-top: -10px;
 }
 
-.ts-control:hover, .form-select.inverted .ts-control:hover, .form-group.inverted .ts-control:hover, .multi-select.inverted .ts-control:hover {
-
+.ts-control:hover,
+.form-select.inverted .ts-control:hover,
+.form-group.inverted .ts-control:hover,
+.multi-select.inverted .ts-control:hover {
   &::before {
     @apply bg-transparent;
   }
@@ -66,9 +70,8 @@
     content: "";
     width: 20px;
     height: 20px;
-  } 
+  }
 }
-
 
 .has-items .ts-control .item {
   @apply pt-1;
@@ -76,7 +79,8 @@
 
 /* Multi select item */
 
-.ts-wrapper.multi .ts-control, .ts-wrapper.multi.has-items .ts-control {
+.ts-wrapper.multi .ts-control,
+.ts-wrapper.multi.has-items .ts-control {
   @apply h-auto min-h-12 bg-white;
 }
 
