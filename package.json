@@ -23,7 +23,7 @@
     "stimulus-textarea-autogrow": "^4.1.0",
     "swiper": "^11.0.7",
     "tailwindcss": "^3.4.1",
-    "tailwindcss-stimulus-components": "^3.0.4",
+    "tailwindcss-stimulus-components": "^5.0.2",
     "three": "^0.153.0",
     "tom-select": "^2.2.2"
   },
