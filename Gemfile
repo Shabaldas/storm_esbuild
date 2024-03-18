@@ -72,7 +72,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'faker', '~> 3.2', '>= 3.2.3'
   gem 'pry-rails'
-  gem 'foreman'
+  gem 'foreman', '~> 0.87.2'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 6.1.0'
   gem 'rspec_api_documentation'
