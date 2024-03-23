@@ -1,18 +1,29 @@
 <div class="max-w-screen-2xl mt-24 px-7 w-full">
   <div class="w-full mx-auto flex flex-col lg:flex-row" data-controller="sidebar">
-    <div class="sidebar w-full h-auto max-w-[320px] flex-col shrink-0 lg:mr-6 fixed top-0 lg:relative z-40 lg:z-10 left-0 mb-0 lg:mb-36 transform -translate-x-full lg:translate-x-0 transition duration-700 ease-in-out" data-sidebar-target="sidebarContainer" data-expanded="1">
+    <div class="sidebar w-1/6 h-auto max-w-[320px] flex-col shrink-0 lg:mr-6 fixed top-0 lg:relative z-40 lg:z-10 left-0 mb-0 lg:mb-36 transform -translate-x-full lg:translate-x-0 transition duration-700 ease-in-out" data-sidebar-target="sidebarContainer" data-expanded="1">
       <div class="relative top-0 lg:sticky lg:top-[90px] h-screen lg:h-auto bg-white rounded-0 lg:rounded-3xl py-6 px-6 lg:px-8 text-zinc-500">
         <div>
-          <%= link_to t("dredd.manual_orders.manual_order"), new_dredd_manual_order_path, class: "button" %>
+          <%= link_to t("dredd.manual_orders.new_manual_order"), new_manual_order_dredd_manual_orders_path, class: "bg-stone-300 border-1 border-solid flex flex-col h-12 items-center rounded-lg text-black text-center" %>
+        </div>
+        </br>
+        <div>
+          <%= link_to t("dredd.manual_orders.new_manual_order_from_client"), new_manual_order_from_client_dredd_manual_orders_path, class: "bg-zinc border-1 border-solid flex flex-col h-12 items-center rounded-lg text-black text-center" %>
         </div>
         </br>
         <div>
           <h4 class="text-lg normal-case text-gray-800 mb-4">
-            Search
+            <%= t("dredd.workers.search") %>
           </h4>
           <div data-controller="accordion">
             <%= search_form_for(@q, url: dredd_manual_orders_path) do |f| %>
               <div class="space-y-2">
+                <%= f.label :fisrt_name, t("dredd.workers.first_last_full") %>
+                <%= f.search_field :first_name_or_last_name_or_full_name_cont, placeholder:
+                    t("dredd.manual_orders.please_input") %>
+
+                <%= f.label :phone_number, t("dredd.manual_orders.phone_number") %>
+                <%= f.search_field :phone_number_cont, placeholder: t("dredd.manual_orders.please_input") %>
+
                 <%= f.label :print_code_eq, t("dredd.manual_orders.status") %>
                 <%= f.select :status_eq, ManualOrder.statuses.to_a.map { |w| [w[0].humanize, w[1]] },
                                                                       { :include_blank => true }
@@ -21,6 +32,10 @@
                 <%= f.label :print_code_eq, t("dredd.manual_orders.workflow") %>
                 <%= f.select :workflow_status_eq, ManualOrder.workflow_statuses.to_a.map { |w| [t("dredd.manual_orders.workflow_status.#{w[0]}"), w[1]] },
                                                                       { :include_blank => true }
+                %>
+
+                <%= f.label :individual_entrepreneur_accountings, t("dredd.manual_orders.individual_entrepreneur_accountings") %>
+                <%= f.select :individual_entrepreneur_accountings_eq, [['Yes', true], ['No', false]], { :include_blank => true }
                 %>
               </div>
 
@@ -33,32 +48,35 @@
       </div>
       </br>
     </div>
-    <table>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"">
       <thead class="text-gray-700 bg-gray-50">
         <tr class="text-base">
-          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :print_code, t("dredd.manual_orders.print_code"), class: "text-black") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.print_code") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.full_name") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.phone_number") %></th>
-          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :workflow_status, t("dredd.manual_orders.workflow"), class: "text-black") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.need_to_call_client") %></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.workflow") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.app_contact") %></th>
-          <th class="px-6 py-3" scope="col"><%= sort_link(@q, :total_price, t("dredd.manual_orders.total_price"), class: "text-black")%></th>
+          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.total_price") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.prepaid_expense") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.status") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.deadline") %></th>
-          <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.created_at") %></th>
           <th class="px-6 py-3" scope="col"><%= t("dredd.manual_orders.actions") %></th>
         </tr>
       </thead>
       <tbody>
-        <%= render partial: "dredd/manual_orders/manual_order", collection: @manual_orders %>
+        <% @manual_orders.each do |manual_order| %>
+          <%= render partial: "manual_order", locals: { manual_order: manual_order } %>
+        <% end %>
       </tbody>
     </table>
   </div>
   <div class="flex justify-center w-full">
     <div class="absolute p-6">
       <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
-      <footer class="pt-6">
-        <%= link_to t("dredd.manual_orders.manual_order"), new_dredd_manual_order_path, class: "button w-80" %>
+      <footer class="pt-6 flex space-x-5">
+        <%= link_to t("dredd.manual_orders.new_manual_order"), new_manual_order_dredd_manual_orders_path, class: "bg-stone-300 border-1 border-solid flex flex-col h-10 items-center rounded-full text-black text-center w-80" %>
+        <%= link_to t("dredd.manual_orders.new_manual_order_from_client"), new_manual_order_from_client_dredd_manual_orders_path, class: "bg-zinc border-1 border-solid flex flex-col h-10 items-center rounded-full text-black text-center w-80" %>
       </footer>
     </div>
   </div>

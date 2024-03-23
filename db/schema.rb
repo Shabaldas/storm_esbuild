@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_11_165553) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "nickname"
+    t.index ["first_name"], name: "index_clients_on_first_name"
+    t.index ["last_name", "first_name"], name: "index_clients_on_last_name_and_first_name"
+    t.index ["last_name"], name: "index_clients_on_last_name"
+    t.index ["nickname"], name: "index_clients_on_nickname"
+    t.index ["phone_number"], name: "index_clients_on_phone_number"
+  end
+
   create_table "costs", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -99,11 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
 
   create_table "manual_orders", force: :cascade do |t|
     t.string "print_code"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
     t.integer "app_contact", default: 0
-    t.string "email"
     t.decimal "price_for_modeling", precision: 8, scale: 2
     t.decimal "price_for_printing", precision: 8, scale: 2
     t.integer "count"
@@ -119,9 +130,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
     t.datetime "updated_at", null: false
     t.string "quality"
     t.string "infill"
-    t.string "modeller"
     t.date "end_date"
     t.integer "workflow_status", default: 0
+    t.bigint "worker_id"
+    t.boolean "need_to_call_client", default: false
+    t.boolean "individual_entrepreneur_accountings", default: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone_number"
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_manual_orders_on_client_id"
+    t.index ["worker_id"], name: "index_manual_orders_on_worker_id"
   end
 
   create_table "modeling_orders", force: :cascade do |t|
@@ -296,6 +316,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "scanning_orders", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "email"
+    t.string "link_to_model"
+    t.integer "status", default: 0
+    t.decimal "total_price", precision: 8, scale: 2
+    t.datetime "deadline"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -314,6 +348,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  end
+
+  create_table "workers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "nickname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_workers_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_item_option_values", "cart_items", on_delete: :cascade
@@ -321,6 +375,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "orders", on_delete: :cascade
   add_foreign_key "costs", "users"
+  add_foreign_key "manual_orders", "clients"
+  add_foreign_key "manual_orders", "workers"
   add_foreign_key "option_values", "options", on_delete: :cascade
   add_foreign_key "print_model_attributes", "print_models", on_delete: :cascade
   add_foreign_key "product_option_values", "option_values", on_delete: :cascade
@@ -328,4 +384,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_172050) do
   add_foreign_key "product_options", "options", on_delete: :cascade
   add_foreign_key "product_options", "products", on_delete: :cascade
   add_foreign_key "products", "product_categories", on_delete: :cascade
+  add_foreign_key "workers", "users"
 end

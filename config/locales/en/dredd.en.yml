@@ -4,12 +4,17 @@ en:
       accountings_this_month: "Accountings this month"
       accountings_for_previous_months: "Accountings for previous months"
       costs: "Costs"
+      rewards: "Rewards"
+      profit: "Profit"
       monthly:
         order: "Order"
         earning_label: "Earning"
         costs: "Costs"
+        reward: "Reward"
+        profit: "Profit"
         empty_costs: "Costs are empty"
         empty_orders: "Orders are empty"
+        empty_rewards: "Reward are empty"
         accounting_month_title: "Accounting for %{date}"
         back: "Back"
     dashboard:
@@ -18,8 +23,10 @@ en:
       internet_orders: "Internet Orders"
       modeling_orders: "Modeling Orders"
       rendering_orders: "Rendering Orders"
+      scanning_orders: "Scanning Orders"
       printing_orders: "Printing Orders"
       feedback_call: "New feedback call"
+      clients: "Clients"
     feedback_calls:
       id: "ID"
       phone_number: "PHONE NUMBER"
@@ -38,6 +45,7 @@ en:
       deadline: "Deadline"
       actions: "Actions"
     manual_orders:
+      select_client: "Select client"
       please_input: "Please input"
       first_name: "First name "
       last_name: "Last name"
@@ -54,6 +62,7 @@ en:
       select: "---Select---"
       print_color: "Print color"
       status: "Status"
+      need_to_call_client: "Call client"
       save: "Save"
       deadline: "Deadline"
       end_date: "End date"
@@ -64,8 +73,10 @@ en:
       full_name: "Full Name"
       created_at: "Created At"
       actions: "Actions"
+      link_to_model: "Link to Model"
       manual_order: "Create Manual Order"
       new_manual_order: "New Manual Order"
+      new_manual_order_from_client: "New Manual Order from Client"
       client_contact: "Client Contacts"
       printing_information: "Printing Information"
       price_information: "Price Information"
@@ -75,9 +86,11 @@ en:
       quality: "Quality"
       infill: "Infill"
       workflow: "Workflow"
-      workflow_status: 
+      individual_entrepreneur_accountings: "FOP accounting"
+      workflow_status:
         nothing: "Nothing"
         modeling: "Modeling"
+        called_cleint: "Called cleint"
         printing: "Printing"
         done: "Finished"
     orders:
@@ -110,8 +123,11 @@ en:
     rendering_orders:
       edit_rendering_order: "Edit 3D Rendering Order"
       files: "Attached Files"
+    scanning_orders:
+      edit_scanning_order: "Edit 3D Scanning Order"
+      files: "Attached Files"
     modeling_orders:
-      edit_modeling_order: "Edit 3D Modeleing Order"
+      edit_modeling_order: "Edit 3D Modeling Order"
       files: "Attached Files"
     products:
       product_category: "Product Category"
@@ -149,15 +165,22 @@ en:
       tags: "Tags"
       save: "Save"
     users:
-      admins: ADMINS
+      admins: "ADMINS"
+      admin: "admin"
       id: "ID"
       full_name: "FULL NAME"
       phone: "PHONE"
       email: "EMAIL"
-      customers: CUSTOMERS
+      customers: "CUSTOMERS"
+      customer: "Customer"
+      workers: WORKERS"
       created_at: "CREATED AT"
+      nickname: "NICKNAME"
+      actions: "ACTIONS"
+      first_name: "FIRST NAME"
+      last_name: "LAST NAME"
     header:
-      admin_dashboard: "Admin Dashboard"
+      admin_dashboard: "Admin \n Dashboard"
       products: "Products"
       product_categories: "Product Categories"
       feedback_calls: "Feedback Calls"
@@ -166,10 +189,14 @@ en:
       internet_orders: "Internet Orders"
       modeling_orders: "Modeling Orders"
       rendering_orders: "Rendering Orders"
+      scanning_orders: "Scanning Orders"
       printing_orders: "Printing Orders"
       printers: "Printers"
       portfolios: "Portfolios"
       accountings: "Accountings"
+      administer_pages: "Administer Pages"
+      workers: "Workers"
+      clients: "Clients"
     printers:
       actions: "ACTIONS"
       printer_code: "Printer code"
@@ -193,3 +220,34 @@ en:
       time_for_fix: "Time for fix"
       remove_printer_maintenance: "Remove printer maintenance"
       add_printer_maintenance: "Add printer maintenance"
+    month_names:
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
+    workers:
+      workers: "Workers"
+      first_name: "First Name"
+      last_name: "Last Name"
+      nickname: "Nickname"
+      search: "Search"
+      first_last_full: "First Name/Last Name/Full Name"
+    user_profile:
+      password: "Password"
+      personal_data: "Personal data"
+      personal_password: "Personal password"
+      change: "Change"
+      placeholder_first_name: "Enter your first name!"
+      placeholder_last_name: "Enter your last name!"
+      placeholder_email: "Enter your last email!"
+      placeholder_phone: "Enter your last phone!"
+      cancel: "Cancel"
+      hello: "Hello"

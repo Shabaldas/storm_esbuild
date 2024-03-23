@@ -102,6 +102,28 @@ describe '/rendering_orders', type: :request do
         expect(rendering_order.link_to_model).to eq('https://www.thingiverse.com/thing:2789086')
         expect(rendering_order.comment).to eq('Test comment')
       end
+
+      context 'when form include XSS attack' do
+        it 'sanitize params' do
+          expect do
+            post rendering_orders_path, params: {
+              rendering_order: {
+                first_name: '<script>alert("XSS attack")</script>',
+                last_name: '<img src=x onerror=prompt() onclick=prompt()>',
+                email: 'example@example.com',
+                phone_number: '+380976404050',
+                link_to_model: 'https://www.thingiverse.com/thing:2789086',
+                comment: '<script>alert("XSS attack")</script>'
+              }
+            }
+          end.to change(RenderingOrder, :count).by(1)
+
+          rendering_order = RenderingOrder.last
+          expect(rendering_order.first_name).to eq('alert("XSS attack")')
+          expect(rendering_order.last_name).to eq('<img src="x">')
+          expect(rendering_order.comment).to eq('alert("XSS attack")')
+        end
+      end
     end
 
     context 'when invalid data' do
@@ -116,6 +138,17 @@ describe '/rendering_orders', type: :request do
             }
           }
         end.not_to change(RenderingOrder, :count)
+      end
+    end
+
+    describe 'GET /rendering_orders/rendering_in_your_city' do
+      let!(:city) { create(:city, english_name: 'Lviv', ukrainian_name: 'Львів') }
+
+      it 'redirect to printing page with city name' do
+        get printing_city_path('львів')
+
+        expect(response).to be_successful
+        expect(response.body).to include(city.english_name)
       end
     end
   end

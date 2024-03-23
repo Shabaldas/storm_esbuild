@@ -4,12 +4,17 @@ uk:
       accountings_this_month: "Бухагалтерія цього місяця"
       accountings_for_previous_months: "Бухагалтерія за попередні місяці"
       costs: "Витрати"
+      rewards: "Винагороди"
+      profit: "Прибуток"
       monthly:
         order: "Замовлення"
         earning_label: "Заробіток"
         costs: "Витрати"
+        reward: "Винагороди"
+        profit: "Прибуток"
         empty_costs: "Витрати відсутні"
         empty_orders: "Замовлення відсутні"
+        empty_rewards: "Винагороди відсутні"
         accounting_month_title: "Бухгалтерія за %{date}"
         back: "Назад"
     dashboard:
@@ -18,8 +23,10 @@ uk:
       internet_orders: "Інтернет замовлення"
       modeling_orders: "Замовлення моделювання "
       rendering_orders: "Замовлення рендер"
+      scanning_orders: "Замовлення сканування"
       printing_orders: "Замовлення 3D друк"
       feedback_call: "Новий дзвінок із зворотним зв'язком"
+      clients: "Клієнти"
     feedback_calls:
       id: "ID"
       phone_number: "НОМЕР ТЕЛЕФОНУ"
@@ -38,6 +45,7 @@ uk:
       deadline: "Термін"
       actions: "Дії"
     manual_orders:
+      select_client: "Виберіть клієнта"
       please_input: "Будь ласка, введіть"
       first_name: "Ім'я"
       last_name: "Прізвище"
@@ -54,6 +62,7 @@ uk:
       select: "---Вибрати---"
       print_color: "Колір друку"
       status: "Статус"
+      need_to_call_client: "Зателефонувати клієнту"
       save: "Зберегти"
       deadline: "Термін"
       end_date: "Дата закінчення"
@@ -65,7 +74,9 @@ uk:
       created_at: "Створено о"
       actions: "Дії"
       manual_order: "Створити ручне замовлення"
+      link_to_model: "Посилання на модель"
       new_manual_order: "Нове ручне замовлення"
+      new_manual_order_from_client: "Нове замовлення на основі клієнта"
       client_contact: "Контакти клієнта"
       printing_information: "Інформація про друк"
       price_information: "Інформація про ціну"
@@ -75,9 +86,11 @@ uk:
       quality: "Якість друку"
       infill: "Заповнення"
       workflow: "Робочий процес"
-      workflow_status: 
+      individual_entrepreneur_accountings: "ФОП замовлення"
+      workflow_status:
         nothing: "Нічого не зроблено"
         modeling: "Спроектовано"
+        called_cleint: "Повідомлено клієнту"
         printing: "Роздруковано"
         done: "Завершено"
     orders:
@@ -108,10 +121,13 @@ uk:
       edit_printing_order: "Редагувати замовлення 3D друку"
       files: "Прикріплені файли"
     rendering_orders:
-      edit_printing_order: "Редагувати замовлення 3D рендерингу"
+      edit_rendering_order: "Редагувати замовлення 3D рендерингу"
+      files: "Прикріплені файли"
+    scanning_orders:
+      edit_scanning_order: "Редагувати замовлення 3D сканування"
       files: "Прикріплені файли"
     modeling_orders:
-      edit_printing_order: "Редагувати замовлення 3D моделювання"
+      edit_modeling_order: "Редагувати замовлення 3D моделювання"
       files: "Прикріплені файли"
     products:
       product_category: "Категорія продукту"
@@ -149,15 +165,22 @@ uk:
       tags: "Теги"
       save: "Зберегти"
     users:
-      admins: "Адміністратори"
+      admins: "АДІНІСТРАТОРИ"
+      admin: "Адмін"
       id: "ІД"
       full_name: "ПОВНЕ ІМ'Я"
       phone: "ТЕЛЕФОН"
       email: "ЕЛЕКТРОННА ПОШТА"
-      customers: "Клієнти"
+      customers: "КОРИСТУВАЧІ"
+      customer: "Клієнт"
+      workers: "ПРАЦІВНИКИ"
       created_at: "СТВОРЕНО О"
+      nickname: "ПСЕВДНІМ"
+      actions: "ДІЇ"
+      first_name: "ІМ'Я"
+      last_name: "ПРІЗВИЩЕ"
     header:
-      admin_dashboard: "Панель адміністратора"
+      admin_dashboard: "Панель \n адміністратора"
       products: "Продукти"
       product_categories: "Категорії продуктів"
       feedback_calls: "Виклики зворотного зв'язку"
@@ -166,10 +189,14 @@ uk:
       internet_orders: "Інтернет-замовлення"
       modeling_orders: "Замовлення моделювання "
       rendering_orders: "Замовлення рендер"
+      scanning_orders: "Замовлення сканування"
       printing_orders: "Замовлення 3D друк"
       printers: "Принтери"
       portfolios: "Портфоліо"
       accountings: "Бухгалтерія"
+      administer_pages: "Адміністрування сторінок"
+      workers: "Працівники"
+      clients: "Клієнти"
     printers:
       actions: "Дії"
       printer_code: "Код принтера"
@@ -193,3 +220,34 @@ uk:
       time_for_fix: "Час для вирішення"
       remove_printer_maintenance: "Видалити обслуговування принтера"
       add_printer_maintenance: "Додати обслуговування принтера"
+    month_names:
+      - Січень
+      - Лютий
+      - Березень
+      - Квітень
+      - Травень
+      - Червень
+      - Липень
+      - Серпень
+      - Вересень
+      - Жовтень
+      - Листопад
+      - Грудень
+    workers:
+      workers: "Робітники"
+      first_name: "Ім'я"
+      last_name: "Прізвище"
+      nickname: "Псевдонім"
+      search: "Пошук"
+      first_last_full: "Ім'я/Прізвище/Повне ім'я"
+    user_profile:
+      password: "Пароль"
+      personal_data: "Персональні дані"
+      personal_password: "Персональний пароль"
+      change: "Змінити"
+      placeholder_first_name: "Введіть своє ім'я!"
+      placeholder_last_name: "Введіть своє прізвище!"
+      placeholder_email: "Введіть свій email!"
+      placeholder_phone: "Введіть свій номер телефону!"
+      cancel: "Скасувати"
+      hello: "Привіт"

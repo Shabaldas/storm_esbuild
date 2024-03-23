@@ -1,0 +1,36 @@
+<div class="w-full h-screen relative">
+  <div class="w-full h-1/5 bg-gradient-to-r from-orange-300 via-purple-400 to-orange-300"></div>
+  <div class="pt-10 h-100% bg-white drop-shadow-xl">
+    <div class="w-48 h-48 rounded-full absolute -top-24 left-[50%] -translate-x-[50%] bg-gray-100 overflow-hidden">
+      <%= image_tag("dredd/user.png") %>
+    </div>
+    <div class="w-full mt-[100px]   gap-4 place-content-center text-center">
+      <div class="w-full mt-[100px] gap-4 place-content-center text-center">
+        <h3 class="pt-[75px] pb-6 text-5xl"><%= @client.full_name %></h3>
+        <div class="p-3 text-2xl"><%= @client.nickname %></div>
+        <div class="p-3 text-2xl"><%= @client.phone_number %></div>
+        <div class="p-6 text-2xl"><%= @client.email %></div>
+      </div>
+      <div class=" grid w-full text-sm text-left text-gray-700 dark:text-gray-400 border-1 border-solid rounded">
+        <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+        <div class="flex flex-row items-center justify-between text-xs text-gray-700 uppercase border-b-1 border-solid">
+          <table class="w-full">
+            <thead>
+              <tr class="text-base">
+                <th class="px-6 py-4 font-medium whitespace-nowrap"><%= t("dredd.users.id") %></th>
+                <th class="px-6 py-4 font-medium whitespace-nowrap"><%= t("dredd.manual_orders.status") %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @manual_orders.each do |manual_order| %>
+              <%= render partial: "manual_order", locals: { manual_order: manual_order } %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+    <div class="p-2 text-2xl"><%= link_to 'Back', dredd_clients_path, class: "button w-80 mx-auto" %></div>
+  </div>
+</div>

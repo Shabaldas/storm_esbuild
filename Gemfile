@@ -5,20 +5,20 @@ ruby '3.2.2'
 
 gem 'active_link_to'
 gem 'ancestry'
-gem 'anyway_config', '~> 2.5'
+gem 'anyway_config', '~> 2.6'
 gem 'aws-sdk-s3', require: false
 gem 'active_storage_validations'
+gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
-gem 'capistrano-sidekiq', group: :development
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'cssbundling-rails'
 gem 'dotenv-rails', '~> 2.7'
 gem 'devise'
 gem 'devise-i18n'
 gem 'image_processing', '~> 1.2'
-gem 'foreman'
+gem 'fuzzy_match'
 gem 'grape'
 gem 'grape_on_rails_routes'
 gem 'grape-entity'
@@ -27,11 +27,13 @@ gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
-gem 'pagy', '~> 6.0'
-gem 'pg', '~> 1.1'
-gem 'puma', '~> 6.3'
+gem 'pagy', '~> 7.0'
+gem 'paper_trail', '~> 15.1.0'
+gem 'pg', '~> 1.5'
+gem 'puma', '~> 6.4'
 gem 'pundit', '~> 2.2'
 gem 'phonelib'
+gem 'newrelic_rpm'
 gem 'ransack', '~> 3.2', '>= 3.2.1'
 gem 'rails', '~> 7.0.6'
 gem 'rails-i18n'
@@ -42,6 +44,7 @@ gem 'sidekiq', '~> 7.0.0'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'simple_form'
+gem 'sitemap_generator'
 gem 'sentry-ruby'
 gem 'sentry-rails'
 gem "sentry-sidekiq"
@@ -49,7 +52,7 @@ gem "sentry-delayed_job"
 gem "sentry-resque"
 gem "sentry-opentelemetry"
 gem "telegram-bot-ruby"
-gem 'turbo-rails'
+gem 'turbo-rails', '~> 2.0.0'
 
 gem 'ed25519', '>= 1.2', '< 2.0'
 gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
@@ -65,10 +68,11 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'bullet'
+  gem 'bullet', '~> 7.1.6'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'foreman'
   gem "pry-rails"
   gem 'rails-controller-testing'
   gem 'rspec-rails'
@@ -80,7 +84,6 @@ group :development, :test do
   gem 'rubocop-rspec'
   gem 'shoulda-matchers'
   gem 'webmock'
-  gem 'bullet'
 end
 
 group :development do

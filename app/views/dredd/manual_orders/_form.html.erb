@@ -1,101 +1,147 @@
-<%= render partial: "dredd/shared/errors", locals: { resource: @manual_order } %>
-<%= form_with model: [:dredd, @manual_order], class: "form-grid-single" do |form| %>
-  <div class="form-grid-single w-10/12">
-    <div class="flex space-x-4">
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.first_name"), class: "form-label" %>
-        <%= form.text_field :first_name, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.last_name"), class: "form-label" %>
-        <%= form.text_field :last_name, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
+<%= form_with model: [:dredd, @manual_order] do |form| %>
+  <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-y-5 md:gap-x-8">
+    <div>
+      <%= form.label t("dredd.manual_orders.first_name"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :first_name, placeholder: t("dredd.manual_orders.please_input") , class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:first_name, @manual_order) %>
+      </p>
     </div>
-    <div class="flex space-x-4">
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.phone_number"), class: "form-label" %>
-        <%= form.text_field :phone_number, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.app_contact"), class: "form-label" %>
-        <%= form.select :app_contact, options_for_select(ManualOrder.app_contacts.keys.map {|k, v| [k.humanize.capitalize, k] }, selected: form.object.app_contact ) %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.email"), class: "form-label" %>
-        <%= form.text_field :email, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.last_name"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :last_name, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:last_name, @manual_order) %>
+      </p>
     </div>
-    <div class="flex space-x-4">
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.price_for_modeling"), class: "form-label" %>
-        <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.modeller"), class: "form-label" %>
-        <%= form.select :modeller, ManualOrder::MODELLERS, { include_blank: t("dredd.manual_orders.select") } %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.price_for_printing"), class: "form-label" %>
-        <%= form.text_field :price_for_printing, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.count"), class: "form-label" %>
-        <%= form.text_field :count, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.prepaid_expense"), class: "form-label" %>
-        <%= form.text_field :prepaid_expense, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.total_price"), class: "form-label" %>
-        <%= form.text_field :total_price, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.phone_number"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :phone_number, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:phone_number, @manual_order) %>
+      </p>
     </div>
-    <div class="flex space-x-4">
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.print_material"), class: "form-label" %>
-        <%= form.select :print_material, ApplicationHelper::MATERIALS, { include_blank: t("dredd.manual_orders.select") } %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.print_color"), class: "form-label" %>
-        <%= form.select :print_color, ManualOrder::PRINTING_COLORS, { include_blank: t("dredd.manual_orders.select") } %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.quality"), class: "form-label" %>
-        <%= form.text_field :quality, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.infill"), class: "form-label" %>
-        <%= form.text_field :infill, placeholder: t("dredd.manual_orders.please_input") %>
-      </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.app_contact"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.select :app_contact, options_for_select(ManualOrder.app_contacts.keys.map {|k, v| [k.humanize.capitalize, k] }, selected: form.object.app_contact ) , class:"bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
     </div>
-    <div class="flex space-x-4">
-      <div class="form-group form-toggle">
-        <%= form.label t("dredd.manual_orders.status"), class: "form-label" %>
+    <div>
+      <%= form.label t("dredd.manual_orders.email"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :email, placeholder: t("dredd.manual_orders.please_input") , class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:email, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.price_for_modeling"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.modeller"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.select :worker_id, workers_for_select, { include_blank: t("dredd.manual_orders.select") }, class:"bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:worker_id, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.price_for_printing"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :price_for_printing, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:price_for_printing, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.count"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :count, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:count, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.prepaid_expense"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :prepaid_expense, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:prepaid_expense, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.total_price"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :total_price, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:total_price, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.print_material"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.select :print_material, ApplicationHelper::MATERIALS, { include_blank: t("dredd.manual_orders.select") }, class:"bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:print_material, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.print_color"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.select :print_color, ManualOrder::PRINTING_COLORS, { include_blank: t("dredd.manual_orders.select") }, class:"bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:print_color, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.quality"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :quality, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <%= inline_error_for(:quality, @manual_order) %>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.infill"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :infill, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:infill, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.workflow"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.select :workflow_status, options_for_select(ManualOrder.workflow_statuses.keys.map {|k, v| [t("dredd.manual_orders.workflow_status.#{k}"), k] }, selected: form.object.workflow_status ) , class:"bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"%>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:workflow_status, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.end_date"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.date_field :end_date , class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500"%>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.deadline"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.date_field :deadline , class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+    </div>
+    <div class="mt-2">
+      <div class="form-group form-toggle flex items-center gap-2 mb-5">
         <label class="toggle-switch ml-3">
           <%= form.check_box(:status, { class: "ml-3", type: "checkbox" }, "paid", "unpaid") %>
           <span class="slider"></span>
         </label>
+        <%= form.label t("dredd.manual_orders.status"), class: "block text-sm font-medium text-gray-900" %>
       </div>
-      <div class="form-group">
-        <%= form.label t("dredd.manual_orders.workflow"), class: "form-label" %>
-        <%= form.select :workflow_status, options_for_select(ManualOrder.workflow_statuses.keys.map {|k, v| [t("dredd.manual_orders.workflow_status.#{k}"), k] }, selected: form.object.workflow_status ) %>
+      <div class="form-group form-toggle flex items-center gap-2 mb-5">
+        <label class="toggle-switch ml-3">
+          <%= form.check_box(:need_to_call_client, { class: "ml-3", type: "checkbox" }, "true", "false") %>
+          <span class="slider"></span>
+        </label>
+        <%= form.label t("dredd.manual_orders.need_to_call_client"), class: "block text-sm font-medium text-gray-900" %>
       </div>
-      <div class="form-group">
-         <%= form.label t("dredd.manual_orders.end_date"), class: "form-label" %>
-         <%= form.date_field :end_date %>
-      </div>
-      <div class="form-group">
-         <%= form.label t("dredd.manual_orders.deadline"), class: "form-label" %>
-         <%= form.date_field :deadline %>
+      <div class="form-group form-toggle flex items-center gap-2">
+        <label class="toggle-switch ml-3">
+          <%= form.check_box(:individual_entrepreneur_accountings, { class: "ml-3", type: "checkbox" }, "true", "false") %>
+          <span class="slider"></span>
+        </label>
+        <%= form.label t("dredd.manual_orders.individual_entrepreneur_accountings"), class: "block text-sm font-medium text-gray-900" %>
       </div>
     </div>
-    <div class="form-group">
-      <%= form.label t("dredd.manual_orders.comment"), class: "form-label" %>
-      <%= form.text_area :comment, placeholder: t("dredd.manual_orders.please_input"), class: "h-32 w-full p-2" %>
+    <div class="col-span-1 md:col-span-2 max-h-[110px]">
+      <%= form.label t("dredd.manual_orders.comment"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_area :comment, placeholder: t("dredd.manual_orders.please_input"), data: { controller: "textarea-autogrow" }, class:"block p-2.5 w-full h-[100px] text-sm text-gray-900 bg-gray-50 rounded-md border-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500" %>
     </div>
-    <div class="form-group">
-      <%= form.submit t("dredd.manual_orders.save"), class: "button w-full md:max-w-[212px]" %>
-    </div>
+    <%= hidden_field_tag(:new_or_old, form_type) %>
+  </div>
+  <div class="mt-12 lg:mt-6">
+    <%= form.submit t("dredd.manual_orders.save"), class: "w-full px-5 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-center cursor-pointer" %>
   </div>
 <% end %>

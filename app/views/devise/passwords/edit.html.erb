@@ -1,39 +1,62 @@
-<div class=" w-full max-w-screen-2xl mx-auto px-7 md:px-24 mt-9 mb-10 text-dark-grey">
-  <div class="mt-9">
-    <div class="text-2xl font-medium">
-      <h2><%= t("devise.passwords.edit.title") %></h2>
+<div class="auth-wrapper">
+  <%= image_tag("auth_img/auth_bg.png", class:"hidden lg:block w-screen h-screen bg-cover bg-center absolute top-0 left-0 blur-sm") %>
+  <div class="w-full h-full lg:h-screen text-dark-grey relative z-20 flex flex-col lg:flex-row items-start lg:items-center  justify-center lg:justify-between">
+    <div class="w-full h-14 lg:w-6/12 lg:h-full relative">
+      <%= image_tag("icons_svg/3d_storm_large_logo.svg", class:"w-20 h-20 lg:w-28 lg:h-28 absolute -top-3 lg:-top-[10px] left-[50%] -translate-x-[50%] lg:translate-x-0 lg:top-[40%] lg:left-[48%]") %>
     </div>
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-      <%= f.hidden_field :reset_password_token %>
-      <div class="w-full md:max-w-[436px] mt-8">
-        <div class="w-full field">
-          <div class="mt-1">
-            <%= f.label :password, t("devise.passwords.edit.label") %>
-          </div>
-          <div class="mt-1">
-             <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <div class="w-full lg:w-6/12 flex items-center justify-center">
+      <div class="w-full lg:w-[397px] pt-4 px-4 pb-5 sm:pt-5 sm:px-[29px] sm:pb-8 bg-white rounded-none lg:rounded-[30px]">
+        <div class="max-w-[397px] mx-auto">
+          <h2 class="text-[22px] font-medium"><%= t("devise.passwords.edit.title") %></h2>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.hidden_field :reset_password_token %>
+            <div class="mt-5">
+              <%= f.label :password, t("devise.passwords.edit.label"), class:"text-sm" %>
+              <div class="relative" data-controller="password-visibility">
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %>
+                    characters minimum)</em>
+                <% end %>
+                <%= f.password_field :password, data: { "password-visibility-target": "input"}, spellcheck: "false", autofocus: true, autocomplete: "new-password" , class:"pr-10" %>
+                <button type="button" data-action="password-visibility#toggle" class="absolute top-8 right-2">
+                  <span data-password-visibility-target="icon">
+                    <%= image_tag("icons_svg/eye_hide_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                  </span>
+                  <span data-password-visibility-target="icon" class="hidden">
+                    <%= image_tag("icons_svg/eye_show_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                  </span>
+                </button>
+                <%= inline_error_for(:password, resource) %>
+              </div>
+            </div>
+            <div class="relative mt-5" data-controller="password-visibility">
+            <%= f.label :password_confirmation,  t("devise.passwords.edit.labelsecond"), class:"text-sm" %>
+              <%= f.password_field :password_confirmation, data: { "password-visibility-target": "input"}, spellcheck: "false", autocomplete: "new-password", class:"pr-10" %>
+              <button type="button" data-action="password-visibility#toggle" class="absolute top-8 right-2">
+                <span data-password-visibility-target="icon">
+                  <%= image_tag("icons_svg/eye_hide_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                </span>
+                <span data-password-visibility-target="icon" class="hidden">
+                  <%= image_tag("icons_svg/eye_show_password_icon.svg", class: "w-6 h-6 fill-metalic-grey") %>
+                </span>
+              </button>
+              <%= inline_error_for(:password_confirmation, resource) %>
+            </div>
+            <div class="mt-5">
+              <%= f.submit t("devise.passwords.edit.button"), class: "button w-full", data: { turbo: false } %>
+            </div>
+          <% end %>
+          <div class="flex items-center justify-center mt-5">
+            <%- if devise_mapping.registerable? && controller_name != "registrations" %>
+              <%= link_to t("devise.registrations.new.title"), new_registration_path(resource_name), class: "text-sm font-medium text-blue-500" %>
             <% end %>
-            <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+            <p class="vertical-divider mx-2"></p>
+            <%- if controller_name != "sessions" %>
+              <%= link_to t("devise.sessions.new.login"), new_session_path(resource_name), class: "text-sm font-medium text-blue-500" %>
+            <% end %>
           </div>
         </div>
-        <div class="w-full field mt-0 md:mt-5">
-          <div class="mt-1">
-            <%= f.label :password_confirmation,  t("devise.passwords.edit.labelsecond") %>
-          </div>
-          <div class="mt-1">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-          </div>
-        </div>
-        <div class="mt-[20px] mb-4">
-          <%= f.submit t("devise.passwords.edit.button"), class: "button w-full md:max-w-[212px]", data: { turbo: false } %>
-        </div>
-        <div class="content-divider"></div>
       </div>
-    <% end %>
-    <div class="w-full flex items-center [&>*:nth-child(odd)]:mr-8">
-      <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>

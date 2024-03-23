@@ -28,11 +28,13 @@ uk:
       printing: "Друк"
       modeling: "Моделювання"
       rendering: "Рендеринг"
+      scanning: "Сканування"
       my_cabinet: "Мій кабінет"
       log_out: "Вийти"
       registration: "Реєстрація"
       sign_in: "Увійти"
       edit_profile: "Редагувати профіль"
+      profile: "Профіль"
     footer:
       calculator: "Калькулятор"
       contacts: "Контакти"

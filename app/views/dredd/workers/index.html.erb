@@ -1,0 +1,37 @@
+<div class="w-full max-w-screen-3xl mx-auto px-7 md:px-16 lg:px-24 mt-20">
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">
+      <%= t("dredd.workers.workers") %>
+    </h1>
+  </div>
+  <div class="mt-4 overflow-x-auto">
+    <div class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-1 border-solid rounded">
+      <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+        <div class="flex flex-row items-center justify-between text-xs text-gray-700 uppercase border-b-1 border-solid">
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.id") %>
+          </p>
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.first_name") %>
+          </p>
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.last_name") %>
+          </p>
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.nickname") %>
+          </p>
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.created_at") %>
+          </p>
+          <p class="w-1/6 px-4 py-3">
+            <%= t("dredd.users.actions") %>
+          </p>
+        </div>
+        <%= turbo_frame_tag "new-dredd-worker-form" , src: new_dredd_worker_path %>
+          <div id="workers" class="border-b">
+            <%= render @workers %>
+          </div>
+    </div>
+  </div>
+  <%= pagy_nav(@pagy).html_safe if @pagy.pages > 1 %>
+</div>

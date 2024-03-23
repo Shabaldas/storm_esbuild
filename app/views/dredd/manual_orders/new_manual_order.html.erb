@@ -1,0 +1,16 @@
+<div class="admin-order-form w-full max-w-screen-2xl mt-16 mx-auto lg:px-24">
+  <div class="mt-9">
+    <div class="card-header flex items-center justify-between gap-4">
+      <%= link_to dredd_manual_orders_path, class: "back-btn text-black" do %>
+        <div class="button-text flex">
+          <%= image_tag("icons_svg/chevron-left.svg", class: "h-5")%>
+          <%= t('.back') %>
+        </div>
+      <% end %>
+      <%= link_to t("dredd.manual_orders.new_manual_order_from_client"), new_manual_order_from_client_dredd_manual_orders_path, class: "py-2.5 px-4 md:px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border-1 border-solid border-gray-200 hover:bg-slate-200 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-slate-200" %>
+    </div>
+    <div class="card-form mt-4">
+      <%= render partial: 'form', locals: { manual_order: @manual_order, form_type: 'new' } %>
+    </div>
+  </div>
+</div>

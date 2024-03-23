@@ -7,6 +7,14 @@ module ApplicationHelper
   MATERIALS = ['PLA', 'ABS', 'PET', 'PC', 'Nylon', 'Elastan', 'TPU', 'Phrozen Sonic Aqua 4k'].freeze
   QUALITY = [100, 200, 300].freeze
 
+  def inline_error_for(field, form_obj)
+    return ''.html_safe unless form_obj.errors[field].any?
+
+    html = []
+    html << tag.div(form_obj.errors[field][0].capitalize, class: 'text-red-400 text-xs m-0 p-0 text-left mb-2')
+    html.join.html_safe
+  end
+
   def current_locale?(locale)
     I18n.locale == locale
   end
@@ -14,12 +22,12 @@ module ApplicationHelper
   def locale_switcher(locale, flag_path)
     if current_locale?(locale)
       content_tag(:div, class: 'flex w-6 h-6 p-0 justify-center items-center cursor-not-allowed') do
-        image_tag(flag_path, class: ('opacity-40' if current_locale?(locale)).to_s)
+        image_tag(flag_path, alt: "#{locale}-language-switch-icon", class: ('opacity-40' if current_locale?(locale)).to_s)
       end
     else
-      button_to locale_path(locale), method: :put, data: { turbo: false }, class: 'pt-1' do
+      button_to locale_path(locale), method: :put, data: { turbo: false }, class: 'pt-1', name: "#{locale}-language-switch" do
         content_tag(:div, class: 'flex w-6 h-6 p-0 justify-center items-center') do
-          image_tag(flag_path, class: ('opacity-40' if current_locale?(locale)).to_s)
+          image_tag(flag_path, alt: "#{locale}-language-switch-icon", class: ('opacity-40' if current_locale?(locale)).to_s)
         end
       end
     end

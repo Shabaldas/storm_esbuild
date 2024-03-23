@@ -18,5 +18,24 @@ module Dredd
         'google_icon'
       end
     end
+
+    def workflow_status_icon(workflow_status)
+      case workflow_status.to_sym
+      when :nothing
+        'empty_basket'
+      when :modeling
+        '3d_modeling_icon'
+      when :printing
+        '3d_printing_icon'
+      when :called_cleint
+        'user'
+      else
+        'success'
+      end
+    end
+
+    def workers_for_select
+      Worker.all.map { |worker| [worker.first_name, worker.id] }
+    end
   end
 end

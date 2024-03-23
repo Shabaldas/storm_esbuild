@@ -239,11 +239,7 @@ describe '/dredd/products', type: :request do
 
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.body).to include('New Product')
-        expect(response.body).to include(html_escape("Name can't be blank"))
-        expect(response.body).to include(html_escape("Description can't be blank"))
-        expect(response.body).to include(html_escape("Main picture can't be blank"))
-        expect(response.body).to include('Product category must exist')
-        expect(response.body).to include('Parent category can not have products')
+        expect(response.body).to include(html_escape("Can't be blank"))
       end
     end
   end

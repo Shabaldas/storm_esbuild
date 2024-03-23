@@ -9,11 +9,20 @@
             <%= t('.back') %>
           </div>
         <% end %>
-        <%= t('.accounting_month_title', date: @formated_date.strftime('%B %Y')) %>
+        <% month = @formated_date.month - 1 %>
+        <%= t('.accounting_month_title', date: "#{I18n.t('dredd.month_names')[month]}, #{@formated_date.year}") %>
       </h1>
     </div>
 
     <div class="page-metrics">
+      <div class="metrics-item">
+        <div class="metrics-label">
+          <%= t('.profit') %>
+        </div>
+        <div class="metrics-value">
+          UAH <%= profit(@earnings_from_selected_month&.sum(&:total_price), @costs_from_selected_month&.sum(&:amount), @reward_workers_for_selected_month&.values&.flatten&.map(&:price_for_modeling)&.compact&.sum ) %>
+        </div>
+      </div>
       <div class="metrics-item">
         <div class="metrics-label">
           <%= t('.earning_label') %>
@@ -35,6 +44,18 @@
             UAH <%= @costs_from_selected_month.sum(&:amount) %>
           <% else %>
             <%= t('.empty_costs') %>
+          <% end %>
+        </div>
+      </div>
+      <div class="metrics-item">
+        <div class="metrics-label">
+          <%= t('.reward') %>
+        </div>
+        <div class="metrics-value">
+          <% if @reward_workers_for_selected_month.present? %>
+             UAH <%= @reward_workers_for_selected_month.values.flatten.map(&:price_for_modeling)&.compact&.sum %>
+          <% else %>
+            <%= t('.empty_rewards') %>
           <% end %>
         </div>
       </div>
@@ -86,24 +107,46 @@
           <% end %>
         </div>
       </div>
-      <div class="pl-5">
-        <div class="left">
-          <div class="heading-divider-line"></div>
-          <div class="heading-divider-text">
-            <div class="text-heading-3">
-              <%= t('.costs') %>
+      <div class="grid grid-cols-2">
+        <div class="pl-5">
+          <div class="left">
+            <div class="heading-divider-line"></div>
+            <div class="heading-divider-text">
+              <div class="text-heading-3">
+                <%= t('.costs') %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="list-spacing list-capped-width">
-          <%= render partial: "dredd/costs/form" %>
-          <% if @costs_from_selected_month.present? %>
-            <% @costs_from_selected_month.each do |cost| %>
-              <%= render partial: "cost", locals: { cost: cost } %>
+          <div class="list-spacing list-capped-width">
+            <%= render partial: "dredd/costs/form" %>
+            <% if @costs_from_selected_month.present? %>
+              <% @costs_from_selected_month.each do |cost| %>
+                <%= render partial: "cost", locals: { cost: cost } %>
+              <% end %>
+            <% else %>
+              <p class="p-1"><%= t('.empty_costs') %></p>
             <% end %>
-          <% else %>
-            <p class="p-1"><%= t('.empty_costs') %></p>
-          <% end %>
+          </div>
+        </div>
+        <div class="pl-5">
+          <div class="left">
+            <div class="heading-divider-line"></div>
+            <div class="heading-divider-text">
+              <div class="text-heading-3">
+                <%= t('.reward') %>
+              </div>
+            </div>
+          </div>
+          <div class="list-spacing list-capped-width space-y-4">
+            <% if @reward_workers_for_selected_month.present? %>
+              <% @reward_workers_for_selected_month.each do |worker_name, orders| %>
+                <% total_for_modeling = orders.map(&:price_for_modeling)&.compact&.sum %>
+                <%= render partial: "reward_data", locals: { worker_name: worker_name, orders: orders, total_for_modeling: total_for_modeling } %>
+              <% end %>
+            <% else %>
+              <p class="p-1"><%= t('.empty_rewards') %></p>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

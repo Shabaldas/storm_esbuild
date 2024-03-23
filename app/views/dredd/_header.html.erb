@@ -1,7 +1,7 @@
 <header class="w-full h-16 fixed z-30 bg-light-grey">
  <div class="card-gradient flex items-center justify-between mx-auto px-7 w-full">
     <div class="flex w-1/2 justify-between">
-      <span class="text-2xl text-black"><%= t("dredd.header.admin_dashboard") %></span>
+      <span class="text-2xl whitespace-pre-line text-black"><%= t("dredd.header.admin_dashboard") %></span>
       <div class="w-24">
         <%= link_to dredd_dashboard_path do %>
           <%= image_tag("icons_svg/logo.svg", class: "pt-2") %>
@@ -12,13 +12,15 @@
           <%#= active_link_to t("dredd.header.products"), dredd_products_path, class: "text-black cursor-pointer pl-5" %>
           <%#= active_link_to t("dredd.header.product_categories"), dredd_product_categories_path, class: "text-black cursor-pointer" %>
           <%= active_link_to t("dredd.header.manual_orders"), dredd_manual_orders_path, class: "text-black cursor-pointer" %>
-          <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-black cursor-pointer" %>
-          
+          <% if policy(:admin).admin_only_access? %>
+            <%= active_link_to t("dredd.header.clients"), dredd_clients_path, class: "text-black cursor-pointer" %>
+            <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-black cursor-pointer" %>
+          <% end %>
           <%# INTERNAET ORDERS %>
           <div data-controller="dropdown" class="text-black cursor-pointer">
             <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="<%="active" if ("/modeling /rendering /printing").include?(request.fullpath) && request.fullpath.chars.count > 2 %>">
               <div class="flex">
-                Internet Orders
+                <%= t("dredd.header.internet_orders") %>
               </div>
             </button>
             <div
@@ -42,6 +44,9 @@
                 <div>
                   <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-black cursor-pointer" %>
                 </div>
+                <div>
+                  <%= active_link_to t("dredd.header.scanning_orders"), dredd_scanning_orders_path, class: "text-black cursor-pointer" %>
+                </div>
               </div>
             </div>
           </div>
@@ -50,7 +55,7 @@
           <div data-controller="dropdown" class="text-black cursor-pointer">
             <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="<%="active" if ("/modeling /rendering /printing").include?(request.fullpath) && request.fullpath.chars.count > 2 %>">
               <div class="flex">
-                Administate Pages
+                <%= t("dredd.header.administer_pages") %>
               </div>
             </button>
             <div
@@ -62,23 +67,28 @@
               data-transition-leave-to="opacity-0 scale-95"
             >
               <div class="space-y-4 w-[186px] rounded-2xl shadow border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
-                <div>
-                  <%= active_link_to t("dredd.header.users"), dredd_users_path, class: "text-black cursor-pointer" %>
-                </div>
-                <div>
-                  <%= active_link_to t("dredd.header.feedback_calls"), dredd_feedback_calls_path, class: "text-black cursor-pointer" %>
-                </div>
-                <div>
-                  <%= active_link_to t("dredd.header.printers"), dredd_printers_path, class: "text-black cursor-pointer" %>
-                </div>
-                <div>
-                  <%= active_link_to t("dredd.header.portfolios"), dredd_portfolios_path, class: "text-black cursor-pointer" %>
-                </div>
+                <% if policy(:admin).admin_only_access? %>
+                  <div>
+                    <%= active_link_to t("dredd.header.users"), dredd_users_path, class: "text-black cursor-pointer" %>
+                  </div>
+                  <div>
+                    <%= active_link_to t("dredd.header.workers"), dredd_workers_path, class: "text-black cursor-pointer" %>
+                  </div>
+                  <div>
+                    <%= active_link_to t("dredd.header.feedback_calls"), dredd_feedback_calls_path, class: "text-black cursor-pointer" %>
+                  </div>
+                  <div>
+                    <%= active_link_to t("dredd.header.printers"), dredd_printers_path, class: "text-black cursor-pointer" %>
+                  </div>
+                  <div>
+                    <%= active_link_to t("dredd.header.portfolios"), dredd_portfolios_path, class: "text-black cursor-pointer" %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
-          
-          
+
+
           <div class="inline-flex justify-center items-center gap-2.5">
             <%= locale_switcher(I18n.available_locales.first, "icons_svg/english_flag.svg") %>
             <div class="inline-flex justify-center items-center">
@@ -88,7 +98,7 @@
           </div>
         </ul>
       </nav>
-     
+
     </div>
 
     <div data-controller="slideover" data-action="keydown.esc->modal#close" tabindex="-1">
@@ -116,6 +126,12 @@
                     <%= active_link_to t("dredd.header.admin_dashboard"), dredd_dashboard_path, active: :exact, class: "text-white text-lg font-medium cursor-pointer" %>
                   </li>
                   <li class="py-4">
+                    <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
+                    <%= active_link_to t("dredd.header.clients"), dredd_clients_path, active: :exact, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
                     <%= active_link_to t("dredd.header.feedback_calls"), dredd_feedback_calls_path, class: "text-white text-lg font-medium cursor-pointer" %>
                   </li>
                   <li class="py-4">
@@ -134,10 +150,13 @@
                     <%= active_link_to t("dredd.header.rendering_orders"), dredd_rendering_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
                   </li>
                   <li class="py-4">
+                    <%= active_link_to t("dredd.header.scanning_orders"), dredd_scanning_orders_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                  </li>
+                  <li class="py-4">
                     <%= active_link_to t("dredd.header.portfolios"), dredd_portfolios_path, class: "text-white text-lg font-medium cursor-pointer" %>
                   </li>
                   <li class="py-4">
-                    <%= active_link_to t("dredd.header.accountings"), dredd_accountings_path, class: "text-white text-lg font-medium cursor-pointer" %>
+                    <%= active_link_to t("dredd.header.workers"), dredd_workers_path, class: "text-white text-lg font-medium cursor-pointer" %>
                   </li>
                 </ul>
               </nav>
