@@ -11,6 +11,26 @@ export default class extends Controller {
     "axesContainer"
   ]
 
+  connect() {
+    document.addEventListener("turbo:submit-start", this._handleStart.bind(this));
+    document.addEventListener("turbo:submit-end", this._handleEnd.bind(this));
+  }
+
+  disconnect() {
+    document.removeEventListener("turbo:submit-start", this._handleStart.bind(this));
+    document.removeEventListener("turbo:submit-end", this._handleEnd.bind(this));
+  }
+
+  _handleStart() {
+    const loaderController = this.application.getControllerForElementAndIdentifier(document.getElementById("loader"), "loader");
+    loaderController.show();
+  }
+
+  _handleEnd() {
+    const loaderController = this.application.getControllerForElementAndIdentifier(document.getElementById("loader"), "loader");
+    loaderController.hide();
+  }
+
   initialize() {
     this.stlObject = null
     this.color = 0xDDDDDD
