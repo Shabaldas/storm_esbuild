@@ -13,7 +13,7 @@ module Dredd
     end
 
     def show
-      @pagy, @manual_orders = pagy(@client.manual_orders.order(status: :desc), items: 20)
+      @pagy, @manual_orders = pagy(@client.manual_orders.order(status: :asc), items: 20)
     end
 
     def new

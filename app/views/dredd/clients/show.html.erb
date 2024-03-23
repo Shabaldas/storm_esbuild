@@ -23,7 +23,7 @@
             </thead>
             <tbody>
               <% @manual_orders.each do |manual_order| %>
-              <%= render partial: "manual_order", locals: { manual_order: manual_order } %>
+                <%= render partial: "manual_order", locals: { manual_order: manual_order } %>
               <% end %>
             </tbody>
           </table>
