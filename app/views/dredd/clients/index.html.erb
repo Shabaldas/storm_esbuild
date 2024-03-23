@@ -14,11 +14,11 @@
               <div class="space-y-2">
                 <%= f.label :fisrt_name, t("dredd.workers.first_last_full") %>
                 <%= f.search_field :first_name_or_last_name_or_full_name_cont, placeholder:
-                    t("dredd.manual_orders.please_input") %>
+                  t("dredd.manual_orders.please_input") %>
               </div>
               <div class="space-y-2">
                 <%= f.label :nickname, t("dredd.workers.nickname") %>
-                  <%= f.search_field :nickname_cont, placeholder: t("dredd.manual_orders.please_input") %>
+                <%= f.search_field :nickname_cont, placeholder: t("dredd.manual_orders.please_input") %>
               </div>
               <div class="space-y-2">
                 <%= f.label :phone_number, t("dredd.manual_orders.phone_number") %>
@@ -28,7 +28,7 @@
               <div class="hidden lg:block">
                 <%= f.submit t("dredd.workers.search"), class: "mt-6 lg:mt-4 rounded w-full button" %>
               </div>
-              <% end %>
+            <% end %>
           </div>
           </br>
           

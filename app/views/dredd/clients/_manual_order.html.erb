@@ -1,7 +1,23 @@
 <tr>
   <td class="px-6 py-4 font-medium whitespace-nowrap" scope="row">
-    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false }, class: "text-black font-bold" do %>
-      <%= manual_order.print_code %>
+    <%= link_to edit_dredd_manual_order_path(manual_order), data: { turbo: false }, class: "text-black font-bold space-x-3" do %>
+      <div class= "flex space-x-2">
+        <%= manual_order.print_code %>
+        </br>
+        <div class="text-gray-500">
+          |
+          <%= manual_order.total_price %> UAH
+        </div>
+      </div>
+      <% if manual_order&.comment.present? %>
+        <div class="text-gray-500 w-[500px]">
+          |
+          </br>
+          <p class="truncate text-gray-500">
+            <%= manual_order&.comment %>
+          </p>
+        </div>
+      <% end %>
     <% end %>
   </td>
   <td class="px-6 py-4 font-medium whitespace-nowrap">
