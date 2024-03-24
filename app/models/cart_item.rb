@@ -29,6 +29,10 @@ class CartItem < ApplicationRecord
                          target: 'total_price',
                          partial: 'cart/total_price',
                          locals: { current_cart: cart }
+    broadcast_replace_to cart,
+                         target: 'total_quantity',
+                         partial: 'cart/total_quantity',
+                         locals: { current_cart: cart }
   end
 
   after_update_commit do
@@ -43,6 +47,10 @@ class CartItem < ApplicationRecord
     broadcast_replace_to cart,
                          target: 'total_price',
                          partial: 'cart/total_price',
+                         locals: { current_cart: cart }
+    broadcast_replace_to cart,
+                         target: 'total_quantity',
+                         partial: 'cart/total_quantity',
                          locals: { current_cart: cart }
   end
 
@@ -59,6 +67,10 @@ class CartItem < ApplicationRecord
     broadcast_replace_to cart,
                          target: 'total_price',
                          partial: 'cart/total_price',
+                         locals: { current_cart: cart }
+    broadcast_replace_to cart,
+                         target: 'total_quantity',
+                         partial: 'cart/total_quantity',
                          locals: { current_cart: cart }
   end
 

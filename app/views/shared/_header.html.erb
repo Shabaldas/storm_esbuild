@@ -25,9 +25,11 @@
             <%= active_link_to t('global.header.scanning'), scanning_path, class: "text-black cursor-pointer" %>
           </li>
           <% if policy(:admin).admin_only_access? %>
-            <li class="px-4">
-              <%= active_link_to t('global.header.store'), products_path, class: "text-black cursor-pointer" %>
-            </li>
+             <% if 1 == 2 %>
+              <li class="px-4">
+                <%= active_link_to t('global.header.store'), products_path, class: "text-black cursor-pointer" %>
+              </li>
+            <% end %>
             <li class="px-4 cursor-pointer">
               <%= active_link_to t('global.header.calculator'), calculator_path, class: "text-black cursor-pointer" %>
             </li>
@@ -85,7 +87,7 @@
             <summary class="drawer-trigger flex relative">
               <%= image_tag("icons_svg/basket_icon_grey.svg", class: "-mt-1 shrink-0") %>
               <span class="w-[18px] h-[18px] absolute -top-3.5 left-3 flex justify-center items-center bg-yellow-500 rounded-full text-[10px] text-dark-blue font-semibold">
-                0
+                <%= render partial: "cart/total_quantity" %>
               </span>
             </summary>
             <%= render partial: "cart/side_bar_cart" %>

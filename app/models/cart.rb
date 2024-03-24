@@ -18,4 +18,10 @@ class Cart < ApplicationRecord
     end
     array.sum
   end
+
+  def total_quantity
+    return 0 if cart_items.empty?
+
+    cart_items.sum(&:quantity)
+  end
 end
