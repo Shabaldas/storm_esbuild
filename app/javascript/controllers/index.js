@@ -87,3 +87,6 @@ application.register('textarea-autogrow', TextareaAutogrow)
 
 import LoaderController from "./loader_controller";
 application.register("loader", LoaderController);
+
+import SelectClientController from "./select_client_controller";
+application.register("select-client", SelectClientController);

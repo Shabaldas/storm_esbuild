@@ -1,16 +1,15 @@
 <%= form_with model: [:dredd, @manual_order] do |form| %>
   <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-y-5 md:gap-x-8">
+        <div class="">
+        <%= link_to "Please Selected Client", "#", id: "client-link", target: "_blank", data: { controller: "select-client" }, class: "text-heading-2" %>
+      </div>
     <div>
       <%= form.label t("dredd.manual_orders.select_client"), class: "block mb-2 text-sm font-medium text-gray-900"  %>
       <%= form.select :client_id,
               Client.all.map { |client| ["#{client.full_name} - #{client.phone_number} - #{client.nickname}", client.id] },
               { class: "bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", include_blank: false },
-              { multiple: false, data: { controller: "select" }}
+              { multiple: false, data: { controller: "select select-client", action: "change->select-client#updateLink" }}
       %>
-    </div>
-    <div>
-      <%= form.label t("dredd.manual_orders.price_for_modeling"), class: "block mb-2 text-sm font-medium text-gray-900" %>
-      <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
     </div>
     <div>
       <%= form.label t("dredd.manual_orders.modeller"), class: "block mb-2 text-sm font-medium text-gray-900" %>
@@ -20,17 +19,14 @@
       </p>
     </div>
     <div>
+      <%= form.label t("dredd.manual_orders.price_for_modeling"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+    </div>
+    <div>
       <%= form.label t("dredd.manual_orders.price_for_printing"), class: "block mb-2 text-sm font-medium text-gray-900" %>
       <%= form.text_field :price_for_printing, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
       <p class="mt-2 text-sm text-red-600">
         <%= inline_error_for(:price_for_printing, @manual_order) %>
-      </p>
-    </div>
-    <div>
-      <%= form.label t("dredd.manual_orders.count"), class: "block mb-2 text-sm font-medium text-gray-900" %>
-      <%= form.text_field :count, placeholder: t("dredd.manual_orders.please_input") , class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
-      <p class="mt-2 text-sm text-red-600">
-        <%= inline_error_for(:count, @manual_order) %>
       </p>
     </div>
     <div>
@@ -59,6 +55,13 @@
       <%= form.select :print_color, ManualOrder::PRINTING_COLORS, { include_blank: t("dredd.manual_orders.select") }, class:"bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
       <p class="mt-2 text-sm text-red-600">
         <%= inline_error_for(:print_color, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.count"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :count, placeholder: t("dredd.manual_orders.please_input") , class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:count, @manual_order) %>
       </p>
     </div>
     <div>

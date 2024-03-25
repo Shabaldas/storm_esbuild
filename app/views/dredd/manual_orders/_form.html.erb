@@ -33,10 +33,6 @@
       </p>
     </div>
     <div>
-      <%= form.label t("dredd.manual_orders.price_for_modeling"), class: "block mb-2 text-sm font-medium text-gray-900" %>
-      <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
-    </div>
-    <div>
       <%= form.label t("dredd.manual_orders.modeller"), class: "block mb-2 text-sm font-medium text-gray-900" %>
       <%= form.select :worker_id, workers_for_select, { include_blank: t("dredd.manual_orders.select") }, class:"bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
       <p class="mt-2 text-sm text-red-600">
@@ -44,17 +40,14 @@
       </p>
     </div>
     <div>
+      <%= form.label t("dredd.manual_orders.price_for_modeling"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :price_for_modeling, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+    </div>
+    <div>
       <%= form.label t("dredd.manual_orders.price_for_printing"), class: "block mb-2 text-sm font-medium text-gray-900" %>
       <%= form.text_field :price_for_printing, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
       <p class="mt-2 text-sm text-red-600">
         <%= inline_error_for(:price_for_printing, @manual_order) %>
-      </p>
-    </div>
-    <div>
-      <%= form.label t("dredd.manual_orders.count"), class: "block mb-2 text-sm font-medium text-gray-900" %>
-      <%= form.text_field :count, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
-      <p class="mt-2 text-sm text-red-600">
-        <%= inline_error_for(:count, @manual_order) %>
       </p>
     </div>
     <div>
@@ -83,6 +76,13 @@
       <%= form.select :print_color, ManualOrder::PRINTING_COLORS, { include_blank: t("dredd.manual_orders.select") }, class:"bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
       <p class="mt-2 text-sm text-red-600">
         <%= inline_error_for(:print_color, @manual_order) %>
+      </p>
+    </div>
+    <div>
+      <%= form.label t("dredd.manual_orders.count"), class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= form.text_field :count, placeholder: t("dredd.manual_orders.please_input"), class:"block w-full p-2.5 bg-gray-50 border-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500" %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= inline_error_for(:count, @manual_order) %>
       </p>
     </div>
     <div>
