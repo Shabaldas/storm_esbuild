@@ -1,8 +1,14 @@
 <%= form_with model: [:dredd, @manual_order] do |form| %>
   <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-y-5 md:gap-x-8">
-        <div class="">
+    <% if @manual_order.client.present? %>
+      <div class="">
+        <%= link_to "#{@manual_order.client.full_name} - #{@manual_order.client.phone_number} - #{@manual_order.client.nickname}", dredd_client_path(@manual_order.client), id: "client-link", target: "_blank", data: { controller: "select-client" }, class: "text-heading-2" %>
+      </div>
+    <% else %>
+      <div class="">
         <%= link_to "Please Selected Client", "#", id: "client-link", target: "_blank", data: { controller: "select-client" }, class: "text-heading-2" %>
       </div>
+    <% end %>
     <div>
       <%= form.label t("dredd.manual_orders.select_client"), class: "block mb-2 text-sm font-medium text-gray-900"  %>
       <%= form.select :client_id,
