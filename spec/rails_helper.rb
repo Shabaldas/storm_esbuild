@@ -32,10 +32,10 @@ require_relative '../config/environment'
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'webmock/rspec'
-require 'database_cleaner/active_record'
 require 'active_storage_validations/matchers'
 require 'pundit/rspec'
 require 'sidekiq/testing'
+require 'database_cleaner/active_record'
 Sidekiq::Testing.fake!
 ActiveJob::Base.queue_adapter = :test
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -70,7 +70,7 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers, type: :feature
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include FactoryBot::Syntax::Methods
-  config.fixture_path = "#{Rails.root}/spec/fixtures" # rubocop:disable Rails/FilePath
+  config.fixture_paths = [Rails.root.join('spec/fixtures')]
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -80,7 +80,6 @@ RSpec.configure do |config|
   config.before :suite do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with :truncation
-    # FactoryBot.lint
   end
 
   Shoulda::Matchers.configure do |conf|

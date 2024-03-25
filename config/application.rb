@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module StormEsbuild
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.1
 
     config.i18n.available_locales = [:en]
     # rubocop:disable Rails/FilePath
