@@ -5,6 +5,7 @@ SitemapGenerator::Sitemap.create do
   add '/printing', changefreq: 'weekly', priority: 0.9
   add '/rendering', changefreq: 'weekly', priority: 0.9
   add '/modeling', changefreq: 'weekly', priority: 0.9
+  add '/scanning', changefreq: 'weekly', priority: 0.9
 
   City.find_each do |city|
     add printing_city_path(city.english_name.downcase), lastmod: city.updated_at, priority: 0.8
