@@ -12,48 +12,33 @@
           <li class="px-4">
             <%= active_link_to t('global.header.head'), root_path, class: "text-black cursor-pointer", active: :exact %>
           </li>
-          <div data-controller="dropdown" class="relative">
-            <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="<%="active" if ("/modeling /rendering /printing").include?(request.fullpath) && request.fullpath.chars.count > 2 %>">
-              <div class="flex">
-                Services
-              </div>
+          <li data-controller="dropdown" class="menu-dropdown-with-chevron relative px-4">
+            <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="w-full h-6 flex 
+            <%=" active" if ("/modeling /rendering /printing /scanning").include?(request.fullpath) && request.fullpath.chars.count > 2 %>">
+              <span class="pr-1"><%= t("global.header.services") %></span>
+              <span class="menu-dropdown-with-chevron__icon block w-4 h-4 transform translate-y-1 translate-x-0.5">
+                <%= image_tag("icons_svg/chevron-down.svg") %>
+              </span>
             </button>
-            <div
-              data-dropdown-target="menu"
-              class="absolute top-10 left-[50%] -translate-x-[50%] hidden"
-              data-transition-enter-from="opacity-0 scale-95"
-              data-transition-enter-to="opacity-100 scale-100"
-              data-transition-leave-from="opacity-100 scale-100"
-              data-transition-leave-to="opacity-0 scale-95"
-            >
-              <div class="w-[186px] rounded-2xl shadow border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
-                <div>
-                  <%= link_to t('global.header.modeling'), modeling_path, data: { action: "dropdown#toggle" }, class: "text-black cursor-pointer" %>
-                </div>
-                <div>
-                  <%= link_to t('global.header.printing'), printing_path, data: { action: "dropdown#toggle" }, class: "text-black cursor-pointer" %>
-                </div>
-                <div>
-                  <%= link_to t('global.header.rendering'), rendering_path, data: { action: "dropdown#toggle" }, class: "text-black cursor-pointer" %>
-               </div>
-              </div>
+            <div data-dropdown-target="menu" class="absolute top-10 left-[50%] -translate-x-[50%] hidden" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
+              <ul class="w-[186px] py-4 rounded-2xl shadow border overflow-hidden flex flex-col items-center text-base text-gray-900 bg-white">
+                <li class="w-full pb-2 cursor-pointer">
+                  <%= link_to t('global.header.modeling'), modeling_path, data: { action: "dropdown#toggle" }, class: "w-full block text-black cursor-pointer" %>
+                </li>
+                <li class="w-full py-2 cursor-pointer">
+                  <%= link_to t('global.header.printing'), printing_path, data: { action: "dropdown#toggle" }, class: "w-full block text-black cursor-pointer" %>
+                </li>
+                <li class="w-full py-2 cursor-pointer">
+                  <%= link_to t('global.header.rendering'), rendering_path, data: { action: "dropdown#toggle" }, class: "w-full block text-black cursor-pointer" %>
+                </li>
+                <li class="w-full px-4 pt-2 cursor-pointer">
+                  <%= link_to t('global.header.scanning'), scanning_path, data: { action: "dropdown#toggle" }, class: "w-full block text-black cursor-pointer" %>
+                </li>
+              </ul>
             </div>
-          </div>
-
-          <li class="px-4">
-            <%= active_link_to t('global.header.modeling'), modeling_path, class: "text-black cursor-pointer" %>
-          </li>
-          <li class="px-4">
-            <%= active_link_to t('global.header.printing'), printing_path, class: "text-black cursor-pointer" %>
-          </li>
-          <li class="px-4">
-            <%= active_link_to t('global.header.rendering'), rendering_path, class: "text-black cursor-pointer" %>
-          </li>
-          <li class="px-4">
-            <%= active_link_to t('global.header.scanning'), scanning_path, class: "text-black cursor-pointer" %>
           </li>
           <% if policy(:admin).admin_only_access? %>
-             <% if 1 == 2 %>
+            <% if 1 == 2 %>
               <li class="px-4">
                 <%= active_link_to t('global.header.store'), products_path, class: "text-black cursor-pointer" %>
               </li>
